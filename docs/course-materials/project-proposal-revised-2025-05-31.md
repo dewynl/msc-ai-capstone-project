@@ -30,7 +30,7 @@ To adapt and evaluate existing neural language architectures with custom educati
 
 **Data Collection and Preprocessing**
 - Collect 500+ high-quality course syllabi from diverse educational domains
-- Achieve 80% automated preprocessing accuracy with manual validation pipeline during the data preprocessing phase
+- Achieve 80% automated preprocessing accuracy with manual validation pipeline
 - Create standardised dataset with consistent metadata formatting
 
 **Educational Architecture Adaptation**
@@ -54,7 +54,7 @@ To adapt and evaluate existing neural language architectures with custom educati
 ## Key Literature Related to the Project
 
 ### Natural Language Generation
-Recent advancements in sequence-to-sequence modelling and attention mechanisms have revolutionised natural language generation capabilities (Vaswani et al., 2017). Domain adaptation of transformer architectures has become standard practice in specialised NLP applications. Gururangan et al. (2020) demonstrate that continued pretraining of language models on domain-specific corpora consistently leads to performance gains, with their multi-phase adaptive pretraining approach showing that custom domain adaptations are both effective and widely adopted. Lin et al. (2022) establish a taxonomy for transformer variations that explicitly includes "architectural modification" as a primary category for enhancing model performance, validating that custom architectural components are recognised approaches in the field.
+Recent advancements in sequence-to-sequence modelling and attention mechanisms have revolutionised natural language generation capabilities (Vaswani et al., 2017). Domain adaptation of transformer architectures has become standard practice in specialised NLP applications. (Gururangan et al., 2020) demonstrate that continued pretraining of language models on domain-specific corpora consistently leads to performance gains, with their multi-phase adaptive pretraining approach showing that custom domain adaptations are both effective and widely adopted. (Lin et al., 2022) establish a taxonomy for transformer variations that explicitly includes "architectural modification" as a primary category for enhancing model performance, validating that custom architectural components are recognised approaches in the field.
 
 Attention layers will be adapted for educational content hierarchy, with position-aware attention prioritising learning objective sequences and maintaining pedagogical flow throughout generated syllabi. Neural question generation for reading comprehension has demonstrated how AI can create structured educational content (Du et al., 2017).
 
@@ -133,7 +133,7 @@ Anderson, L.W., Krathwohl, D.R., Airasian, P.W., Cruikshank, K.A., Mayer, R.E., 
 
 Bengio, Y., Louradour, J., Collobert, R. and Weston, J. (2009) 'Curriculum learning', *Proceedings of the 26th Annual International Conference on Machine Learning*, pp. 41-48.
 
-Bhowmick, A.K., Jagmohan, A., Vempaty, A., Dey, P., Hall, L., Hartman, J., Kokku, R. and Maheshwari, H. (2023) 'Automating Question Generation from Educational Text', *SGAI Conference*.
+Bhowmick, A.K., Jagmohan, A., Vempaty, A., Dey, P., Hall, L., Hartman, J., Kokku, R. and Maheshwari, H. (2023) 'Automating question generation from educational text', *Proceedings of the 43rd SGAI International Conference on Artificial Intelligence*.
 
 Du, X., Shao, J. and Cardie, C. (2017) 'Learning to Ask: Neural Question Generation for Reading Comprehension', *Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics*.
 
@@ -143,8 +143,6 @@ Lin, T., Wang, Y., Liu, X. and Qiu, X. (2022) 'A survey of transformers', *AI Op
 
 Parkes, J. and Harris, M.B. (2002) 'The purposes of a syllabus', *College Teaching*, 50(2), pp. 55-61.
 
-Srivastava, M. and Goodman, N.D. (2021) 'Question Generation for Adaptive Education', *Proceedings of the 14th International Conference on Educational Data Mining*.
-
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, Ł. and Polosukhin, I. (2017) 'Attention is all you need', *Advances in Neural Information Processing Systems*, 30.
 
-Wang, Z., Lan, A.S., Nie, W., Waters, A.E., Grimaldi, P.J. and Baraniuk, R. (2018) 'QG-Net: A Data-Driven Question Generation Model for Educational Content', *Proceedings of the 5th ACM Conference on Learning*. 
+Wang, Z., Lan, A.S., Nie, W., Waters, A.E., Grimaldi, P.J. and Baraniuk, R. (2018) 'QG-Net: A Data-Driven Question Generation Model for Educational Content', *Proceedings of the 5th ACM Conference on Learning*.
