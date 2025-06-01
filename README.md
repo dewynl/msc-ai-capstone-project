@@ -99,7 +99,7 @@ Creating a purpose-built system that understands:
 ### Installation
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/dewynl/msc-ai-capstone-project.git
 cd msc-ai-capstone-project
 
 # Create virtual environment
@@ -112,7 +112,7 @@ pip install -r requirements.txt
 
 ## Documentation
 
-- **Project Proposal**: [docs/project-proposal/](docs/project-proposal/)
+- **Project Proposal**: [docs/course-materials/](docs/course-materials/)
 - **Literature Review**: [docs/literature-review/](docs/literature-review/)
 - **Progress Reports**: [docs/progress-reports/](docs/progress-reports/)
 
@@ -124,4 +124,4 @@ University of Essex Online
 
 ---
 
-*This project represents original research contributing to the field of AI in education, specifically addressing the challenge of generating pedagogically sound educational content through domain-specific AI architectures.* 
+*This project represents original research contributing to the field of AI in education, specifically addressing the challenge of generating pedagogically sound educational content through domain-specific AI architectures.*
