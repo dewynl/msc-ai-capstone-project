@@ -1,0 +1,10 @@
+name: msc-ai-capstone
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - jupyter
+  - pip:
+    # Add pip packages as needed 
