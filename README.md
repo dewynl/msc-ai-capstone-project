@@ -125,3 +125,5 @@ University of Essex Online
 ---
 
 *This project represents original research contributing to the field of AI in education, specifically addressing the challenge of generating pedagogically sound educational content through domain-specific AI architectures.*
+
+**Branch Protection**: This repository uses protected main branch. All changes must be made via pull requests from feature branches.
