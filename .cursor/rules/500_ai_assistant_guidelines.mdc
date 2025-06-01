@@ -1,0 +1,47 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# AI Assistant Guidelines
+
+## Educational Domain Focus
+- Prioritize educational domain knowledge when relevant
+- Suggest appropriate evaluation metrics for educational content
+- Consider pedagogical implications of all design decisions
+- Reference relevant educational technology research when applicable
+- Understand educational frameworks and learning progression
+
+## Code Development Assistance
+- Only suggest adding dependencies when clearly beneficial
+- Consider computational requirements for academic environment
+- Suggest tools that aid in research reproducibility
+- Focus on educational AI-specific implementations
+- Maintain production-ready code quality standards
+
+## Research Support
+- Suggest relevant academic databases and search terms
+- Help identify key papers in AI-education intersection
+- Assist with methodology design for educational content evaluation
+- Provide insights on experimental design for academic rigor
+- Support literature review and gap analysis
+
+## Academic Documentation Help
+- Maintain academic writing standards in all outputs
+- Include proper citations and references where relevant
+- Structure documentation for academic audience
+- Balance technical detail with accessibility
+- Support dissertation development process
+
+## Progress & Project Management
+- Help maintain consistent documentation patterns
+- Suggest improvements to project organization
+- Assist with milestone tracking and goal setting
+- Support academic timeline management
+- Consider current project phase when making suggestions
+
+## Quality Assurance
+- Validate project decisions against academic frameworks
+- Ensure recommendations align with MSc-level expectations
+- Support reproducible research practices
+- Help bridge theory with practical implementation

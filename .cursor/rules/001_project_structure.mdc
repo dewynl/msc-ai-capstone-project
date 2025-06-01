@@ -1,0 +1,47 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# MSc AI Capstone Project - Core Structure
+
+## Project Context
+MSc Artificial Intelligence capstone project focused on developing domain-specific AI for educational syllabus generation.
+
+### Core Problem
+Current LLMs can generate text that looks like a syllabus but lack specific educational structure and pedagogical understanding for coherent, educationally sound course content.
+
+### Solution Approach
+Building a domain-specific AI model that:
+- Takes minimal inputs (course description, learning objectives, problem statements)
+- Generates structured, coherent course syllabi
+- Understands educational frameworks and learning progression
+- Maintains pedagogical quality throughout content
+
+### Technical Innovation
+- Custom neural architecture for educational content structure
+- Specialized word embeddings trained on educational terminology
+- Sequence-to-sequence modeling with attention mechanisms
+- Training data from Open Syllabus Project API and educational resources
+
+## Directory Organization
+- `@docs/` - Academic documentation, literature review, methodology, progress reports
+- `@research/` - Literature collection, analysis, datasets research  
+- `@src/` - Source code (data processing, models, training, evaluation, utilities)
+- `@experiments/` - Experimental code, baseline models, custom architectures
+- `@data/` - Raw, processed, and synthetic datasets
+- `@notebooks/` - Jupyter notebooks for exploration and prototyping
+- `@Notes/` - Course notes and existing project documents
+
+## File Naming Conventions
+- Python files: snake_case
+- Classes: PascalCase
+- Functions/variables: snake_case
+- Constants: UPPER_CASE
+- Notebooks: descriptive names with dates for experiments
+- Academic docs: structured with proper versioning
+
+## Key Project Files
+- `@README.md` - Main project overview and setup
+- `@requirements.txt` - Python dependencies (minimal, add as needed)
+- `@environment.yml` - Conda environment specification

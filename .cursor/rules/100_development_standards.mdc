@@ -1,0 +1,46 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Development Standards & Tooling
+
+## Python Style Guidelines
+- Follow PEP 8 standards
+- Use type hints for functions and classes
+- Docstrings for all public functions using Google style
+- Prefer descriptive variable names over comments
+- Maximum line length: 88 characters (Black formatter compatible)
+
+## File Naming Conventions (Detailed)
+- Python files: lowercase with underscores (snake_case)
+- Classes: PascalCase
+- Functions and variables: snake_case
+- Constants: UPPER_CASE
+- Notebooks: descriptive names with dates for experiments
+
+## Dependencies Management
+- Add dependencies to `@requirements.txt` only when needed
+- Pin versions for reproducibility in final implementation
+- Use virtual environments for development
+- Document any system dependencies in `@README.md`
+- Prefer well-established libraries with good documentation
+
+## Code Quality Standards
+- All code should be production-ready quality even in research phase
+- Implement reproducible experiments with seed setting
+- Separate concerns: data processing, model definition, training, evaluation
+- Include comprehensive error handling and logging
+- Regular experimental logging and results documentation
+- Experiments should be reproducible
+- Documentation should meet academic standards
+- Results should be clearly presented and analyzed
+
+## Documentation Requirements
+- All major functions and classes must have docstrings
+- README files in each major directory explaining purpose
+- Code comments for complex algorithms or domain-specific logic
+- Academic citations in docstrings when implementing published methods
+
+## Quality Reminder
+Remember: This is an academic research project contributing to AI-education field. Balance innovation with rigorous academic standards.

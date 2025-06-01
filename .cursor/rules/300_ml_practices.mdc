@@ -1,0 +1,39 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# ML Development Practices
+
+## Framework & Architecture
+- Use PyTorch as primary deep learning framework
+- Custom neural architecture for educational content structure
+- Specialized word embeddings trained on educational terminology
+- Sequence-to-sequence modeling with attention mechanisms
+- Start with baseline models before custom architectures
+
+## Model Development Guidelines
+- Separate model definition, training, and evaluation code
+- Implement reproducible experiments with proper seed setting
+- Log experiments with clear naming conventions
+- Document hyperparameters and model architectures
+- Include model versioning and checkpointing
+
+## Training Practices
+- Implement comprehensive logging (loss, metrics, hyperparameters)
+- Use proper train/validation/test data handling
+- Monitor for overfitting and implement early stopping
+- Document training procedures and computational requirements
+- Regular experimental validation and results analysis
+
+## Experimentation Standards
+- Version control all experiment configurations
+- Maintain experiment logs with timestamps and results
+- Compare against established baselines consistently
+- Document failed experiments and lessons learned
+- Iterative development with clear progression tracking
+
+## Technical Innovation Focus
+- Educational content structure understanding
+- Pedagogical quality maintenance throughout generation
+- Coherent course content progression modeling

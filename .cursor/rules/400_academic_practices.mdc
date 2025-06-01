@@ -1,0 +1,61 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Academic Research Practices
+
+## Research Phase Guidelines (Weeks 1-8)
+- Focus on literature review and methodology development
+- Document all research decisions and rationale
+- Maintain bibliography with proper citations using HARVARD citation format
+- Use inline citations when possible and where needed in all texts
+- Everything must be cited properly - no uncited claims or methodologies
+- Track research gaps and opportunities
+- Regular progress documentation and milestone tracking
+
+## Evaluation Focus
+- Implement both technical metrics (ROUGE, BERTScore) and educational quality assessments
+- Bloom's taxonomy alignment analysis
+- Pedagogical framework adherence
+- Compare against general-purpose LLM baselines
+
+## Academic Writing Standards
+- Maintain academic writing standards for all documentation
+- Include proper citations and references in all research work
+- Structure documentation for academic audience
+- Balance technical detail with accessibility
+- Follow MSc-level academic expectations
+
+## Course Materials Integration
+**Weekly Lecture Notes Structure:**
+The `@docs/course-materials/` directory contains structured weekly course content organized as:
+- `unit-XX/` directories for each week's materials
+- `unit-XX-topic-name.md` for core weekly content
+- Supporting documents for methodologies, outlines, and additional materials
+- Project proposal documents and revision plans
+
+**When Working with Academic Content:**
+- Reference course materials from `@course-materials` when providing academic guidance
+- Check relevant unit content for methodological frameworks and requirements
+- Align suggestions with academic standards and timelines covered in course units
+- Consider progression of topics across units when making recommendations
+
+**Integration Guidelines:**
+- Search course materials for relevant methodological guidance before suggesting approaches
+- Ensure recommendations align with MSc-level academic expectations outlined in units
+- Use course terminology and concepts consistently across units
+- Support dissertation development aligned with course progression
+
+## Project Phase Awareness
+Current phase information should be maintained in separate progress tracking files. AI should:
+- Consider current project phase when making suggestions
+- Prioritize tasks appropriate to current timeline
+- Suggest phase-appropriate tools and approaches
+- Help maintain academic project momentum
+
+## Research Quality Standards
+- All research should meet academic rigor standards
+- Experiments should be reproducible and well-documented
+- Results should be clearly presented and analyzed
+- Contribute meaningfully to AI-education research field

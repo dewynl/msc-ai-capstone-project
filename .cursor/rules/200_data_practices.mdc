@@ -1,0 +1,37 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Data & Evaluation Practices
+
+## Data Sources & Management
+- Training data from Open Syllabus Project API and educational resources
+- Organize data in `@data/` with clear raw/processed/synthetic separation
+- Maintain data lineage and processing documentation
+- Version control data processing scripts, not raw datasets
+- Document data collection methodology and sources
+
+## Dataset Organization
+- `@data/raw/` - Original, unmodified data
+- `@data/processed/` - Cleaned and preprocessed data
+- `@data/synthetic/` - Generated or augmented datasets
+- Include dataset metadata and statistics
+- Clear train/validation/test splits with documented rationale
+
+## Evaluation Framework
+**Technical Metrics:**
+- ROUGE scores for content overlap
+- BERTScore for semantic similarity
+- Perplexity and coherence measures
+
+**Educational Quality Metrics:**
+- Bloom's taxonomy alignment analysis
+- Pedagogical framework adherence assessment
+- Learning progression coherence evaluation
+- Educational structure validation
+
+**Baseline Comparisons:**
+- Compare against general-purpose LLM outputs
+- Establish educational quality benchmarks
+- Document evaluation methodology and criteria
