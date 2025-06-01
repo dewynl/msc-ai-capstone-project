@@ -124,6 +124,48 @@ Building a domain-specific AI model that:
 - Assist with milestone tracking and goal setting
 - Support academic timeline management
 
+## Course Materials Context Integration
+
+### Weekly Lecture Notes Structure
+The `docs/course-materials/` directory contains structured weekly course content organized as:
+- `unit-XX/` directories for each week's materials
+- `unit-XX-topic-name.md` for core weekly content
+- Supporting documents for methodologies, outlines, and additional materials
+- Project proposal documents and revision plans
+
+### AI Assistant Course Materials Guidelines
+
+**When Working with Academic Content**:
+- Reference course materials from `@course-materials` when providing academic guidance
+- Check relevant unit content for methodological frameworks and requirements
+- Align suggestions with academic standards and timelines covered in course units
+- Consider progression of topics across units when making recommendations
+
+**Dynamic Unit Context**:
+- Search available units to understand current course progression
+- Identify relevant methodological frameworks from any unit content
+- Apply lessons learned from completed units to current work
+- Reference appropriate unit materials based on the type of guidance needed
+
+**Integration Patterns**:
+- Cross-reference course requirements with current project tasks
+- Suggest approaches that align with taught methodologies from available units
+- Validate project decisions against academic frameworks found in course materials
+- Use course terminology and concepts consistently across units
+- Reference specific unit content when relevant to current work
+
+**Course Materials Utilization**:
+- Search course materials for relevant methodological guidance before suggesting approaches
+- Ensure recommendations align with MSc-level academic expectations outlined in units
+- Consider course deadlines and milestones when prioritizing tasks
+- Reference project proposal revisions and feedback when making strategic suggestions
+
+**Academic Consistency**:
+- Maintain consistency with terminology and frameworks introduced in course materials
+- Support dissertation development aligned with course progression
+- Help bridge theory from lectures with practical implementation decisions
+- Ensure project work meets academic standards established in course content
+
 ## Project Phase Awareness
 Current phase information should be maintained in separate progress tracking files. AI should:
 - Consider current project phase when making suggestions
