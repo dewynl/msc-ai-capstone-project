@@ -31,34 +31,26 @@ Creating a purpose-built system that understands:
 
 ```
 ├── README.md                          # This file
-├── docs/                             # Documentation and project planning
-│   ├── project-proposal/             # Initial project documents
-│   ├── literature-review/            # Research papers and analysis
-│   ├── methodology/                  # Research methodology documentation
-│   ├── progress-reports/             # Weekly/milestone progress reports
-│   └── final-dissertation/           # Final dissertation chapters
-├── research/                         # Research materials and analysis
-│   ├── literature/                   # Collected papers and sources
-│   ├── analysis/                     # Research analysis and findings
-│   └── datasets/                     # Data collection and preprocessing
-├── src/                              # Source code implementation
-│   ├── data/                         # Data processing modules
-│   ├── models/                       # AI model architectures
-│   ├── training/                     # Training scripts and utilities
-│   ├── evaluation/                   # Evaluation metrics and testing
-│   └── utils/                        # Utility functions
-├── experiments/                      # Experimental code and results
-│   ├── baseline/                     # Baseline model experiments
-│   ├── custom-architecture/          # Custom model experiments
-│   └── evaluation-results/           # Experiment results and analysis
-├── data/                            # Raw and processed datasets
-│   ├── raw/                         # Original data sources
-│   ├── processed/                   # Cleaned and preprocessed data
-│   └── synthetic/                   # Generated or augmented data
-├── notebooks/                       # Jupyter notebooks for exploration
-├── requirements.txt                 # Python dependencies
-├── environment.yml                  # Conda environment specification
-└── Notes/                          # Course notes (existing)
+├── pyproject.toml                     # Python packaging and tool configuration
+├── Makefile                          # Development automation commands
+├── requirements.txt                  # Python dependencies
+├── environment.yml                   # Conda environment specification
+├── .pre-commit-config.yaml          # Code quality hooks
+├── .env.example                      # Environment variables template
+├── docs/                            # Documentation and project planning
+│   ├── course-materials/            # Course units and project proposals
+│   ├── literature-review/           # Research papers and analysis
+│   └── progress/                    # Progress tracking and reports
+├── src/                             # Source code implementation
+│   ├── data/                        # Data processing modules
+│   ├── models/                      # AI model architectures
+│   ├── training/                    # Training scripts and utilities
+│   ├── evaluation/                  # Evaluation metrics and testing
+│   └── utils/                       # Utility functions
+└── data/                           # Raw and processed datasets
+    ├── raw/                        # Original data sources
+    ├── processed/                  # Cleaned and preprocessed data
+    └── synthetic/                  # Generated or augmented data
 ```
 
 ## Timeline (30 weeks)
@@ -92,34 +84,94 @@ Creating a purpose-built system that understands:
 ## Getting Started
 
 ### Prerequisites
-- Python 3.8+
+- Python 3.10+
 - CUDA-capable GPU (recommended)
 - Access to Open Syllabus Project API
 
 ### Installation
+
+**Quick Development Setup:**
 ```bash
 # Clone the repository
 git clone https://github.com/dewynl/msc-ai-capstone-project.git
 cd msc-ai-capstone-project
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
+# Complete development environment setup
+make setup
 ```
+
+**Manual Setup:**
+```bash
+# Create virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install in development mode with all dependencies
+pip install -e ".[dev,jupyter]"
+
+# Install pre-commit hooks
+pre-commit install
+```
+
+### Development Workflow
+
+```bash
+# Format code
+make format
+
+# Run linting checks
+make lint
+
+# Run tests with coverage
+make test
+
+# Clean cache files
+make clean
+```
+
+## Development Tools
+
+**Code Quality:**
+- Black - Code formatting
+- Ruff - Fast Python linting
+- MyPy - Static type checking
+- pre-commit - Git hooks for code quality
+
+**Testing & Development:**
+- pytest - Testing framework
+- Jupyter Lab - Interactive development and documentation
+- Make - Development automation
 
 ## Documentation
 
 - **Project Proposal**: [docs/course-materials/](docs/course-materials/)
 - **Literature Review**: [docs/literature-review/](docs/literature-review/)
-- **Progress Reports**: [docs/progress-reports/](docs/progress-reports/)
+- **Progress Reports**: [docs/progress/](docs/progress/)
+
+## Contributing
+
+This project uses modern Python development practices:
+
+1. **Code Quality**: All code is automatically formatted with Black and linted with Ruff
+2. **Type Checking**: MyPy ensures type safety
+3. **Testing**: pytest for comprehensive testing
+4. **Pre-commit Hooks**: Automatic quality checks before commits
+
+To contribute:
+```bash
+# Setup development environment
+make setup
+
+# Make your changes, then run quality checks
+make format
+make lint
+make test
+```
 
 ## Contact
 
-Dewyn Liriano  
-MSc Artificial Intelligence  
+Dewyn Liriano
+MSc Artificial Intelligence
 University of Essex Online
 
 ---

@@ -1,6 +1,6 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: true
 ---
 # Development Standards & Tooling
@@ -20,7 +20,9 @@ alwaysApply: true
 - Notebooks: descriptive names with dates for experiments
 
 ## Dependencies Management
-- Add dependencies to `@requirements.txt` only when needed
+- Core dependencies in `@pyproject.toml` - only what's actually used
+- Development tools as optional dependencies [dev] group
+- Keep `@requirements.txt` minimal and honest (currently just basics)
 - Pin versions for reproducibility in final implementation
 - Use virtual environments for development
 - Document any system dependencies in `@README.md`
