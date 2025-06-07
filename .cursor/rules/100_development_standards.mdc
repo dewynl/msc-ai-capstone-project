@@ -44,5 +44,36 @@ alwaysApply: true
 - Code comments for complex algorithms or domain-specific logic
 - Academic citations in docstrings when implementing published methods
 
+## Automated PR Workflow
+When the user requests to "create a PR" or "commit and create PR", automatically execute this workflow:
+
+### Required Steps:
+1. Create new branch (auto-generate name from changes if not provided)
+2. Analyze uncommitted changes using git status and diff
+3. Stage all changes
+4. Create descriptive commit message based on change analysis
+5. Commit changes
+6. Push branch to remote with upstream tracking
+7. Create pull request with generated title and description
+
+### User Input Options:
+- **Branch name**: `"create PR with branch feature-xyz"` (optional - auto-generate if not provided)
+- **Commit message**: `"commit as 'fix login bug' and create PR"` (optional - analyze and generate if not provided)
+- **Target branch**: `"create PR to develop"` (defaults to main)
+- **Draft PR**: `"create draft PR"` (defaults to false)
+
+### Auto-Generation Rules:
+- **Branch name**: Use pattern `feature-{description}` or `fix-{description}` based on changes
+- **Commit message**: Analyze changes and create descriptive message following project style
+- **PR title**: Derive from commit message
+- **PR description**: Generate from commit analysis with summary and test plan
+
+### Trigger Phrases:
+- "create a PR"
+- "commit and create PR"
+- "push changes and create PR"
+- "make a pull request"
+- "commit these changes and create a PR"
+
 ## Quality Reminder
 Remember: This is an academic research project contributing to AI-education field. Balance innovation with rigorous academic standards.
