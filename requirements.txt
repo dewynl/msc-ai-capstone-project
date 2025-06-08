@@ -1,5 +1,16 @@
-# Minimal dependencies for viewing markdown files with Jupyter
+# Currently installed packages (based on actual environment)
+
+# Jupyter and documentation
 jupyter>=1.0.0
 jupyterlab>=4.0.0
+ipywidgets>=8.0.0
 
-# Add project dependencies as needed during development
+# Development tools
+pre-commit>=3.0.0
+
+# Core dependencies (already in environment)
+requests>=2.32.0
+PyYAML>=6.0.0
+
+# Note: Additional ML/AI and development dependencies will be added
+# as they are implemented and tested in the project

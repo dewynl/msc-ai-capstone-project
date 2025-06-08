@@ -36,13 +36,21 @@ ENV/
 *.pth
 *.pt
 
-# Data files (add specific patterns as needed)
-# data/raw/*
-# !data/raw/.gitkeep
+# Data files
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/synthetic/*
+!data/synthetic/.gitkeep
 
 # Model files
-# models/*.pkl
-# models/*.joblib
+models/*
+!models/.gitkeep
+*.pkl
+*.joblib
+*.h5
+*.ckpt
 
 # Logs
 logs/
@@ -59,9 +67,29 @@ logs/
 Thumbs.db
 
 # Experimental results
-# experiments/*/results/
-# experiments/*/checkpoints/
+experiments/*/results/
+experiments/*/checkpoints/
+results/
+outputs/
+
+# ML/AI specific
+cache/
+.cache/
+.ruff_cache/
+wandb/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Pre-commit and linting
+bandit-report.json
 
 # Temporary files
 *.tmp
-*.temp 
+*.temp
+
+#Intellij
+.idea
