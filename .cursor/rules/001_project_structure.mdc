@@ -1,6 +1,6 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: true
 ---
 # MSc AI Capstone Project - Core Structure
@@ -25,13 +25,20 @@ Building a domain-specific AI model that:
 - Training data from Open Syllabus Project API and educational resources
 
 ## Directory Organization
-- `@docs/` - Academic documentation, literature review, methodology, progress reports
-- `@research/` - Literature collection, analysis, datasets research  
+- `@docs/` - Academic documentation, course materials, literature review, progress tracking
+  - `@docs/course-materials/` - Unit materials and project proposals
+  - `@docs/literature-review/` - Research papers and analysis
+  - `@docs/progress/` - Progress tracking and reports
 - `@src/` - Source code (data processing, models, training, evaluation, utilities)
-- `@experiments/` - Experimental code, baseline models, custom architectures
+  - `@src/data/` - Data processing modules
+  - `@src/models/` - AI model architectures
+  - `@src/training/` - Training scripts and utilities
+  - `@src/evaluation/` - Evaluation metrics and testing
+  - `@src/utils/` - Utility functions
 - `@data/` - Raw, processed, and synthetic datasets
-- `@notebooks/` - Jupyter notebooks for exploration and prototyping
-- `@Notes/` - Course notes and existing project documents
+  - `@data/raw/` - Original data sources
+  - `@data/processed/` - Cleaned and preprocessed data
+  - `@data/synthetic/` - Generated or augmented data
 
 ## File Naming Conventions
 - Python files: snake_case
@@ -43,5 +50,14 @@ Building a domain-specific AI model that:
 
 ## Key Project Files
 - `@README.md` - Main project overview and setup
-- `@requirements.txt` - Python dependencies (minimal, add as needed)
+- `@pyproject.toml` - Python packaging and tool configuration
+- `@requirements.txt` - Python dependencies (currently minimal)
 - `@environment.yml` - Conda environment specification
+- `@Makefile` - Development automation commands
+- `@.pre-commit-config.yaml` - Code quality hooks (ready for dev setup)
+- `@.env.example` - Environment variables template
+
+## Development Setup
+- Basic setup: `make setup` (Jupyter only)
+- Full development: `make dev-setup` (includes linting, formatting, testing tools)
+- All development tools are optional dependencies in pyproject.toml
