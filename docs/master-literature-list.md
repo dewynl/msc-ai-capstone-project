@@ -54,7 +54,13 @@
 - **Publisher/Venue:** Elsevier
 - **Publication Year:** 2022
 
-**9. CurriculumAgents: Multi-Agent Automated Lesson Design (Sun et al., 2024)** ✅ *Used in Dissertation*
+**9. U.S. Department of Education AI Guidelines (U.S. Department of Education, 2023)** ✅ *Used in Dissertation*
+- **Harvard Citation:** U.S. Department of Education (2023). Artificial Intelligence and the Future of Teaching and Learning: Insights and Recommendations. Office of Educational Technology, U.S. Department of Education.
+- **DOI/URL:** https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report.pdf
+- **Publisher/Venue:** U.S. Department of Education
+- **Publication Year:** 2023
+
+**10. CurriculumAgents: Multi-Agent Automated Lesson Design (Sun et al., 2024)** ✅ *Used in Dissertation*
 - **Harvard Citation:** Sun, E., Xiao, Y. and Wang, W. (2024). CurriculumAgents: Automated Multi-Agent Lesson Design. AAAI-25 Workshop on AI for Education (AI4EDU), AAAI 2025.
 - **Publisher/Venue:** AAAI Press
 - **Publication Year:** 2024
