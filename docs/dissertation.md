@@ -545,11 +545,11 @@ The template selection methodology optimises user experience through strategic c
 
 This contextual framework enables users to navigate complex educational requirements through simplified interface interactions, typically requiring only four strategic selections to capture sufficient information for comprehensive content generation. The template-based approach recognises that educational quality emerges from appropriate context matching rather than exhaustive parameter specification.
 
-[DIAGRAM 1: Template-Based User Experience Flow]
+![Figure 4.1: Template-Based User Experience Flow](assets/figure-4-1-template-user-flow.png)
 
 Input standardisation methodology transforms diverse template inputs into consistent internal representations suitable for neural processing. This conversion process maintains educational context whilst creating unified data structures that enable systematic processing across different educational domains. The standardisation approach preserves critical contextual information whilst abstracting implementation details, ensuring both educational fidelity and technical feasibility.
 
-[DIAGRAM 2A: Core Template Classes]
+![Figure 4.2: Core Template Classes](assets/figure-4-2-core-template-classes.png)
 
 ### 4.3.2 Neural Processing Architecture
 
@@ -557,7 +557,7 @@ Component integration methodology coordinates the three core neural architecture
 
 This distributed processing approach enables specialised optimisation of individual components whilst maintaining overall system coherence and educational effectiveness. The component separation ensures transparent operation, systematic testing capabilities, and focused development of specialized educational functionalities.
 
-[DIAGRAM 3: Context-Specific Processing Rules]
+![Figure 4.3: Context-Specific Processing Rules](assets/figure-4-3-context-processing-rules.png)
 
 Educational standards integration methodology incorporates established frameworks directly into the neural processing pipeline rather than attempting to learn quality patterns from training data. IEEE Learning Object Metadata structure enforcement ensures consistent educational formatting and interoperability. Bloom's taxonomy progression validation maintains pedagogical coherence through systematic cognitive level verification. QTI 3.0 assessment format compliance guarantees professional-quality evaluation instruments aligned with international educational technology standards.
 
@@ -569,7 +569,7 @@ The rule-based validation methodology addresses critical requirements for educat
 
 The validation framework aligns with federal guidance emphasising transparent, accountable AI systems in educational contexts (U.S. Department of Education, 2023). Rule-based approaches provide educational defensibility through explicit citation of established standards, enabling administrators and educators to understand and validate system decisions through reference to recognized educational frameworks.
 
-[DIAGRAM 8: Data Processing Pipeline]
+![Figure 4.4: Data Processing Pipeline](assets/figure-4-4-data-processing-pipeline.png)
 
 Validation pipeline methodology implements dual-stage quality assurance through input and output validation protocols. Input validation applies IEEE LOM metadata requirements and Bloom's taxonomy progression rules to ensure coherent educational specifications before content generation. Output validation enforces QTI 3.0 assessment formatting, WCAG 2.1 accessibility compliance, and educational coherence verification to guarantee professional-quality generated content.
 
@@ -581,7 +581,7 @@ The comprehensive syllabus model integrates multiple educational metadata layers
 
 Educational metadata integration enables systematic tracking of pedagogical elements including Bloom's taxonomy distribution, cognitive load progression, and accessibility compliance verification. This metadata approach supports both immediate usability and long-term educational research applications through comprehensive documentation of generated content characteristics.
 
-[SIMPLIFIED DIAGRAM: Key Output Classes - SyllabusOutput, CourseInformation, EducationalMetadata, AccessibilityCompliance]
+![Figure 4.5: Key Output Classes](assets/figure-4-5-output-classes.png)
 
 Accessibility compliance tracking implements WCAG 2.1 standards systematically throughout content generation, ensuring generated materials meet professional accessibility requirements without requiring specialized expertise from end users. This integrated approach recognises that educational quality includes universal access considerations, embedding accessibility as a fundamental design principle rather than an optional enhancement.
 
