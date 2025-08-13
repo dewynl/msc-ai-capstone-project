@@ -12,5 +12,8 @@ pre-commit>=3.0.0
 requests>=2.32.0
 PyYAML>=6.0.0
 
+# AI/ML dependencies for synthetic data generation
+anthropic>=0.7.0
+
 # Note: Additional ML/AI and development dependencies will be added
 # as they are implemented and tested in the project

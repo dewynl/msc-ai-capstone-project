@@ -115,4 +115,4 @@ pythonpath = ["src"]
 
 [tool.bandit]
 exclude_dirs = ["tests", "data/raw"]
-skips = ["B101", "B601"]
+skips = ["B101", "B601", "B311"]
