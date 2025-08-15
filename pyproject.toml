@@ -118,6 +118,20 @@ disallow_untyped_calls = true
 module = "tests.*"
 disallow_untyped_defs = false
 
+[[tool.mypy.overrides]]
+module = [
+    "torch.*",
+    "torchvision.*",
+    "torchaudio.*",
+    "transformers.*",
+    "datasets.*",
+    "evaluate.*",
+    "wandb.*",
+    "anthropic.*"
+]
+ignore_missing_imports = true
+ignore_errors = true
+
 [tool.pytest.ini_options]
 minversion = "6.0"
 addopts = "-ra -q --strict-markers --strict-config"
