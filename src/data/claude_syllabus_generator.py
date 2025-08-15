@@ -829,7 +829,7 @@ FORMAT SPECIFICATIONS:
     ) -> list[GeneratedSyllabus]:
         """
         Generate complete training dataset with specified samples per domain
-        
+
         Args:
             samples_per_domain: Number of samples to generate per domain (default: 100)
         """
@@ -843,15 +843,23 @@ FORMAT SPECIFICATIONS:
 
         # Count domains per template type
         domain_counts = {
-            "university_courses": len(self.educational_templates["university_courses"]["domains"]),
-            "corporate_training": len(self.educational_templates["corporate_training"]["domains"]), 
-            "professional_development": len(self.educational_templates["professional_development"]["domains"]),
-            "certification_prep": len(self.educational_templates["certification_prep"]["domains"])
+            "university_courses": len(
+                self.educational_templates["university_courses"]["domains"]
+            ),
+            "corporate_training": len(
+                self.educational_templates["corporate_training"]["domains"]
+            ),
+            "professional_development": len(
+                self.educational_templates["professional_development"]["domains"]
+            ),
+            "certification_prep": len(
+                self.educational_templates["certification_prep"]["domains"]
+            ),
         }
-        
+
         # Calculate samples per template based on domain count
         template_distribution = {
-            template_type: domain_count * samples_per_domain 
+            template_type: domain_count * samples_per_domain
             for template_type, domain_count in domain_counts.items()
             if template_type != "university_courses"  # Skip completed
         }
@@ -859,7 +867,9 @@ FORMAT SPECIFICATIONS:
         total_expected = sum(template_distribution.values())
         print(f"Samples per domain: {samples_per_domain}")
         print(f"Template distribution: {template_distribution}")
-        print(f"Target: {total_expected:,} syllabi across {len(template_distribution)} template types")
+        print(
+            f"Target: {total_expected:,} syllabi across {len(template_distribution)} template types"
+        )
         print(f"Estimated time: {(total_expected * 5) / 60:.1f} minutes")
         print(f"Estimated cost: ${total_expected * 0.024:.2f}")
         print("=" * 70)
@@ -873,7 +883,9 @@ FORMAT SPECIFICATIONS:
             if count == 0:
                 continue
 
-            print(f"\n[{i}/{len(template_distribution)}] {template_type.upper().replace('_', ' ')}")
+            print(
+                f"\n[{i}/{len(template_distribution)}] {template_type.upper().replace('_', ' ')}"
+            )
             print(f"Target: {count:,} samples (~100 per domain)")
 
             batch_start = time.time()
