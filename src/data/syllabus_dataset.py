@@ -1,11 +1,11 @@
 import json
-from typing import Any, Dict
+from typing import Any
 
 from torch.utils.data import Dataset
 from transformers import PreTrainedTokenizerBase
 
 
-class SyllabusDataset(Dataset[Dict[str, Any]]):
+class SyllabusDataset(Dataset[dict[str, Any]]):
     """Dataset for loading syllabus data for T5 training"""
 
     def __init__(
@@ -26,15 +26,28 @@ class SyllabusDataset(Dataset[Dict[str, Any]]):
     def __len__(self) -> int:
         return len(self.data)
 
-    def __getitem__(self, idx: int) -> Dict[str, Any]:
+    def __getitem__(self, idx: int) -> dict[str, Any]:
         item = self.data[idx]
-        context = item["context"]
-        syllabus_content = item["syllabus_content"]
 
-        # Create input prompt
-        input_text = f"Generate syllabus: Title: {context['course_title']} "
-        input_text += f"Domain: {context['domain']} Level: {context['level']} "
-        input_text += f"Description: {context['course_description']}"
+        # Handle new institutional format
+        if "course_info" in item:
+            # New format from assembled syllabi
+            course_info = item["course_info"]
+            syllabus_content = item["syllabus_template"]
+
+            input_text = f"Generate syllabus: Title: {course_info['title']} "
+            input_text += (
+                f"Domain: {course_info['department']} Level: {course_info['level']} "
+            )
+            input_text += f"Description: {course_info['description']}"
+        else:
+            # Legacy format (if any)
+            context = item["context"]
+            syllabus_content = item["syllabus_content"]
+
+            input_text = f"Generate syllabus: Title: {context['course_title']} "
+            input_text += f"Domain: {context['domain']} Level: {context['level']} "
+            input_text += f"Description: {context['course_description']}"
 
         # Tokenize input
         input_encoding = self.tokenizer(

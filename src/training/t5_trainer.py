@@ -1,6 +1,7 @@
 import torch
 import torch.optim as optim
-from torch.utils.data import DataLoader
+from sklearn.model_selection import train_test_split
+from torch.utils.data import DataLoader, Subset
 from transformers import T5Tokenizer
 
 from src.data.syllabus_dataset import SyllabusDataset
@@ -21,18 +22,30 @@ class T5Trainer:
         # Optimizer
         self.optimizer = optim.AdamW(self.model.parameters(), lr=3e-4)
 
-    def train(self, train_data_path: str, val_data_path: str, epochs: int = 3) -> None:
-        """Train the baseline T5 model"""
+    def train(self, data_path: str, epochs: int = 3) -> None:
+        """Train the baseline T5 model with automatic data splitting"""
 
-        # Create datasets
-        train_dataset = SyllabusDataset(train_data_path, self.tokenizer)
-        val_dataset = SyllabusDataset(val_data_path, self.tokenizer)
+        # Create full dataset
+        full_dataset = SyllabusDataset(data_path, self.tokenizer)
+
+        # Split dataset (70% train, 30% validation)
+        train_size = int(0.7 * len(full_dataset))
+
+        indices = list(range(len(full_dataset)))
+        train_indices, val_indices = train_test_split(
+            indices, train_size=train_size, random_state=42
+        )
+
+        train_dataset = Subset(full_dataset, train_indices)
+        val_dataset = Subset(full_dataset, val_indices)
 
         # Create dataloaders
         train_loader = DataLoader(
             train_dataset, batch_size=4, shuffle=True, num_workers=0
         )
+        val_loader = DataLoader(val_dataset, batch_size=4, shuffle=False, num_workers=0)
 
+        print(f"Total dataset: {len(full_dataset)} syllabi")
         print(f"Training on {len(train_dataset)} samples")
         print(f"Validation on {len(val_dataset)} samples")
 
@@ -67,9 +80,9 @@ class T5Trainer:
                         f"Epoch {epoch+1}/{epochs}, Batch {batch_idx}/{len(train_loader)}, Loss: {loss.item():.4f}"
                     )
 
-            # Validation phase  
+            # Validation phase
             avg_train_loss = total_train_loss / len(train_loader)
-            val_loss = 0.0  # Placeholder for validation loss
+            val_loss = self.validate(val_loader)
             print(
                 f"Epoch {epoch+1}/{epochs}: Train Loss: {avg_train_loss:.4f}, Val Loss: {val_loss:.4f}"
             )
@@ -100,6 +113,10 @@ class T5Trainer:
     def save_checkpoint(self, filename: str) -> None:
         """Save model checkpoint"""
 
+        import os
+
+        os.makedirs("checkpoints", exist_ok=True)
+
         torch.save(
             {
                 "model_state_dict": self.model.state_dict(),
@@ -109,13 +126,15 @@ class T5Trainer:
             f"checkpoints/{filename}",
         )
 
-        print(f"Checkpoint saved: {filename}")
+        print(f"Checkpoint saved: checkpoints/{filename}")
 
 
 if __name__ == "__main__":
+    print("Starting T5 Syllabus Generation Training")
+    print("=" * 50)
+
     trainer = T5Trainer()
     trainer.train(
-        train_data_path="data/synthetic/train_data.json",
-        val_data_path="data/synthetic/validation_data.json",
+        data_path="data/assembled_syllabi/syllabi_dataset.json",
         epochs=3,
     )

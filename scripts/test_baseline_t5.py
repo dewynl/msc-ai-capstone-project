@@ -4,7 +4,6 @@ from src.models.baseline_t5 import BaselineT5
 
 
 def test_baseline_t5():
-    """Test the baseline T5 model"""
     model_name = "t5-base"
     model = BaselineT5(model_name)
 
