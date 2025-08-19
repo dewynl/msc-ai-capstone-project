@@ -21,6 +21,17 @@ classifiers = [
 dependencies = [
     "requests>=2.32.0",
     "PyYAML>=6.0.0",
+    "torch>=2.0.0",
+    "transformers>=4.35.0",
+    "datasets>=2.14.0",
+    "evaluate>=0.4.0",
+    "accelerate>=0.20.0",
+    "anthropic>=0.7.0",
+    "nltk>=3.8.0",
+    "spacy>=3.7.0",
+    "wandb>=0.15.0",
+    "tensorboard>=2.14.0",
+    "psutil>=5.9.0",
 ]
 
 [project.optional-dependencies]
@@ -107,6 +118,20 @@ disallow_untyped_calls = true
 module = "tests.*"
 disallow_untyped_defs = false
 
+[[tool.mypy.overrides]]
+module = [
+    "torch.*",
+    "torchvision.*",
+    "torchaudio.*",
+    "transformers.*",
+    "datasets.*",
+    "evaluate.*",
+    "wandb.*",
+    "anthropic.*"
+]
+ignore_missing_imports = true
+ignore_errors = true
+
 [tool.pytest.ini_options]
 minversion = "6.0"
 addopts = "-ra -q --strict-markers --strict-config"
@@ -115,4 +140,4 @@ pythonpath = ["src"]
 
 [tool.bandit]
 exclude_dirs = ["tests", "data/raw"]
-skips = ["B101", "B601"]
+skips = ["B101", "B601", "B311"]
