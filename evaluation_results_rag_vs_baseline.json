@@ -1,0 +1,282 @@
+[
+  {
+    "test_case": {
+      "title": "Data Structures and Algorithms",
+      "domain": "Computer Science",
+      "level": "undergraduate",
+      "description": "Introduction to fundamental data structures and algorithmic problem solving"
+    },
+    "rag_output": "Analysis Practical Exam Practical Assessment: Students will demonstrate proficiency in implementing, analyzing, and optimizing fundamental data structures and algorithms through coding problems and theoretical analysis. Assessment covers binary s... 2. Data Structures and Algorithm Analysis Practical Exam Practical Assessment: This assessment evaluates students' understanding of fundamental data structures (arrays, linked lists, stacks, queues, trees) and their ability to analyze algorithm complexity using Big O notation.",
+    "baseline_output": "Introduction to fundamental data structures and algorithmic problem solving",
+    "retrieved_components_stats": {
+      "modules": {
+        "count": 3,
+        "titles": [
+          "Graph Algorithms: Breadth-First Search and Depth-First Search: Advanced Topics 9",
+          "Graph Algorithms: Traversal and Shortest Path Finding: Advanced Topics 1"
+        ]
+      },
+      "activities": {
+        "count": 3,
+        "titles": [
+          "Computer Hardware Component Identification and Labeling Activity",
+          "Programming Terminology Memory Palace Card Match"
+        ]
+      },
+      "assessments": {
+        "count": 3,
+        "titles": [
+          "Data Structures and Algorithm Analysis Practical Exam Practical Assessment",
+          "Data Structures and Algorithm Analysis Quiz Practical Assessment"
+        ]
+      }
+    },
+    "rag_prompt": "Generate syllabus for: Data Structures and Algorithms\nDomain: Computer Science Level: undergraduate\nDescription: Introduction to fundamental data structures and algorithmic problem solving\n\nAvailable Educational Components:\nRelevant Modules:\n1. Graph Algorithms: Breadth-First Search and Depth-First Search: Advanced Topics 9: This module introduces students to fundamental graph traversal algorithms that form the backbone of many computer science applications. Students will master Breadth-First Search (BFS) and Depth-First ...\n2. Graph Algorithms: Traversal and Shortest Path Finding: Advanced Topics 1: This module explores fundamental graph algorithms that form the backbone of many computer science applications, from social network analysis to GPS navigation systems. Students will master breadth-fir...\n\nRelevant Activities:\n1. Computer Hardware Component Identification and Labeling Activity: Students will identify and correctly label the essential components of a desktop computer system by examining physical hardware pieces and matching them to their proper names and functions. This found...\n2. Programming Terminology Memory Palace Card Match: Students will memorize and recall 20 fundamental programming terms and their exact definitions through a physical card-matching activity. This activity focuses on building foundational vocabulary esse...\n\nRelevant Assessments:\n1. Data Structures and Algorithm Analysis Practical Exam Practical Assessment: Students will demonstrate proficiency in implementing, analyzing, and optimizing fundamental data structures and algorithms through coding problems and theoretical analysis. Assessment covers binary s...\n2. Data Structures and Algorithm Analysis Quiz Practical Assessment: This assessment evaluates students' understanding of fundamental data structures (arrays, linked lists, stacks, queues, trees) and their ability to analyze algorithm complexity using Big O notation. S...\n",
+    "performance": {
+      "rag_generation_time": 5.4763007164001465,
+      "baseline_generation_time": 0.31174731254577637,
+      "rag_success": true,
+      "baseline_success": true
+    },
+    "quality_metrics": {
+      "rag_metrics": {
+        "length": 527,
+        "word_count": 65,
+        "contains_title": true,
+        "contains_domain": false,
+        "repetition_score": 0.06349206349206349
+      },
+      "baseline_metrics": {
+        "length": 75,
+        "word_count": 9,
+        "contains_title": false,
+        "contains_domain": false,
+        "repetition_score": 0.0
+      }
+    }
+  },
+  {
+    "test_case": {
+      "title": "Project Management Fundamentals",
+      "domain": "Leadership",
+      "level": "professional",
+      "description": "Essential project management principles and methodologies for business professionals"
+    },
+    "rag_output": ": This module explores the critical leadership skill of adapting management and communication styles based on the situation, task complexity, and team member readiness levels. Students will analyze a complex organizational crisis scenario, develop a comprehensive leadership response strategy, and demonstrate advanced decision-making skills under pressure. This assessment ev... 2. Transformational Leadership Portfolio: Real-World Impact Documentation: Students compile a comprehensive portfolio documenting their leadership journey through three major components: a critical incident analysis of a complex leadership challenge they navigated, evidence",
+    "baseline_output": "Erstellung des Lehrplans f\u00fcr: Project Management Fundamentals Domain: Leadership Level: professional Description: Essential project management principles and methodologies for business professionals",
+    "retrieved_components_stats": {
+      "modules": {
+        "count": 3,
+        "titles": [
+          "Situational Leadership: Adapting Your Style to Drive Performance",
+          "Situational Leadership: Adapting Your Style to Context and People"
+        ]
+      },
+      "activities": {
+        "count": 3,
+        "titles": [
+          "Deconstructing Transformational Leadership Through Crisis Decision Analysis",
+          "Deconstructing Leadership Philosophy Frameworks: Analyzing Authentic Leader Manifestos"
+        ]
+      },
+      "assessments": {
+        "count": 3,
+        "titles": [
+          "Strategic Leadership Crisis Management Assessment",
+          "Transformational Leadership Portfolio: Real-World Impact Documentation"
+        ]
+      }
+    },
+    "rag_prompt": "Generate syllabus for: Project Management Fundamentals\nDomain: Leadership Level: professional\nDescription: Essential project management principles and methodologies for business professionals\n\nAvailable Educational Components:\nRelevant Modules:\n1. Situational Leadership: Adapting Your Style to Drive Performance: This module explores the Situational Leadership Model developed by Hersey and Blanchard, which emphasizes the need for leaders to adapt their leadership style based on the competence and commitment le...\n2. Situational Leadership: Adapting Your Style to Context and People: This module explores the critical leadership skill of adapting management and communication styles based on the situation, task complexity, and team member readiness levels. Students will master the S...\n\nRelevant Activities:\n1. Deconstructing Transformational Leadership Through Crisis Decision Analysis: Students will analyze real corporate crisis scenarios to understand how transformational leadership behaviors manifest differently from transactional approaches during high-stakes decision-making. Thr...\n2. Deconstructing Leadership Philosophy Frameworks: Analyzing Authentic Leader Manifestos: Students will analyze and compare three distinct leadership philosophy manifestos from real organizational leaders to identify underlying theoretical frameworks and core principles. This activity deve...\n\nRelevant Assessments:\n1. Strategic Leadership Crisis Management Assessment: Students will analyze a complex organizational crisis scenario, develop a comprehensive leadership response strategy, and demonstrate advanced decision-making skills under pressure. This assessment ev...\n2. Transformational Leadership Portfolio: Real-World Impact Documentation: Students compile a comprehensive portfolio documenting their leadership journey through three major components: a critical incident analysis of a complex leadership challenge they navigated, evidence ...\n",
+    "performance": {
+      "rag_generation_time": 5.185977935791016,
+      "baseline_generation_time": 0.6077256202697754,
+      "rag_success": true,
+      "baseline_success": true
+    },
+    "quality_metrics": {
+      "rag_metrics": {
+        "length": 654,
+        "word_count": 81,
+        "contains_title": false,
+        "contains_domain": true,
+        "repetition_score": 0.0
+      },
+      "baseline_metrics": {
+        "length": 198,
+        "word_count": 21,
+        "contains_title": true,
+        "contains_domain": true,
+        "repetition_score": 0.0
+      }
+    }
+  },
+  {
+    "test_case": {
+      "title": "Machine Learning in Healthcare",
+      "domain": "Data Science",
+      "level": "graduate",
+      "description": "Advanced machine learning techniques applied to healthcare data and medical diagnostics"
+    },
+    "rag_output": ", a fundamental skill that bridges raw data collection and formal statistical modeling. This module introduces students to the critical phase of exploratory data analysis, where data scientists uncover patterns, anomalies, and relationships within datasets before applying machine learning algorithms... 1. EDA with Python and Pandas: This module introduces students to the critical phase of exploratory data analysis, where data scientists uncover patterns, anomalies, and relationships within datasets before applying machine learning algorithms...",
+    "baseline_output": "Automate Learning in Healthcare Domain: Data Science Level: graduate Description: Advanced machine learning techniques applied to healthcare data and medical diagnostics",
+    "retrieved_components_stats": {
+      "modules": {
+        "count": 3,
+        "titles": [
+          "EDA with Python and Pandas",
+          "EDA with Python and Pandas"
+        ]
+      },
+      "activities": {
+        "count": 3,
+        "titles": [
+          "Python Data Type Memory Palace: Building Mental Maps of Basic Data Types",
+          "Design and Build a Data Dashboard for Local Business Decision-Making"
+        ]
+      },
+      "assessments": {
+        "count": 3,
+        "titles": [
+          "Fundamentals of Data Science Concepts and Basic Analysis",
+          "Data Structures and Algorithm Analysis Practical Exam Practical Assessment"
+        ]
+      }
+    },
+    "rag_prompt": "Generate syllabus for: Machine Learning in Healthcare\nDomain: Data Science Level: graduate\nDescription: Advanced machine learning techniques applied to healthcare data and medical diagnostics\n\nAvailable Educational Components:\nRelevant Modules:\n1. EDA with Python and Pandas: This module introduces students to the critical process of Exploratory Data Analysis (EDA), a fundamental skill that bridges raw data collection and formal statistical modeling. EDA involves systemati...\n2. EDA with Python and Pandas: This module focuses on the critical phase of exploratory data analysis, where data scientists uncover patterns, anomalies, and relationships within datasets before applying machine learning algorithms...\n\nRelevant Activities:\n1. Python Data Type Memory Palace: Building Mental Maps of Basic Data Types: Students will memorize the five fundamental Python data types (int, float, string, boolean, list) and their defining characteristics through visual association and structured recall practice. This fou...\n2. Design and Build a Data Dashboard for Local Business Decision-Making: Students will create an interactive data dashboard from scratch using real business data to solve a specific operational challenge. They will synthesize multiple data sources, design visualizations, a...\n\nRelevant Assessments:\n1. Fundamentals of Data Science Concepts and Basic Analysis: A comprehensive beginner-level exam testing foundational knowledge of data science concepts, basic statistical understanding, data visualization principles, and interpretation of simple analytical res...\n2. Data Structures and Algorithm Analysis Practical Exam Practical Assessment: Students will demonstrate proficiency in implementing, analyzing, and optimizing fundamental data structures and algorithms through coding problems and theoretical analysis. Assessment covers binary s...\n",
+    "performance": {
+      "rag_generation_time": 4.901800155639648,
+      "baseline_generation_time": 0.6323437690734863,
+      "rag_success": true,
+      "baseline_success": true
+    },
+    "quality_metrics": {
+      "rag_metrics": {
+        "length": 550,
+        "word_count": 73,
+        "contains_title": false,
+        "contains_domain": false,
+        "repetition_score": 0.352112676056338
+      },
+      "baseline_metrics": {
+        "length": 169,
+        "word_count": 21,
+        "contains_title": false,
+        "contains_domain": true,
+        "repetition_score": 0.0
+      }
+    }
+  },
+  {
+    "test_case": {
+      "title": "Digital Marketing Strategy",
+      "domain": "Business",
+      "level": "undergraduate",
+      "description": "Modern digital marketing approaches and social media strategy development"
+    },
+    "rag_output": "e-commerce tracking and Enhanced E-commerce Analysis in Google Analytics: This module focuses on implementing and analyzing e-commerce data in Google Analytics, specifically covering Enhanced E-commerce tracking capabilities. Students will learn to define, validate, and c... 2. Design a Data Dashboard for Local Business Decision-Making: Students will create an interactive dashboard that analyze historical sales data to predict future trends and generate actionable business recommendations. They will design data visualizations, build...",
+    "baseline_output": "Generate syllabus for: Digital Marketing Strategy Domain: Business Level: undergraduate Description: Modern digital marketing approaches and social media strategy development",
+    "retrieved_components_stats": {
+      "modules": {
+        "count": 3,
+        "titles": [
+          "E-commerce Tracking and Enhanced E-commerce Analysis in Google Analytics",
+          "Project Scope Management and Work Breakdown Structure Development"
+        ]
+      },
+      "activities": {
+        "count": 3,
+        "titles": [
+          "Design and Build a Predictive Sales Dashboard for Local Business Decision-Making",
+          "Design a Data Dashboard for Local Business Decision-Making"
+        ]
+      },
+      "assessments": {
+        "count": 3,
+        "titles": [
+          "Data-Driven Business Decision Analysis Discussion",
+          "Advanced Google Analytics Implementation and Strategic Analysis Exam"
+        ]
+      }
+    },
+    "rag_prompt": "Generate syllabus for: Digital Marketing Strategy\nDomain: Business Level: undergraduate\nDescription: Modern digital marketing approaches and social media strategy development\n\nAvailable Educational Components:\nRelevant Modules:\n1. E-commerce Tracking and Enhanced E-commerce Analysis in Google Analytics: This module focuses on implementing and analyzing e-commerce data in Google Analytics, specifically covering Enhanced E-commerce tracking capabilities. Students will learn to set up comprehensive e-co...\n2. Project Scope Management and Work Breakdown Structure Development: This module focuses on mastering project scope management, one of the ten knowledge areas critical to PMP certification and effective project management. Students will learn to define, validate, and c...\n\nRelevant Activities:\n1. Design and Build a Predictive Sales Dashboard for Local Business Decision-Making: Students will create an interactive dashboard that analyzes historical sales data to predict future trends and generate actionable business recommendations. They will design data visualizations, build...\n2. Design a Data Dashboard for Local Business Decision-Making: Students will create an interactive data dashboard for a hypothetical local restaurant chain to help owners make strategic decisions about menu pricing, staffing, and inventory management. They will s...\n\nRelevant Assessments:\n1. Data-Driven Business Decision Analysis Discussion: Students will analyze a real-world business scenario using provided datasets, identify key insights through statistical analysis, and engage in peer discussions about methodology choices and business ...\n2. Advanced Google Analytics Implementation and Strategic Analysis Exam: Comprehensive assessment evaluating students' ability to implement advanced Google Analytics configurations, analyze complex data scenarios, and provide strategic recommendations for enterprise-level ...\n",
+    "performance": {
+      "rag_generation_time": 5.516913414001465,
+      "baseline_generation_time": 0.5627260208129883,
+      "rag_success": true,
+      "baseline_success": true
+    },
+    "quality_metrics": {
+      "rag_metrics": {
+        "length": 541,
+        "word_count": 70,
+        "contains_title": false,
+        "contains_domain": true,
+        "repetition_score": 0.0
+      },
+      "baseline_metrics": {
+        "length": 174,
+        "word_count": 20,
+        "contains_title": true,
+        "contains_domain": true,
+        "repetition_score": 0.0
+      }
+    }
+  },
+  {
+    "test_case": {
+      "title": "Linear Algebra for Engineers",
+      "domain": "Mathematics",
+      "level": "undergraduate",
+      "description": "Mathematical foundations of linear algebra with engineering applications"
+    },
+    "rag_output": ": This module introduces students to systems of linear equations, a fundamental algebraic concept with extensive real-world applications. Students will learn to identify, set up, and solve systems using... 2. Linear Equations in Engineering Applications: This module introduces students to systems of linear equations, a fundamental algebraic concept with extensive real-world applications. Students will learn to identify, set up, and solve systems using...",
+    "baseline_output": "Linear Algebra for Engineers Domain: Mathematics Level: undergraduate Description: Mathematical foundations of linear algebra with engineering applications",
+    "retrieved_components_stats": {
+      "modules": {
+        "count": 3,
+        "titles": [
+          "Linear Equations in Engineering Applications",
+          "Linear Equations in Engineering Applications"
+        ]
+      },
+      "activities": {
+        "count": 3,
+        "titles": [
+          "Planning a Class Pizza Party: Applying Fraction Operations to Real-World Scenarios",
+          "Design a Mathematical Board Game for Teaching Fraction Operations"
+        ]
+      },
+      "assessments": {
+        "count": 3,
+        "titles": [
+          "Advanced Mathematics Exam 1",
+          "Advanced Mathematics Exam 3"
+        ]
+      }
+    },
+    "rag_prompt": "Generate syllabus for: Linear Algebra for Engineers\nDomain: Mathematics Level: undergraduate\nDescription: Mathematical foundations of linear algebra with engineering applications\n\nAvailable Educational Components:\nRelevant Modules:\n1. Linear Equations in Engineering Applications: This module introduces students to systems of linear equations, a fundamental algebraic concept with extensive real-world applications. Students will learn to identify, set up, and solve systems using...\n2. Linear Equations in Engineering Applications: This module provides students with comprehensive understanding of systems of linear equations and their applications in real-world contexts. Students will master three primary solution methods: graphi...\n\nRelevant Activities:\n1. Planning a Class Pizza Party: Applying Fraction Operations to Real-World Scenarios: Students will apply their knowledge of fraction addition, subtraction, and multiplication to solve authentic problems related to planning food portions for a class party. They will calculate pizza qua...\n2. Design a Mathematical Board Game for Teaching Fraction Operations: Students will create an original board game that teaches addition and subtraction of fractions with unlike denominators. They will design game mechanics, create visual materials, and develop instructi...\n\nRelevant Assessments:\n1. Advanced Mathematics Exam 1: Comprehensive assessment evaluating students' ability to solve complex multivariable calculus problems involving optimization, vector fields, and linear transformations. Students will demonstrate mast...\n2. Advanced Mathematics Exam 3: Comprehensive assessment evaluating students' ability to solve complex problems involving multivariable calculus, linear transformations, eigenvalue analysis, and optimization techniques. Students mus...\n",
+    "performance": {
+      "rag_generation_time": 4.9393885135650635,
+      "baseline_generation_time": 0.6454041004180908,
+      "rag_success": true,
+      "baseline_success": true
+    },
+    "quality_metrics": {
+      "rag_metrics": {
+        "length": 458,
+        "word_count": 63,
+        "contains_title": false,
+        "contains_domain": false,
+        "repetition_score": 0.42622950819672134
+      },
+      "baseline_metrics": {
+        "length": 155,
+        "word_count": 17,
+        "contains_title": true,
+        "contains_domain": true,
+        "repetition_score": 0.0
+      }
+    }
+  }
+]
