@@ -1,4 +1,9 @@
+import os
+import sys
+
 import torch
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.models.baseline_t5 import BaselineT5
 
