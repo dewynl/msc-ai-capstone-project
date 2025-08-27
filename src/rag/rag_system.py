@@ -24,19 +24,14 @@ def validate_domain_coverage(
             component_domain = component.get("domain", "").lower()
             component_title = component.get("title", "").lower()
 
-            # Check if component matches the required domain AND course topic
+            # Check if component matches the required domain
             domain_match = (
                 required_domain in component_domain
                 or component_domain in required_domain
             )
-            title_words = [word for word in course_title.split() if len(word) > 3]
-            topic_match = any(
-                word in component_title or word in component.get("description", "")
-                for word in title_words
-            )
 
-            # Component must match domain AND have relevant topic content
-            if domain_match and topic_match:
+            # If domain matches, component is relevant
+            if domain_match:
                 relevant_count += 1
 
     # Require at least 50% domain relevance and minimum 3 relevant components
