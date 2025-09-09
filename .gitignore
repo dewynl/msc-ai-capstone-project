@@ -92,5 +92,9 @@ bandit-report.json
 *.tmp
 *.temp
 
+# ChromaDB database files
+chroma_db/
+*.sqlite3
+
 #Intellij
 .idea

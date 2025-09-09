@@ -4,7 +4,6 @@ Syllabus Formatter
 Post-process T5 output to create structured syllabus format
 """
 
-import re
 from typing import Any
 
 
@@ -16,8 +15,8 @@ class SyllabusFormatter:
         course_info: dict[str, Any],
         t5_output: str,
         retrieved_components: dict[str, list],
-    ) -> str:
-        """Convert T5 output into structured syllabus template"""
+    ) -> dict[str, Any]:
+        """Convert T5 output into structured JSON for web app rendering"""
 
         title = course_info.get("title", "Course Title")
         domain = course_info.get("domain", "Computer Science")
@@ -27,103 +26,29 @@ class SyllabusFormatter:
         # Extract learning objectives from components
         objectives = self._extract_objectives(retrieved_components)
 
-        # Create structured syllabus
-        syllabus = f"""# {title}
-**[Semester]**
+        # Create structured JSON syllabus
+        syllabus_data = {
+            "title": title,
+            "description": description,
+            "domain": domain,
+            "level": level,
+            "target_audience": f"{level.title()} students in {domain} with appropriate prerequisites and foundational knowledge",
+            "learning_objectives": objectives,
+            "learning_modules": self._generate_modules_as_data(retrieved_components),
+            "assessment_strategy": self._generate_assessment_data(
+                retrieved_components, course_info
+            ),
+            "metadata": {
+                "generated_from": "rag_system",
+                "components_used": {
+                    "modules": len(retrieved_components.get("modules", [])),
+                    "activities": len(retrieved_components.get("activities", [])),
+                    "assessments": len(retrieved_components.get("assessments", [])),
+                },
+            },
+        }
 
-## Course Description
-
-{description}
-
-{self._clean_t5_content(t5_output)}
-
-## Learning Objectives
-
-Upon successful completion of this course, students will be able to:
-
-{self._format_objectives(objectives)}
-
-## Target Audience
-
-{level.title()} students in {domain} with appropriate prerequisites and foundational knowledge.
-
-## Weekly Schedule
-
-{self._generate_weekly_schedule(retrieved_components, title)}
-
-## Assessment Plan
-
-{self._generate_assessment_plan(retrieved_components, course_info)}
-
-### Grading Scale
-- A: 90-100% (Excellent work demonstrating mastery)
-- B: 80-89% (Good work meeting expectations)
-- C: 70-79% (Satisfactory work meeting minimum requirements)
-- D: 60-69% (Below expectations, minimal competency)
-- F: Below 60% (Failing to meet course requirements)
-
-## Required Materials
-
-### Textbooks
-- Primary textbook covering {domain.lower()} fundamentals
-- Supplementary readings and online resources
-- Access to required software and development tools
-
-### Software Requirements
-- Development environment appropriate for {domain.lower()}
-- Access to course learning management system
-- Reliable internet connection for online activities
-
-## Course Policies
-
-### Attendance Policy
-Regular attendance is expected and contributes to learning success. Students are responsible for material covered during any absences.
-
-### Late Work Policy
-- Assignments: 10% penalty per day late, up to 5 days
-- Major projects: Must be arranged in advance with instructor
-- Exams: Must be taken at scheduled times unless emergency arrangements made
-
-### Academic Integrity
-All work must be original and properly cited. Collaboration policies will be specified for each assignment. Use of AI tools must be disclosed when permitted.
-
-### Communication Policy
-- Check course management system regularly for announcements
-- Email instructor for questions outside of class
-- Use appropriate academic communication standards
-"""
-
-        return syllabus
-
-    def _clean_t5_content(self, t5_output: str) -> str:
-        """Clean and extract useful content from T5 output"""
-        # Remove repetitive text and formatting issues
-        lines = t5_output.split("\n")
-        cleaned_lines = []
-
-        for line in lines:
-            line = line.strip()
-            if line and len(line) > 10:  # Skip very short lines
-                # Remove obvious repetition
-                if not any(line.lower() in prev.lower() for prev in cleaned_lines[-2:]):
-                    cleaned_lines.append(line)
-
-        # Join and clean up
-        content = " ".join(cleaned_lines)
-
-        # Remove obvious artifacts
-        content = re.sub(
-            r"Generate syllabus for:.*?Target Audience:", "", content, flags=re.DOTALL
-        )
-        content = re.sub(
-            r"Relevant Educational Components:.*", "", content, flags=re.DOTALL
-        )
-        content = re.sub(r"\s+", " ", content)  # Normalize whitespace
-
-        if len(content.strip()) > 50:
-            return f"## Additional Course Information\n\n{content.strip()}\n"
-        else:
-            return ""
+        return syllabus_data
 
     def _extract_objectives(self, components: dict[str, list]) -> list[str]:
         """Extract learning objectives from retrieved components"""
@@ -157,121 +82,161 @@ All work must be original and properly cited. Collaboration policies will be spe
 
         return "\n".join(formatted)
 
-    def _generate_weekly_schedule(self, components: dict[str, list], title: str) -> str:
-        """Generate weekly schedule from components"""
+    def _generate_modules_as_data(
+        self, components: dict[str, list]
+    ) -> list[dict[str, Any]]:
+        """Generate structured learning modules data for web app"""
 
         modules = components.get("modules", [])
         activities = components.get("activities", [])
 
-        # Create 10-week schedule
-        weeks = []
-        week_num = 1
+        learning_modules = []
 
-        # Distribute modules across weeks
-        for i, module in enumerate(modules[:8]):  # Use up to 8 modules
-            week_title = module.get("title", f"Topic {i+1}")[:50]
-            week_description = module.get("description", "")[:100]
+        # Create modules from retrieved components
+        for i, module in enumerate(modules):
+            module_title = module.get("title", f"Learning Module {i+1}")
+            module_description = module.get(
+                "description", "Core concepts and applications"
+            )
 
-            # Add related activity if available
-            activity = None
+            # Get related activities
+            module_activities = []
             if i < len(activities):
                 activity = activities[i]
+                module_activities.append(activity.get("title", "Practical exercises"))
 
-            week_content = f"""### Week {week_num}: {week_title}
-**Topics:** {week_description}
-- **Monday:** Introduction and theoretical foundations
-- **Wednesday:** {activity.get('title', 'Practical exercise') if activity else 'Hands-on practice'}
-- **Friday:** Application and review"""
-
-            # Add assessment if it's a milestone week
-            if week_num % 3 == 0 and week_num <= 9:
-                assessments = components.get("assessments", [])
-                if assessments:
-                    assess_idx = (week_num // 3) - 1
-                    if assess_idx < len(assessments):
-                        assessment = assessments[assess_idx]
-                        week_content += f"\n- **Assessment:** {assessment.get('title', 'Evaluation')} - Due Friday"
-
-            weeks.append(week_content)
-            week_num += 1
-
-            if week_num > 10:  # Limit to 10 weeks
-                break
-
-        # Add final weeks if needed
-        while week_num <= 10:
-            if week_num == 10:
-                weeks.append(
-                    f"""### Week {week_num}: Final Projects and Review
-**Topics:** Project presentations, course review, final preparation
-- **Monday:** Final project presentations
-- **Wednesday:** Course review and synthesis
-- **Friday:** Final exam or project submission"""
+            # Add complementary activities based on module content
+            if (
+                "fundamental" in module_title.lower()
+                or "introduction" in module_title.lower()
+            ):
+                module_activities.extend(["Conceptual overview", "Guided practice"])
+            elif (
+                "advanced" in module_title.lower()
+                or "application" in module_title.lower()
+            ):
+                module_activities.extend(
+                    ["Case study analysis", "Project implementation"]
                 )
             else:
-                weeks.append(
-                    f"""### Week {week_num}: Advanced Topics
-**Topics:** Extended applications and advanced concepts
-- **Monday:** Advanced concepts introduction
-- **Wednesday:** Practical applications
-- **Friday:** Review and discussion"""
+                module_activities.extend(
+                    ["Interactive exercises", "Problem-solving activities"]
                 )
-            week_num += 1
 
-        return "\n\n".join(weeks)
+            module_data = {
+                "id": f"module_{i+1}",
+                "number": i + 1,
+                "title": module_title,
+                "description": module_description,
+                "learning_activities": module_activities[:4],  # Limit to 4 activities
+                "key_outcomes": "Students will demonstrate understanding through practical application and assessment",
+                "type": "content",
+            }
 
-    def _generate_assessment_plan(
+            learning_modules.append(module_data)
+
+        # Add synthesis module if we have multiple modules
+        if len(learning_modules) > 1:
+            synthesis_module = {
+                "id": "integration_module",
+                "number": len(learning_modules) + 1,
+                "title": "Integration and Synthesis",
+                "description": "Connecting concepts across all learning modules and applying knowledge to complex scenarios",
+                "learning_activities": [
+                    "Capstone project development",
+                    "Cross-module concept integration",
+                    "Peer collaboration and presentation",
+                    "Reflective analysis and synthesis",
+                ],
+                "key_outcomes": "Students will synthesize learning from all modules and demonstrate mastery through comprehensive application",
+                "type": "integration",
+            }
+            learning_modules.append(synthesis_module)
+
+        return learning_modules
+
+    def _generate_assessment_data(
         self, components: dict[str, list], course_info: dict[str, Any] = None
-    ) -> str:
-        """Generate assessment plan from components"""
+    ) -> dict[str, Any]:
+        """Generate structured assessment data for web app"""
 
         assessments = components.get("assessments", [])
+        modules = components.get("modules", [])
         domain = (
             course_info.get("domain", "Computer Science")
             if course_info
             else "Computer Science"
         )
 
-        # Create assessment table
-        plan = """| Assessment Type | Percentage | Description |
-|----------------|------------|-------------|"""
+        assessment_components = []
 
         if len(assessments) >= 3:
-            # Use actual assessments with full titles and descriptions
-            assess_1 = assessments[0].get("title", "Quizzes and Assignments")
-            assess_2 = assessments[1].get("title", "Practical Projects")
-            assess_3 = assessments[2].get("title", "Final Examination")
-
-            # Use actual descriptions if available, otherwise create domain-specific ones
-            desc_1 = assessments[0].get("description", "")
-            desc_2 = assessments[1].get("description", "")
-            desc_3 = assessments[2].get("description", "")
-
-            # Fallback to meaningful descriptions if not provided
-            if not desc_1:
-                desc_1 = (
-                    f"Regular knowledge checks and {domain.lower()} concept assessments"
-                )
-            if not desc_2:
-                desc_2 = (
-                    f"Hands-on {domain.lower()} projects and practical applications"
-                )
-            if not desc_3:
-                desc_3 = f"Comprehensive evaluation of {domain.lower()} mastery"
-
-            plan += f"""
-| {assess_1} | 25% | {desc_1} |
-| {assess_2} | 40% | {desc_2} |
-| {assess_3} | 25% | {desc_3} |
-| Participation & Engagement | 10% | Class engagement, discussion, and attendance |
-| **Total** | **100%** | |"""
+            # Use actual assessments with module-based descriptions
+            assessment_components = [
+                {
+                    "id": "assessment_1",
+                    "name": assessments[0].get("title", "Module Assessments"),
+                    "weight": 30,
+                    "description": assessments[0].get("description", "")
+                    or f"Progressive assessments aligned with learning modules in {domain.lower()}",
+                    "type": "formative",
+                },
+                {
+                    "id": "assessment_2",
+                    "name": assessments[1].get("title", "Applied Projects"),
+                    "weight": 40,
+                    "description": assessments[1].get("description", "")
+                    or f"Practical {domain.lower()} projects demonstrating applied knowledge",
+                    "type": "project",
+                },
+                {
+                    "id": "assessment_3",
+                    "name": assessments[2].get("title", "Comprehensive Evaluation"),
+                    "weight": 25,
+                    "description": assessments[2].get("description", "")
+                    or "Integrated assessment of all learning modules and synthesis capabilities",
+                    "type": "summative",
+                },
+            ]
         else:
-            # Default assessment plan with domain context
-            plan += f"""
-| Quizzes & Assignments | 25% | Regular {domain.lower()} knowledge checks and homework |
-| Projects & Applications | 40% | Practical {domain.lower()} projects and assignments |
-| Final Examination | 25% | Comprehensive {domain.lower()} evaluation |
-| Participation & Engagement | 10% | Class engagement and attendance |
-| **Total** | **100%** | |"""
+            # Default module-based assessment strategy
+            assessment_components = [
+                {
+                    "id": "module_assessments",
+                    "name": "Module Assessments",
+                    "weight": 30,
+                    "description": "Progressive evaluations aligned with each learning module",
+                    "type": "formative",
+                },
+                {
+                    "id": "applied_projects",
+                    "name": "Applied Projects",
+                    "weight": 40,
+                    "description": f"Hands-on {domain.lower()} projects demonstrating practical mastery",
+                    "type": "project",
+                },
+                {
+                    "id": "synthesis_assessment",
+                    "name": "Synthesis Assessment",
+                    "weight": 25,
+                    "description": "Comprehensive evaluation integrating all learning modules",
+                    "type": "summative",
+                },
+            ]
 
-        return plan
+        # Add engagement component
+        assessment_components.append(
+            {
+                "id": "learning_engagement",
+                "name": "Learning Engagement",
+                "weight": 5,
+                "description": "Active participation in learning activities and peer collaboration",
+                "type": "participation",
+            }
+        )
+
+        return {
+            "components": assessment_components,
+            "total_weight": 100,
+            "grading_philosophy": "Module-based progressive assessment with integrated synthesis evaluation",
+        }

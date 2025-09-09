@@ -9,9 +9,9 @@ def load_all_components() -> list[dict[str, list[dict]]]:
     components = {}
 
     component_files = {
-        "modules": "data/components/modules_cleaned.json",
-        "activities": "data/components/learning_activities_cleaned.json",
-        "assessments": "data/components/assessments_cleaned.json",
+        "modules": "data/components/modules.json",
+        "activities": "data/components/activities.json",
+        "assessments": "data/components/assessments.json",
     }
 
     for component_type, file_path in component_files.items():

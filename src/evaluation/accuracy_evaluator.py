@@ -70,8 +70,8 @@ class SyllabusAccuracyEvaluator:
         self.required_sections = [
             "course description",
             "learning objectives",
-            "weekly schedule",
-            "assessment plan",
+            "learning sequence",
+            "assessment strategy",
             "grading scale",
             "course policies",
         ]
@@ -134,10 +134,10 @@ class SyllabusAccuracyEvaluator:
         has_assessment_table = "|" in content and "percentage" in content.lower()
         metrics["assessment_table_present"] = 1.0 if has_assessment_table else 0.0
 
-        # Weekly schedule structure
-        week_pattern = r"week \d+"
-        weeks_found = len(re.findall(week_pattern, content.lower()))
-        metrics["weekly_structure"] = min(weeks_found / 10, 1.0)  # Expect ~10 weeks
+        # Learning module structure
+        module_pattern = r"learning module \d+|module \d+"
+        modules_found = len(re.findall(module_pattern, content.lower()))
+        metrics["module_structure"] = min(modules_found / 5, 1.0)  # Expect 3-5 modules
 
         # Learning objectives quality
         objectives_section = re.search(
