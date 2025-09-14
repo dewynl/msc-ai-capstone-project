@@ -71,7 +71,14 @@ class RAGEnhancedT5Generator:
         objectives = []
 
         # Get objectives from modules
-        for module in components.get("modules", [])[:2]:
+        # RATIONALE: Limit to first 2 objectives per module to manage T5 input token budget (512 tokens max).
+        # Learning objectives are often 20-40 tokens each, and we need space for course description,
+        # component summaries, and other prompt sections. Taking top 2 from most relevant modules
+        # (already ranked by similarity) provides highest quality context while staying within limits.
+        # This mirrors training data format which typically had 3-4 objectives per syllabus.
+        for module in components.get("modules", [])[
+            :2
+        ]:  # Only top 2 most relevant modules
             module_objectives = module.get("learning_objectives", [])
             objectives.extend(module_objectives[:2])  # Take first 2 from each module
 
@@ -100,13 +107,13 @@ class RAGEnhancedT5Generator:
                 inputs["input_ids"],
                 attention_mask=inputs["attention_mask"],
                 max_length=max_length,
-                min_length=200,  # Force longer output
+                min_length=200,
                 num_beams=4,
-                early_stopping=False,  # Don't stop early
+                early_stopping=False,
                 do_sample=True,
                 temperature=0.7,
                 repetition_penalty=1.3,
-                length_penalty=1.1,  # Encourage longer sequences
+                length_penalty=1.1,
                 no_repeat_ngram_size=4,
             )
 
