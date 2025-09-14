@@ -18,7 +18,9 @@ class EducationalT5Config:
 
     # Bloom's taxonomy configuration
     bloom_levels: int = 6
-    bloom_integration_layers: list[int] | None = None  # Which layers get Bloom's attention
+    bloom_integration_layers: list[
+        int
+    ] | None = None  # Which layers get Bloom's attention
 
     # Pedagogical structure
     max_weeks: int = 16

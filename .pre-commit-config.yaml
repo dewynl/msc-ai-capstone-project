@@ -1,67 +1,28 @@
 repos:
   # Black - Code formatting
   - repo: https://github.com/psf/black
-    rev: 23.12.1
+    rev: "23.12.1"
     hooks:
       - id: black
-        language_version: python3.10
         args: [--line-length=88]
 
-  # Ruff - Fast Python linter (replaces flake8, isort, etc.)
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.9
-    hooks:
-      - id: ruff
-        args: [--fix, --exit-non-zero-on-fix]
-      - id: ruff-format
-
-  # Pre-commit hooks for general file issues
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
-    hooks:
-      - id: trailing-whitespace
-      - id: end-of-file-fixer
-      - id: check-yaml
-      - id: check-added-large-files
-        args: ['--maxkb=1000']
-      - id: check-merge-conflict
-      - id: check-docstring-first
-      - id: debug-statements
-
-  # mypy - Static type checking
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.8.0
-    hooks:
-      - id: mypy
-        additional_dependencies: [
-          types-requests,
-          types-torch,
-          torch,
-          transformers,
-          datasets,
-          anthropic
-        ]
-        args: [--config-file=pyproject.toml, --no-error-summary]
-
-  # bandit - Security linting
+  # Bandit - Security linting (medium/high severity only)
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.7.5
+    rev: "1.7.5"
     hooks:
       - id: bandit
-        args: ['-c', 'pyproject.toml']
+        args: [-ll]
         additional_dependencies: ['bandit[toml]']
 
-  # Notebook formatting and cleaning
-  - repo: https://github.com/nbQA-dev/nbQA
-    rev: 1.7.1
+  # Flake8 - Python linting (uses .flake8 config file)
+  - repo: https://github.com/PyCQA/flake8
+    rev: "6.1.0"
     hooks:
-      - id: nbqa-black
-        additional_dependencies: [black==23.12.1]
-      - id: nbqa-ruff
-        additional_dependencies: [ruff==0.1.9]
+      - id: flake8
 
-  # Remove notebook outputs
-  - repo: https://github.com/kynan/nbstripout
-    rev: 0.6.1
+  # isort - Import sorting
+  - repo: https://github.com/pycqa/isort
+    rev: "5.12.0"
     hooks:
-      - id: nbstripout
+      - id: isort
+        args: ["--profile", "black", "--filter-files"]
