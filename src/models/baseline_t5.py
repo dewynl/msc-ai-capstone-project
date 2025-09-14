@@ -49,5 +49,7 @@ class BaselineT5:
                 eos_token_id=self.tokenizer.eos_token_id,
             )
         # Decode output
-        generated_text: str = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+        generated_text: str = self.tokenizer.decode(
+            outputs[0], skip_special_tokens=True
+        )
         return generated_text

@@ -60,6 +60,11 @@ click>=8.1.0
 # AI/ML Data Generation
 anthropic>=0.7.0
 
+# RAG (Retrieval-Augmented Generation) Dependencies
+sentence-transformers>=2.2.0  # For embedding generation
+faiss-cpu>=1.7.0              # Vector similarity search
+chromadb>=0.4.0               # Alternative vector database
+
 # Configuration Management
 omegaconf>=2.3.0
 hydra-core>=1.3.0

@@ -149,7 +149,7 @@ class EducationalComponentGenerator:
     def _get_component_hash(self, title: str, description: str) -> str:
         """Generate hash for duplicate detection"""
         content = f"{title.lower().strip()}{description.lower().strip()}"
-        return hashlib.md5(content.encode()).hexdigest()
+        return hashlib.md5(content.encode(), usedforsecurity=False).hexdigest()
 
     def _is_duplicate(self, new_component, existing_components) -> bool:
         """Check if component already exists"""
