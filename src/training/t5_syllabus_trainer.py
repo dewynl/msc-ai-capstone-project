@@ -33,7 +33,7 @@ class SyllabusTrainingConfig:
     model_name: str = "t5-small"
     max_input_length: int = 512  # For JSON course requirements
     max_target_length: int = (
-        1024  # For JSON syllabus output (adequate for structured JSON)
+        2048  # Increased for complete JSON syllabus output
     )
     train_batch_size: int = 2  # Smaller batch due to longer sequences
     eval_batch_size: int = 2
@@ -192,14 +192,14 @@ class SyllabusTrainer:
             logging_steps=self.config.logging_steps,
             save_steps=self.config.save_steps,
             eval_steps=self.config.eval_steps,
-            evaluation_strategy="steps",
+            eval_strategy="steps",
             save_strategy="steps",
             load_best_model_at_end=True,
             metric_for_best_model="eval_loss",
             greater_is_better=False,
             dataloader_pin_memory=False,
             fp16=torch.cuda.is_available(),  # Use mixed precision if CUDA available
-            report_to=None,  # Disable wandb/tensorboard
+            report_to=[],  # Disable wandb/tensorboard
         )
 
         # Create trainer
@@ -245,10 +245,14 @@ class SyllabusTrainer:
             outputs = self.model.generate(
                 **inputs,
                 max_length=self.config.max_target_length,
+                min_length=100,  # Ensure minimum output length
                 num_beams=4,
                 early_stopping=True,
                 no_repeat_ngram_size=2,
+                do_sample=True,
                 temperature=0.7,
+                pad_token_id=self.tokenizer.eos_token_id,
+                eos_token_id=self.tokenizer.eos_token_id,
             )
 
         # Decode output
@@ -259,12 +263,55 @@ class SyllabusTrainer:
             syllabus_json = json.loads(generated_text)
             return syllabus_json
         except json.JSONDecodeError as e:
-            logger.error(f"Failed to parse generated JSON: {e}")
-            logger.error(f"Generated text: {generated_text}")
-            return {
-                "error": "Failed to generate valid JSON",
-                "raw_output": generated_text,
-            }
+            logger.warning(f"Initial JSON parse failed: {e}")
+            logger.info("Attempting to repair JSON...")
+
+            # Attempt to repair common JSON issues
+            repaired_text = self._repair_json(generated_text)
+
+            try:
+                syllabus_json = json.loads(repaired_text)
+                logger.info("✅ JSON repair successful!")
+                return syllabus_json
+            except json.JSONDecodeError as e2:
+                logger.error(f"JSON repair failed: {e2}")
+                logger.error(f"Original: {generated_text}")
+                logger.error(f"Repaired: {repaired_text}")
+                return {
+                    "error": "Failed to generate valid JSON",
+                    "raw_output": generated_text,
+                    "repaired_attempt": repaired_text,
+                }
+
+    def _repair_json(self, text: str) -> str:
+        """Attempt to repair common JSON formatting issues"""
+        # Remove any leading/trailing whitespace
+        text = text.strip()
+
+        # Add opening brace if missing
+        if not text.startswith('{'):
+            text = '{' + text
+
+        # Add closing brace if missing
+        if not text.endswith('}'):
+            text = text + '}'
+
+        # Fix common field issues
+        text = text.replace('"prerequisite:"', '"prerequisites":')
+        text = text.replace('""target_audience"', '", "target_audience":')
+
+        # Fix missing quotes around values
+        import re
+        # Fix patterns like: "field":value without quotes around value
+        text = re.sub(r'"([^"]+)":\s*([^",}\]]+)(?=[,}])', r'"\1": "\2"', text)
+
+        # Fix double quotes issues
+        text = re.sub(r'""([^"]*)"', r'", "\1":', text)
+
+        # Ensure proper comma separation
+        text = re.sub(r'}\s*{', '},{', text)
+
+        return text
 
 
 def test_json_generation():
@@ -272,11 +319,11 @@ def test_json_generation():
 
     logger.info("🧪 Testing JSON syllabus generation")
 
-    # Sample course requirements
+    # Sample course requirements for 3-domain system
     test_requirements = {
         "title": "Introduction to Machine Learning",
         "domain": "computer_science",
-        "level": "graduate",
+        "level": "intermediate",
         "duration": "semester",
         "description": "Fundamentals of machine learning algorithms and applications",
         "learning_objectives": [
@@ -285,7 +332,7 @@ def test_json_generation():
             "Evaluate model performance",
         ],
         "prerequisites": "Linear algebra, statistics, programming",
-        "target_audience": "Graduate computer science students",
+        "target_audience": "Intermediate students in Computer Science",
     }
 
     # Load trained model
@@ -315,12 +362,12 @@ def main():
     # Create trainer
     trainer = SyllabusTrainer(config)
 
-    # Train on JSON data
-    training_data_path = "data/training/combined_training.json"
+    # Train on clean JSON data
+    training_data_path = "data/training/t5_clean_training.json"
 
     if not Path(training_data_path).exists():
         logger.error(f"Training data not found: {training_data_path}")
-        logger.info("Please run convert_training_to_json.py first")
+        logger.info("Please run create_clean_training_data.py first")
         return
 
     # Start training
