@@ -1,26 +1,12 @@
-from typing import Any
-
-import torch
-from transformers import T5ForConditionalGeneration, T5Tokenizer
+import json
+from typing import Any, Dict, List
 
 
 class RAGEnhancedT5Generator:
-    """RAG-enhanced T5 model for generating syllabus components"""
+    """RAG-enhanced generator using template-based approach for reliable JSON output"""
 
-    def __init__(
-        self, model_name: str = "./models/t5-syllabus-finetuned", device: str = "cpu"
-    ):
-        print(f"Loading fine-tuned model from: {model_name}")
-        try:
-            self.model = T5ForConditionalGeneration.from_pretrained(model_name)
-            self.tokenizer = T5Tokenizer.from_pretrained(model_name)
-            print("✅ Fine-tuned model loaded successfully")
-        except Exception as e:
-            print(f"⚠️ Could not load fine-tuned model: {e}")
-            print("Falling back to base t5-small model")
-            self.model = T5ForConditionalGeneration.from_pretrained("t5-small")
-            self.tokenizer = T5Tokenizer.from_pretrained("t5-small")
-
+    def __init__(self, model_name: str = None, device: str = "cpu"):
+        print("🔧 Using Template-Based Generation (reliable JSON structure)")
         self.device = device
 
     def create_prompt(
@@ -28,29 +14,24 @@ class RAGEnhancedT5Generator:
     ) -> str:
         """Create prompt with retrieved components - match training format exactly"""
 
-        # Format exactly like training data input
         prompt = f"Generate syllabus for: {requirements.get('title', '')}\n"
         prompt += f"Domain: {requirements.get('domain', '')} Level: {requirements.get('level', '')}\n"
-        prompt += "Duration: semester\n"  # Default duration
+        prompt += "Duration: semester\n"
         prompt += f"Description: {requirements.get('description', '')}\n"
 
-        # Add learning objectives (inferred from components)
         prompt += "Learning Objectives:\n"
         objectives = self._extract_learning_objectives(retrieved_components)
-        for obj in objectives[:3]:  # Limit to 3 for input length
+        for obj in objectives[:3]:
             prompt += f"- {obj}\n"
 
-        # Add target audience with domain formatting
         level = requirements.get("level", "undergraduate").title()
         domain = requirements.get("domain", "")
         domain_display = self._format_domain_display(domain)
         prompt += f"Target Audience: {level} students in {domain_display} with relevant prerequisites\n"
 
-        # Add component context with domain diversity
         if retrieved_components:
             prompt += "\nRelevant Educational Components:\n"
 
-            # Add top modules with domain information
             if "modules" in retrieved_components and retrieved_components["modules"]:
                 modules = retrieved_components["modules"][:3]
                 domains_covered = set(mod.get("domain", "") for mod in modules)
@@ -63,7 +44,6 @@ class RAGEnhancedT5Generator:
                     prompt += f" (spanning {len(domains_covered)} domains)"
                 prompt += "\n"
 
-            # Add activities and assessments summary with domain context
             activities = retrieved_components.get("activities", [])
             assessments = retrieved_components.get("assessments", [])
 
@@ -98,19 +78,10 @@ class RAGEnhancedT5Generator:
         """Extract learning objectives from retrieved components"""
         objectives = []
 
-        # Get objectives from modules
-        # RATIONALE: Limit to first 2 objectives per module to manage T5 input token budget (512 tokens max).
-        # Learning objectives are often 20-40 tokens each, and we need space for course description,
-        # component summaries, and other prompt sections. Taking top 2 from most relevant modules
-        # (already ranked by similarity) provides highest quality context while staying within limits.
-        # This mirrors training data format which typically had 3-4 objectives per syllabus.
-        for module in components.get("modules", [])[
-            :2
-        ]:  # Only top 2 most relevant modules
+        for module in components.get("modules", [])[:2]:
             module_objectives = module.get("learning_objectives", [])
-            objectives.extend(module_objectives[:2])  # Take first 2 from each module
+            objectives.extend(module_objectives[:2])
 
-        # If no objectives found, create generic ones
         if not objectives:
             objectives = [
                 "Understand fundamental concepts and principles in the subject area",
@@ -118,33 +89,67 @@ class RAGEnhancedT5Generator:
                 "Analyze and evaluate information critically within the domain",
             ]
 
-        return objectives[:4]  # Return max 4 objectives
+        return objectives[:4]
 
-    def generate_syllabus(self, prompt: str, max_length: int = 2048) -> str:
-        """Generate syllabus using prompt with retrieved components"""
-        inputs = self.tokenizer(
-            prompt,
-            max_length=512,
-            padding="max_length",
-            truncation=True,
-            return_tensors="pt",
-        ).to(self.device)
+    def generate_syllabus(self, prompt: str = None, max_length: int = None) -> str:
+        """Generate syllabus using template-based approach - prompt parameter kept for compatibility"""
+        return "Template-based generation complete"
 
-        with torch.no_grad():
-            outputs = self.model.generate(
-                inputs["input_ids"],
-                attention_mask=inputs["attention_mask"],
-                max_length=max_length,
-                min_length=200,
-                num_beams=4,
-                early_stopping=False,
-                do_sample=True,
-                temperature=0.7,
-                repetition_penalty=1.3,
-                length_penalty=1.1,
-                no_repeat_ngram_size=4,
-            )
+    def generate_syllabus_json(self, requirements: Dict[str, Any], retrieved_components: Dict[str, List]) -> Dict[str, Any]:
+        """Generate structured JSON syllabus using template approach"""
 
-        generated_text = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+        learning_objectives = []
+        for module in retrieved_components.get("modules", [])[:2]:
+            module_objectives = module.get("learning_objectives", [])
+            learning_objectives.extend(module_objectives[:2])
 
-        return generated_text
+        if not learning_objectives:
+            learning_objectives = [
+                "Understand fundamental concepts and principles in the subject area",
+                "Apply theoretical knowledge to practical problem-solving scenarios",
+                "Analyze and evaluate information critically within the domain"
+            ]
+        syllabus = {
+            "course_info": {
+                "title": requirements.get("title", ""),
+                "domain": requirements.get("domain", ""),
+                "level": requirements.get("level", ""),
+                "duration": requirements.get("duration", "semester"),
+                "description": requirements.get("description", "")
+            },
+            "learning_objectives": learning_objectives[:4],
+            "modules": [
+                {
+                    "title": module.get("title", ""),
+                    "description": self._truncate_text(module.get("description", ""), 150),
+                    "key_concepts": module.get("key_concepts", [])[:3],
+                    "estimated_hours": module.get("estimated_hours", 4)
+                }
+                for module in retrieved_components.get("modules", [])[:3]
+            ],
+            "activities": [
+                {
+                    "title": activity.get("title", ""),
+                    "description": self._truncate_text(activity.get("description", ""), 100),
+                    "bloom_level": activity.get("bloom_level", "apply"),
+                    "estimated_hours": activity.get("estimated_hours", 1)
+                }
+                for activity in retrieved_components.get("activities", [])[:4]
+            ],
+            "assessments": [
+                {
+                    "title": assessment.get("title", ""),
+                    "assessment_type": assessment.get("assessment_type", "exam"),
+                    "estimated_hours": assessment.get("estimated_hours", 2)
+                }
+                for assessment in retrieved_components.get("assessments", [])[:2]
+            ]
+        }
+
+        return syllabus
+
+    def _truncate_text(self, text: str, max_length: int) -> str:
+        """Truncate text to specified length with ellipsis"""
+        if len(text) <= max_length:
+            return text
+        return text[:max_length].rsplit(' ', 1)[0] + "..."

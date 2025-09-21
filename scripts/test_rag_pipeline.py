@@ -53,7 +53,6 @@ def test_rag_pipeline():
         print(f"\n{'='*20} Scenario {i}: {scenario['title']} {'='*20}")
         print(f"Domain: {scenario['domain']} | Level: {scenario['level']}")
 
-        # Test retrieval
         print("\n🔍 Component Retrieval:")
         components = retrieval_pipeline.retrieve_components(scenario, k_per_type=3)
 
@@ -64,7 +63,6 @@ def test_rag_pipeline():
                 title = comp.get('title', 'No title')[:40]
                 print(f"    {j}. [{domain}] {title}...")
 
-        # Test filtering
         print("\n🔽 Domain Filtering:")
         filtered = retrieval_pipeline.filter_by_domain_and_level(components, scenario)
 
@@ -73,7 +71,6 @@ def test_rag_pipeline():
             filtered_count = len(comp_list)
             print(f"  {comp_type.title()}: {original_count} → {filtered_count} components")
 
-        # Test diversity selection
         print("\n🌈 Diversity Selection:")
         diverse = retrieval_pipeline.get_diverse_components(scenario)
 
@@ -83,20 +80,22 @@ def test_rag_pipeline():
             if len(domains) > 1:
                 print(f"    Domains: {', '.join(sorted(domains))}")
 
-        # Test prompt generation
         print("\n📝 Prompt Generation:")
         prompt = generator.create_prompt(scenario, diverse)
         print(f"  Prompt length: {len(prompt)} characters")
         print(f"  First 200 chars: {prompt[:200]}...")
 
-        # Optional: Generate syllabus (comment out if model not available)
+        print("\n⚡ Template-Based JSON Generation:")
         try:
-            print("\n⚡ Syllabus Generation:")
-            syllabus = generator.generate_syllabus(prompt, max_length=500)
-            print(f"  Generated length: {len(syllabus)} characters")
-            print(f"  Preview: {syllabus[:150]}...")
+            syllabus_json = generator.generate_syllabus_json(scenario, diverse)
+            print(f"  ✅ Generated valid JSON structure")
+            print(f"  Course: {syllabus_json['course_info']['title']}")
+            print(f"  Modules: {len(syllabus_json['modules'])}")
+            print(f"  Activities: {len(syllabus_json['activities'])}")
+            print(f"  Assessments: {len(syllabus_json['assessments'])}")
+            print(f"  Learning objectives: {len(syllabus_json['learning_objectives'])}")
         except Exception as e:
-            print(f"  ⚠️ Generation skipped: {e}")
+            print(f"  ❌ JSON generation failed: {e}")
 
         print(f"\n{'='*60}")
 
