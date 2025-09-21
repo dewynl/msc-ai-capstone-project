@@ -40,31 +40,59 @@ class RAGEnhancedT5Generator:
         for obj in objectives[:3]:  # Limit to 3 for input length
             prompt += f"- {obj}\n"
 
-        # Add target audience
+        # Add target audience with domain formatting
         level = requirements.get("level", "undergraduate").title()
-        domain = requirements.get("domain", "Computer Science")
-        prompt += f"Target Audience: {level} students in {domain} with relevant prerequisites\n"
+        domain = requirements.get("domain", "")
+        domain_display = self._format_domain_display(domain)
+        prompt += f"Target Audience: {level} students in {domain_display} with relevant prerequisites\n"
 
-        # Add component context (more structured)
+        # Add component context with domain diversity
         if retrieved_components:
             prompt += "\nRelevant Educational Components:\n"
 
-            # Add top modules with brief descriptions
+            # Add top modules with domain information
             if "modules" in retrieved_components and retrieved_components["modules"]:
-                prompt += f"Modules: {len(retrieved_components['modules'])} available covering "
-                module_topics = [
-                    mod.get("title", "")[:30]
-                    for mod in retrieved_components["modules"][:2]
-                ]
-                prompt += ", ".join(module_topics) + "\n"
+                modules = retrieved_components["modules"][:3]
+                domains_covered = set(mod.get("domain", "") for mod in modules)
 
-            # Add activities and assessments summary
-            activity_count = len(retrieved_components.get("activities", []))
-            assessment_count = len(retrieved_components.get("assessments", []))
-            prompt += f"Activities: {activity_count} hands-on exercises available\n"
-            prompt += f"Assessments: {assessment_count} evaluation methods available\n"
+                prompt += f"Modules: {len(modules)} available covering "
+                module_topics = [mod.get("title", "")[:25] for mod in modules[:2]]
+                prompt += ", ".join(module_topics)
+
+                if len(domains_covered) > 1:
+                    prompt += f" (spanning {len(domains_covered)} domains)"
+                prompt += "\n"
+
+            # Add activities and assessments summary with domain context
+            activities = retrieved_components.get("activities", [])
+            assessments = retrieved_components.get("assessments", [])
+
+            activity_domains = set(act.get("domain", "") for act in activities)
+            assessment_domains = set(ass.get("domain", "") for ass in assessments)
+
+            prompt += f"Activities: {len(activities)} hands-on exercises"
+            if len(activity_domains) > 1:
+                prompt += f" across {len(activity_domains)} domains"
+            prompt += "\n"
+
+            prompt += f"Assessments: {len(assessments)} evaluation methods"
+            if len(assessment_domains) > 1:
+                prompt += f" across {len(assessment_domains)} domains"
+            prompt += "\n"
 
         return prompt
+
+    def _format_domain_display(self, domain: str) -> str:
+        """Format domain name for display"""
+        domain_names = {
+            "computer_science": "Computer Science",
+            "mathematics": "Mathematics",
+            "physics": "Physics",
+            "engineering": "Engineering",
+            "biology": "Biology",
+            "chemistry": "Chemistry"
+        }
+        return domain_names.get(domain.lower(), domain.title())
 
     def _extract_learning_objectives(self, components: dict[str, list]) -> list[str]:
         """Extract learning objectives from retrieved components"""
