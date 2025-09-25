@@ -1,10 +1,39 @@
 from typing import Any
 
-
 DOMAIN_KEYWORDS = {
-    "computer_science": ["programming", "algorithms", "software", "coding", "data structures", "machine learning", "artificial intelligence", "database", "network"],
-    "mathematics": ["calculus", "algebra", "statistics", "mathematical", "equations", "probability", "theorem", "proof", "optimization"],
-    "physics": ["mechanics", "forces", "energy", "motion", "electromagnetic", "thermodynamics", "quantum", "gravity", "wave"]
+    "computer_science": [
+        "programming",
+        "algorithms",
+        "software",
+        "coding",
+        "data structures",
+        "machine learning",
+        "artificial intelligence",
+        "database",
+        "network",
+    ],
+    "mathematics": [
+        "calculus",
+        "algebra",
+        "statistics",
+        "mathematical",
+        "equations",
+        "probability",
+        "theorem",
+        "proof",
+        "optimization",
+    ],
+    "physics": [
+        "mechanics",
+        "forces",
+        "energy",
+        "motion",
+        "electromagnetic",
+        "thermodynamics",
+        "quantum",
+        "gravity",
+        "wave",
+    ],
 }
 
 
@@ -37,16 +66,29 @@ def extract_search_terms(requirements: dict[str, Any]) -> list[str]:
 
 def generate_component_queries(requirements: dict[str, Any]) -> dict[str, str]:
     """Generate specific queries for each component type with STEM focus"""
-    domain = requirements.get('domain', '')
-    level = requirements.get('level', '')
-    topics = requirements.get('topics', '')
+    domain = requirements.get("domain", "").replace("_", " ")
+    title = requirements.get("title", "")
 
-    base_context = f"{domain} {level} {topics}".strip()
+    # Extract key terms from title that are likely to match content
+    key_terms = []
+    if title:
+        # Get key subject words, skip common words
+        words = title.lower().split()
+        subject_words = [
+            w for w in words if w not in ["to", "the", "of", "and", "in", "for", "with"]
+        ]
+        key_terms.extend(subject_words[:2])  # Take first 2 subject words
+
+    if domain and domain not in " ".join(key_terms):
+        key_terms.append(domain.replace("_", " "))
+
+    # Use simple, focused query
+    query = " ".join(key_terms[:2])  # Max 2 terms for better matching
 
     return {
-        "modules": f"course modules topics concepts {base_context}",
-        "activities": f"learning exercises projects hands-on {base_context}",
-        "assessments": f"exams tests evaluations assignments {base_context}",
+        "modules": query,
+        "activities": query,
+        "assessments": query,
     }
 
 

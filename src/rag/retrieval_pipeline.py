@@ -1,6 +1,10 @@
 from typing import Any, Dict, List
 
-from .query_processor import generate_component_queries, enhance_query_with_context, validate_domain
+from .query_processor import (
+    enhance_query_with_context,
+    generate_component_queries,
+    validate_domain,
+)
 from .vector_store import SyllabusComponentStore
 
 
@@ -24,8 +28,19 @@ class ComponentRetrievalPipeline:
         for component_type, query in queries.items():
             enhanced_query = enhance_query_with_context(query, requirements)
 
+            # Convert plural to singular for vector store search
+            singular_type = component_type.rstrip(
+                "s"
+            )  # activities -> activitie, modules -> module, assessments -> assessment
+            if singular_type == "activitie":
+                singular_type = "activity"
+            elif singular_type == "module":
+                singular_type = "module"  # already singular
+            elif singular_type == "assessment":
+                singular_type = "assessment"  # already singular
+
             results = self.component_store.search(
-                enhanced_query, k=k_per_type * 2, component_type=component_type
+                enhanced_query, k=k_per_type * 2, component_type=singular_type
             )
             retrieved[component_type] = [result[0] for result in results]
 
@@ -46,15 +61,15 @@ class ComponentRetrievalPipeline:
                 comp_difficulty = comp.get("difficulty", "").lower()
 
                 domain_match = (
-                    not target_domain or
-                    target_domain == comp_domain or
-                    self._is_related_domain(target_domain, comp_domain)
+                    not target_domain
+                    or target_domain == comp_domain
+                    or self._is_related_domain(target_domain, comp_domain)
                 )
 
                 level_match = (
-                    not target_level or
-                    target_level == comp_difficulty or
-                    self._is_compatible_level(target_level, comp_difficulty)
+                    not target_level
+                    or target_level == comp_difficulty
+                    or self._is_compatible_level(target_level, comp_difficulty)
                 )
 
                 if domain_match and level_match:
@@ -67,7 +82,7 @@ class ComponentRetrievalPipeline:
         domain_relationships = {
             "computer_science": ["mathematics"],
             "mathematics": ["computer_science", "physics"],
-            "physics": ["mathematics"]
+            "physics": ["mathematics"],
         }
 
         return component in domain_relationships.get(target, [])
@@ -77,7 +92,7 @@ class ComponentRetrievalPipeline:
         level_hierarchy = {
             "beginner": ["beginner", "intermediate"],
             "intermediate": ["beginner", "intermediate", "advanced"],
-            "advanced": ["intermediate", "advanced"]
+            "advanced": ["intermediate", "advanced"],
         }
 
         return component in level_hierarchy.get(target, [target])
@@ -91,7 +106,9 @@ class ComponentRetrievalPipeline:
 
         all_components = self.retrieve_components(requirements, k_per_type=10)
 
-        filtered_components = self.filter_by_domain_and_level(all_components, requirements)
+        filtered_components = self.filter_by_domain_and_level(
+            all_components, requirements
+        )
 
         diverse_components = {}
         for comp_type, target_count in target_counts.items():
@@ -102,7 +119,9 @@ class ComponentRetrievalPipeline:
 
         return diverse_components
 
-    def _select_diverse_by_domain(self, components: List[Dict], target_count: int) -> List[Dict]:
+    def _select_diverse_by_domain(
+        self, components: List[Dict], target_count: int
+    ) -> List[Dict]:
         """Select components to maximize domain diversity"""
         if len(components) <= target_count:
             return components
