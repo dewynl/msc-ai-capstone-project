@@ -8,24 +8,31 @@ This repository contains the complete work for my MSc Artificial Intelligence ca
 Current large language models can generate text that looks like a syllabus, but they lack the specific educational structure and pedagogical understanding needed to create truly coherent, educationally sound course content.
 
 ### The Solution
-Build a domain-specific AI model that:
-- Takes minimal inputs (course description, learning objectives, problem statements)
-- Generates structured, coherent course syllabi
-- Understands educational frameworks and learning progression
-- Maintains pedagogical quality throughout the content
+A novel function calling architecture that combines neural language generation with programmatic construction:
+- Takes course requirements as input (title, domain, level, description)
+- Generates executable function calls that construct valid syllabi
+- Integrates RAG (Retrieval-Augmented Generation) for component reusability
+- Achieves reliable structural validity while preserving T5 semantic intelligence
 
 ### Technical Approach
-- Custom neural architecture specifically designed for educational content structure
-- Specialized word embeddings trained on educational terminology
-- Sequence-to-sequence modeling with attention mechanisms
-- Training data from Open Syllabus Project API and educational resources
+**Core Innovation: Function Calling Architecture**
+- Fine-tuned T5-small (60M parameters) generates educational function calls
+- Format-agnostic intelligent parser extracts semantic content from any T5 output
+- SyllabusBuilder execution engine ensures pedagogical validation and structural correctness
+- RAG integration retrieves educational components from ChromaDB vector store
+- Programmatic JSON construction guarantees valid output
+
+**Training Data:**
+- 4,403 synthetic educational components (modules, activities, assessments)
+- Covers Computer Science, Mathematics, Physics, and Engineering domains
+- Generated using Anthropic Claude API with educational framework validation
 
 ### Key Innovation
-Creating a purpose-built system that understands:
-- Educational content structure
-- Learning objective alignment
-- Pedagogical progression
-- Domain-specific educational quality metrics
+**Separating Semantics from Syntax:**
+- Traditional approach: T5 → JSON (fails due to syntax precision requirements)
+- Our approach: T5 → Function Calls → Programmatic JSON
+- Preserves T5's educational intelligence while ensuring structural validity
+- Enables smaller models (60M parameters) to achieve reliable structured generation through architectural innovation rather than parameter scaling
 
 ## Project Structure
 
@@ -55,43 +62,72 @@ Creating a purpose-built system that understands:
 
 ## Current Status
 
-### Phase 1: Research and Planning (Weeks 1-8) - 95% Complete ✅
-- ✅ Comprehensive literature review completed (neural architectures, educational content generation)
-- ✅ Detailed project proposal and ethical approval
-- ✅ Methodology framework established (design science research)
-- ✅ Master literature database with 43 references established
-- ✅ Dissertation writing advanced (Introduction and Literature Review complete)
+### Phase 1: Research and Planning (Weeks 1-8) - ✅ Complete
+- ✅ Comprehensive literature review (neural architectures, educational AI, domain adaptation)
+- ✅ Project proposal and ethical approval
+- ✅ Methodology framework (design science research)
+- ✅ Master literature database with 43 references
 
-### Phase 2: Data Collection and Preprocessing (Weeks 9-14) - Ready to Begin 🚧
-- 🚧 Open Syllabus Project API integration
-- 🚧 Data cleaning and preprocessing pipeline
-- 🚧 Educational framework analysis implementation
+### Phase 2: Data Collection and Preprocessing (Weeks 9-14) - ✅ Complete
+- ✅ Synthetic educational data generation (4,403 components)
+- ✅ ChromaDB vector store implementation
+- ✅ Educational framework validation pipeline
+- ✅ Domain coverage: CS, Mathematics, Physics, Engineering
 
-### Phase 3: Model Development (Weeks 15-22) - Architecture Planned 📋
-- 📋 Custom transformer architecture documented
-- 📋 Educational component specifications defined
-- 📋 Training pipeline design completed
+### Phase 3: Model Development (Weeks 15-22) - ✅ Complete
+- ✅ Three-phase iterative development:
+  - Phase 1: Direct T5 JSON generation (systematic failure analysis)
+  - Phase 2: RAG-enhanced compositional architecture
+  - Phase 3: Function calling breakthrough
+- ✅ T5-small fine-tuning on function call generation
+- ✅ Format-agnostic intelligent parser implementation
+- ✅ SyllabusBuilder execution engine with pedagogical validation
+- ✅ RAG integration with component retrieval pipeline
 
-### Phase 4: Evaluation and Refinement (Weeks 23-26) - Framework Designed 📋
-- 📋 Technical evaluation metrics defined (ROUGE, BERTScore)
-- 📋 Educational quality assessment protocols established
-- 📋 Expert review framework designed
+### Phase 4: Evaluation and Refinement (Weeks 23-26) - 🚧 In Progress
+- ✅ Performance metrics: Reliable structural validity with high T5 utilization
+- ✅ Comparative analysis across three architectural phases
+- 🚧 Technical evaluation documentation
+- 📋 Educational quality expert review
 
-### Phase 5: Documentation and Finalization (Weeks 27-30) - In Progress 📝
-- 📝 Dissertation writing active (Introduction and Literature Review complete)
-- 📝 Chapter 3 (Ethical Considerations) ready to write
-- 📋 Technical documentation templates prepared
-- 📋 Presentation framework outlined
+### Phase 5: Documentation and Finalization (Weeks 27-30) - 🚧 In Progress
+- ✅ Dissertation: 14,952 words (115% of 13,000-word target)
+  - ✅ Introduction (1,210 words)
+  - ✅ Literature Review (5,156 words)
+  - ✅ Ethical Considerations (1,213 words)
+  - ✅ Methodology (2,933 words)
+  - ✅ Implementation (2,358 words)
+  - ✅ Annex A: Research Evolution (1,911 words)
+  - 🚧 Evaluation chapter (in progress)
+  - 📋 Learning & Reflection chapter
+  - 📋 Conclusion chapter
+- ✅ All Mermaid diagrams created and converted to PNG
+- 📋 Final presentation preparation
+
+## Implementation Highlights
+
+**Function Calling Architecture Components:**
+- `T5FunctionCallGenerator`: Neural function call generation
+- `FunctionCallParser`: Format-agnostic intelligent parsing with information extraction
+- `SyllabusBuilder`: Execution engine with educational validation
+- `RAGIntegratedSyllabusBuilder`: Component-aware syllabus construction
+- `ComponentRetrievalPipeline`: Vector database query and component retrieval
+
+**Key Files:**
+- `src/models/function_call_engine.py`: Core parser and generator
+- `src/models/rag_integrated_generator.py`: RAG integration
+- `src/training/t5_function_call_trainer.py`: T5 fine-tuning pipeline
+- `scripts/custom_input_demo.py`: Interactive demo
 
 ## Progress Summary
 
-**Academic Foundation**: Strong progress with comprehensive documentation, literature review, and dissertation writing underway.
+**Technical Achievement**: Successfully developed and implemented novel function calling architecture that achieves reliable structured generation while preserving T5 semantic intelligence.
 
-**Technical Implementation**: Architecture designed and documented, ready for implementation phase.
+**Academic Progress**: Dissertation writing substantially complete (115% of word count target), with core technical chapters finished and evaluation/conclusion chapters remaining.
 
-**Project Management**: 22 active tasks tracked across all phases with clear sprint planning.
+**Research Contribution**: Demonstrated that architectural innovation enables smaller models to achieve reliable structured generation without requiring parameter scaling.
 
-**Next Priority**: Transition from academic planning to technical implementation (Phase 2 data collection).
+**Next Priority**: Complete evaluation chapter documenting technical performance and educational quality assessment.
 
 ## Getting Started
 

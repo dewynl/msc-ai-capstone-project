@@ -2,74 +2,76 @@
 
 ```mermaid
 classDiagram
-    class FunctionCallSyllabusGenerator {
+    class T5FunctionCallGenerator {
         +model: T5ForConditionalGeneration
         +tokenizer: T5Tokenizer
-        +parser: FunctionCallParser
-        +generate_syllabus(requirements)
-        -preprocess_requirements(requirements)
-        -postprocess_output(generated_text)
+        +generate_function_calls(requirements)
     }
 
     class FunctionCallParser {
-        +parse_with_recovery(generated_text)
-        -parse_clean_functions(text)
-        -apply_repair_heuristics(text)
-        -parse_partial_functions(text)
-        +validate_function_syntax(func_call)
+        +parse_t5_output(t5_output)
+        -_extract_field(text, field_name)
+        -_extract_objectives(text)
+        -_extract_modules(text)
+        -_convert_to_function_calls(t5_output)
+        -_create_fallback_calls(t5_output)
     }
 
     class SyllabusBuilder {
-        +syllabus: Dict
-        +create_course(title, domain, level)
-        +add_objective(objective, bloom_level)
-        +add_module(title, description, hours)
-        +add_activity(title, description, bloom_level)
-        +add_assessment(title, type, hours)
-        +to_json() Dict
-        -validate_educational_coherence()
-        -apply_pedagogical_defaults()
+        +course_info: Dict
+        +learning_objectives: List
+        +modules: List
+        +activities: List
+        +assessments: List
+        +set_info(title, domain, level, duration, description)
+        +add_objective(objective)
+        +add_module(title, estimated_hours, description, key_concepts)
+        +add_activity(title, bloom_level, estimated_hours, description)
+        +add_assessment(title, assessment_type, estimated_hours, description)
+        +build() Dict
+        +to_json() str
+    }
+
+    class FunctionCallSyllabusGenerator {
+        +t5_generator: T5FunctionCallGenerator
+        +parser: FunctionCallParser
+        +generate_syllabus(requirements)
+    }
+
+    class RAGIntegratedSyllabusBuilder {
+        +rag_pipeline: ComponentRetrievalPipeline
+        +add_module_by_query(query, estimated_hours)
+        +add_activity_by_query(query, bloom_level, estimated_hours)
+        +add_assessment_by_query(query, assessment_type, estimated_hours)
     }
 
     class RAGIntegratedGenerator {
         +rag_pipeline: ComponentRetrievalPipeline
-        +function_generator: FunctionCallSyllabusGenerator
         +generate_syllabus_with_ids(requirements)
-        -retrieve_components(requirements)
-        -integrate_component_ids(syllabus, components)
     }
 
     class ComponentRetrievalPipeline {
         +vector_store: SyllabusComponentStore
         +retrieve_components(requirements, k_per_type)
-        -query_modules(query_text)
-        -query_activities(query_text)
-        -query_assessments(query_text)
     }
 
     class SyllabusComponentStore {
         +collection: ChromaDB
         +encoder: SentenceTransformer
-        +add_component(component_data)
         +search_similar(query, k)
-        +get_component_by_id(component_id)
     }
 
     %% Relationships
-    FunctionCallSyllabusGenerator --> FunctionCallParser
-    FunctionCallSyllabusGenerator --> SyllabusBuilder
-    RAGIntegratedGenerator --> FunctionCallSyllabusGenerator
-    RAGIntegratedGenerator --> ComponentRetrievalPipeline
-    ComponentRetrievalPipeline --> SyllabusComponentStore
-
-    %% Data flow annotations
-    FunctionCallSyllabusGenerator -.->|"Function Calls"| FunctionCallParser
-    FunctionCallParser -.->|"Parsed Functions"| SyllabusBuilder
-    SyllabusBuilder -.->|"Valid JSON"| FunctionCallSyllabusGenerator
-    ComponentRetrievalPipeline -.->|"Components + IDs"| RAGIntegratedGenerator
+    FunctionCallSyllabusGenerator --> T5FunctionCallGenerator : uses
+    FunctionCallSyllabusGenerator --> FunctionCallParser : uses
+    RAGIntegratedSyllabusBuilder --|> SyllabusBuilder : extends
+    RAGIntegratedSyllabusBuilder --> ComponentRetrievalPipeline : queries
+    RAGIntegratedGenerator --> RAGIntegratedSyllabusBuilder : creates
+    RAGIntegratedGenerator --> ComponentRetrievalPipeline : uses
+    ComponentRetrievalPipeline --> SyllabusComponentStore : queries
 
     %% Class styling
-    class FunctionCallSyllabusGenerator,SyllabusBuilder,RAGIntegratedGenerator {
+    class T5FunctionCallGenerator,FunctionCallSyllabusGenerator {
         fill:#e3f2fd
         stroke:#1976d2
     }
@@ -77,32 +79,38 @@ classDiagram
         fill:#fff3e0
         stroke:#f57c00
     }
-    class ComponentRetrievalPipeline,SyllabusComponentStore {
+    class SyllabusBuilder,RAGIntegratedSyllabusBuilder {
         fill:#f3e5f5
         stroke:#7b1fa2
+    }
+    class RAGIntegratedGenerator,ComponentRetrievalPipeline,SyllabusComponentStore {
+        fill:#e8f5e9
+        stroke:#388e3c
     }
 ```
 
 ## Description
 
-This class diagram shows the core architecture components of the function calling system:
+This class diagram shows the **actual** core architecture components as implemented:
 
-### **Primary Components:**
+### **T5 Generation Layer:**
+- **T5FunctionCallGenerator**: Loads T5 model and generates text output from requirements
+- **FunctionCallParser**: Intelligent parser that extracts information from any T5 output format and constructs valid function calls
 
-- **FunctionCallSyllabusGenerator**: Main orchestrator that coordinates T5 model, parsing, and syllabus building
-- **SyllabusBuilder**: Execution engine that validates and executes function calls to construct valid JSON
-- **FunctionCallParser**: Sophisticated parser with error recovery for processing T5-generated function calls
+### **Builder Layer:**
+- **SyllabusBuilder**: Core builder with methods to construct syllabus (set_info, add_objective, add_module, add_activity, add_assessment, build)
+- **RAGIntegratedSyllabusBuilder**: Extends SyllabusBuilder to add RAG-enhanced methods (add_module_by_query, etc.)
 
-### **RAG Integration:**
+### **Orchestration Layer:**
+- **FunctionCallSyllabusGenerator**: Combines T5 generation + parsing to produce syllabi
+- **RAGIntegratedGenerator**: High-level interface that creates RAGIntegratedSyllabusBuilder instances
 
-- **RAGIntegratedGenerator**: Combines function calling with component retrieval for database-ready output
-- **ComponentRetrievalPipeline**: Manages semantic search and component filtering
-- **SyllabusComponentStore**: Vector database interface for educational component storage and retrieval
+### **RAG Layer:**
+- **ComponentRetrievalPipeline**: Manages vector database queries for component retrieval
+- **SyllabusComponentStore**: ChromaDB interface with SentenceTransformer embeddings
 
-### **Key Innovation:**
-
-The architecture separates concerns effectively:
-- **T5 Model**: Semantic educational content generation
-- **Parser**: Syntax recovery and validation
-- **Builder**: Educational validation and JSON construction
-- **RAG**: Component retrieval with database IDs
+### **Key Architecture Points:**
+- Parser is format-agnostic - handles any T5 output
+- SyllabusBuilder has simple, clear methods (no validation methods shown because they don't exist)
+- RAG is integrated through inheritance (RAGIntegratedSyllabusBuilder extends SyllabusBuilder)
+- Functions query RAG during execution, not as a separate step

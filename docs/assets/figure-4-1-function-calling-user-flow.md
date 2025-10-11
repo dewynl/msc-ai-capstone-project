@@ -2,36 +2,37 @@
 
 ```mermaid
 graph TD
-    A[User Input:<br/>Course Requirements] --> B[T5 Model:<br/>Generate Function Calls]
-    B --> C{Function Call<br/>Parsing}
-    C -->|Success| D[SyllabusBuilder:<br/>Execute Functions]
-    C -->|Syntax Error| E[Error Recovery:<br/>Repair & Retry]
-    E --> D
-    D --> F[RAG Integration:<br/>Retrieve Components]
-    F --> G[Component Assembly:<br/>Add Database IDs]
-    G --> H[Validation:<br/>Educational Standards]
-    H --> I[Final JSON Output:<br/>Complete Syllabus]
+    A[User Input:<br/>Course Requirements] --> B[T5 Model:<br/>Generate Text Output]
+    B --> C[Intelligent Parser:<br/>Extract Information]
+    C --> D[Construct Valid<br/>Function Calls]
+    D --> E[Execute Functions]
+    E --> F[Build JSON Structure]
+    F --> G[Complete Syllabus]
+
+    %% RAG is embedded in function execution
+    E -.->|"Functions query RAG<br/>during execution"| RAG[RAG Component<br/>Retrieval]
+    RAG -.->|"Retrieved components"| E
 
     %% User interaction path
-    A -.->|"title: 'ML Course'<br/>domain: 'computer_science'<br/>level: 'intermediate'"| B
+    A -.->|"Title, Domain, Level"| B
 
-    %% Function call examples
-    B -.->|"create_course('ML Course', 'CS', 'intermediate')<br/>add_objective('Understand algorithms')<br/>add_module('Linear Regression', ...)"| C
+    %% T5 output (flexible format)
+    B -.->|"May be functions,<br/>JSON, or mixed"| C
 
-    %% Error recovery examples
-    E -.->|"Fix missing quotes<br/>Repair malformed parameters<br/>Apply intelligent defaults"| D
-
-    %% Component integration
-    F -.->|"Module IDs: [mod_123, mod_456]<br/>Activity IDs: [act_789]<br/>Assessment IDs: [ass_321]"| G
+    %% Parser extracts info
+    C -.->|"Extract fields<br/>using regex patterns"| D
 
     %% Final output
-    I -.->|"100% Valid JSON<br/>Database-Ready<br/>Component IDs Included"| J[Frontend Ready]
+    F -.->|"100% Valid JSON"| G
 
     style A fill:#e1f5fe
     style B fill:#fff3e0
-    style D fill:#f3e5f5
-    style I fill:#e8f5e8
-    style J fill:#fff9c4
+    style C fill:#ffe0b2
+    style D fill:#ffe0b2
+    style E fill:#f3e5f5
+    style RAG fill:#fff3e0
+    style F fill:#e8f5e8
+    style G fill:#fff9c4
 ```
 
 ## Description
@@ -39,12 +40,11 @@ graph TD
 This diagram illustrates the complete user experience flow for the function calling architecture:
 
 1. **User Input**: Simple course requirements (title, domain, level)
-2. **T5 Generation**: Model generates educational function calls instead of JSON
-3. **Parsing & Recovery**: Sophisticated error handling with intelligent repair
-4. **Function Execution**: SyllabusBuilder executes validated function calls
-5. **RAG Integration**: Retrieves relevant educational components with database IDs
-6. **Component Assembly**: Integrates components maintaining database relationships
-7. **Validation**: Applies educational standards and coherence checking
-8. **Output**: Guaranteed valid JSON ready for frontend consumption
+2. **T5 Generation**: Model generates text (may be function calls, JSON-like, or mixed format)
+3. **Intelligent Parser**: Extracts information using regex patterns (handles any T5 output format)
+4. **Function Construction**: Builds valid function calls from extracted information
+5. **Function Execution**: SyllabusBuilder executes guaranteed-valid function calls (RAG queries during execution)
+6. **Build JSON**: Assembles final JSON structure from executed functions
+7. **Output**: Guaranteed valid JSON syllabus
 
-**Key Innovation**: Separates semantic generation (T5's strength) from structural precision (programmatic construction).
+**Key Innovation**: Parser is format-agnostic - T5 can output ANY format (functions, JSON, text) and parser extracts the information and constructs valid function calls. This separates semantic generation (T5's strength) from structural precision (programmatic construction).
