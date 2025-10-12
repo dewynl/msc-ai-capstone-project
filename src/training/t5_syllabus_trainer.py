@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
 T5 Syllabus Generation Fine-tuning Script
-Fine-tune T5 model on syllabus generation task using our structured dataset
+Fine-tune T5 model on structured syllabus generation task using JSON format
 """
 
 import json
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Dict, List
 
 import torch
 from sklearn.model_selection import train_test_split
@@ -31,18 +31,20 @@ class SyllabusTrainingConfig:
     """Configuration for syllabus training"""
 
     model_name: str = "t5-small"
-    max_input_length: int = 512
-    max_target_length: int = 1024
-    train_batch_size: int = 4
-    eval_batch_size: int = 4
+    max_input_length: int = 512  # For JSON course requirements
+    max_target_length: int = (
+        2048  # Increased for complete JSON syllabus output
+    )
+    train_batch_size: int = 2  # Smaller batch due to longer sequences
+    eval_batch_size: int = 2
     learning_rate: float = 3e-4
     num_epochs: int = 3
     warmup_steps: int = 500
-    logging_steps: int = 100
-    save_steps: int = 500
-    eval_steps: int = 500
+    logging_steps: int = 50
+    save_steps: int = 250
+    eval_steps: int = 250
     output_dir: str = "./models/t5-syllabus-finetuned"
-    gradient_accumulation_steps: int = 4
+    gradient_accumulation_steps: int = 8  # Higher accumulation for smaller batches
 
 
 class SyllabusDataset(Dataset):
@@ -50,7 +52,7 @@ class SyllabusDataset(Dataset):
 
     def __init__(
         self,
-        examples: list[dict[str, str]],
+        examples: List[Dict[str, str]],
         tokenizer: T5Tokenizer,
         config: SyllabusTrainingConfig,
     ):
@@ -64,18 +66,24 @@ class SyllabusDataset(Dataset):
     def __getitem__(self, idx):
         example = self.examples[idx]
 
-        # Tokenize input (course requirements)
+        # Input: JSON course requirements with special prefix
+        input_text = f"generate syllabus: {example['input_json']}"
+
+        # Target: JSON syllabus structure
+        target_text = example["output_json"]
+
+        # Tokenize input (course requirements JSON)
         input_encoding = self.tokenizer(
-            example["input_text"],
+            input_text,
             max_length=self.config.max_input_length,
             padding="max_length",
             truncation=True,
             return_tensors="pt",
         )
 
-        # Tokenize target (syllabus template)
+        # Tokenize target (syllabus JSON)
         target_encoding = self.tokenizer(
-            example["target_text"],
+            target_text,
             max_length=self.config.max_target_length,
             padding="max_length",
             truncation=True,
@@ -98,116 +106,83 @@ class SyllabusTrainer:
         self.model = T5ForConditionalGeneration.from_pretrained(config.model_name)
 
         # Add special tokens if needed
-        special_tokens = {
-            "additional_special_tokens": [
-                "[WEEK]",
-                "[ASSESSMENT]",
-                "[OBJECTIVE]",
-                "[POLICY]",
-            ]
-        }
-        self.tokenizer.add_special_tokens(special_tokens)
+        special_tokens = ["<course>", "</course>", "<syllabus>", "</syllabus>"]
+        self.tokenizer.add_tokens(special_tokens)
         self.model.resize_token_embeddings(len(self.tokenizer))
 
-        logger.info(f"Initialized T5 model: {config.model_name}")
-        logger.info(f"Vocabulary size: {len(self.tokenizer)}")
-
-    def load_syllabus_data(self, data_path: str) -> list[dict[str, Any]]:
-        """Load syllabus dataset"""
-        logger.info(f"Loading syllabus data from: {data_path}")
+    def load_json_training_data(self, data_path: str) -> List[Dict[str, Any]]:
+        """Load JSON training dataset"""
+        logger.info(f"Loading JSON training data from: {data_path}")
 
         with open(data_path) as f:
-            syllabi = json.load(f)
+            training_examples = json.load(f)
 
-        logger.info(f"Loaded {len(syllabi)} syllabi")
-        return syllabi
+        logger.info(f"Loaded {len(training_examples)} JSON training examples")
+        return training_examples
 
     def prepare_training_examples(
-        self, syllabi: list[dict[str, Any]]
-    ) -> list[dict[str, str]]:
-        """Convert syllabus data into training examples"""
-        logger.info("Preparing training examples...")
+        self, json_examples: List[Dict[str, Any]]
+    ) -> List[Dict[str, str]]:
+        """Prepare training examples (already in correct format)"""
+        logger.info("Preparing JSON training examples...")
 
-        examples = []
+        # Filter out examples that are too long
+        filtered_examples = []
+        for example in json_examples:
+            input_length = len(example["input_json"])
+            output_length = len(example["output_json"])
 
-        for syllabus in syllabi:
-            course_info = syllabus["course_info"]
-            syllabus_template = syllabus["syllabus_template"]
-
-            # Create input text (course requirements)
-            input_text = self.format_course_input(course_info)
-
-            # Target text is the syllabus template
-            target_text = syllabus_template
-
-            examples.append(
-                {
-                    "input_text": input_text,
-                    "target_text": target_text,
-                    "course_id": syllabus.get("course_template_id", "unknown"),
-                }
-            )
-
-        logger.info(f"Created {len(examples)} training examples")
-        return examples
-
-    def format_course_input(self, course_info: dict[str, Any]) -> str:
-        """Format course information as input prompt"""
-
-        input_parts = [
-            f"Generate syllabus for: {course_info.get('title', '')}",
-            f"Domain: {course_info.get('department', '')} Level: {course_info.get('level', '')}",
-            f"Duration: {course_info.get('duration', 'semester')}",
-            f"Description: {course_info.get('description', '')}",
-        ]
-
-        # Add learning objectives
-        objectives = course_info.get("learning_objectives", [])
-        if objectives:
-            input_parts.append("Learning Objectives:")
-            for obj in objectives[:3]:  # Limit to 3 for input length
-                input_parts.append(f"- {obj}")
-
-        # Add target audience
-        if course_info.get("target_audience"):
-            input_parts.append(f"Target Audience: {course_info['target_audience']}")
-
-        return "\n".join(input_parts)
-
-    def split_data(
-        self, examples: list[dict[str, str]], test_size: float = 0.2
-    ) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
-        """Split data into train/validation sets"""
-
-        train_examples, val_examples = train_test_split(
-            examples, test_size=test_size, random_state=42, shuffle=True
-        )
+            # Check if they fit within our token limits (rough estimate: 4 chars per token)
+            if (
+                input_length < self.config.max_input_length * 4
+                and output_length < self.config.max_target_length * 4
+            ):
+                filtered_examples.append(example)
+            else:
+                logger.debug(
+                    f"Skipping example {example.get('original_id', 'unknown')}: too long"
+                )
 
         logger.info(
-            f"Split data: {len(train_examples)} train, {len(val_examples)} validation"
+            f"Filtered to {len(filtered_examples)} examples (removed {len(json_examples) - len(filtered_examples)} too long)"
         )
-        return train_examples, val_examples
+        return filtered_examples
 
     def train(self, data_path: str):
-        """Fine-tune T5 model on syllabus generation"""
+        """Train the JSON syllabus generation model"""
+        logger.info("🚀 Starting JSON T5 Syllabus Training")
 
         # Load and prepare data
-        syllabi = self.load_syllabus_data(data_path)
-        examples = self.prepare_training_examples(syllabi)
-        train_examples, val_examples = self.split_data(examples)
+        json_examples = self.load_json_training_data(data_path)
+        training_examples = self.prepare_training_examples(json_examples)
+
+        if len(training_examples) == 0:
+            raise ValueError("No training examples available!")
+
+        # Split into train/validation
+        train_examples, val_examples = train_test_split(
+            training_examples, test_size=0.1, random_state=42
+        )
+
+        logger.info(f"Training examples: {len(train_examples)}")
+        logger.info(f"Validation examples: {len(val_examples)}")
 
         # Create datasets
         train_dataset = SyllabusDataset(train_examples, self.tokenizer, self.config)
         val_dataset = SyllabusDataset(val_examples, self.tokenizer, self.config)
 
-        # Data collator
+        # Create data collator
         data_collator = DataCollatorForSeq2Seq(
-            tokenizer=self.tokenizer, model=self.model, padding=True
+            tokenizer=self.tokenizer,
+            model=self.model,
+            label_pad_token_id=-100,
+            pad_to_multiple_of=8,
         )
 
-        # Training arguments
+        # Setup training arguments
         training_args = TrainingArguments(
             output_dir=self.config.output_dir,
+            overwrite_output_dir=True,
             num_train_epochs=self.config.num_epochs,
             per_device_train_batch_size=self.config.train_batch_size,
             per_device_eval_batch_size=self.config.eval_batch_size,
@@ -217,25 +192,24 @@ class SyllabusTrainer:
             logging_steps=self.config.logging_steps,
             save_steps=self.config.save_steps,
             eval_steps=self.config.eval_steps,
-            eval_strategy="steps",  # Updated parameter name
+            eval_strategy="steps",
             save_strategy="steps",
             load_best_model_at_end=True,
             metric_for_best_model="eval_loss",
             greater_is_better=False,
-            remove_unused_columns=False,
             dataloader_pin_memory=False,
-            fp16=torch.cuda.is_available(),
-            report_to=[],  # Disable wandb logging
+            fp16=torch.cuda.is_available(),  # Use mixed precision if CUDA available
+            report_to=[],  # Disable wandb/tensorboard
         )
 
-        # Initialize trainer
+        # Create trainer
         trainer = Trainer(
             model=self.model,
             args=training_args,
             train_dataset=train_dataset,
             eval_dataset=val_dataset,
-            data_collator=data_collator,
             tokenizer=self.tokenizer,
+            data_collator=data_collator,
         )
 
         # Train the model
@@ -243,97 +217,165 @@ class SyllabusTrainer:
         trainer.train()
 
         # Save the final model
-        logger.info(f"Saving final model to: {self.config.output_dir}")
+        logger.info("Saving final model...")
         trainer.save_model()
         self.tokenizer.save_pretrained(self.config.output_dir)
 
-        return trainer
+        logger.info("✅ JSON T5 training complete!")
+        logger.info(f"📁 Model saved to: {self.config.output_dir}")
 
-    def generate_syllabus(
-        self, course_requirements: str, model_path: str = None
-    ) -> str:
-        """Generate syllabus using fine-tuned model"""
+    def generate_syllabus(self, course_requirements: Dict[str, Any]) -> Dict[str, Any]:
+        """Generate a syllabus from course requirements using the trained model"""
 
-        # Load fine-tuned model if path provided
-        if model_path:
-            self.model = T5ForConditionalGeneration.from_pretrained(model_path)
-            self.tokenizer = T5Tokenizer.from_pretrained(model_path)
+        # Convert requirements to JSON string
+        input_json = json.dumps(course_requirements, separators=(",", ":"))
+        input_text = f"generate syllabus: {input_json}"
 
         # Tokenize input
         inputs = self.tokenizer(
-            course_requirements,
+            input_text,
             max_length=self.config.max_input_length,
-            padding="max_length",
+            padding=True,
             truncation=True,
             return_tensors="pt",
         )
 
-        # Generate
+        # Generate output
         with torch.no_grad():
             outputs = self.model.generate(
-                inputs.input_ids,
-                attention_mask=inputs.attention_mask,
+                **inputs,
                 max_length=self.config.max_target_length,
+                min_length=100,  # Ensure minimum output length
                 num_beams=4,
                 early_stopping=True,
-                do_sample=False,
+                no_repeat_ngram_size=2,
+                do_sample=True,
                 temperature=0.7,
-                repetition_penalty=1.1,
+                pad_token_id=self.tokenizer.eos_token_id,
+                eos_token_id=self.tokenizer.eos_token_id,
             )
 
         # Decode output
         generated_text = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-        return generated_text
+
+        try:
+            # Parse JSON output
+            syllabus_json = json.loads(generated_text)
+            return syllabus_json
+        except json.JSONDecodeError as e:
+            logger.warning(f"Initial JSON parse failed: {e}")
+            logger.info("Attempting to repair JSON...")
+
+            # Attempt to repair common JSON issues
+            repaired_text = self._repair_json(generated_text)
+
+            try:
+                syllabus_json = json.loads(repaired_text)
+                logger.info("✅ JSON repair successful!")
+                return syllabus_json
+            except json.JSONDecodeError as e2:
+                logger.error(f"JSON repair failed: {e2}")
+                logger.error(f"Original: {generated_text}")
+                logger.error(f"Repaired: {repaired_text}")
+                return {
+                    "error": "Failed to generate valid JSON",
+                    "raw_output": generated_text,
+                    "repaired_attempt": repaired_text,
+                }
+
+    def _repair_json(self, text: str) -> str:
+        """Attempt to repair common JSON formatting issues"""
+        # Remove any leading/trailing whitespace
+        text = text.strip()
+
+        # Add opening brace if missing
+        if not text.startswith('{'):
+            text = '{' + text
+
+        # Add closing brace if missing
+        if not text.endswith('}'):
+            text = text + '}'
+
+        # Fix common field issues
+        text = text.replace('"prerequisite:"', '"prerequisites":')
+        text = text.replace('""target_audience"', '", "target_audience":')
+
+        # Fix missing quotes around values
+        import re
+        # Fix patterns like: "field":value without quotes around value
+        text = re.sub(r'"([^"]+)":\s*([^",}\]]+)(?=[,}])', r'"\1": "\2"', text)
+
+        # Fix double quotes issues
+        text = re.sub(r'""([^"]*)"', r'", "\1":', text)
+
+        # Ensure proper comma separation
+        text = re.sub(r'}\s*{', '},{', text)
+
+        return text
+
+
+def test_json_generation():
+    """Test the JSON generation with a sample"""
+
+    logger.info("🧪 Testing JSON syllabus generation")
+
+    # Sample course requirements for 3-domain system
+    test_requirements = {
+        "title": "Introduction to Machine Learning",
+        "domain": "computer_science",
+        "level": "intermediate",
+        "duration": "semester",
+        "description": "Fundamentals of machine learning algorithms and applications",
+        "learning_objectives": [
+            "Understand supervised and unsupervised learning",
+            "Implement basic ML algorithms",
+            "Evaluate model performance",
+        ],
+        "prerequisites": "Linear algebra, statistics, programming",
+        "target_audience": "Intermediate students in Computer Science",
+    }
+
+    # Load trained model
+    config = SyllabusTrainingConfig()
+    trainer = SyllabusTrainer(config)
+
+    try:
+        # Generate syllabus
+        result = trainer.generate_syllabus(test_requirements)
+
+        print("📝 Generated Syllabus JSON:")
+        print(json.dumps(result, indent=2))
+
+        return result
+
+    except Exception as e:
+        logger.error(f"Generation test failed: {e}")
+        return None
 
 
 def main():
     """Main training function"""
 
-    # Configuration
-    config = SyllabusTrainingConfig(
-        model_name="t5-small",
-        num_epochs=3,
-        train_batch_size=2,  # Smaller for memory
-        eval_batch_size=2,
-        learning_rate=3e-4,
-        output_dir="./models/t5-syllabus-finetuned",
-    )
+    # Setup configuration
+    config = SyllabusTrainingConfig()
 
-    # Initialize trainer
+    # Create trainer
     trainer = SyllabusTrainer(config)
 
-    # Path to syllabus dataset
-    data_path = "data/assembled_syllabi/syllabi_dataset.json"
+    # Train on clean JSON data
+    training_data_path = "data/training/t5_clean_training.json"
 
-    if not Path(data_path).exists():
-        logger.error(f"Dataset not found: {data_path}")
+    if not Path(training_data_path).exists():
+        logger.error(f"Training data not found: {training_data_path}")
+        logger.info("Please run create_clean_training_data.py first")
         return
 
-    # Train the model
-    try:
-        trainer.train(data_path)
-        logger.info("✅ Training completed successfully!")
+    # Start training
+    trainer.train(training_data_path)
 
-        # Test generation
-        test_input = """Generate syllabus for: Introduction to Machine Learning
-Domain: Computer Science Level: undergraduate
-Duration: semester
-Description: Fundamentals of machine learning algorithms and applications
-Learning Objectives:
-- Understand supervised and unsupervised learning
-- Implement basic ML algorithms
-- Evaluate model performance"""
-
-        logger.info("Testing generation with fine-tuned model...")
-        generated = trainer.generate_syllabus(test_input, config.output_dir)
-        logger.info("Generated syllabus preview:")
-        logger.info(generated[:500] + "..." if len(generated) > 500 else generated)
-
-    except Exception as e:
-        logger.error(f"Training failed: {e}")
-        import traceback
-
-        traceback.print_exc()
+    # Test generation
+    logger.info("\n" + "=" * 60)
+    test_json_generation()
 
 
 if __name__ == "__main__":

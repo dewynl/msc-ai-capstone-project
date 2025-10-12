@@ -28,9 +28,17 @@ class SyllabusComponentStore:
         text_parts = [
             component.get("title", ""),
             component.get("description", ""),
-            component.get("domain", ""),
+            component.get("domain", ""),  # Updated for simplified schema
             " ".join(component.get("learning_objectives", [])),
         ]
+
+        # Add component-specific fields for better encoding
+        if "bloom_level" in component:
+            text_parts.append(component.get("bloom_level", ""))
+        if "assessment_type" in component:
+            text_parts.append(component.get("assessment_type", ""))
+        if "key_concepts" in component:
+            text_parts.extend(component.get("key_concepts", []))
 
         return " ".join(filter(None, text_parts))
 
@@ -52,7 +60,9 @@ class SyllabusComponentStore:
             metadata = {
                 "component_type": component_type,
                 "title": component.get("title", ""),
-                "domain": component.get("domain", ""),
+                "domain": component.get("domain", ""),  # Updated for simplified schema
+                "difficulty": component.get("difficulty", ""),
+                "estimated_hours": str(component.get("estimated_hours", 0)),
                 "original_data": json.dumps(component),  # Store full component data
             }
             metadatas.append(metadata)
