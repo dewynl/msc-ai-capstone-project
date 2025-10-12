@@ -1,46 +1,59 @@
 #!/usr/bin/env python3
 """
-Rebuild ChromaDB Vector Store
+Rebuild vector store with simplified component schema
+Loads extracted components and reindexes them in ChromaDB
 """
 
+import json
 import sys
 from pathlib import Path
 
-from rag.component_indexer import build_component_store
-
-# Add src to path
 sys.path.append(str(Path(__file__).parent.parent / "src"))
+
+from rag.vector_store import SyllabusComponentStore
+
+
+def load_components(file_path: Path) -> list:
+    """Load components from JSON file"""
+    if not file_path.exists():
+        print(f"Warning: {file_path} does not exist")
+        return []
+
+    with open(file_path, 'r') as f:
+        components = json.load(f)
+
+    print(f"Loaded {len(components)} components from {file_path.name}")
+    return components
 
 
 def main():
-    print("Rebuilding ChromaDB vector store...")
-    print("This will take a few minutes to process ~98k components")
-    print("-" * 50)
+    """Rebuild vector store with extracted components"""
+    print("🔄 Rebuilding Vector Store")
+    print("=" * 30)
 
-    try:
-        # Build the component store (this will create new ChromaDB)
-        store = build_component_store(persist_directory="./chroma_db")
+    store = SyllabusComponentStore(persist_directory="./chroma_db")
+    data_dir = Path("data/components")
 
-        # Get stats
-        stats = store.get_collection_stats()
-        print("Vector store rebuilt successfully!")
-        print(f"Total components indexed: {stats['total_components']}")
+    activities = load_components(data_dir / "activities.json")
+    assessments = load_components(data_dir / "assessments.json")
+    modules = load_components(data_dir / "modules.json")
 
-        # Quick test search
-        print("\nTesting search functionality...")
-        results = store.search("machine learning algorithms", k=3)
-        print(f"Test search returned {len(results)} results")
-        for i, (component, score) in enumerate(results, 1):
-            print(f"  {i}. {component.get('title', 'N/A')[:50]} (score: {score:.3f})")
+    total_components = len(activities) + len(assessments) + len(modules)
+    print(f"\n📊 Components to index: {total_components}")
 
-        print("\nVector store is ready for use!")
+    if activities:
+        store.add_components(activities, "activities")
 
-    except Exception as e:
-        print(f"Error rebuilding vector store: {e}")
-        import traceback
+    if assessments:
+        store.add_components(assessments, "assessments")
 
-        traceback.print_exc()
+    if modules:
+        store.add_components(modules, "modules")
+    stats = store.get_collection_stats()
+    print(f"\n✅ Vector store rebuilt with {stats['total_components']} components")
+
+    return store
 
 
 if __name__ == "__main__":
-    main()
+    store = main()
