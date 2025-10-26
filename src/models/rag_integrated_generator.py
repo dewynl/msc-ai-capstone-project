@@ -13,7 +13,6 @@ from .syllabus_builder import SyllabusBuilder
 
 try:
     from src.rag.retrieval_pipeline import ComponentRetrievalPipeline
-    from src.rag.vector_store import SyllabusComponentStore
 except ImportError as e:
     print(f"⚠️  RAG components not available: {e}")
     print("This demo will show the structure with mock data")
@@ -252,11 +251,15 @@ class RAGIntegratedGenerator:
     """Complete generator that combines T5 + Function Calls + RAG retrieval."""
 
     def __init__(self):
-        """Initialize with RAG pipeline if available."""
+        """Initialize with RAG pipeline, building vector store if needed."""
         self.rag_pipeline = None
         try:
-            # Try to initialize RAG components
-            component_store = SyllabusComponentStore()
+            # Build or load ChromaDB vector store from component files
+            # This will build on first run, then use cached version
+            from src.rag.component_indexer import build_component_store
+
+            print("🔧 Initializing RAG vector store...")
+            component_store = build_component_store()
             self.rag_pipeline = ComponentRetrievalPipeline(component_store)
             print("✅ RAG pipeline initialized successfully")
         except Exception as e:

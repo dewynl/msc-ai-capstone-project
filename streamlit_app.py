@@ -56,9 +56,15 @@ st.markdown(
 # ============================================================================
 # CACHED RESOURCES
 # ============================================================================
-@st.cache_resource
+@st.cache_resource(
+    show_spinner="🔧 Building RAG vector database from 3,346 components... This may take 2-3 minutes on first load."
+)
 def load_generator():
-    """Load RAG-integrated generator (cached to avoid reloading)."""
+    """Load RAG-integrated generator (cached to avoid reloading).
+
+    On first load after deployment, this builds the ChromaDB vector store
+    from component JSON files. Subsequent loads use the cached version.
+    """
     return RAGIntegratedGenerator()
 
 
@@ -442,6 +448,13 @@ def main():
     render_example_presets()
 
     st.markdown("---")
+
+    # Information callout about RAG database build
+    st.info(
+        "ℹ️ **First Load Notice**: On initial deployment or after app restarts, the RAG vector "
+        "database is built from 3,346 components (~2-3 minutes). Subsequent uses are instant via caching. "
+        "During build, RAG-retrieved components will be available."
+    )
 
     # Main generation interface
     col1, col2 = st.columns([1, 1])
