@@ -232,7 +232,7 @@
   },
   {
     "assessment_id": "25748d64-6aa5-4f04-920c-aa78d2aec72e",
-    "title": "Introduction to Programming Concepts Presentation - Students Will",
+    "title": "Introduction to Programming Concepts Presentation - Students Will (Computer Science - Beginner)",
     "description": "Students will create and deliver a 10-minute presentation explaining fundamental programming concepts to their peers, demonstrating understanding of basic computer science principles through clear communication and practical examples.",
     "domain": "computer_science",
     "assessment_type": "presentation",
@@ -254,7 +254,7 @@
   },
   {
     "assessment_id": "ce738a3c-be4d-4a23-827d-4d6d60596814",
-    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Create",
+    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Create (Mathematics - Beginner)",
     "description": "Students create a comprehensive portfolio demonstrating mastery of advanced mathematical concepts through three distinct real-world modeling projects, showcasing problem formulation, solution methodology, analysis, and communication of mathematical findings.",
     "domain": "mathematics",
     "assessment_type": "assignment",
@@ -299,7 +299,7 @@
   },
   {
     "assessment_id": "c863e574-45bd-4bdd-9571-cce83f5fd0d8",
-    "title": "Personal Portfolio Website Development Project - Students Will",
+    "title": "Personal Portfolio Website Development Project - Students Will (Computer Science - Beginner)",
     "description": "Students will create a personal portfolio website using HTML, CSS, and JavaScript to showcase their skills, projects, and professional information. This assessment evaluates fundamental web development concepts, coding practices, and project presentation skills.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -346,7 +346,7 @@
   },
   {
     "assessment_id": "6e43255f-5855-49d2-a6b1-f7f59bac1a8a",
-    "title": "Introduction to Programming Concepts Presentation - Students Will",
+    "title": "Introduction to Programming Concepts Presentation - Students Will (Computer Science - Beginner) #2",
     "description": "Students will create and deliver a 10-minute presentation explaining fundamental programming concepts using real-world analogies and visual aids, demonstrating their understanding of basic computer science principles to their peers.",
     "domain": "computer_science",
     "assessment_type": "presentation",
@@ -661,7 +661,7 @@
   },
   {
     "assessment_id": "1d4b7be7-12c9-40ca-96f5-6e9d11d9602e",
-    "title": "Introduction to Programming Concepts Presentation - Students Will",
+    "title": "Introduction to Programming Concepts Presentation - Students Will (Computer Science - Beginner) #3",
     "description": "Students will create and deliver a 10-minute presentation explaining a fundamental programming concept to their peers, demonstrating understanding through examples, analogies, and simple code demonstrations.",
     "domain": "computer_science",
     "assessment_type": "presentation",
@@ -683,7 +683,7 @@
   },
   {
     "assessment_id": "97c8d6ca-a173-4cab-989f-af98ca604acd",
-    "title": "Beginner Programming Portfolio: Personal Calculator Project - Students Will",
+    "title": "Beginner Programming Portfolio: Personal Calculator Project - Students Will (Computer Science - Beginner)",
     "description": "Students will create a comprehensive portfolio documenting the development of a personal calculator application using Python. The portfolio will include code implementations, documentation, testing evidence, and reflection on the programming process.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -751,7 +751,7 @@
   },
   {
     "assessment_id": "e9ce206d-180b-4519-a11b-c0d96020c79a",
-    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Will",
+    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Will (Mathematics - Beginner)",
     "description": "Students will create a comprehensive portfolio demonstrating mastery of advanced mathematical concepts through three distinct real-world modeling projects, showcasing problem-solving methodology, mathematical rigor, and practical application across calculus, linear algebra, and differential equations domains.",
     "domain": "mathematics",
     "assessment_type": "assignment",
@@ -1042,7 +1042,7 @@
   },
   {
     "assessment_id": "c3a8142c-3f42-4c9f-8719-4d777cea7e98",
-    "title": "Advanced Algorithm Design and Complexity Analysis Quiz - Comprehensive Assessment",
+    "title": "Advanced Algorithm Design and Complexity Analysis Quiz - Comprehensive Assessment (Computer Science - Beginner)",
     "description": "A comprehensive assessment evaluating students' ability to design efficient algorithms, analyze time and space complexity, and solve optimization problems using advanced data structures and algorithmic paradigms.",
     "domain": "computer_science",
     "assessment_type": "quiz",
@@ -1197,7 +1197,7 @@
   },
   {
     "assessment_id": "1263732c-ab09-4147-b392-18b936720bab",
-    "title": "Advanced Calculus and Linear Algebra Integration Exam - Comprehensive Examination",
+    "title": "Advanced Calculus and Linear Algebra Integration Exam - Comprehensive Examination (Mathematics - Beginner)",
     "description": "A comprehensive examination testing students' ability to apply advanced calculus concepts (multivariable calculus, optimization, and differential equations) in conjunction with linear algebra techniques to solve complex mathematical problems. Students will demonstrate mastery of theoretical concepts and practical problem-solving skills.",
     "domain": "mathematics",
     "assessment_type": "exam",
@@ -1219,7 +1219,7 @@
   },
   {
     "assessment_id": "0784183f-d40c-4bbb-bf50-35fde583e415",
-    "title": "Advanced Calculus and Linear Algebra Integration Exam - Comprehensive Examination",
+    "title": "Advanced Calculus and Linear Algebra Integration Exam - Comprehensive Examination (Mathematics - Beginner) #2",
     "description": "A comprehensive examination assessing students' ability to apply advanced calculus concepts including multivariable optimization, vector calculus, and linear transformations to solve complex real-world problems. Students will demonstrate mastery of theoretical concepts and computational skills through proof-based and application-based questions.",
     "domain": "mathematics",
     "assessment_type": "exam",
@@ -1309,7 +1309,7 @@
   },
   {
     "assessment_id": "f7074721-c760-4480-a150-76e360ce581a",
-    "title": "Customer Churn Prediction and Business Impact Analysis - Students Will",
+    "title": "Customer Churn Prediction and Business Impact Analysis - Students Will (Computer Science - Beginner)",
     "description": "Students will build a complete machine learning pipeline to predict customer churn for a telecommunications company, including data preprocessing, feature engineering, model development, evaluation, and business recommendations. This project assesses both technical data science skills and business communication abilities.",
     "domain": "computer_science",
     "assessment_type": "project",
@@ -1601,7 +1601,7 @@
   },
   {
     "assessment_id": "e2897732-c66d-4638-ba05-82e54f47a17f",
-    "title": "Advanced Calculus and Linear Algebra Integration Exam - Comprehensive Examination",
+    "title": "Advanced Calculus and Linear Algebra Integration Exam - Comprehensive Examination (Mathematics - Beginner) #3",
     "description": "Comprehensive examination assessing students' ability to solve complex problems involving multivariable calculus, optimization, eigenvalue problems, and real-world applications requiring integration of calculus and linear algebra concepts.",
     "domain": "mathematics",
     "assessment_type": "exam",
@@ -1781,7 +1781,7 @@
   },
   {
     "assessment_id": "f6429365-ed99-4a71-b281-380e53096e60",
-    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Will",
+    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Will (Mathematics - Beginner) #2",
     "description": "Students will develop a comprehensive portfolio demonstrating their ability to apply advanced mathematical concepts to solve complex real-world problems. The portfolio will include three distinct mathematical models using different approaches: optimization, differential equations, and statistical analysis.",
     "domain": "mathematics",
     "assessment_type": "assignment",
@@ -2348,7 +2348,7 @@
   },
   {
     "assessment_id": "464c531b-6162-4524-8c01-c861e81b1549",
-    "title": "Data Structures and Algorithm Analysis Quiz - Comprehensive Quiz",
+    "title": "Data Structures and Algorithm Analysis Quiz - Comprehensive Quiz (Computer Science - Beginner)",
     "description": "A comprehensive quiz assessing students' understanding of fundamental data structures (arrays, linked lists, stacks, queues, trees, hash tables) and their ability to analyze algorithm complexity, implement basic operations, and solve computational problems using appropriate data structures.",
     "domain": "computer_science",
     "assessment_type": "quiz",
@@ -2551,7 +2551,7 @@
   },
   {
     "assessment_id": "12823ebc-0443-4523-91b7-a26386ad423c",
-    "title": "Personal Portfolio Website Development Project - Students Will",
+    "title": "Personal Portfolio Website Development Project - Students Will (Computer Science - Beginner) #2",
     "description": "Students will create a complete personal portfolio website using HTML, CSS, and basic JavaScript to demonstrate fundamental web development skills, including semantic markup, responsive design, styling, and interactive elements.",
     "domain": "computer_science",
     "assessment_type": "project",
@@ -2754,7 +2754,7 @@
   },
   {
     "assessment_id": "248f531f-e051-4dcf-b93d-2089c1628b9e",
-    "title": "Personal Portfolio Website Development Project - Students Will",
+    "title": "Personal Portfolio Website Development Project - Students Will (Computer Science - Beginner) #3",
     "description": "Students will create a responsive personal portfolio website using HTML, CSS, and basic JavaScript. The project assesses fundamental web development skills including semantic markup, styling, responsive design, and basic interactivity while showcasing their programming journey and projects.",
     "domain": "computer_science",
     "assessment_type": "project",
@@ -2799,7 +2799,7 @@
   },
   {
     "assessment_id": "2b415446-c51e-490a-8403-8699bb62d490",
-    "title": "Programming Paradigms Discussion: Procedural vs Object-Oriented Programming - Students Will",
+    "title": "Programming Paradigms Discussion: Procedural vs Object-Oriented Programming - Students Will (Computer Science - Beginner)",
     "description": "Students will engage in a structured online discussion comparing procedural and object-oriented programming paradigms, demonstrating understanding through explanations, code examples, and peer responses.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -2843,7 +2843,7 @@
   },
   {
     "assessment_id": "b53b2201-fe73-4420-840c-654eef357948",
-    "title": "Full-Stack Web Application Development Portfolio - Students Design,",
+    "title": "Full-Stack Web Application Development Portfolio - Students Design, (Computer Science - Beginner)",
     "description": "Students design, implement, and deploy a complete full-stack web application demonstrating advanced software engineering principles, database design, API development, security implementation, and system architecture decisions. The portfolio includes the working application, comprehensive documentation, and reflective analysis of technical choices.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -3027,7 +3027,7 @@
   },
   {
     "assessment_id": "0cbd2398-2a85-4060-95c1-89c17f8d92e6",
-    "title": "Personal Portfolio Website Development Project - Students Will",
+    "title": "Personal Portfolio Website Development Project - Students Will (Computer Science - Beginner) #4",
     "description": "Students will create a complete personal portfolio website using HTML, CSS, and basic JavaScript to demonstrate fundamental web development skills, including responsive design, user experience principles, and basic interactivity.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -3230,7 +3230,7 @@
   },
   {
     "assessment_id": "9b8b2a86-bd4d-47a5-8edb-8f6b73ef8dc8",
-    "title": "Software Development Fundamentals Quiz - Comprehensive Quiz",
+    "title": "Software Development Fundamentals Quiz - Comprehensive Quiz (Computer Science - Beginner)",
     "description": "A comprehensive quiz assessing foundational knowledge of software development concepts including programming principles, version control, debugging techniques, and software development lifecycle phases. Students will demonstrate understanding through multiple choice, short answer, and code analysis questions.",
     "domain": "computer_science",
     "assessment_type": "quiz",
@@ -3296,7 +3296,7 @@
   },
   {
     "assessment_id": "bf6e5a5f-8df7-4158-a181-4fa428178537",
-    "title": "Customer Churn Prediction Analysis Lab Report - Students Will",
+    "title": "Customer Churn Prediction Analysis Lab Report - Students Will (Computer Science - Beginner)",
     "description": "Students will conduct a complete data science workflow to predict customer churn using a telecommunications dataset. This includes data exploration, preprocessing, feature engineering, model development, evaluation, and business recommendations.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -3342,7 +3342,7 @@
   },
   {
     "assessment_id": "a532201d-461f-4999-b123-2ac24e0f3caa",
-    "title": "Personal Portfolio Website Development Project - Students Will",
+    "title": "Personal Portfolio Website Development Project - Students Will (Computer Science - Beginner) #5",
     "description": "Students will create a responsive personal portfolio website using HTML, CSS, and JavaScript to demonstrate fundamental web development skills, proper code structure, and basic programming logic.",
     "domain": "computer_science",
     "assessment_type": "project",
@@ -3454,7 +3454,7 @@
   },
   {
     "assessment_id": "67214fc4-d696-4f02-b445-0d32eed3a093",
-    "title": "Customer Churn Analysis and Prediction Project - Students Will",
+    "title": "Customer Churn Analysis and Prediction Project - Students Will (Mathematics - Beginner)",
     "description": "Students will analyze a telecommunications customer dataset to identify churn patterns, perform exploratory data analysis, build predictive models, and present actionable business recommendations. This comprehensive project assesses data cleaning, visualization, statistical analysis, and machine learning implementation skills.",
     "domain": "mathematics",
     "assessment_type": "project",
@@ -3500,7 +3500,7 @@
   },
   {
     "assessment_id": "350488d7-2306-4e9a-a716-e5c8fa2bfbd5",
-    "title": "Customer Churn Analysis Lab Report - Students Will",
+    "title": "Customer Churn Analysis Lab Report - Students Will (Mathematics - Beginner)",
     "description": "Students will conduct a complete data science workflow analyzing customer churn data, from exploratory data analysis through model implementation and evaluation. The lab report assesses skills in data preprocessing, statistical analysis, machine learning modeling, and communication of findings.",
     "domain": "mathematics",
     "assessment_type": "assignment",
@@ -3658,7 +3658,7 @@
   },
   {
     "assessment_id": "b41badbc-44a5-45c0-864c-54171da04471",
-    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Will",
+    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Will (Mathematics - Intermediate)",
     "description": "Students will develop a comprehensive portfolio demonstrating mastery of advanced mathematical concepts through three real-world modeling projects spanning calculus, statistics, and linear algebra applications. Each project must include problem formulation, mathematical analysis, solution implementation, and critical reflection.",
     "domain": "mathematics",
     "assessment_type": "assignment",
@@ -3703,7 +3703,7 @@
   },
   {
     "assessment_id": "0d7b8b82-70b7-4f66-b7f3-733d0dbbd29a",
-    "title": "Programming Paradigms Discussion: Procedural vs Object-Oriented Programming - Students Will",
+    "title": "Programming Paradigms Discussion: Procedural vs Object-Oriented Programming - Students Will (Computer Science - Intermediate)",
     "description": "Students will participate in a structured online discussion comparing procedural and object-oriented programming paradigms, analyze code examples, and evaluate the advantages and disadvantages of each approach for different programming scenarios.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -3860,7 +3860,7 @@
   },
   {
     "assessment_id": "06ce3a34-5911-4717-8e8a-3480e2583994",
-    "title": "Advanced Algorithm Design and Complexity Analysis Quiz - Comprehensive Assessment",
+    "title": "Advanced Algorithm Design and Complexity Analysis Quiz - Comprehensive Assessment (Computer Science - Intermediate)",
     "description": "A comprehensive assessment evaluating students' mastery of advanced algorithmic concepts including dynamic programming optimization, graph algorithm complexity analysis, and NP-completeness proofs. Students must demonstrate both theoretical understanding and practical implementation skills.",
     "domain": "computer_science",
     "assessment_type": "quiz",
@@ -4308,7 +4308,7 @@
   },
   {
     "assessment_id": "30036cd3-03e9-486c-aad0-4a27dbbcaa5a",
-    "title": "Customer Churn Prediction Analysis Lab Report - Students Will",
+    "title": "Customer Churn Prediction Analysis Lab Report - Students Will (Computer Science - Intermediate)",
     "description": "Students will conduct a complete data science pipeline analysis on a customer churn dataset, including exploratory data analysis, feature engineering, model building, evaluation, and business recommendations. This assessment evaluates practical application of machine learning techniques and communication of findings.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -4894,7 +4894,7 @@
   },
   {
     "assessment_id": "2cd8bc86-c7bc-4076-bde1-5c7299781d90",
-    "title": "Introduction to Programming Concepts Presentation - Students Will",
+    "title": "Introduction to Programming Concepts Presentation - Students Will (Computer Science - Intermediate)",
     "description": "Students will create and deliver a 10-minute presentation explaining fundamental programming concepts to their peers, demonstrating understanding of basic programming terminology, logic structures, and real-world applications through clear explanations and practical examples.",
     "domain": "computer_science",
     "assessment_type": "presentation",
@@ -5010,7 +5010,7 @@
   },
   {
     "assessment_id": "359e4fbf-53df-4432-a966-44f511dae828",
-    "title": "Customer Churn Prediction and Business Impact Analysis - Students Will",
+    "title": "Customer Churn Prediction and Business Impact Analysis - Students Will (Computer Science - Intermediate)",
     "description": "Students will build an end-to-end machine learning solution to predict customer churn using a telecommunications dataset, including data preprocessing, feature engineering, model development, evaluation, and business recommendations.",
     "domain": "computer_science",
     "assessment_type": "project",
@@ -5126,7 +5126,7 @@
   },
   {
     "assessment_id": "16cc33f2-744b-4729-b788-e4cb7139c78c",
-    "title": "Data Structures and Algorithm Analysis Practical Exam - Students Will",
+    "title": "Data Structures and Algorithm Analysis Practical Exam - Students Will (Computer Science - Intermediate)",
     "description": "Students will demonstrate proficiency in implementing, analyzing, and optimizing fundamental data structures and algorithms through coding problems and theoretical analysis. Assessment covers binary search trees, hash tables, sorting algorithms, and time complexity analysis.",
     "domain": "computer_science",
     "assessment_type": "exam",
@@ -5194,7 +5194,7 @@
   },
   {
     "assessment_id": "19356319-08af-43ba-9c2b-c384b66ee060",
-    "title": "Software Development Fundamentals Quiz - Comprehensive Quiz",
+    "title": "Software Development Fundamentals Quiz - Comprehensive Quiz (Computer Science - Intermediate)",
     "description": "A comprehensive quiz assessing beginner-level understanding of core software development concepts including programming fundamentals, development lifecycle, basic debugging, and coding best practices.",
     "domain": "computer_science",
     "assessment_type": "quiz",
@@ -5330,7 +5330,7 @@
   },
   {
     "assessment_id": "4e6120b2-6240-4b7e-8893-67b555ce0d0e",
-    "title": "Introduction to Programming Fundamentals Exam - Comprehensive Written",
+    "title": "Introduction to Programming Fundamentals Exam - Comprehensive Written (Computer Science - Intermediate)",
     "description": "A comprehensive written and practical exam assessing students' understanding of basic programming concepts, including variables, data types, control structures, functions, and simple problem-solving using pseudocode and basic Python syntax.",
     "domain": "computer_science",
     "assessment_type": "exam",
@@ -5399,7 +5399,7 @@
   },
   {
     "assessment_id": "e7a354ba-badb-47d5-b090-83056b626ae7",
-    "title": "Data Structures and Algorithm Analysis Practical Exam - Students Will",
+    "title": "Data Structures and Algorithm Analysis Practical Exam - Students Will (Computer Science - Intermediate) #2",
     "description": "Students will demonstrate their understanding of fundamental data structures by implementing solutions to computational problems, analyzing time/space complexity, and explaining their design decisions through both code implementation and written analysis.",
     "domain": "computer_science",
     "assessment_type": "exam",
@@ -5422,7 +5422,7 @@
   },
   {
     "assessment_id": "9f052c17-7808-4cc6-b47b-d5cbad73a3bf",
-    "title": "Beginner Programming Portfolio: Personal Calculator Project - Students Will",
+    "title": "Beginner Programming Portfolio: Personal Calculator Project - Students Will (Computer Science - Intermediate)",
     "description": "Students will create a comprehensive portfolio documenting their development of a personal calculator application using Python. The portfolio will include code files, documentation, reflection essays, and demonstration materials showcasing their understanding of fundamental programming concepts.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -5516,7 +5516,7 @@
   },
   {
     "assessment_id": "1a934aa5-3f18-4efe-ae58-a0a7d7f8aab0",
-    "title": "Advanced Calculus and Linear Algebra Integration Exam - Comprehensive Examination",
+    "title": "Advanced Calculus and Linear Algebra Integration Exam - Comprehensive Examination (Mathematics - Intermediate)",
     "description": "Comprehensive examination assessing students' mastery of multivariable calculus, linear transformations, eigenvalue problems, and optimization techniques through both computational problems and theoretical proofs.",
     "domain": "mathematics",
     "assessment_type": "exam",
@@ -5562,7 +5562,7 @@
   },
   {
     "assessment_id": "7e3e765a-afc7-4d13-9483-b16b53dd5e8d",
-    "title": "Customer Churn Prediction Analysis Lab Report - Students Will",
+    "title": "Customer Churn Prediction Analysis Lab Report - Students Will (Computer Science - Intermediate) #2",
     "description": "Students will perform a complete data science workflow to analyze customer churn using a telecommunications dataset. They must conduct exploratory data analysis, implement feature engineering, build and compare multiple machine learning models, and present actionable business insights through a comprehensive lab report.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -5673,7 +5673,7 @@
   },
   {
     "assessment_id": "6478648a-3362-4794-b20a-cdee4df64283",
-    "title": "Customer Churn Prediction Analysis Lab Report - Students Will",
+    "title": "Customer Churn Prediction Analysis Lab Report - Students Will (Computer Science - Intermediate) #3",
     "description": "Students will conduct a complete data science workflow to predict customer churn using a telecommunications dataset. This assessment evaluates data preprocessing, exploratory data analysis, feature engineering, model development, and business interpretation skills through a comprehensive lab report.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -5900,7 +5900,7 @@
   },
   {
     "assessment_id": "87075e97-7c6d-4080-8091-b9a807b5a8f5",
-    "title": "Data Structures and Algorithm Analysis Practical Exam - Students Will",
+    "title": "Data Structures and Algorithm Analysis Practical Exam - Students Will (Computer Science - Intermediate) #3",
     "description": "Students will demonstrate their understanding of fundamental data structures and algorithm analysis by implementing solutions to computational problems and analyzing their efficiency. The assessment covers linked lists, binary trees, sorting algorithms, and Big O notation through both coding and theoretical analysis.",
     "domain": "computer_science",
     "assessment_type": "exam",
@@ -6147,7 +6147,7 @@
   },
   {
     "assessment_id": "e1740990-091a-4834-9a88-5ac5c24b141c",
-    "title": "Full-Stack Web Application Development Portfolio - Students Design,",
+    "title": "Full-Stack Web Application Development Portfolio - Students Design, (Computer Science - Intermediate)",
     "description": "Students design, implement, and deploy a complete full-stack web application demonstrating mastery of software engineering principles, database design, API development, front-end frameworks, security practices, and deployment strategies. The portfolio includes source code, documentation, testing suite, and reflection analysis.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -6350,7 +6350,7 @@
   },
   {
     "assessment_id": "901bc2f1-e939-4de5-8f3a-108855dc3483",
-    "title": "Introduction to Programming Fundamentals Exam - Comprehensive Written",
+    "title": "Introduction to Programming Fundamentals Exam - Comprehensive Written (Computer Science - Intermediate) #2",
     "description": "A comprehensive written and practical exam assessing students' understanding of basic programming concepts including variables, control structures, functions, and simple algorithms using Python syntax",
     "domain": "computer_science",
     "assessment_type": "exam",
@@ -6373,7 +6373,7 @@
   },
   {
     "assessment_id": "42174474-7deb-4072-893c-919b5ea90a0c",
-    "title": "Data Structures and Algorithm Analysis Quiz - Comprehensive Quiz",
+    "title": "Data Structures and Algorithm Analysis Quiz - Comprehensive Quiz (Computer Science - Intermediate)",
     "description": "A comprehensive quiz assessing students' understanding of fundamental data structures (arrays, linked lists, stacks, queues, trees) and their ability to analyze algorithm complexity using Big O notation. Students will solve problems involving implementation concepts, trace through algorithms, and evaluate performance characteristics.",
     "domain": "computer_science",
     "assessment_type": "quiz",
@@ -6395,7 +6395,7 @@
   },
   {
     "assessment_id": "610f3dcb-8c9d-4b4e-811d-f1b59e86563a",
-    "title": "Introduction to Programming Fundamentals Exam - Comprehensive Written",
+    "title": "Introduction to Programming Fundamentals Exam - Comprehensive Written (Computer Science - Intermediate) #3",
     "description": "A comprehensive written examination testing students' understanding of basic programming concepts including variables, data types, control structures, functions, and problem-solving using pseudocode and simple Python syntax.",
     "domain": "computer_science",
     "assessment_type": "exam",
@@ -6621,7 +6621,7 @@
   },
   {
     "assessment_id": "1253e7de-0b0b-4b94-850b-48a4d654f2aa",
-    "title": "Mathematical Modeling of Real-World Optimization Problems - Students Will",
+    "title": "Mathematical Modeling of Real-World Optimization Problems - Students Will (Mathematics - Intermediate)",
     "description": "Students will identify a real-world optimization problem, develop a comprehensive mathematical model using calculus and linear programming techniques, implement solutions using computational tools, and present their findings with rigorous mathematical justification and practical recommendations.",
     "domain": "mathematics",
     "assessment_type": "project",
@@ -6732,7 +6732,7 @@
   },
   {
     "assessment_id": "969a3b3b-b7fa-4fa5-8c59-9c902d02b7a4",
-    "title": "Personal Portfolio Website Development Project - Students Will",
+    "title": "Personal Portfolio Website Development Project - Students Will (Computer Science - Intermediate)",
     "description": "Students will create a responsive personal portfolio website using HTML, CSS, and JavaScript to demonstrate fundamental web development skills including semantic markup, responsive design, interactive elements, and proper code organization.",
     "domain": "computer_science",
     "assessment_type": "project",
@@ -6802,7 +6802,7 @@
   },
   {
     "assessment_id": "a476c252-0113-45ab-ada1-934d86b4f8ef",
-    "title": "Introduction to Programming Concepts Presentation - Students Will",
+    "title": "Introduction to Programming Concepts Presentation - Students Will (Computer Science - Intermediate) #2",
     "description": "Students will create and deliver a 10-minute presentation explaining fundamental programming concepts using real-world analogies and simple code examples. This assessment evaluates understanding of basic programming principles and ability to communicate technical concepts clearly.",
     "domain": "computer_science",
     "assessment_type": "presentation",
@@ -7072,7 +7072,7 @@
   },
   {
     "assessment_id": "0af999d0-e5a3-460d-8dc8-ec2a0a596d4a",
-    "title": "Distributed Hash Table Implementation and Performance Analysis Lab Report - Students Will",
+    "title": "Distributed Hash Table Implementation and Performance Analysis Lab Report - Students Will (Computer Science - Intermediate)",
     "description": "Students will implement a distributed hash table (DHT) using consistent hashing, conduct comprehensive performance testing under various network conditions, and analyze scalability characteristics through detailed experimentation and documentation.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -7095,7 +7095,7 @@
   },
   {
     "assessment_id": "905248c5-d3d8-4597-aa64-94be43643ec7",
-    "title": "Advanced Calculus and Linear Algebra Integration Exam - Comprehensive Examination",
+    "title": "Advanced Calculus and Linear Algebra Integration Exam - Comprehensive Examination (Mathematics - Intermediate) #2",
     "description": "A comprehensive examination assessing students' ability to solve complex problems involving multivariable calculus, linear transformations, eigenvalue problems, and optimization techniques. Students will demonstrate mastery of theoretical concepts through rigorous proofs and practical applications.",
     "domain": "mathematics",
     "assessment_type": "exam",
@@ -7390,7 +7390,7 @@
   },
   {
     "assessment_id": "7c119c41-6ccb-46d1-b4e4-4da27fc94fcf",
-    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Create",
+    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Create (Mathematics - Advanced)",
     "description": "Students create a comprehensive portfolio demonstrating mastery of advanced mathematical concepts through four distinct real-world modeling projects, showcasing problem-solving, analytical reasoning, and mathematical communication skills across calculus, statistics, linear algebra, and differential equations.",
     "domain": "mathematics",
     "assessment_type": "assignment",
@@ -7435,7 +7435,7 @@
   },
   {
     "assessment_id": "70e2b93e-0f62-4a3b-8477-8edbe6aaca7c",
-    "title": "End-to-End Machine Learning Pipeline Portfolio Project - Students Will",
+    "title": "End-to-End Machine Learning Pipeline Portfolio Project - Students Will (Computer Science - Advanced)",
     "description": "Students will design, implement, and deploy a complete machine learning solution addressing a real-world business problem. This portfolio demonstrates mastery of the entire data science lifecycle from problem formulation through model deployment and monitoring.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -7458,7 +7458,7 @@
   },
   {
     "assessment_id": "ae8165f5-4358-40e8-b355-c5a5a1ab48d9",
-    "title": "Customer Churn Prediction and Business Impact Analysis - Students Will",
+    "title": "Customer Churn Prediction and Business Impact Analysis - Students Will (Computer Science - Advanced)",
     "description": "Students will develop a complete data science solution to predict customer churn using machine learning techniques, analyze business impact, and present actionable recommendations to stakeholders.",
     "domain": "computer_science",
     "assessment_type": "project",
@@ -7820,7 +7820,7 @@
   },
   {
     "assessment_id": "80063bb5-cc3b-4351-8944-2f645d4113ff",
-    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Will",
+    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Will (Mathematics - Advanced)",
     "description": "Students will create a comprehensive portfolio demonstrating mastery of advanced mathematical concepts through four distinct real-world modeling projects. Each project must showcase different mathematical domains including calculus, linear algebra, differential equations, and probability/statistics, with complete documentation of problem-solving processes, mathematical reasoning, and critical analysis of results.",
     "domain": "mathematics",
     "assessment_type": "assignment",
@@ -8117,7 +8117,7 @@
   },
   {
     "assessment_id": "d052681e-9eef-4a66-9abd-a4b902ffd020",
-    "title": "Customer Churn Analysis Lab Report - Students Will",
+    "title": "Customer Churn Analysis Lab Report - Students Will (Mathematics - Advanced)",
     "description": "Students will analyze a telecommunications customer dataset to identify factors contributing to customer churn, create predictive models, and present actionable business recommendations through statistical analysis and data visualization.",
     "domain": "mathematics",
     "assessment_type": "assignment",
@@ -8566,7 +8566,7 @@
   },
   {
     "assessment_id": "4c52a7af-6a53-4fbb-a2bc-f25d1a062c36",
-    "title": "Advanced Calculus and Real Analysis Comprehensive Examination - Comprehensive Examination",
+    "title": "Advanced Calculus and Real Analysis Comprehensive Examination - Comprehensive Examination (Mathematics - Advanced)",
     "description": "A comprehensive examination assessing mastery of advanced calculus concepts including multivariable calculus, vector fields, series convergence, and real analysis fundamentals. Students will demonstrate problem-solving skills, mathematical reasoning, and ability to construct rigorous proofs.",
     "domain": "mathematics",
     "assessment_type": "exam",
@@ -8971,7 +8971,7 @@
   },
   {
     "assessment_id": "fd3014ca-4026-4fd4-9f4f-f6fd707b411e",
-    "title": "Customer Churn Analysis and Prediction Project - Students Will",
+    "title": "Customer Churn Analysis and Prediction Project - Students Will (Mathematics - Advanced)",
     "description": "Students will conduct a comprehensive analysis of customer churn data using statistical methods and machine learning techniques. They must identify key factors contributing to customer churn, build predictive models, and present actionable business recommendations through visualizations and a written report.",
     "domain": "mathematics",
     "assessment_type": "project",
@@ -9061,7 +9061,7 @@
   },
   {
     "assessment_id": "f44e47b0-4844-404c-ae58-bc5d537b302d",
-    "title": "End-to-End Machine Learning Pipeline Portfolio Project - Students Will",
+    "title": "End-to-End Machine Learning Pipeline Portfolio Project - Students Will (Computer Science - Advanced) #2",
     "description": "Students will design, implement, and deploy a complete machine learning solution addressing a real-world business problem. This comprehensive portfolio project demonstrates mastery of the entire data science workflow from problem formulation through model deployment and monitoring.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -9085,7 +9085,7 @@
   },
   {
     "assessment_id": "8c6de209-bca2-4895-ad48-1c29c00fd324",
-    "title": "Advanced Calculus and Real Analysis Comprehensive Examination - Comprehensive Examination",
+    "title": "Advanced Calculus and Real Analysis Comprehensive Examination - Comprehensive Examination (Mathematics - Advanced) #2",
     "description": "A comprehensive examination assessing advanced understanding of multivariable calculus, real analysis fundamentals, and complex problem-solving involving limits, continuity, differentiability, and integration in multiple dimensions. Students must demonstrate rigorous mathematical reasoning and proof techniques.",
     "domain": "mathematics",
     "assessment_type": "exam",
@@ -9422,7 +9422,7 @@
   },
   {
     "assessment_id": "eabacf7c-e2a6-4537-8596-c2280454a8ed",
-    "title": "End-to-End Machine Learning Pipeline Portfolio Project - Students Will",
+    "title": "End-to-End Machine Learning Pipeline Portfolio Project - Students Will (Computer Science - Advanced) #3",
     "description": "Students will design, implement, and deploy a complete machine learning solution addressing a real-world business problem, demonstrating mastery of the full data science lifecycle from problem formulation through model deployment and monitoring.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -9559,7 +9559,7 @@
   },
   {
     "assessment_id": "c8113c95-fe6b-4202-83af-4b76290d5e57",
-    "title": "Customer Churn Prediction and Business Impact Analysis - Students Will",
+    "title": "Customer Churn Prediction and Business Impact Analysis - Students Will (Computer Science - Advanced) #2",
     "description": "Students will develop a complete data science pipeline to predict customer churn for a telecommunications company, including data preprocessing, feature engineering, model development, evaluation, and business recommendations. This assessment evaluates end-to-end data science skills from exploratory analysis to actionable insights.",
     "domain": "computer_science",
     "assessment_type": "project",
@@ -9718,7 +9718,7 @@
   },
   {
     "assessment_id": "536ac802-576b-4163-abc8-5274d0a4be71",
-    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Will",
+    "title": "Advanced Mathematical Modeling Portfolio: Real-World Applications - Students Will (Mathematics - Advanced) #2",
     "description": "Students will create a comprehensive portfolio demonstrating their ability to identify, formulate, solve, and analyze complex mathematical problems from real-world contexts using advanced mathematical concepts including calculus, linear algebra, differential equations, and statistical analysis.",
     "domain": "mathematics",
     "assessment_type": "assignment",
@@ -9829,7 +9829,7 @@
   },
   {
     "assessment_id": "3191c801-b173-4bf0-b0e7-df507dbd1f94",
-    "title": "Mathematical Modeling of Real-World Optimization Problems - Students Will",
+    "title": "Mathematical Modeling of Real-World Optimization Problems - Students Will (Mathematics - Advanced)",
     "description": "Students will identify a real-world optimization problem, develop a mathematical model using calculus and linear programming techniques, solve it using multiple methods, and present their findings with comprehensive analysis and recommendations.",
     "domain": "mathematics",
     "assessment_type": "project",
@@ -10007,7 +10007,7 @@
   },
   {
     "assessment_id": "237d06dd-f1f7-4847-9c73-e99b31ec19ff",
-    "title": "Software Design Pattern Implementation and Analysis Presentation - Students Will",
+    "title": "Software Design Pattern Implementation and Analysis Presentation - Students Will (Computer Science - Advanced)",
     "description": "Students will select a software design pattern, implement it in a real-world scenario, and present their implementation with analysis of benefits, trade-offs, and appropriate use cases to demonstrate understanding of software architecture principles.",
     "domain": "computer_science",
     "assessment_type": "presentation",
@@ -10140,7 +10140,7 @@
   },
   {
     "assessment_id": "7707548e-bfd7-46f7-8f91-3eea93d3f087",
-    "title": "Advanced Algorithm Design and Complexity Analysis Quiz - Comprehensive Assessment",
+    "title": "Advanced Algorithm Design and Complexity Analysis Quiz - Comprehensive Assessment (Computer Science - Advanced)",
     "description": "A comprehensive assessment evaluating students' mastery of advanced algorithmic concepts including dynamic programming, graph algorithms, NP-completeness theory, and rigorous complexity analysis. Students will demonstrate their ability to design efficient algorithms, prove correctness, and analyze computational complexity in theoretical and practical contexts.",
     "domain": "computer_science",
     "assessment_type": "quiz",
@@ -10185,7 +10185,7 @@
   },
   {
     "assessment_id": "feb51b33-252f-4335-8de5-2abb3ad6f0f6",
-    "title": "Personal Budget Planning Project - Students Will",
+    "title": "Personal Budget Planning Project - Students Will (Mathematics - Advanced)",
     "description": "Students will create a realistic monthly budget for a hypothetical young adult scenario, demonstrating understanding of basic arithmetic operations, percentages, and data organization through practical application of mathematical concepts in personal finance.",
     "domain": "mathematics",
     "assessment_type": "project",
@@ -10275,7 +10275,7 @@
   },
   {
     "assessment_id": "adf65ede-f4db-4298-8782-ea422e8880d1",
-    "title": "Software Design Pattern Implementation and Analysis Presentation - Students Will",
+    "title": "Software Design Pattern Implementation and Analysis Presentation - Students Will (Computer Science - Advanced) #2",
     "description": "Students will research, implement, and present a comprehensive analysis of a software design pattern, demonstrating its practical application through code examples and explaining its benefits, trade-offs, and real-world usage scenarios.",
     "domain": "computer_science",
     "assessment_type": "presentation",
@@ -10297,7 +10297,7 @@
   },
   {
     "assessment_id": "14372423-5e67-4625-8cc0-5fa1905ebe3f",
-    "title": "Customer Churn Prediction and Business Impact Analysis - Students Will",
+    "title": "Customer Churn Prediction and Business Impact Analysis - Students Will (Computer Science - Advanced) #3",
     "description": "Students will develop a complete machine learning solution to predict customer churn using real-world telecommunications data. The project requires data preprocessing, exploratory analysis, model development, evaluation, and business recommendations with clear documentation of methodology and findings.",
     "domain": "computer_science",
     "assessment_type": "project",
@@ -10320,7 +10320,7 @@
   },
   {
     "assessment_id": "2897c207-d822-4f1a-b64a-d4cc852baf22",
-    "title": "Customer Churn Prediction Analysis Lab Report - Students Will",
+    "title": "Customer Churn Prediction Analysis Lab Report - Students Will (Computer Science - Advanced)",
     "description": "Students will conduct a complete data science workflow to predict customer churn using a telecommunications dataset. This assessment evaluates data preprocessing, exploratory data analysis, feature engineering, model development, and business insight communication skills.",
     "domain": "computer_science",
     "assessment_type": "assignment",
@@ -10343,7 +10343,7 @@
   },
   {
     "assessment_id": "f53841af-469b-4093-892d-c0898ff5d7e4",
-    "title": "Customer Churn Prediction Analysis Lab Report - Students Will",
+    "title": "Customer Churn Prediction Analysis Lab Report - Students Will (Mathematics - Advanced)",
     "description": "Students will conduct a complete data science analysis on a customer churn dataset, including exploratory data analysis, feature engineering, model building, evaluation, and business recommendations. The lab report will demonstrate proficiency in the full data science pipeline from raw data to actionable insights.",
     "domain": "mathematics",
     "assessment_type": "assignment",
@@ -10619,7 +10619,7 @@
   },
   {
     "assessment_id": "446e3fdb-e2de-4f3b-8d46-8337629e1246",
-    "title": "Introduction to Programming Fundamentals Exam - Comprehensive Written",
+    "title": "Introduction to Programming Fundamentals Exam - Comprehensive Written (Computer Science - Advanced)",
     "description": "A comprehensive written and practical exam assessing students' understanding of basic programming concepts including variables, data types, control structures, functions, and simple problem-solving using pseudocode and basic Python syntax.",
     "domain": "computer_science",
     "assessment_type": "exam",
@@ -10686,7 +10686,7 @@
   },
   {
     "assessment_id": "1d648009-4268-404e-a59a-ea5326cc8289",
-    "title": "Personal Budget Planning Project - Students Will",
+    "title": "Personal Budget Planning Project - Students Will (Computer Science - Advanced)",
     "description": "Students will create a comprehensive monthly budget plan for a hypothetical young adult scenario, applying basic arithmetic operations, percentages, and data organization skills to real-world financial planning.",
     "domain": "computer_science",
     "assessment_type": "project",
@@ -10708,7 +10708,7 @@
   },
   {
     "assessment_id": "c0c3355f-e854-4cc7-8f2d-c0b9281b5608",
-    "title": "Distributed Hash Table Implementation and Performance Analysis Lab Report - Students Will",
+    "title": "Distributed Hash Table Implementation and Performance Analysis Lab Report - Students Will (Computer Science - Advanced)",
     "description": "Students will implement a distributed hash table (DHT) using consistent hashing, conduct comprehensive performance testing under various failure scenarios, and analyze the system's fault tolerance and scalability characteristics through detailed experimentation and data analysis.",
     "domain": "computer_science",
     "assessment_type": "assignment",
