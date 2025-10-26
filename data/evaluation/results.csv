@@ -1,0 +1,21 @@
+test_id,domain,level,title,description,json_valid,gen_time_sec,num_modules,num_activities,num_assessments,total_components,t5_utilization_pct,notes
+01_cs_beginner,computer_science,beginner,Introduction to Programming,Foundational programming concepts including variab...,True,1.35,2,2,1,5,60,Success
+02_math_intermediate,mathematics,intermediate,Linear Algebra,"Vector spaces, linear transformations, matrices, e...",True,0.78,2,2,1,5,60,Success
+03_physics_advanced,physics,advanced,Quantum Mechanics,"Advanced quantum theory including wave functions, ...",True,0.77,2,2,1,5,60,Success
+04_cs_intermediate,computer_science,intermediate,Data Structures and Algorithms,"Study of fundamental data structures (trees, graph...",True,0.78,2,2,1,5,60,Success
+05_math_beginner,mathematics,beginner,Calculus I,Introduction to differential calculus including li...,True,0.8,2,2,1,5,60,Success
+06_cs_advanced,computer_science,advanced,Machine Learning Foundations,"Supervised and unsupervised learning, neural netwo...",True,0.78,2,2,1,5,60,Success
+07_cs_beginner,computer_science,beginner,Web Development Fundamentals,"HTML, CSS, JavaScript basics, responsive design, a...",True,0.78,2,2,1,5,60,Success
+08_math_advanced,mathematics,advanced,Real Analysis,"Rigorous treatment of limits, continuity, differen...",True,0.8,2,2,1,5,60,Success
+09_math_intermediate,mathematics,intermediate,Discrete Mathematics,"Logic, set theory, graph theory, combinatorics, an...",True,0.77,2,2,1,5,60,Success
+10_math_beginner,mathematics,beginner,Statistics and Probability,"Descriptive statistics, probability theory, random...",True,0.81,2,2,1,5,60,Success
+11_physics_beginner,physics,beginner,Classical Mechanics,"Newton's laws, kinematics, dynamics, energy, momen...",True,0.78,2,2,1,5,60,Success
+12_physics_intermediate,physics,intermediate,Electromagnetism,"Electric fields, magnetic fields, Maxwell's equati...",True,0.77,2,2,1,5,60,Success
+13_cs_intermediate,computer_science,intermediate,Database Systems,"Relational databases, SQL, normalization, transact...",True,0.81,2,2,1,5,60,Success
+14_physics_advanced,physics,advanced,Statistical Mechanics,"Thermodynamic systems, ensembles, partition functi...",True,1.0,2,2,1,5,60,Success
+15_cs_advanced,computer_science,advanced,Artificial Intelligence,"Search algorithms, knowledge representation, plann...",True,0.86,2,2,1,5,60,Success
+16_edge_minimal,computer_science,beginner,AI,,True,0.78,2,2,1,5,60,Success
+17_edge_crossdomain,computer_science,intermediate,Computational Physics,"Numerical methods for solving physics problems, mo...",True,0.77,2,2,1,5,60,Success
+18_edge_long_desc,computer_science,intermediate,Software Engineering,Comprehensive study of software development lifecy...,True,0.8,2,2,1,5,60,Success
+19_physics_sparse,physics,intermediate,Thermodynamics,"Laws of thermodynamics, heat engines, entropy, and...",True,0.78,2,2,1,5,60,Success
+20_math_complex,mathematics,advanced,Abstract Algebra,"Groups, rings, fields, homomorphisms, quotient str...",True,0.78,2,2,1,5,60,Success

@@ -1,0 +1,142 @@
+[
+  {
+    "test_id": "01_cs_beginner",
+    "domain": "computer_science",
+    "level": "beginner",
+    "title": "Introduction to Programming",
+    "description": "Foundational programming concepts including variables, control structures, functions, and basic data structures using Python."
+  },
+  {
+    "test_id": "02_math_intermediate",
+    "domain": "mathematics",
+    "level": "intermediate",
+    "title": "Linear Algebra",
+    "description": "Vector spaces, linear transformations, matrices, eigenvalues and eigenvectors, with applications to computer science."
+  },
+  {
+    "test_id": "03_physics_advanced",
+    "domain": "physics",
+    "level": "advanced",
+    "title": "Quantum Mechanics",
+    "description": "Advanced quantum theory including wave functions, operators, quantum states, and applications to atomic and molecular physics."
+  },
+  {
+    "test_id": "04_cs_intermediate",
+    "domain": "computer_science",
+    "level": "intermediate",
+    "title": "Data Structures and Algorithms",
+    "description": "Study of fundamental data structures (trees, graphs, hash tables) and algorithms (sorting, searching, graph traversal)."
+  },
+  {
+    "test_id": "05_math_beginner",
+    "domain": "mathematics",
+    "level": "beginner",
+    "title": "Calculus I",
+    "description": "Introduction to differential calculus including limits, continuity, derivatives, and applications."
+  },
+  {
+    "test_id": "06_cs_advanced",
+    "domain": "computer_science",
+    "level": "advanced",
+    "title": "Machine Learning Foundations",
+    "description": "Supervised and unsupervised learning, neural networks, model evaluation, and practical applications using Python and scikit-learn."
+  },
+  {
+    "test_id": "07_cs_beginner",
+    "domain": "computer_science",
+    "level": "beginner",
+    "title": "Web Development Fundamentals",
+    "description": "HTML, CSS, JavaScript basics, responsive design, and introduction to web frameworks."
+  },
+  {
+    "test_id": "08_math_advanced",
+    "domain": "mathematics",
+    "level": "advanced",
+    "title": "Real Analysis",
+    "description": "Rigorous treatment of limits, continuity, differentiation, integration, and sequences of functions."
+  },
+  {
+    "test_id": "09_math_intermediate",
+    "domain": "mathematics",
+    "level": "intermediate",
+    "title": "Discrete Mathematics",
+    "description": "Logic, set theory, graph theory, combinatorics, and applications to computer science."
+  },
+  {
+    "test_id": "10_math_beginner",
+    "domain": "mathematics",
+    "level": "beginner",
+    "title": "Statistics and Probability",
+    "description": "Descriptive statistics, probability theory, random variables, distributions, and hypothesis testing."
+  },
+  {
+    "test_id": "11_physics_beginner",
+    "domain": "physics",
+    "level": "beginner",
+    "title": "Classical Mechanics",
+    "description": "Newton's laws, kinematics, dynamics, energy, momentum, and rotational motion."
+  },
+  {
+    "test_id": "12_physics_intermediate",
+    "domain": "physics",
+    "level": "intermediate",
+    "title": "Electromagnetism",
+    "description": "Electric fields, magnetic fields, Maxwell's equations, and electromagnetic waves."
+  },
+  {
+    "test_id": "13_cs_intermediate",
+    "domain": "computer_science",
+    "level": "intermediate",
+    "title": "Database Systems",
+    "description": "Relational databases, SQL, normalization, transactions, query optimization, and NoSQL introduction."
+  },
+  {
+    "test_id": "14_physics_advanced",
+    "domain": "physics",
+    "level": "advanced",
+    "title": "Statistical Mechanics",
+    "description": "Thermodynamic systems, ensembles, partition functions, phase transitions, and quantum statistical mechanics."
+  },
+  {
+    "test_id": "15_cs_advanced",
+    "domain": "computer_science",
+    "level": "advanced",
+    "title": "Artificial Intelligence",
+    "description": "Search algorithms, knowledge representation, planning, machine learning, natural language processing, and computer vision."
+  },
+  {
+    "test_id": "16_edge_minimal",
+    "domain": "computer_science",
+    "level": "beginner",
+    "title": "AI",
+    "description": ""
+  },
+  {
+    "test_id": "17_edge_crossdomain",
+    "domain": "computer_science",
+    "level": "intermediate",
+    "title": "Computational Physics",
+    "description": "Numerical methods for solving physics problems, molecular dynamics, Monte Carlo simulations, and scientific computing."
+  },
+  {
+    "test_id": "18_edge_long_desc",
+    "domain": "computer_science",
+    "level": "intermediate",
+    "title": "Software Engineering",
+    "description": "Comprehensive study of software development lifecycle including requirements analysis, system design, implementation strategies, testing methodologies, project management, agile development practices, version control systems, continuous integration and deployment, software architecture patterns, design principles, code quality metrics, refactoring techniques, team collaboration tools, and professional software engineering practices in industry contexts."
+  },
+  {
+    "test_id": "19_physics_sparse",
+    "domain": "physics",
+    "level": "intermediate",
+    "title": "Thermodynamics",
+    "description": "Laws of thermodynamics, heat engines, entropy, and applications to physical systems."
+  },
+  {
+    "test_id": "20_math_complex",
+    "domain": "mathematics",
+    "level": "advanced",
+    "title": "Abstract Algebra",
+    "description": "Groups, rings, fields, homomorphisms, quotient structures, and applications to number theory and cryptography."
+  }
+]
