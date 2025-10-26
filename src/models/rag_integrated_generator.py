@@ -7,19 +7,13 @@ to retrieve actual component IDs and create database-ready syllabi.
 """
 
 import json
-import sys
-from pathlib import Path
 from typing import Any, Dict
-
-# Add parent directories to path to import RAG components
-sys.path.append(str(Path(__file__).parent.parent))
-sys.path.append(str(Path(__file__).parent.parent / "rag"))
 
 from .syllabus_builder import SyllabusBuilder
 
 try:
-    from rag.retrieval_pipeline import ComponentRetrievalPipeline
-    from rag.vector_store import SyllabusComponentStore
+    from src.rag.retrieval_pipeline import ComponentRetrievalPipeline
+    from src.rag.vector_store import SyllabusComponentStore
 except ImportError as e:
     print(f"⚠️  RAG components not available: {e}")
     print("This demo will show the structure with mock data")
@@ -75,23 +69,35 @@ class RAGIntegratedSyllabusBuilder(SyllabusBuilder):
                     "source": "rag_retrieved",
                 }
             else:
-                # Fallback to generated content
+                # Fallback to generated content with level-awareness
                 module_data = {
                     "id": None,  # No database ID
                     "title": query,
                     "description": f"Module covering {query}",
                     "key_concepts": [],
                     "estimated_hours": estimated_hours,
+                    "domain": self.requirements.get(
+                        "domain"
+                    ),  # Use actual domain from requirements
+                    "difficulty": self.requirements.get(
+                        "level"
+                    ),  # Use actual level from requirements
                     "source": "generated",
                 }
         else:
-            # No RAG available - use generated content
+            # No RAG available - use generated content with level-awareness
             module_data = {
                 "id": None,
                 "title": query,
                 "description": f"Module covering {query}",
                 "key_concepts": [],
                 "estimated_hours": estimated_hours,
+                "domain": self.requirements.get(
+                    "domain"
+                ),  # Use actual domain from requirements
+                "difficulty": self.requirements.get(
+                    "level"
+                ),  # Use actual level from requirements
                 "source": "generated",
             }
 
@@ -129,6 +135,12 @@ class RAGIntegratedSyllabusBuilder(SyllabusBuilder):
                     "description": f"Activity: {query}",
                     "bloom_level": bloom_level,
                     "estimated_hours": estimated_hours,
+                    "domain": self.requirements.get(
+                        "domain"
+                    ),  # Use actual domain from requirements
+                    "difficulty": self.requirements.get(
+                        "level"
+                    ),  # Use actual level from requirements
                     "source": "generated",
                 }
         else:
@@ -138,6 +150,12 @@ class RAGIntegratedSyllabusBuilder(SyllabusBuilder):
                 "description": f"Activity: {query}",
                 "bloom_level": bloom_level,
                 "estimated_hours": estimated_hours,
+                "domain": self.requirements.get(
+                    "domain"
+                ),  # Use actual domain from requirements
+                "difficulty": self.requirements.get(
+                    "level"
+                ),  # Use actual level from requirements
                 "source": "generated",
             }
 
@@ -175,6 +193,12 @@ class RAGIntegratedSyllabusBuilder(SyllabusBuilder):
                     "description": f"{assessment_type.title()}: {query}",
                     "assessment_type": assessment_type,
                     "estimated_hours": estimated_hours,
+                    "domain": self.requirements.get(
+                        "domain"
+                    ),  # Use actual domain from requirements
+                    "difficulty": self.requirements.get(
+                        "level"
+                    ),  # Use actual level from requirements
                     "source": "generated",
                 }
         else:
@@ -184,6 +208,12 @@ class RAGIntegratedSyllabusBuilder(SyllabusBuilder):
                 "description": f"{assessment_type.title()}: {query}",
                 "assessment_type": assessment_type,
                 "estimated_hours": estimated_hours,
+                "domain": self.requirements.get(
+                    "domain"
+                ),  # Use actual domain from requirements
+                "difficulty": self.requirements.get(
+                    "level"
+                ),  # Use actual level from requirements
                 "source": "generated",
             }
 

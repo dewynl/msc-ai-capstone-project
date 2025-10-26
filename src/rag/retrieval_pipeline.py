@@ -28,23 +28,20 @@ class ComponentRetrievalPipeline:
         for component_type, query in queries.items():
             enhanced_query = enhance_query_with_context(query, requirements)
 
-            # Convert plural to singular for vector store search
-            singular_type = component_type.rstrip(
-                "s"
-            )  # activities -> activitie, modules -> module, assessments -> assessment
-            if singular_type == "activitie":
-                singular_type = "activity"
-            elif singular_type == "module":
-                singular_type = "module"  # already singular
-            elif singular_type == "assessment":
-                singular_type = "assessment"  # already singular
-
+            # Search vector store with plural component type (how they're stored)
             results = self.component_store.search(
-                enhanced_query, k=k_per_type * 2, component_type=singular_type
+                enhanced_query, k=k_per_type * 2, component_type=component_type
             )
             retrieved[component_type] = [result[0] for result in results]
 
-        return retrieved
+        # Apply domain and level filtering
+        filtered = self.filter_by_domain_and_level(retrieved, requirements)
+
+        # Limit to requested number after filtering
+        for comp_type in filtered:
+            filtered[comp_type] = filtered[comp_type][:k_per_type]
+
+        return filtered
 
     def filter_by_domain_and_level(
         self, components: dict[str, list], requirements: dict[str, Any]
