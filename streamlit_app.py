@@ -14,7 +14,6 @@ import streamlit as st
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from src.models.rag_integrated_generator import RAGIntegratedGenerator
 from src.utils.supabase_client import get_supabase_manager
 
 # ============================================================================
@@ -58,12 +57,20 @@ st.markdown(
 # ============================================================================
 @st.cache_resource(show_spinner=False)
 def load_generator():
-    """Load RAG-integrated generator (cached to avoid reloading).
+    """Load T5+RAG hybrid generator (cached to avoid reloading).
 
-    On first load after deployment, this builds the ChromaDB vector store
-    from component JSON files. Subsequent loads use the cached version.
+    This loads the TRAINED T5 MODEL for generating function calls,
+    plus the ChromaDB vector store for component retrieval.
+
+    On first load after deployment, this:
+    1. Loads the fine-tuned T5 model (60M parameters)
+    2. Builds the ChromaDB vector store from component JSON files
+
+    Subsequent loads use the cached version (instant).
     """
-    return RAGIntegratedGenerator()
+    from src.models.t5_rag_hybrid_generator import T5RAGHybridGenerator
+
+    return T5RAGHybridGenerator()
 
 
 @st.cache_resource
@@ -399,11 +406,12 @@ def main():
     # User is logged in - show main interface
     user = st.session_state.user
 
-    # Load generator FIRST (before any UI) to ensure ChromaDB is built before user interaction
+    # Load generator FIRST (before any UI) to ensure T5 model and ChromaDB are ready
     # Show blocking full-page spinner on first load, instant on subsequent loads (cached)
     with st.spinner(
-        "🔧 Building RAG vector database from 3,346 components...\n\n"
-        "This is a one-time build on first deployment and takes 2-3 minutes.\n\n"
+        "🤖 Loading AI System...\n\n"
+        "Loading T5 model (60M parameters) + Building RAG vector database (3,346 components)\n\n"
+        "This is a one-time load on first deployment and takes 2-3 minutes.\n\n"
         "Subsequent loads are instant via caching. Please wait..."
     ):
         generator = load_generator()
@@ -478,7 +486,7 @@ def main():
             else:
                 # Generate syllabus
                 with st.spinner(
-                    "🔄 Generating syllabus... (T5 → Function Calls → Execution)"
+                    "🔄 Generating syllabus using T5 model... (Understanding requirements → Generating function calls → Building syllabus)"
                 ):
                     try:
                         # Generator already loaded at app startup (line 461)
@@ -490,9 +498,9 @@ def main():
                             "description": description,
                         }
 
-                        # Generate with timing
+                        # Generate with timing (using T5 + RAG hybrid)
                         start_time = time.time()
-                        syllabus = generator.generate_syllabus_with_ids(requirements)
+                        syllabus = generator.generate_syllabus(requirements)
                         generation_time = time.time() - start_time
 
                         # Store in session for display (not saved yet)
