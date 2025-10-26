@@ -56,9 +56,7 @@ st.markdown(
 # ============================================================================
 # CACHED RESOURCES
 # ============================================================================
-@st.cache_resource(
-    show_spinner="🔧 Building RAG vector database from 3,346 components... This may take 2-3 minutes on first load."
-)
+@st.cache_resource(show_spinner=False)
 def load_generator():
     """Load RAG-integrated generator (cached to avoid reloading).
 
@@ -401,6 +399,15 @@ def main():
     # User is logged in - show main interface
     user = st.session_state.user
 
+    # Load generator FIRST (before any UI) to ensure ChromaDB is built before user interaction
+    # Show blocking full-page spinner on first load, instant on subsequent loads (cached)
+    with st.spinner(
+        "🔧 Building RAG vector database from 3,346 components...\n\n"
+        "This is a one-time build on first deployment and takes 2-3 minutes.\n\n"
+        "Subsequent loads are instant via caching. Please wait..."
+    ):
+        generator = load_generator()
+
     # Header
     st.markdown('<p class="main-header">📚 EduCraft</p>', unsafe_allow_html=True)
     st.markdown(
@@ -415,17 +422,6 @@ def main():
     render_example_presets()
 
     st.markdown("---")
-
-    # Information callout about RAG database build
-    st.info(
-        "ℹ️ **First Load Notice**: On initial deployment or after app restarts, the RAG vector "
-        "database is built from 3,346 components (~2-3 minutes). Subsequent uses are instant via caching. "
-        "During build, RAG-retrieved components will be available."
-    )
-
-    # Load generator early (before form) to ensure ChromaDB is built before user interaction
-    # This prevents the first button click from being interrupted by the cache build
-    generator = load_generator()
 
     # Main generation interface
     col1, col2 = st.columns([1, 1])
