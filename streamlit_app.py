@@ -411,39 +411,6 @@ def main():
     # Welcome message
     render_user_welcome(user)
 
-    # Research Contribution Showcase
-    st.markdown("### 🎓 MSc Research Contribution")
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-        st.metric(
-            "JSON Validity Rate",
-            "100%",
-            delta="Phase 1: 0% → Phase 3: 100%",
-            delta_color="normal",
-        )
-        st.caption("Function calling eliminates malformed JSON")
-
-    with col2:
-        st.metric(
-            "Architecture", "Phase 3", delta="Function Calling", delta_color="off"
-        )
-        st.caption("T5 → Function Calls → Programmatic Builder")
-
-    with col3:
-        st.metric(
-            "RAG Integration", "ChromaDB", delta="3,346 components", delta_color="off"
-        )
-        st.caption("Vector database for component retrieval")
-
-    st.info(
-        "💡 **Innovation**: Function calling decouples semantic understanding (T5) from "
-        "structural validity (SyllabusBuilder), achieving 100% JSON validity with flexible "
-        "RAG/generation ratios per syllabus."
-    )
-
-    st.markdown("---")
-
     # Example presets
     render_example_presets()
 
