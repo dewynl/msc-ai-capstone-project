@@ -456,6 +456,10 @@ def main():
         "During build, RAG-retrieved components will be available."
     )
 
+    # Load generator early (before form) to ensure ChromaDB is built before user interaction
+    # This prevents the first button click from being interrupted by the cache build
+    generator = load_generator()
+
     # Main generation interface
     col1, col2 = st.columns([1, 1])
 
@@ -514,9 +518,7 @@ def main():
                     "🔄 Generating syllabus... (T5 → Function Calls → Execution)"
                 ):
                     try:
-                        # Load generator
-                        generator = load_generator()
-
+                        # Generator already loaded at app startup (line 461)
                         # Build requirements
                         requirements = {
                             "title": title,
