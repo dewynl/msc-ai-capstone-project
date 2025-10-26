@@ -29,6 +29,9 @@ class RAGIntegratedSyllabusBuilder(SyllabusBuilder):
         super().__init__()
         self.rag_pipeline = rag_pipeline
         self.requirements = {}
+        self.used_component_ids = (
+            set()
+        )  # Track used component IDs to prevent duplicates
 
     def set_requirements(self, requirements: Dict[str, Any]):
         """Set the course requirements for RAG retrieval."""
@@ -52,9 +55,16 @@ class RAGIntegratedSyllabusBuilder(SyllabusBuilder):
             )
             modules = retrieved.get("modules", [])
 
-            if modules:
-                # Use the best matching module
-                best_module = modules[0]
+            # Find first unused module to prevent duplicates
+            best_module = None
+            for module in modules:
+                module_id = module.get("module_id")
+                if module_id and module_id not in self.used_component_ids:
+                    best_module = module
+                    self.used_component_ids.add(module_id)
+                    break
+
+            if best_module:
                 module_data = {
                     "id": best_module.get("module_id"),  # Component ID from database
                     "title": best_module.get("title", query),
@@ -113,8 +123,16 @@ class RAGIntegratedSyllabusBuilder(SyllabusBuilder):
             )
             activities = retrieved.get("activities", [])
 
-            if activities:
-                best_activity = activities[0]
+            # Find first unused activity to prevent duplicates
+            best_activity = None
+            for activity in activities:
+                activity_id = activity.get("activity_id")
+                if activity_id and activity_id not in self.used_component_ids:
+                    best_activity = activity
+                    self.used_component_ids.add(activity_id)
+                    break
+
+            if best_activity:
                 activity_data = {
                     "id": best_activity.get("activity_id"),
                     "title": best_activity.get("title", query),
@@ -171,8 +189,16 @@ class RAGIntegratedSyllabusBuilder(SyllabusBuilder):
             )
             assessments = retrieved.get("assessments", [])
 
-            if assessments:
-                best_assessment = assessments[0]
+            # Find first unused assessment to prevent duplicates
+            best_assessment = None
+            for assessment in assessments:
+                assessment_id = assessment.get("assessment_id")
+                if assessment_id and assessment_id not in self.used_component_ids:
+                    best_assessment = assessment
+                    self.used_component_ids.add(assessment_id)
+                    break
+
+            if best_assessment:
                 assessment_data = {
                     "id": best_assessment.get("assessment_id"),
                     "title": best_assessment.get("title", query),
