@@ -22,6 +22,28 @@
 - **Publisher/Venue:** Journal of Machine Learning Research
 - **Publication Year:** 2020
 
+**3a. CodeT5: Identifier-aware Unified Pre-trained Encoder-Decoder Models (Wang et al., 2021)** ✅ *Used in Dissertation*
+- **Harvard Citation:** Wang, Y., Wang, W., Joty, S. and Hoi, S.C.H. (2021). CodeT5: Identifier-aware unified pre-trained encoder-decoder models for code understanding and generation. In Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP), pp. 8696-8708.
+- **DOI/URL:** https://doi.org/10.18653/v1/2021.emnlp-main.685
+- **arXiv:** https://arxiv.org/abs/2109.00859
+- **Publisher/Venue:** Association for Computational Linguistics (EMNLP 2021)
+- **Publication Year:** 2021
+- **Key Contribution:** Code-specific T5 variant pre-trained on 8.35M code functions; identifier-aware tokenization (RobertaTokenizer); achieves SOTA on code generation, summarization, and translation tasks
+
+**3b. RoBERTa: A Robustly Optimized BERT Pretraining Approach (Liu et al., 2019)** ✅ *Used in Dissertation*
+- **Harvard Citation:** Liu, Y., Ott, M., Goyal, N., Du, J., Joshi, M., Chen, D., Levy, O., Lewis, M., Zettlemoyer, L. and Stoyanov, V. (2019). RoBERTa: A robustly optimized BERT pretraining approach. arXiv preprint arXiv:1907.11692.
+- **DOI/URL:** https://arxiv.org/abs/1907.11692
+- **Publisher/Venue:** arXiv (presented at various conferences)
+- **Publication Year:** 2019
+- **Key Contribution:** Byte-level BPE tokenizer preserving code identifiers; used in CodeT5 for identifier-aware tokenization
+
+**3c. CodeSearchNet Challenge: Evaluating Semantic Code Search (Husain et al., 2019)** ✅ *Used in Dissertation*
+- **Harvard Citation:** Husain, H., Wu, H.H., Gazit, T., Allamanis, M. and Brockschmidt, M. (2019). CodeSearchNet Challenge: Evaluating the state of semantic code search. arXiv preprint arXiv:1909.09436.
+- **DOI/URL:** https://arxiv.org/abs/1909.09436
+- **Publisher/Venue:** arXiv
+- **Publication Year:** 2019
+- **Key Contribution:** 8.35M code function dataset (Python, Java, Go, PHP, JavaScript, Ruby) used for CodeT5 pre-training; 2M code-docstring pairs for training and evaluation
+
 **4. GPT-3: Language Models are Few-Shot Learners (Brown et al., 2020)** ✅ *Used in Dissertation*
 - **Harvard Citation:** Brown, T., Mann, B., Ryder, N., Subbiah, M., Kaplan, J.D., Dhariwal, P., Neelakantan, A., Shyam, P., Sastry, G., Askell, A. and Agarwal, S. (2020). Language models are few-shot learners. In Advances in Neural Information Processing Systems 33 (NeurIPS 2020), pp. 1877-1901.
 - **DOI/URL:** https://arxiv.org/abs/2005.14165
