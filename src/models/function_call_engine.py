@@ -9,6 +9,7 @@ converting it into executable function calls.
 
 import json
 import logging
+import os
 import re
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
@@ -43,15 +44,50 @@ class T5FunctionCallGenerator:
         self._load_model()
 
     def _load_model(self):
-        """Load the trained T5 model and tokenizer."""
+        """Load the trained T5 model and tokenizer.
+
+        Priority order:
+        1. Hugging Face Hub (via HF_MODEL_ID env var or Streamlit secret)
+        2. Local fine-tuned model
+        3. Base t5-small (fallback)
+        """
         try:
-            if self.model_path.exists():
-                logger.info(f"Loading trained model from: {self.model_path}")
+            # Check for Hugging Face model ID (for production deployment)
+            hf_model_id = os.getenv("HF_MODEL_ID")
+
+            # Check Streamlit secrets if available (for Streamlit Cloud)
+            try:
+                import streamlit as st
+
+                if hasattr(st, "secrets") and "HF_MODEL_ID" in st.secrets:
+                    hf_model_id = st.secrets["HF_MODEL_ID"]
+            except Exception:
+                pass  # Not running in Streamlit or secrets not configured
+
+            if hf_model_id:
+                # Load from Hugging Face Hub
+                logger.info(
+                    f"🤗 Loading fine-tuned model from Hugging Face: {hf_model_id}"
+                )
+                self.tokenizer = T5Tokenizer.from_pretrained(hf_model_id)
+                self.model = T5ForConditionalGeneration.from_pretrained(hf_model_id)
+                logger.info("✅ Fine-tuned model loaded from Hugging Face Hub")
+
+            elif self.model_path.exists():
+                # Load from local path
+                logger.info(
+                    f"📁 Loading trained model from local path: {self.model_path}"
+                )
                 self.tokenizer = T5Tokenizer.from_pretrained(self.model_path)
                 self.model = T5ForConditionalGeneration.from_pretrained(self.model_path)
+                logger.info("✅ Fine-tuned model loaded from local path")
+
             else:
+                # Fallback to base model
                 logger.warning(
-                    f"Trained model not found at {self.model_path}, using base T5"
+                    "⚠️  No fine-tuned model found. Using base T5.\n"
+                    "   - Set HF_MODEL_ID env var to use Hugging Face model\n"
+                    "   - Or train locally: python scripts/t5_function_call_trainer.py"
                 )
                 self.tokenizer = T5Tokenizer.from_pretrained("t5-small")
                 self.model = T5ForConditionalGeneration.from_pretrained("t5-small")
