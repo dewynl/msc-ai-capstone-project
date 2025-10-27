@@ -164,8 +164,9 @@ def main():
     print(f"   Activities: {len(components['activities'])}")
     print(f"   Assessments: {len(components['assessments'])}")
 
-    # Define course examples
+    # Define comprehensive course templates across all domains/levels
     course_templates = [
+        # Computer Science - Beginner
         {
             "title": "Introduction to Programming",
             "domain": "computer_science",
@@ -173,11 +174,49 @@ def main():
             "description": "Fundamental programming concepts and practical coding skills",
         },
         {
+            "title": "Web Development Basics",
+            "domain": "computer_science",
+            "level": "beginner",
+            "description": "HTML, CSS, and JavaScript fundamentals",
+        },
+        {
+            "title": "Database Fundamentals",
+            "domain": "computer_science",
+            "level": "beginner",
+            "description": "Introduction to databases and SQL",
+        },
+        {
+            "title": "Computer Networks Basics",
+            "domain": "computer_science",
+            "level": "beginner",
+            "description": "Introduction to networking and protocols",
+        },
+        # Computer Science - Intermediate
+        {
             "title": "Machine Learning Fundamentals",
             "domain": "computer_science",
             "level": "intermediate",
             "description": "Introduction to ML algorithms, neural networks, and applications",
         },
+        {
+            "title": "Data Structures",
+            "domain": "computer_science",
+            "level": "intermediate",
+            "description": "Arrays, trees, graphs, and algorithmic complexity",
+        },
+        {
+            "title": "Software Engineering",
+            "domain": "computer_science",
+            "level": "intermediate",
+            "description": "Design patterns, testing, and development methodologies",
+        },
+        {
+            "title": "Operating Systems",
+            "domain": "computer_science",
+            "level": "intermediate",
+            "description": "Process management, memory, and file systems",
+        },
+        # Computer Science - Advanced
         {
             "title": "Advanced Algorithms",
             "domain": "computer_science",
@@ -185,11 +224,37 @@ def main():
             "description": "Complex algorithmic techniques and optimization strategies",
         },
         {
+            "title": "Distributed Systems",
+            "domain": "computer_science",
+            "level": "advanced",
+            "description": "Scalable systems, consensus algorithms, and fault tolerance",
+        },
+        {
+            "title": "Deep Learning",
+            "domain": "computer_science",
+            "level": "advanced",
+            "description": "Neural network architectures and advanced ML techniques",
+        },
+        # Mathematics - Beginner
+        {
             "title": "Calculus I",
             "domain": "mathematics",
             "level": "beginner",
             "description": "Limits, derivatives, and basic integration",
         },
+        {
+            "title": "Statistics Fundamentals",
+            "domain": "mathematics",
+            "level": "beginner",
+            "description": "Probability, distributions, and statistical inference",
+        },
+        {
+            "title": "Discrete Mathematics",
+            "domain": "mathematics",
+            "level": "beginner",
+            "description": "Logic, sets, combinatorics, and graph theory",
+        },
+        # Mathematics - Intermediate
         {
             "title": "Linear Algebra",
             "domain": "mathematics",
@@ -197,20 +262,84 @@ def main():
             "description": "Vector spaces, matrices, eigenvalues and transformations",
         },
         {
+            "title": "Multivariable Calculus",
+            "domain": "mathematics",
+            "level": "intermediate",
+            "description": "Partial derivatives, multiple integrals, and vector calculus",
+        },
+        {
+            "title": "Differential Equations",
+            "domain": "mathematics",
+            "level": "intermediate",
+            "description": "ODEs, PDEs, and solution methods",
+        },
+        # Mathematics - Advanced
+        {
+            "title": "Real Analysis",
+            "domain": "mathematics",
+            "level": "advanced",
+            "description": "Rigorous calculus, topology, and measure theory",
+        },
+        {
+            "title": "Abstract Algebra",
+            "domain": "mathematics",
+            "level": "advanced",
+            "description": "Groups, rings, fields, and algebraic structures",
+        },
+        # Physics - Beginner
+        {
+            "title": "Physics I",
+            "domain": "physics",
+            "level": "beginner",
+            "description": "Mechanics, kinematics, and Newton's laws",
+        },
+        {
+            "title": "Electricity and Magnetism",
+            "domain": "physics",
+            "level": "beginner",
+            "description": "Electric fields, circuits, and magnetic forces",
+        },
+        # Physics - Intermediate
+        {
             "title": "Classical Mechanics",
             "domain": "physics",
             "level": "intermediate",
             "description": "Newton's laws, energy, momentum and rotational dynamics",
         },
+        {
+            "title": "Thermodynamics",
+            "domain": "physics",
+            "level": "intermediate",
+            "description": "Heat, entropy, and statistical mechanics",
+        },
+        {
+            "title": "Quantum Mechanics I",
+            "domain": "physics",
+            "level": "intermediate",
+            "description": "Wave functions, Schrodinger equation, and quantum states",
+        },
+        # Physics - Advanced
+        {
+            "title": "Quantum Field Theory",
+            "domain": "physics",
+            "level": "advanced",
+            "description": "Relativistic quantum mechanics and particle physics",
+        },
+        {
+            "title": "General Relativity",
+            "domain": "physics",
+            "level": "advanced",
+            "description": "Spacetime curvature and gravitational physics",
+        },
     ]
 
     # Generate training examples
-    print("\n🎯 Generating training examples...")
+    print(f"\n🎯 Generating training examples from {len(course_templates)} templates...")
     training_data = []
 
     for template in course_templates:
-        # Generate multiple variations
-        for i in range(3):  # 3 variations per template
+        # Generate multiple variations (10 per template for better coverage)
+        for i in range(10):  # 10 variations per template = 260 total examples
             example = generate_training_example(
                 title=template["title"],
                 domain=template["domain"],
