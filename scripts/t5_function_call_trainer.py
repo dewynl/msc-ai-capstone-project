@@ -142,12 +142,17 @@ def train_function_call_model():
     model = T5ForConditionalGeneration.from_pretrained(model_name)
 
     # Load training data
-    base_dir = Path(__file__).parent.parent.parent
-    data_file = base_dir / "data" / "training" / "t5_function_call_training.json"
+    base_dir = Path(__file__).parent.parent
+
+    # ONLY use RAG-enhanced training data (no fallback to old approach)
+    data_file = base_dir / "data" / "training" / "rag_enhanced_t5_training.json"
 
     if not data_file.exists():
-        logger.error(f"Function call training data not found: {data_file}")
+        logger.error(f"RAG-enhanced training data not found: {data_file}")
+        logger.error("Run: python scripts/generate_rag_enhanced_training_data.py")
         return
+
+    logger.info("✅ Using RAG-enhanced training data (component IDs)")
 
     logger.info(f"Loading function call training data from: {data_file}")
     examples = load_function_call_data(data_file)

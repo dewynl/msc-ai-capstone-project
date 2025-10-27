@@ -120,6 +120,68 @@ class SyllabusBuilder:
         self.modules.append(module)
         return self
 
+    def add_module_by_id(self, module_id: str) -> "SyllabusBuilder":
+        """
+        Add a module by retrieving it from the component database by ID.
+
+        This method is used when T5 has been given RAG context with available
+        component IDs and wants to reference actual database components.
+
+        Args:
+            module_id: UUID of the module to add
+
+        Returns:
+            Self for method chaining
+        """
+        try:
+            # Load modules from database
+            from pathlib import Path
+
+            modules_file = Path("data/components/modules.json")
+            if modules_file.exists():
+                modules = json.load(open(modules_file))
+                # Find module by ID
+                for module in modules:
+                    if module.get("module_id") == module_id:
+                        # Add module with all its database details
+                        module_data = {
+                            "id": module_id,
+                            "title": module.get("title", "Unknown Module"),
+                            "description": module.get("description", ""),
+                            "key_concepts": module.get("key_concepts", []),
+                            "estimated_hours": module.get("estimated_hours", 8),
+                            "domain": module.get("domain"),
+                            "difficulty": module.get("difficulty"),
+                            "source": "rag_retrieved",
+                        }
+                        self.modules.append(module_data)
+                        return self
+
+            # Fallback: If module not found, add placeholder
+            self.modules.append(
+                {
+                    "id": module_id,
+                    "title": f"Module {module_id[:8]}",
+                    "description": "Module not found in database",
+                    "key_concepts": [],
+                    "estimated_hours": 8,
+                    "source": "not_found",
+                }
+            )
+        except Exception as e:
+            # Fallback on error
+            self.modules.append(
+                {
+                    "id": module_id,
+                    "title": f"Module {module_id[:8]}",
+                    "description": f"Error loading module: {e}",
+                    "key_concepts": [],
+                    "estimated_hours": 8,
+                    "source": "error",
+                }
+            )
+        return self
+
     def add_activity(
         self,
         title: str,
@@ -148,6 +210,61 @@ class SyllabusBuilder:
         self.activities.append(activity)
         return self
 
+    def add_activity_by_id(self, activity_id: str) -> "SyllabusBuilder":
+        """
+        Add an activity by retrieving it from the component database by ID.
+
+        Args:
+            activity_id: UUID of the activity to add
+
+        Returns:
+            Self for method chaining
+        """
+        try:
+            from pathlib import Path
+
+            activities_file = Path("data/components/activities.json")
+            if activities_file.exists():
+                activities = json.load(open(activities_file))
+                for activity in activities:
+                    if activity.get("activity_id") == activity_id:
+                        activity_data = {
+                            "id": activity_id,
+                            "title": activity.get("title", "Unknown Activity"),
+                            "description": activity.get("description", ""),
+                            "bloom_level": activity.get("bloom_level", "apply"),
+                            "estimated_hours": activity.get("estimated_hours", 1),
+                            "domain": activity.get("domain"),
+                            "difficulty": activity.get("difficulty"),
+                            "source": "rag_retrieved",
+                        }
+                        self.activities.append(activity_data)
+                        return self
+
+            # Fallback
+            self.activities.append(
+                {
+                    "id": activity_id,
+                    "title": f"Activity {activity_id[:8]}",
+                    "description": "Activity not found in database",
+                    "bloom_level": "apply",
+                    "estimated_hours": 1,
+                    "source": "not_found",
+                }
+            )
+        except Exception as e:
+            self.activities.append(
+                {
+                    "id": activity_id,
+                    "title": f"Activity {activity_id[:8]}",
+                    "description": f"Error loading activity: {e}",
+                    "bloom_level": "apply",
+                    "estimated_hours": 1,
+                    "source": "error",
+                }
+            )
+        return self
+
     def add_assessment(
         self,
         title: str,
@@ -174,6 +291,63 @@ class SyllabusBuilder:
             "description": description or f"{assessment_type.title()}: {title}",
         }
         self.assessments.append(assessment)
+        return self
+
+    def add_assessment_by_id(self, assessment_id: str) -> "SyllabusBuilder":
+        """
+        Add an assessment by retrieving it from the component database by ID.
+
+        Args:
+            assessment_id: UUID of the assessment to add
+
+        Returns:
+            Self for method chaining
+        """
+        try:
+            from pathlib import Path
+
+            assessments_file = Path("data/components/assessments.json")
+            if assessments_file.exists():
+                assessments = json.load(open(assessments_file))
+                for assessment in assessments:
+                    if assessment.get("assessment_id") == assessment_id:
+                        assessment_data = {
+                            "id": assessment_id,
+                            "title": assessment.get("title", "Unknown Assessment"),
+                            "description": assessment.get("description", ""),
+                            "assessment_type": assessment.get(
+                                "assessment_type", "exam"
+                            ),
+                            "estimated_hours": assessment.get("estimated_hours", 2),
+                            "domain": assessment.get("domain"),
+                            "difficulty": assessment.get("difficulty"),
+                            "source": "rag_retrieved",
+                        }
+                        self.assessments.append(assessment_data)
+                        return self
+
+            # Fallback
+            self.assessments.append(
+                {
+                    "id": assessment_id,
+                    "title": f"Assessment {assessment_id[:8]}",
+                    "description": "Assessment not found in database",
+                    "assessment_type": "exam",
+                    "estimated_hours": 2,
+                    "source": "not_found",
+                }
+            )
+        except Exception as e:
+            self.assessments.append(
+                {
+                    "id": assessment_id,
+                    "title": f"Assessment {assessment_id[:8]}",
+                    "description": f"Error loading assessment: {e}",
+                    "assessment_type": "exam",
+                    "estimated_hours": 2,
+                    "source": "error",
+                }
+            )
         return self
 
     def build(self) -> Dict[str, Any]:
@@ -278,8 +452,11 @@ def execute_function_calls(
         "b.add_objective",
         "b.add_learning_objective",
         "b.add_module",
+        "b.add_module_by_id",
         "b.add_activity",
+        "b.add_activity_by_id",
         "b.add_assessment",
+        "b.add_assessment_by_id",
         "b.build",
         "return",
     }
