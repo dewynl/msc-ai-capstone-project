@@ -74,13 +74,13 @@ class T5RAGHybridGenerator:
 
     def generate_syllabus(self, requirements: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Generate syllabus using T5 + RAG hybrid approach.
+        Generate syllabus using RAG-ENHANCED T5 approach (CORRECT ORDER).
 
         Process:
-        1. T5 generates function calls from requirements
-        2. Parse function calls into structured format
-        3. For each component, optionally enhance with RAG retrieval
-        4. Execute function calls to build syllabus
+        1. RAG retrieves relevant components from database FIRST
+        2. Feed retrieved components to T5 as CONTEXT
+        3. T5 generates function calls that reference actual component IDs
+        4. Execute function calls to build syllabus with real content
         5. Return valid JSON structure
 
         Args:
@@ -89,12 +89,60 @@ class T5RAGHybridGenerator:
         Returns:
             Complete syllabus dictionary with metadata showing T5 vs RAG contribution
         """
-        logger.info("🚀 Starting T5+RAG hybrid syllabus generation")
+        logger.info("🚀 Starting RAG→T5→Execute hybrid syllabus generation")
 
         try:
-            # Step 1: Generate function calls using T5 model (ML COMPONENT)
-            logger.info("📝 T5 generating function calls from user requirements...")
-            raw_output = self.t5_generator.generate_function_calls(requirements)
+            # Step 1: RAG retrieves relevant components FIRST (if available)
+            retrieved_components = {}
+            if self.rag_pipeline:
+                logger.info("🔍 RAG retrieving relevant components from database...")
+                retrieved_components = self.rag_pipeline.retrieve_components(
+                    requirements, k_per_type=5
+                )
+                logger.info(
+                    f"✅ RAG found {len(retrieved_components.get('modules', []))} modules, "
+                    f"{len(retrieved_components.get('activities', []))} activities, "
+                    f"{len(retrieved_components.get('assessments', []))} assessments"
+                )
+            else:
+                logger.info("⚠️  No RAG available, T5 will generate without context")
+
+            # Step 2: Create enhanced prompt with retrieved components as context
+            enhanced_requirements = requirements.copy()
+            if retrieved_components:
+                # Add component information to T5's context
+                enhanced_requirements["available_modules"] = [
+                    {
+                        "id": m.get("module_id"),
+                        "title": m.get("title"),
+                        "difficulty": m.get("difficulty"),
+                    }
+                    for m in retrieved_components.get("modules", [])[:5]
+                ]
+                enhanced_requirements["available_activities"] = [
+                    {
+                        "id": a.get("activity_id"),
+                        "title": a.get("title"),
+                        "bloom_level": a.get("bloom_level"),
+                    }
+                    for a in retrieved_components.get("activities", [])[:5]
+                ]
+                enhanced_requirements["available_assessments"] = [
+                    {
+                        "id": a.get("assessment_id"),
+                        "title": a.get("title"),
+                        "assessment_type": a.get("assessment_type"),
+                    }
+                    for a in retrieved_components.get("assessments", [])[:3]
+                ]
+
+            # Step 3: Generate function calls using T5 with RAG context (ML COMPONENT)
+            logger.info(
+                "📝 T5 generating function calls from requirements + RAG context..."
+            )
+            raw_output = self.t5_generator.generate_function_calls(
+                enhanced_requirements
+            )
             logger.info(
                 f"✅ T5 generated {len(raw_output)} characters of function calls"
             )
@@ -113,17 +161,30 @@ class T5RAGHybridGenerator:
             if "metadata" not in syllabus:
                 syllabus["metadata"] = {}
 
-            syllabus["metadata"]["generation_method"] = "t5_rag_hybrid"
+            syllabus["metadata"]["generation_method"] = "rag_enhanced_t5"
             syllabus["metadata"]["t5_generated"] = True
             syllabus["metadata"]["function_calls_count"] = len(function_calls)
 
-            # RAG statistics (if available)
-            if self.rag_pipeline:
-                syllabus["metadata"]["rag_available"] = True
+            # RAG statistics (what was available for T5 to reference)
+            if retrieved_components:
+                syllabus["metadata"]["rag_components_retrieved"] = (
+                    len(retrieved_components.get("modules", []))
+                    + len(retrieved_components.get("activities", []))
+                    + len(retrieved_components.get("assessments", []))
+                )
+                syllabus["metadata"]["rag_modules_available"] = len(
+                    retrieved_components.get("modules", [])
+                )
+                syllabus["metadata"]["rag_activities_available"] = len(
+                    retrieved_components.get("activities", [])
+                )
+                syllabus["metadata"]["rag_assessments_available"] = len(
+                    retrieved_components.get("assessments", [])
+                )
             else:
-                syllabus["metadata"]["rag_available"] = False
+                syllabus["metadata"]["rag_components_retrieved"] = 0
 
-            logger.info("✅ T5+RAG hybrid generation successful!")
+            logger.info("✅ RAG→T5→Execute hybrid generation successful!")
             return syllabus
 
         except Exception as e:
