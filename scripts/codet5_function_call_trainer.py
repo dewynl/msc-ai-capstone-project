@@ -238,9 +238,12 @@ def train_function_call_model():
     logger.info(f"   Validation examples: {len(eval_dataset)}")
 
     # Calculate optimal training steps
-    batch_size = 4
-    gradient_accumulation_steps = 4  # Effective batch size = 16
-    num_epochs = 10  # More epochs with early stopping
+    # Optimized for 24GB GPU (RX 7900 XTX)
+    batch_size = 16  # Increased from 4 to utilize GPU memory
+    gradient_accumulation_steps = 2  # Effective batch size = 32
+    num_epochs = (
+        20  # Increased epochs based on WSL2 results showing need for more training
+    )
 
     steps_per_epoch = len(train_dataset) // (batch_size * gradient_accumulation_steps)
     total_steps = steps_per_epoch * num_epochs
@@ -285,7 +288,8 @@ def train_function_call_model():
         report_to="none",  # Disable wandb
         # Performance optimization
         fp16=False,  # DirectML doesn't support fp16, keep disabled
-        dataloader_num_workers=0,  # Single worker for stability
+        dataloader_num_workers=4,  # Use 4 CPU cores for faster data loading
+        dataloader_pin_memory=False,  # Disable pin_memory for DirectML compatibility
         # Reproducibility
         seed=42,
         data_seed=42,
