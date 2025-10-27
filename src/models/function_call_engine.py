@@ -139,12 +139,28 @@ class T5FunctionCallGenerator:
             generated_tokens[0], skip_special_tokens=True
         )
 
-        # Fix common T5 issue: missing newlines between statements
-        # T5 sometimes generates "b = SyllabusBuilder() b.set_info(...)" on one line
-        # This regex adds newlines before each "b." that isn't at the start
+        # Fix common T5 issues before execution
         import re
 
-        generated_calls = re.sub(r"(\S)\s+(b\.)", r"\1\n\2", generated_calls)
+        # Issue 1: Missing newlines between statements
+        # T5 sometimes generates "b = SyllabusBuilder() b.set_info(...)" on one line
+        # Handle both 'b.' and 'c.' (c is corrected to b in next step)
+        generated_calls = re.sub(r"(\S)\s+([bc]\.)", r"\1\n\2", generated_calls)
+
+        # Issue 2: Wrong variable name (T5 sometimes generates 'c.' instead of 'b.')
+        # This is a known T5 error - correct it before execution
+        # Replace any 'c.' calls with 'b.' for all builder methods
+        generated_calls = re.sub(
+            r"\bc\.(set_info|add_objective|add_module_by_id|add_activity_by_id|add_assessment_by_id|add_module|add_activity|add_assessment|build)",
+            r"b.\1",
+            generated_calls,
+        )
+
+        # Issue 3: Check for minimum expected length (should have multiple function calls)
+        if len(generated_calls) < 200:
+            logger.warning(
+                f"⚠️  Generated output too short ({len(generated_calls)} chars), may be incomplete"
+            )
 
         logger.info(f"📝 Generated function calls: {generated_calls[:200]}...")
         return generated_calls
