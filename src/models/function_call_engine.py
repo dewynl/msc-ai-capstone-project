@@ -2,9 +2,9 @@
 """
 Function Call Execution Engine
 
-This module bridges T5's generated text output with the SyllabusBuilder execution.
-It handles parsing T5's output (which may not be perfect function calls) and
-converting it into executable function calls.
+This module bridges CodeT5's generated text output with the SyllabusBuilder execution.
+CodeT5 is pre-trained on code, making it significantly better than T5 for generating
+valid Python function calls.
 """
 
 import json
@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 import torch
-from transformers import T5ForConditionalGeneration, T5Tokenizer
+from transformers import RobertaTokenizer, T5ForConditionalGeneration
 
 from .syllabus_builder import execute_function_calls
 
@@ -23,20 +23,20 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-class T5FunctionCallGenerator:
+class CodeT5FunctionCallGenerator:
     """
-    T5-based function call generator for syllabus creation.
+    CodeT5-based function call generator for syllabus creation.
 
-    This class loads the trained T5 model and generates function calls
-    that can be executed by the SyllabusBuilder.
+    CodeT5 is pre-trained on 8.35M code functions, making it significantly better
+    than T5 for generating valid Python function calls.
     """
 
-    def __init__(self, model_path: str = "./models/t5-function-call-finetuned"):
+    def __init__(self, model_path: str = "./models/codet5-function-call-finetuned"):
         """
-        Initialize the T5 function call generator.
+        Initialize the CodeT5 function call generator.
 
         Args:
-            model_path: Path to the trained T5 model
+            model_path: Path to the trained CodeT5 model
         """
         self.model_path = Path(model_path)
         self.tokenizer = None
@@ -44,12 +44,12 @@ class T5FunctionCallGenerator:
         self._load_model()
 
     def _load_model(self):
-        """Load the trained T5 model and tokenizer.
+        """Load the trained CodeT5 model and tokenizer.
 
         Priority order:
         1. Hugging Face Hub (via HF_MODEL_ID env var or Streamlit secret)
         2. Local fine-tuned model
-        3. Base t5-small (fallback)
+        3. Base Salesforce/codet5-small (fallback)
         """
         try:
             # Check for Hugging Face model ID (for production deployment)
@@ -67,42 +67,50 @@ class T5FunctionCallGenerator:
             if hf_model_id:
                 # Load from Hugging Face Hub
                 logger.info(
-                    f"🤗 Loading fine-tuned model from Hugging Face: {hf_model_id}"
+                    f"🤗 Loading fine-tuned CodeT5 model from Hugging Face: {hf_model_id}"
                 )
-                self.tokenizer = T5Tokenizer.from_pretrained(hf_model_id)
-                self.model = T5ForConditionalGeneration.from_pretrained(hf_model_id)
-                logger.info("✅ Fine-tuned model loaded from Hugging Face Hub")
+                self.tokenizer = RobertaTokenizer.from_pretrained(hf_model_id)
+                self.model = T5ForConditionalGeneration.from_pretrained(
+                    hf_model_id, use_safetensors=True
+                )
+                logger.info("✅ Fine-tuned CodeT5 model loaded from Hugging Face Hub")
 
             elif self.model_path.exists():
                 # Load from local path
                 logger.info(
-                    f"📁 Loading trained model from local path: {self.model_path}"
+                    f"📁 Loading trained CodeT5 model from local path: {self.model_path}"
                 )
-                self.tokenizer = T5Tokenizer.from_pretrained(self.model_path)
-                self.model = T5ForConditionalGeneration.from_pretrained(self.model_path)
-                logger.info("✅ Fine-tuned model loaded from local path")
+                self.tokenizer = RobertaTokenizer.from_pretrained(self.model_path)
+                self.model = T5ForConditionalGeneration.from_pretrained(
+                    self.model_path, use_safetensors=True
+                )
+                logger.info("✅ Fine-tuned CodeT5 model loaded from local path")
 
             else:
                 # Fallback to base model
                 logger.warning(
-                    "⚠️  No fine-tuned model found. Using base T5.\n"
+                    "⚠️  No fine-tuned model found. Using base CodeT5.\n"
                     "   - Set HF_MODEL_ID env var to use Hugging Face model\n"
-                    "   - Or train locally: python scripts/t5_function_call_trainer.py"
+                    "   - Or train locally: python scripts/codet5_function_call_trainer.py"
                 )
-                self.tokenizer = T5Tokenizer.from_pretrained("t5-small")
-                self.model = T5ForConditionalGeneration.from_pretrained("t5-small")
+                self.tokenizer = RobertaTokenizer.from_pretrained(
+                    "Salesforce/codet5-small"
+                )
+                self.model = T5ForConditionalGeneration.from_pretrained(
+                    "Salesforce/codet5-small", use_safetensors=True
+                )
 
             # Set to evaluation mode
             self.model.eval()
-            logger.info("✅ T5 model loaded successfully")
+            logger.info("✅ CodeT5 model loaded successfully")
 
         except Exception as e:
-            logger.error(f"❌ Failed to load T5 model: {e}")
+            logger.error(f"❌ Failed to load CodeT5 model: {e}")
             raise
 
     def generate_function_calls(self, requirements: Dict[str, Any]) -> str:
         """
-        Generate function calls for the given course requirements.
+        Generate function calls for the given course requirements using CodeT5.
 
         Args:
             requirements: Course requirements dictionary
@@ -110,7 +118,7 @@ class T5FunctionCallGenerator:
         Returns:
             Generated function calls as string
         """
-        # Format input for T5
+        # Format input for CodeT5
         input_text = f"Generate course syllabus: {json.dumps(requirements)}"
 
         # Tokenize input
@@ -126,9 +134,9 @@ class T5FunctionCallGenerator:
         with torch.no_grad():
             generated_tokens = self.model.generate(
                 input_ids,
-                max_length=571,  # Match training output length
+                max_length=536,  # Match training output length
                 num_beams=4,  # Beam search for better quality
-                early_stopping=True,
+                early_stopping=False,  # Let it complete fully
                 no_repeat_ngram_size=2,  # Prevent repetition
                 pad_token_id=self.tokenizer.pad_token_id,
                 eos_token_id=self.tokenizer.eos_token_id,
@@ -139,82 +147,72 @@ class T5FunctionCallGenerator:
             generated_tokens[0], skip_special_tokens=True
         )
 
-        # Fix common T5 issues before execution
-        import re
-
-        # Issue 1: Missing newlines between statements
-        # T5 sometimes generates "b = SyllabusBuilder() b.set_info(...)" on one line
-        # Handle both 'b.' and 'c.' (c is corrected to b in next step)
-        generated_calls = re.sub(r"(\S)\s+([bc]\.)", r"\1\n\2", generated_calls)
-
-        # Issue 2: Wrong variable name (T5 sometimes generates 'c.' instead of 'b.')
-        # This is a known T5 error - correct it before execution
-        # Replace any 'c.' calls with 'b.' for all builder methods
-        generated_calls = re.sub(
-            r"\bc\.(set_info|add_objective|add_module_by_id|add_activity_by_id|add_assessment_by_id|add_module|add_activity|add_assessment|build)",
-            r"b.\1",
-            generated_calls,
-        )
-
-        # Issue 3: Check for minimum expected length (should have multiple function calls)
+        # CodeT5 generates much cleaner code than T5, so minimal post-processing needed
+        # Just log if output seems short (may indicate incomplete generation)
         if len(generated_calls) < 200:
             logger.warning(
-                f"⚠️  Generated output too short ({len(generated_calls)} chars), may be incomplete"
+                f"⚠️  Generated output short ({len(generated_calls)} chars), may need more training epochs"
             )
 
-        logger.info(f"📝 Generated function calls: {generated_calls[:200]}...")
+        logger.info(
+            f"📝 Generated function calls ({len(generated_calls)} chars): {generated_calls[:200]}..."
+        )
         return generated_calls
 
 
 class FunctionCallParser:
     """
-    Parser for converting T5's output into executable function calls.
+    Parser for converting CodeT5's output into executable function calls.
 
-    T5 might not generate perfect function call syntax, so this parser
-    handles common issues and converts the output into valid function calls.
+    CodeT5 generates much better code than T5, but this parser provides
+    fallback handling if the model output needs correction.
     """
 
     @staticmethod
-    def parse_t5_output(t5_output: str) -> str:
+    def parse_t5_output(model_output: str) -> str:
         """
-        Parse T5's output and convert it to executable function calls.
+        Parse CodeT5's output and convert it to executable function calls.
 
         Args:
-            t5_output: Raw output from T5 model
+            model_output: Raw output from CodeT5 model
 
         Returns:
             Cleaned, executable function calls
         """
-        # Remove common T5 artifacts and clean up
-        cleaned = t5_output.strip()
+        # CodeT5 output should be clean, just strip whitespace
+        cleaned = model_output.strip()
 
-        # Handle common T5 patterns that aren't perfect function calls
+        # If CodeT5 didn't generate function calls (rare), use fallback
         if not cleaned.startswith("b = SyllabusBuilder()"):
+            logger.warning(
+                "⚠️  CodeT5 output doesn't match expected format, using fallback parser"
+            )
             cleaned = FunctionCallParser._convert_to_function_calls(cleaned)
 
         return cleaned
 
     @staticmethod
-    def _convert_to_function_calls(t5_output: str) -> str:
+    def _convert_to_function_calls(model_output: str) -> str:
         """
-        Enhanced conversion of T5's structured output to function calls.
+        Enhanced conversion of model structured output to function calls.
 
-        Handles multiple T5 output patterns with robust parsing.
+        Fallback parser for cases where CodeT5 generates unexpected format.
         """
         calls = ["b = SyllabusBuilder()"]
 
         try:
-            # Enhanced pattern matching for T5 output
+            # Enhanced pattern matching for model output
 
             # 1. Extract course information with multiple patterns
-            title = FunctionCallParser._extract_field(t5_output, "title")
-            domain = FunctionCallParser._extract_field(t5_output, "domain")
-            level = FunctionCallParser._extract_field(t5_output, "level")
+            title = FunctionCallParser._extract_field(model_output, "title")
+            domain = FunctionCallParser._extract_field(model_output, "domain")
+            level = FunctionCallParser._extract_field(model_output, "level")
             duration = (
-                FunctionCallParser._extract_field(t5_output, "duration") or "semester"
+                FunctionCallParser._extract_field(model_output, "duration")
+                or "semester"
             )
             description = (
-                FunctionCallParser._extract_field(t5_output, "description")
+                FunctionCallParser._extract_field(model_output, "description")
                 or f'Course on {title or "various topics"}'
             )
 
@@ -228,7 +226,7 @@ class FunctionCallParser:
                 )
 
             # 2. Extract learning objectives with enhanced patterns
-            objectives = FunctionCallParser._extract_objectives(t5_output)
+            objectives = FunctionCallParser._extract_objectives(model_output)
             for obj in objectives[:4]:  # Limit to 4 objectives
                 cleaned_obj = obj.replace('"', '\\"').strip()[
                     :100
@@ -237,7 +235,7 @@ class FunctionCallParser:
                     calls.append(f'b.add_objective("{cleaned_obj}")')
 
             # 3. Extract or generate modules
-            modules = FunctionCallParser._extract_modules(t5_output)
+            modules = FunctionCallParser._extract_modules(model_output)
             if not modules:  # Generate default modules if none found
                 if title:
                     modules = [
@@ -299,11 +297,11 @@ class FunctionCallParser:
 
         except Exception as e:
             logger.warning(f"Enhanced parsing failed, using fallback: {e}")
-            return FunctionCallParser._create_fallback_calls(t5_output)
+            return FunctionCallParser._create_fallback_calls(model_output)
 
     @staticmethod
     def _extract_field(text: str, field_name: str) -> str:
-        """Extract a field value from T5 output using multiple patterns."""
+        """Extract a field value from model output using multiple patterns."""
         patterns = [
             rf'"{field_name}":\s*"([^"]+)"',  # JSON-like: "field": "value"
             rf'{field_name}:\s*"([^"]+)"',  # No quotes: field: "value"
@@ -400,24 +398,24 @@ class FunctionCallSyllabusGenerator:
     """
     Complete pipeline for generating syllabi using the function call approach.
 
-    This combines T5 generation, parsing, and execution into a single interface.
+    This combines CodeT5 generation, parsing, and execution into a single interface.
     """
 
-    def __init__(self, model_path: str = "./models/t5-function-call-finetuned"):
+    def __init__(self, model_path: str = "./models/codet5-function-call-finetuned"):
         """
         Initialize the complete function call pipeline.
 
         Args:
-            model_path: Path to trained T5 model
+            model_path: Path to trained CodeT5 model
         """
-        self.t5_generator = T5FunctionCallGenerator(model_path)
+        self.codet5_generator = CodeT5FunctionCallGenerator(model_path)
         self.parser = FunctionCallParser()
 
     def generate_syllabus(
         self, requirements: Dict[str, Any]
     ) -> Tuple[Dict[str, Any], str]:
         """
-        Generate a complete syllabus using the function call approach.
+        Generate a complete syllabus using the function call approach with CodeT5.
 
         Args:
             requirements: Course requirements dictionary
@@ -425,23 +423,23 @@ class FunctionCallSyllabusGenerator:
         Returns:
             Tuple of (syllabus_dict, generated_function_calls)
         """
-        logger.info("🚀 Starting function call syllabus generation")
+        logger.info("🚀 Starting CodeT5 function call syllabus generation")
 
         try:
-            # Step 1: Generate function calls using T5
-            raw_output = self.t5_generator.generate_function_calls(requirements)
+            # Step 1: Generate function calls using CodeT5
+            raw_output = self.codet5_generator.generate_function_calls(requirements)
 
-            # Step 2: Parse and clean the function calls
+            # Step 2: Parse and clean the function calls (minimal for CodeT5)
             function_calls = self.parser.parse_t5_output(raw_output)
 
             # Step 3: Execute function calls to build syllabus
             syllabus = execute_function_calls(function_calls)
 
-            logger.info("✅ Function call syllabus generation successful!")
+            logger.info("✅ CodeT5 function call syllabus generation successful!")
             return syllabus, function_calls
 
         except Exception as e:
-            logger.error(f"❌ Function call generation failed: {e}")
+            logger.error(f"❌ CodeT5 function call generation failed: {e}")
             # Fallback to basic syllabus
             fallback_calls = self.parser._create_fallback_calls(str(requirements))
             syllabus = execute_function_calls(fallback_calls)
