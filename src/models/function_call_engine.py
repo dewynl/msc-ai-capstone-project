@@ -117,27 +117,34 @@ class T5FunctionCallGenerator:
         input_ids = self.tokenizer(
             input_text,
             return_tensors="pt",
-            max_length=512,
+            max_length=640,  # Match training config
             truncation=True,
             padding=True,
         ).input_ids
 
-        # Generate function calls
+        # Generate function calls with beam search (deterministic, higher quality)
         with torch.no_grad():
             generated_tokens = self.model.generate(
                 input_ids,
-                max_length=800,
-                num_return_sequences=1,
-                temperature=0.7,
-                do_sample=True,
-                pad_token_id=self.tokenizer.pad_token_id,
+                max_length=571,  # Match training output length
+                num_beams=4,  # Beam search for better quality
                 early_stopping=True,
+                no_repeat_ngram_size=2,  # Prevent repetition
+                pad_token_id=self.tokenizer.pad_token_id,
+                eos_token_id=self.tokenizer.eos_token_id,
             )
 
         # Decode generated tokens
         generated_calls = self.tokenizer.decode(
             generated_tokens[0], skip_special_tokens=True
         )
+
+        # Fix common T5 issue: missing newlines between statements
+        # T5 sometimes generates "b = SyllabusBuilder() b.set_info(...)" on one line
+        # This regex adds newlines before each "b." that isn't at the start
+        import re
+
+        generated_calls = re.sub(r"(\S)\s+(b\.)", r"\1\n\2", generated_calls)
 
         logger.info(f"📝 Generated function calls: {generated_calls[:200]}...")
         return generated_calls
