@@ -178,7 +178,10 @@ def train_function_call_model():
     logger.info(f"📦 Loading {model_name} model...")
     logger.info("   CodeT5 = T5 architecture + code pre-training (8.35M functions)")
     tokenizer = RobertaTokenizer.from_pretrained(model_name)
-    model = T5ForConditionalGeneration.from_pretrained(model_name)
+    # Force safetensors loading (compatible with PyTorch 2.4.1 + DirectML)
+    model = T5ForConditionalGeneration.from_pretrained(
+        model_name, use_safetensors=True  # Bypass torch.load security restriction
+    )
 
     # Move model to device (GPU or CPU)
     model = model.to(device)
