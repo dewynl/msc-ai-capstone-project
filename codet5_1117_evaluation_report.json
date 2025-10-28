@@ -1,0 +1,222 @@
+{
+  "total_tests": 5,
+  "passed_tests": 0,
+  "failed_tests": 5,
+  "pass_rate": 0.0,
+  "detailed_results": [
+    {
+      "test_name": "Beginner Computer Science",
+      "requirements": {
+        "title": "Introduction to Programming",
+        "domain": "computer_science",
+        "level": "beginner",
+        "duration": "semester",
+        "description": "Learn programming fundamentals using Python",
+        "learning_objectives": [
+          "Understand basic programming concepts",
+          "Write simple Python programs",
+          "Debug code effectively"
+        ]
+      },
+      "generated_output": "b = SyllabusBuilder()\nb.set_info(\"Introduction to Programming\", \"computer_science\")",
+      "length_check": {
+        "passed": false,
+        "message": "Output too short (83 chars) - likely truncated/incomplete"
+      },
+      "required_calls_check": {
+        "passed": false,
+        "missing": [
+          "add_objective",
+          "add_module",
+          "add_activity",
+          "add_assessment",
+          "build"
+        ]
+      },
+      "syntax_check": {
+        "passed": true,
+        "message": "Valid Python syntax"
+      },
+      "execution_check": {
+        "passed": false,
+        "message": "Execution error: Function call execution failed: SyllabusBuilder.set_info() missing 1 required positional argument: 'level'",
+        "syllabus": {}
+      },
+      "overall_pass": false
+    },
+    {
+      "test_name": "Intermediate Machine Learning",
+      "requirements": {
+        "title": "Machine Learning Fundamentals",
+        "domain": "computer_science",
+        "level": "intermediate",
+        "duration": "semester",
+        "description": "Introduction to machine learning algorithms",
+        "learning_objectives": [
+          "Understand supervised learning algorithms",
+          "Implement neural networks",
+          "Evaluate model performance"
+        ]
+      },
+      "generated_output": "b = SyllabusBuilder()\nb.set_info(\"Machine Learning Fundamentals\", \"computer_science\", 'intermediate', \"semester\",\"Introduction to machine learning algorithms\")",
+      "length_check": {
+        "passed": false,
+        "message": "Output too short (159 chars) - likely truncated/incomplete"
+      },
+      "required_calls_check": {
+        "passed": false,
+        "missing": [
+          "add_objective",
+          "add_module",
+          "add_activity",
+          "add_assessment",
+          "build"
+        ]
+      },
+      "syntax_check": {
+        "passed": true,
+        "message": "Valid Python syntax"
+      },
+      "execution_check": {
+        "passed": true,
+        "message": "Execution successful",
+        "syllabus": {
+          "course_info": {
+            "title": "Machine Learning Fundamentals",
+            "domain": "computer_science",
+            "level": "intermediate",
+            "duration": "semester",
+            "description": "Introduction to machine learning algorithms"
+          },
+          "learning_objectives": [],
+          "modules": [],
+          "activities": [],
+          "assessments": [],
+          "metadata": {
+            "generated_by": "function_call_approach",
+            "total_modules": 0,
+            "total_activities": 0,
+            "total_assessments": 0,
+            "estimated_total_hours": 0
+          }
+        }
+      },
+      "overall_pass": false
+    },
+    {
+      "test_name": "Advanced Data Science",
+      "requirements": {
+        "title": "Advanced Data Science Techniques",
+        "domain": "data_science",
+        "level": "advanced",
+        "duration": "semester",
+        "description": "Deep learning and big data analytics",
+        "learning_objectives": [
+          "Design deep learning architectures",
+          "Process large-scale datasets",
+          "Deploy ML models in production"
+        ]
+      },
+      "generated_output": "b = SyllabusBuilder()\nb.set_info(\"Advanced Data Science Techniques\", \"data_science\",",
+      "length_check": {
+        "passed": false,
+        "message": "Output too short (84 chars) - likely truncated/incomplete"
+      },
+      "required_calls_check": {
+        "passed": false,
+        "missing": [
+          "add_objective",
+          "add_module",
+          "add_activity",
+          "add_assessment",
+          "build"
+        ]
+      },
+      "syntax_check": {
+        "passed": false,
+        "message": "Syntax error: '(' was never closed (<string>, line 2)"
+      },
+      "execution_check": {
+        "passed": false,
+        "message": "Execution error: Invalid function call syntax: '(' was never closed (<string>, line 2)",
+        "syllabus": {}
+      },
+      "overall_pass": false
+    },
+    {
+      "test_name": "Business Course",
+      "requirements": {
+        "title": "Digital Marketing Strategy",
+        "domain": "business",
+        "level": "intermediate",
+        "duration": "quarter",
+        "description": "Modern digital marketing techniques",
+        "learning_objectives": [
+          "Create digital marketing campaigns",
+          "Analyze marketing data",
+          "Optimize conversion rates"
+        ]
+      },
+      "generated_output": "b = SyllabusBuilder()\nb.set_info(\"Digital Marketing Strategy\", \"business\",\"intermediate\",(\"quarter\", 'Modern digital marketing techniques\")",
+      "length_check": {
+        "passed": false,
+        "message": "Output too short (139 chars) - likely truncated/incomplete"
+      },
+      "required_calls_check": {
+        "passed": false,
+        "missing": [
+          "add_objective",
+          "add_module",
+          "add_activity",
+          "add_assessment",
+          "build"
+        ]
+      },
+      "syntax_check": {
+        "passed": false,
+        "message": "Syntax error: unterminated string literal (detected at line 2) (<string>, line 2)"
+      },
+      "execution_check": {
+        "passed": false,
+        "message": "Execution error: Invalid function call syntax: unterminated string literal (detected at line 2) (<string>, line 2)",
+        "syllabus": {}
+      },
+      "overall_pass": false
+    },
+    {
+      "test_name": "Quick Start Example (Production Test)",
+      "requirements": {
+        "title": "Computer Science Course",
+        "domain": "computer_science",
+        "level": "intermediate",
+        "duration": "semester",
+        "description": "A comprehensive computer science course"
+      },
+      "generated_output": "b = SyllabusBuilder()\nb.set_info(\"Computer Science Course\", \"computer_science\")",
+      "length_check": {
+        "passed": false,
+        "message": "Output too short (79 chars) - likely truncated/incomplete"
+      },
+      "required_calls_check": {
+        "passed": false,
+        "missing": [
+          "add_objective",
+          "add_module",
+          "add_activity",
+          "add_assessment",
+          "build"
+        ]
+      },
+      "syntax_check": {
+        "passed": true,
+        "message": "Valid Python syntax"
+      },
+      "execution_check": {
+        "passed": false,
+        "message": "Execution error: Function call execution failed: SyllabusBuilder.set_info() missing 1 required positional argument: 'level'",
+        "syllabus": {}
+      },
+      "overall_pass": false
+    }
+  ]
+}
