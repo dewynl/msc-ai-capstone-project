@@ -9,16 +9,28 @@ This creates high-quality training data where:
 1. Claude sees ALL available components (like a real educator would)
 2. Claude selects semantically appropriate components for each course
 3. T5 learns from realistic, coherent examples
+4. Deduplication ensures all training examples are unique
 
-Cost: ~$0.04-0.39 for 260 examples (using Claude Haiku)
+Cost: ~$0.50/100 examples (using Claude Sonnet 4.5)
+      ~$6.50 for 1,300 examples with 50 variations per course
 """
 
 import json
 import os
+import random
+import time
 from pathlib import Path
 from typing import Dict, List
 
-from anthropic import Anthropic
+from anthropic import (
+    Anthropic,
+    APIConnectionError,
+    APIError,
+    APIStatusError,
+    APITimeoutError,
+    InternalServerError,
+    RateLimitError,
+)
 
 
 def load_all_components():
@@ -111,13 +123,25 @@ def ask_claude_to_compose_syllabus(
     level: str,
     description: str,
     candidates: Dict[str, List],
+    variation_seed: int = 0,
 ) -> Dict[str, List]:
     """
     Ask Claude to act as an expert educator and compose a coherent syllabus.
 
     This mimics real-world usage: an educator reviews available components
     and selects the ones that best fit the course objectives.
+
+    variation_seed: Used to encourage diverse selections across variations.
     """
+
+    # Shuffle candidates to encourage diversity (deterministic per seed)
+    random.seed(variation_seed)
+    shuffled_modules = candidates["modules"].copy()
+    shuffled_activities = candidates["activities"].copy()
+    shuffled_assessments = candidates["assessments"].copy()
+    random.shuffle(shuffled_modules)
+    random.shuffle(shuffled_activities)
+    random.shuffle(shuffled_assessments)
 
     # Create concise component lists for the prompt
     module_list = [
@@ -126,7 +150,7 @@ def ask_claude_to_compose_syllabus(
             "title": m["title"],
             "difficulty": m.get("difficulty", ""),
         }
-        for m in candidates["modules"]
+        for m in shuffled_modules
     ]
 
     activity_list = [
@@ -135,7 +159,7 @@ def ask_claude_to_compose_syllabus(
             "title": a["title"],
             "type": a.get("activity_type", ""),
         }
-        for a in candidates["activities"]
+        for a in shuffled_activities
     ]
 
     assessment_list = [
@@ -144,10 +168,10 @@ def ask_claude_to_compose_syllabus(
             "title": a["title"],
             "type": a.get("assessment_type", ""),
         }
-        for a in candidates["assessments"]
+        for a in shuffled_assessments
     ]
 
-    prompt = f"""You are an expert educator designing a course syllabus.
+    prompt = """You are an expert educator designing a course syllabus.
 
 Course Details:
 - Title: {title}
@@ -173,6 +197,12 @@ As an experienced educator, select components that:
 3. Cover the core topics described in the course description
 4. Provide appropriate assessment of learning outcomes
 
+IMPORTANT: For training data diversity, explore DIFFERENT valid combinations.
+Consider varying:
+- The number of components selected (3-5 modules, 3-5 activities, 1-2 assessments)
+- The specific topics covered (there are multiple valid approaches)
+- The pedagogical style (theory-heavy vs practice-heavy, etc.)
+
 Select 3-5 modules, 3-5 activities, and 1-2 assessments.
 
 Return ONLY a JSON object:
@@ -184,22 +214,74 @@ Return ONLY a JSON object:
 
 No explanation, just the JSON."""
 
-    response = client.messages.create(
-        model="claude-3-5-haiku-20241022",  # Most cost-effective
-        max_tokens=800,
-        messages=[{"role": "user", "content": prompt}],
+    # Retry logic for API errors (overload, rate limits, network issues, timeouts)
+    max_retries = 5
+    base_delay = 2
+
+    # Retryable errors (transient issues)
+    retryable_errors = (
+        InternalServerError,  # 500 - Server overload
+        RateLimitError,  # 429 - Rate limit
+        APIConnectionError,  # Network connectivity
+        APITimeoutError,  # Request timeout
+        APIStatusError,  # Other status errors
     )
 
-    # Parse Claude's selections
-    response_text = response.content[0].text.strip()
+    for attempt in range(max_retries):
+        try:
+            response = client.messages.create(
+                model="claude-sonnet-4-5-20250929",  # Best quality for training data generation
+                max_tokens=800,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            break  # Success!
+        except retryable_errors as e:
+            if attempt < max_retries - 1:
+                delay = base_delay * (
+                    2**attempt
+                )  # Exponential backoff: 2s, 4s, 8s, 16s, 32s
+                print(
+                    f"⚠️  API error ({e.__class__.__name__}), retrying in {delay}s..."
+                )
+                time.sleep(delay)
+            else:
+                print(f"❌ API error after {max_retries} retries: {e}")
+                raise
+        except APIError as e:
+            # Non-retryable API errors (auth, bad request, etc.)
+            print(f"❌ Non-retryable API error: {e}")
+            raise
 
-    # Remove markdown code blocks if present
-    if response_text.startswith("```json"):
-        response_text = response_text.replace("```json", "").replace("```", "").strip()
-    elif response_text.startswith("```"):
-        response_text = response_text.replace("```", "").strip()
+    # Parse Claude's selections with error handling
+    try:
+        response_text = response.content[0].text.strip()
 
-    selected_ids = json.loads(response_text)
+        # Remove markdown code blocks if present
+        if response_text.startswith("```json"):
+            response_text = (
+                response_text.replace("```json", "").replace("```", "").strip()
+            )
+        elif response_text.startswith("```"):
+            response_text = response_text.replace("```", "").strip()
+
+        selected_ids = json.loads(response_text)
+
+        # Validate response structure
+        if not isinstance(selected_ids, dict):
+            raise ValueError(f"Expected dict, got {type(selected_ids)}")
+        if (
+            "module_ids" not in selected_ids
+            or "activity_ids" not in selected_ids
+            or "assessment_ids" not in selected_ids
+        ):
+            raise ValueError(
+                f"Missing required keys in response: {selected_ids.keys()}"
+            )
+
+    except (json.JSONDecodeError, ValueError, KeyError, IndexError) as e:
+        print(f"❌ Failed to parse Claude response: {e}")
+        print(f"   Raw response: {response.content[0].text[:200]}...")
+        raise ValueError(f"Invalid Claude response format: {e}")
 
     # Get full component objects
     selected = {
@@ -310,8 +392,28 @@ def generate_training_example(
 
 def main():
     """Generate Claude-composed training dataset."""
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="Generate Claude-enhanced training data"
+    )
+    parser.add_argument(
+        "--variations",
+        type=int,
+        default=10,
+        help="Number of variations per course (default: 10)",
+    )
+    parser.add_argument(
+        "--output",
+        type=str,
+        default="data/training/rag_enhanced_t5_training.json",
+        help="Output file path",
+    )
+    args = parser.parse_args()
+
     print("🤖 Generating Claude-Enhanced Training Data")
     print("   (Claude acts as expert educator selecting from full database)")
+    print(f"   Variations per course: {args.variations}")
     print("=" * 80)
 
     # Check for API key
@@ -503,58 +605,218 @@ def main():
         },
     ]
 
-    # Generate training examples with Claude's expertise
-    print(f"\n🎯 Generating {len(course_templates) * 10} training examples...")
-    print("   Claude will select appropriate components for each course\n")
+    # Check for existing checkpoint to resume from
+    checkpoint_file = (
+        Path(args.output).parent / f"{Path(args.output).stem}_checkpoint.json"
+    )
+    start_from_course = 0
     training_data = []
+    seen_combinations = set()
+
+    if checkpoint_file.exists():
+        print(f"\n💾 Found checkpoint: {checkpoint_file}")
+        try:
+            with open(checkpoint_file, "r") as f:
+                training_data = json.load(f)
+
+            # Rebuild seen_combinations from checkpoint
+            for example in training_data:
+                input_json = json.loads(
+                    example["input_text"].replace("Generate course syllabus: ", "")
+                )
+
+                # Extract component IDs from the output_calls
+                output = example["output_calls"]
+                module_ids = []
+                activity_ids = []
+                assessment_ids = []
+
+                # Simple extraction from output_calls
+                for line in output.split("\n"):
+                    if "add_module_by_id" in line:
+                        id_match = line.split('"')[1] if '"' in line else None
+                        if id_match:
+                            module_ids.append(id_match)
+                    elif "add_activity_by_id" in line:
+                        id_match = line.split('"')[1] if '"' in line else None
+                        if id_match:
+                            activity_ids.append(id_match)
+                    elif "add_assessment_by_id" in line:
+                        id_match = line.split('"')[1] if '"' in line else None
+                        if id_match:
+                            assessment_ids.append(id_match)
+
+                title = input_json.get("title", "")
+                combo_signature = f"{title}|{'|'.join(sorted(module_ids))}|{'|'.join(sorted(activity_ids))}|{'|'.join(sorted(assessment_ids))}"
+                seen_combinations.add(combo_signature)
+
+            # Determine which course to start from
+            # Count examples per course template
+            course_counts = {}
+            for example in training_data:
+                input_json = json.loads(
+                    example["input_text"].replace("Generate course syllabus: ", "")
+                )
+                title = input_json.get("title", "")
+                course_counts[title] = course_counts.get(title, 0) + 1
+
+            # Find first incomplete course
+            for i, template in enumerate(course_templates):
+                if course_counts.get(template["title"], 0) < args.variations:
+                    start_from_course = i
+                    break
+            else:
+                start_from_course = len(course_templates)  # All complete
+
+            print(f"   ✅ Loaded {len(training_data)} existing examples")
+            print(
+                f"   🔄 Resuming from course {start_from_course + 1}/{len(course_templates)}"
+            )
+        except Exception as e:
+            print(f"   ⚠️  Checkpoint load failed: {e}")
+            print("   Starting fresh...")
+            training_data = []
+            seen_combinations = set()
+            start_from_course = 0
+
+    # Generate training examples with Claude's expertise
+    print(
+        f"\n🎯 Generating {len(course_templates) * args.variations} training examples..."
+    )
+    print("   Claude will select appropriate components for each course\n")
+    print("   (Deduplication enabled - tracking unique component combinations)\n")
     total_courses = len(course_templates)
+    duplicates_skipped = 0
 
-    for i, template in enumerate(course_templates, 1):
-        print(f"📚 [{i}/{total_courses}] {template['title']}")
+    # Wrap in try/finally to ensure checkpoint on ANY exit
+    try:
+        for i, template in enumerate(course_templates, 1):
+            # Skip completed courses if resuming from checkpoint
+            if i - 1 < start_from_course:
+                continue
 
-        # Get candidate components for Claude to choose from
-        candidates = get_component_candidates(
-            template["domain"], template["level"], all_components
-        )
+            print(f"📚 [{i}/{total_courses}] {template['title']}")
 
-        print(
-            f"   Candidates: {len(candidates['modules'])} modules, "
-            f"{len(candidates['activities'])} activities, "
-            f"{len(candidates['assessments'])} assessments"
-        )
-
-        # Generate 10 variations per course
-        for variation in range(10):
-            print(f"   Variation {variation + 1}/10...", end=" ", flush=True)
-
-            # Ask Claude to compose a coherent syllabus
-            selected = ask_claude_to_compose_syllabus(
-                client,
-                template["title"],
-                template["domain"],
-                template["level"],
-                template["description"],
-                candidates,
+            # Get candidate components for Claude to choose from
+            candidates = get_component_candidates(
+                template["domain"], template["level"], all_components
             )
 
-            # Generate training example
-            example = generate_training_example(
-                title=template["title"],
-                domain=template["domain"],
-                level=template["level"],
-                description=template["description"],
-                selected_components=selected,
+            print(
+                f"   Candidates: {len(candidates['modules'])} modules, "
+                f"{len(candidates['activities'])} activities, "
+                f"{len(candidates['assessments'])} assessments"
             )
 
-            training_data.append(example)
-            print("✓")
+            # Generate variations per course
+            variation = 0
+            attempts = 0
+            consecutive_duplicates = 0
+            max_attempts = args.variations * 3  # Allow some retries for duplicates
+            max_consecutive_duplicates = 10  # Stop if we hit 10 duplicates in a row
 
-        print()  # Blank line between courses
+            while variation < args.variations and attempts < max_attempts:
+                attempts += 1
+                print(
+                    f"   Variation {variation + 1}/{args.variations}...",
+                    end=" ",
+                    flush=True,
+                )
 
-    print(f"\n✅ Generated {len(training_data)} Claude-composed examples")
+                # Ask Claude to compose a coherent syllabus
+                # Use unique seed per course+variation+attempt for diversity
+                variation_seed = (i * 1000) + (variation * 10) + attempts
+                selected = ask_claude_to_compose_syllabus(
+                    client,
+                    template["title"],
+                    template["domain"],
+                    template["level"],
+                    template["description"],
+                    candidates,
+                    variation_seed=variation_seed,
+                )
+
+                # Create unique identifier from selected component IDs
+                module_ids = sorted([m["module_id"] for m in selected["modules"]])
+                activity_ids = sorted(
+                    [a["activity_id"] for a in selected["activities"]]
+                )
+                assessment_ids = sorted(
+                    [a["assessment_id"] for a in selected["assessments"]]
+                )
+
+                combo_signature = f"{template['title']}|{'|'.join(module_ids)}|{'|'.join(activity_ids)}|{'|'.join(assessment_ids)}"
+
+                # Check for duplicate
+                if combo_signature in seen_combinations:
+                    print("⚠️  duplicate, retrying...")
+                    duplicates_skipped += 1
+                    consecutive_duplicates += 1
+
+                    # Safety: Stop if too many consecutive duplicates
+                    if consecutive_duplicates >= max_consecutive_duplicates:
+                        print(
+                            f"\n   ⚠️  WARNING: Hit {consecutive_duplicates} consecutive duplicates. Stopping this course."
+                        )
+                        print(
+                            f"   Generated {variation}/{args.variations} unique variations for this course."
+                        )
+                        break
+
+                    continue
+
+                # Reset consecutive duplicate counter on success
+                consecutive_duplicates = 0
+                seen_combinations.add(combo_signature)
+
+                # Generate training example
+                example = generate_training_example(
+                    title=template["title"],
+                    domain=template["domain"],
+                    level=template["level"],
+                    description=template["description"],
+                    selected_components=selected,
+                )
+
+                training_data.append(example)
+                variation += 1
+                print("✓")
+
+            print()  # Blank line between courses
+
+            # 💾 INCREMENTAL SAVE after each course (checkpoint)
+            checkpoint_file = (
+                Path(args.output).parent / f"{Path(args.output).stem}_checkpoint.json"
+            )
+            try:
+                with open(checkpoint_file, "w") as f:
+                    json.dump(training_data, f, indent=2)
+                print(f"   💾 Checkpoint saved: {len(training_data)} examples")
+            except Exception as e:
+                print(f"   ⚠️  Checkpoint save failed: {e}")
+
+    except (KeyboardInterrupt, Exception) as e:
+        print(f"\n\n⚠️  Generation interrupted: {e}")
+        print("   Saving checkpoint before exit...")
+    finally:
+        # ALWAYS save final checkpoint, even on crash/Ctrl+C
+        checkpoint_file = (
+            Path(args.output).parent / f"{Path(args.output).stem}_checkpoint.json"
+        )
+        try:
+            with open(checkpoint_file, "w") as f:
+                json.dump(training_data, f, indent=2)
+            print(f"\n💾 Final checkpoint saved: {len(training_data)} examples")
+            print("   To resume, run the same command again.")
+        except Exception as e:
+            print(f"\n❌ CRITICAL: Final checkpoint save failed: {e}")
+
+    print(f"\n✅ Generated {len(training_data)} unique Claude-composed examples")
+    if duplicates_skipped > 0:
+        print(f"   ℹ️  Skipped {duplicates_skipped} duplicate combinations")
 
     # Save training data
-    output_file = Path("data/training/rag_enhanced_t5_training.json")
+    output_file = Path(args.output)
     output_file.parent.mkdir(parents=True, exist_ok=True)
 
     with open(output_file, "w") as f:
