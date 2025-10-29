@@ -52,9 +52,7 @@
       "Khan Academy online module: 'Systems of Equations' - interactive practice problems and video explanations"
     ],
     "id": "258b127f-1cb9-40e8-8208-c57a40541211",
-    "prerequisites": [
-      "2c663722-77d3-4240-80c3-569480d4690d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "dfb9fe2f-dada-4ff7-ba32-894876b4ba57",
@@ -110,9 +108,7 @@
       "Technical blog: High Performance Hash Tables (Facebook Engineering, 2019) - real-world optimization strategies and benchmarking methods"
     ],
     "id": "e98135fe-c0cf-4d4b-8f04-8d2918a88e1d",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d92f309d-96ad-439a-91f3-7ed18b0bd22c",
@@ -226,9 +222,7 @@
       "Case study: 'Hash Tables in Database Systems' (Garcia-Molina et al., 2020) - real-world applications"
     ],
     "id": "43a07cf7-14e4-4270-8ccc-ad1b590a2d46",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "96e4d069-01c5-4eb5-91fc-38ef0250cb70",
@@ -256,9 +250,7 @@
       "Online Tutorial: GeeksforGeeks BST Implementation Guide - practical coding examples and edge cases"
     ],
     "id": "96e4d069-01c5-4eb5-91fc-38ef0250cb70",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c68b9d54-daf5-484f-bf50-33b994f84008",
@@ -315,9 +307,7 @@
       "Desmos Graphing Calculator tutorials: Exploring limit behavior and discontinuities"
     ],
     "id": "2c663722-77d3-4240-80c3-569480d4690d",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "89a252e2-498d-45b8-b176-9e888551959f",
@@ -373,9 +363,7 @@
       "Supplementary: GeoGebra tutorial on visualizing linear systems transformations"
     ],
     "id": "f2db0dcd-3ad2-445b-9ea0-7e49a949e852",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "87ec62b5-bd41-4807-93b8-787dcf8221d2",
@@ -431,9 +419,7 @@
       "Supplementary resource: Paul's Online Math Notes - Limits section for additional practice problems"
     ],
     "id": "02e1447b-a206-4bc4-8dc5-67e0765e6c8a",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "52711343-96f4-4362-bb17-b18a9e6f0b45",
@@ -551,9 +537,7 @@
       "Research paper: Consistent Hashing and Random Trees (Karger et al., 1997) - applications in distributed systems"
     ],
     "id": "357c56d2-5ff2-46f5-b387-0a74d7972468",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "83bf4136-13d0-4bae-9bb6-a14346141209",
@@ -583,9 +567,7 @@
       "GeeksforGeeks: Dynamic Programming tutorials - implementation examples and visualization tools"
     ],
     "id": "83bf4136-13d0-4bae-9bb6-a14346141209",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "097a0ab4-b628-41e7-aa7e-85b6e1bf229c",
@@ -612,9 +594,7 @@
       "Online resource: Desmos Graphing Calculator - polynomial function exploration activities and interactive tutorials"
     ],
     "id": "097a0ab4-b628-41e7-aa7e-85b6e1bf229c",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "07f5fefc-cac9-4158-9dc7-f96b65575cd1",
@@ -751,9 +731,7 @@
       "Khan Academy: Systems of Linear Equations module - interactive practice problems and video explanations"
     ],
     "id": "6af78d16-75db-4062-b7b9-6871a7af6476",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d1aa0a77-294d-48d9-aa14-1e9271316032",
@@ -807,9 +785,7 @@
       "Khan Academy: Matrix methods for solving systems - interactive exercises and video explanations"
     ],
     "id": "3e753249-e77d-480b-b2cf-ef6b8127cefd",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "38dfed31-2b75-4b9c-8549-3a4a2dcf252f",
@@ -869,9 +845,7 @@
       "MIT OpenCourseWare: 18.06 Linear Algebra - Lecture 2 'Elimination with Matrices' video and notes"
     ],
     "id": "aa57974a-c542-4c51-a59c-5c4bd1a85b5b",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f9e5d79b-7610-45d4-8a3d-9c09c8751d91",
@@ -927,9 +901,7 @@
       "Feature Tools documentation: Getting Started guide and automated feature engineering examples"
     ],
     "id": "11ff01d2-00f6-4564-8dd3-9c79334f68dd",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4b4f1ce6-1b31-48fa-80a0-e4a58352b01b",
@@ -983,9 +955,7 @@
       "Online resource: VisuAlgo BST module - interactive visualization of insertion, deletion, and traversal operations"
     ],
     "id": "f105f1a6-cc1a-454d-a0bb-b91c4c64ecd0",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a20ce42f-03ed-4437-ad96-e3dcbcb7cda5",
@@ -1042,9 +1012,7 @@
       "Technical guide: scikit-learn documentation - Preprocessing data and Feature selection sections with worked examples"
     ],
     "id": "0e40ccd8-9b20-4568-92e5-6002b844165d",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "48ff5ec1-4955-4848-924b-cc7ea4021346",
@@ -1133,9 +1101,7 @@
       "Desmos Activity Builder: Marbleslides Parabolas - hands-on graphing exploration and parameter analysis"
     ],
     "id": "87dd42f9-2722-4d77-a3a9-179a6635e93a",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e00fa233-480f-44d1-9f0e-32cb6e02afb1",
@@ -1166,9 +1132,7 @@
       "Documentation: scikit-learn Feature Selection Guide and feature-engine library documentation for practical implementation examples"
     ],
     "id": "e00fa233-480f-44d1-9f0e-32cb6e02afb1",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e5320c41-c883-4930-9ca6-1aceeb632580",
@@ -1227,9 +1191,7 @@
       "Online resource: GeoGebra Classroom - 'Visualizing Systems of Equations' interactive demonstrations"
     ],
     "id": "d9912971-dd73-471c-8e6b-7557a04aa501",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "22e6bca1-a9ed-4d12-9cf0-babd135d6532",
@@ -1311,9 +1273,7 @@
       "Online resource: LeetCode Graph Problems - practice problems ranging from easy to hard difficulty with community solutions and discussions"
     ],
     "id": "a35e5a12-703a-464b-afa9-74b867493f9b",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "452b21cf-85c4-4e7f-9901-35d5685ead72",
@@ -1341,9 +1301,7 @@
       "Research paper: 'Cuckoo Hashing' (Pagh & Rodler, 2004) - advanced collision resolution with worst-case guarantees"
     ],
     "id": "452b21cf-85c4-4e7f-9901-35d5685ead72",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "368c7179-42ff-4d16-9a4b-2924ca2982b4",
@@ -1370,9 +1328,7 @@
       "Khan Academy: Systems of equations - comprehensive interactive modules with step-by-step examples"
     ],
     "id": "368c7179-42ff-4d16-9a4b-2924ca2982b4",
-    "prerequisites": [
-      "f9e5d79b-7610-45d4-8a3d-9c09c8751d91"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a1304ee2-bcf2-48b8-995d-3cf4cb20deb9",
@@ -1427,9 +1383,7 @@
       "Documentation: scikit-learn Feature Selection Guide - comprehensive overview of selection algorithms and implementation"
     ],
     "id": "cf00c5da-64c6-413f-a4f8-e137711fc20f",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "62eed3fc-f2b8-41a0-8aa9-53ed5df0f0ea",
@@ -1486,9 +1440,7 @@
       "MIT OpenCourseWare: 18.06 Linear Algebra Lecture 2 transcript and notes - elimination with matrices"
     ],
     "id": "0d18386f-c926-4c30-8904-b3c520e3be01",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "77bec8f6-a095-41eb-b7cb-7951b5b1e052",
@@ -1605,9 +1557,7 @@
       "Supplementary reading: GeoGebra Tutorial 'Visualizing Linear Systems' - geometric interpretation exercises"
     ],
     "id": "18960134-e30c-4aa5-9855-9cf97ae1f0f1",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b14cd66e-f736-444f-b59a-983735b91aec",
@@ -1636,9 +1586,7 @@
       "Online resource: GeeksforGeeks Graph Algorithms section - interactive examples and implementation details for BFS, DFS, and Dijkstra's algorithm with code visualizations"
     ],
     "id": "b14cd66e-f736-444f-b59a-983735b91aec",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a110254f-4534-4674-a124-fbde9b620f3a",
@@ -1692,9 +1640,7 @@
       "Online resource: GeeksforGeeks Graph Algorithms section - interactive examples and code implementations with visual demonstrations"
     ],
     "id": "a4ff3d15-b336-4e13-94f9-84d1b5b1d411",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "87d19b9a-f94b-4e52-9e62-e72382706cff",
@@ -1720,9 +1666,7 @@
       "Khan Academy: Matrix equations and transformations - complete module with interactive exercises"
     ],
     "id": "87d19b9a-f94b-4e52-9e62-e72382706cff",
-    "prerequisites": [
-      "f9e5d79b-7610-45d4-8a3d-9c09c8751d91"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2d5ab4e1-26b1-4fbf-8983-fdb4d59bed12",
@@ -1751,9 +1695,7 @@
       "Online resource: GeoGebra Matrix Calculator - guided exploration activities"
     ],
     "id": "2d5ab4e1-26b1-4fbf-8983-fdb4d59bed12",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7d61b335-f028-419d-80d0-9eccecdee368",
@@ -1781,9 +1723,7 @@
       "Supplementary reading: Classical Dynamics Chapter 3 (Taylor, 2005) pp. 68-89 - advanced mathematical treatment"
     ],
     "id": "7d61b335-f028-419d-80d0-9eccecdee368",
-    "prerequisites": [
-      "6c282356-79e8-46cb-bfa7-ac58ddb241cb"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "1fa69919-7e3a-4bf3-a391-c2223d6ef578",
@@ -1811,9 +1751,7 @@
       "Documentation: scikit-learn preprocessing module - comprehensive guide to transformation techniques and pipeline implementation"
     ],
     "id": "1fa69919-7e3a-4bf3-a391-c2223d6ef578",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2c01c005-e37b-46b9-947e-8408d83466d8",
@@ -1842,9 +1780,7 @@
       "MIT OpenCourseWare: 18.06 Linear Algebra, Lecture 2 'Elimination with Matrices' - video and notes"
     ],
     "id": "2c01c005-e37b-46b9-947e-8408d83466d8",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "55292031-be6a-44eb-9953-1549b41a8b19",
@@ -1926,9 +1862,7 @@
       "Technical article: 'Hash Table Security and SipHash' (Aumasson & Bernstein, 2012) - collision attack prevention methods"
     ],
     "id": "d983189a-192b-4c18-ba52-13f06899ddcc",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "960881bd-a1f0-4d50-b743-66d5df718122",
@@ -2042,9 +1976,7 @@
       "Supplementary: MIT OpenCourseWare Lecture Notes on Tree Data Structures - theoretical foundations and proofs"
     ],
     "id": "a81634b7-38b4-479e-a852-f2d7f534d67b",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f6c0f39c-acaf-4d20-badf-7a6be518630f",
@@ -2074,9 +2006,7 @@
       "Desmos Graphing Calculator tutorial: 'Visualizing Systems of Equations' - interactive exploration activities"
     ],
     "id": "f6c0f39c-acaf-4d20-badf-7a6be518630f",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "766f3ca9-a95e-4e5c-af0a-8d9b7b04ee79",
@@ -2104,9 +2034,7 @@
       "MIT OpenCourseWare: 18.06 Linear Algebra - Lecture 2 'Elimination with Matrices' video and transcript"
     ],
     "id": "766f3ca9-a95e-4e5c-af0a-8d9b7b04ee79",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9be3c393-0d83-42fd-be44-4a1f0caedaf3",
@@ -2244,9 +2172,7 @@
       "Desmos Classroom Activities: 'Parabola Sliders' and 'Projectile Motion' investigations"
     ],
     "id": "a1295fac-b7e2-4fe7-82b3-08183e4d3d5f",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "92bd8eae-e964-44a5-9bf2-9ff0a0baa9e4",
@@ -2274,9 +2200,7 @@
       "Desmos Graphing Calculator: Interactive exploration activities for exponential and logarithmic transformations"
     ],
     "id": "92bd8eae-e964-44a5-9bf2-9ff0a0baa9e4",
-    "prerequisites": [
-      "097a0ab4-b628-41e7-aa7e-85b6e1bf229c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "3bf2fe11-5332-4cb0-9ac3-35ced4223b36",
@@ -2305,9 +2229,7 @@
       "Online resource: Khan Academy 'Electromagnetic Induction' video series - conceptual reinforcement"
     ],
     "id": "3bf2fe11-5332-4cb0-9ac3-35ced4223b36",
-    "prerequisites": [
-      "55292031-be6a-44eb-9953-1549b41a8b19"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "07803300-2c46-47fd-9a94-6d40bceff471",
@@ -2364,9 +2286,7 @@
       "Supplementary reading: Algorithm Design Manual Chapter 3 'Data Structures' (Skiena, 2020) pp. 77-95 - BST applications"
     ],
     "id": "c23cc0c4-9721-4f76-b0fe-e9a01bca9ddf",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9013c65e-cbce-4452-b06f-2cdb35d1872a",
@@ -2393,9 +2313,7 @@
       "Online resource: Desmos Graphing Calculator - Polynomial Analysis Activity Bank and interactive tutorials"
     ],
     "id": "9013c65e-cbce-4452-b06f-2cdb35d1872a",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "3a004079-3368-4667-b3c7-b55cadda7e7d",
@@ -2422,9 +2340,7 @@
       "Online resource: LeetCode Graph Problems - complete 5 medium-difficulty traversal problems with solution analysis"
     ],
     "id": "3a004079-3368-4667-b3c7-b55cadda7e7d",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "1668c376-83d4-4e9d-aa4c-8951d4a3ae90",
@@ -2454,9 +2370,7 @@
       "Documentation: Python dict implementation details from CPython source code - real-world hash table optimization"
     ],
     "id": "1668c376-83d4-4e9d-aa4c-8951d4a3ae90",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b01ca0af-df89-4c0e-9b73-40f2d7c23b03",
@@ -2487,9 +2401,7 @@
       "Supplementary text: Data Structures and Algorithm Analysis Chapter 5 (Weiss, 2021) pp. 187-220 - alternative perspective on collision resolution"
     ],
     "id": "b01ca0af-df89-4c0e-9b73-40f2d7c23b03",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4899544d-4670-4158-80da-fba7d60158e2",
@@ -2604,9 +2516,7 @@
       "Research paper: 'Consistent Hashing and Random Trees' (Karger et al., 1997) - distributed systems applications and modern hash table variants"
     ],
     "id": "ebc9970d-6c66-464b-a2d5-46905eee6a83",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "1dacb0e8-3da7-4369-80d8-1ecb20f7eb1e",
@@ -2804,10 +2714,7 @@
       "GeeksforGeeks: Dijkstra's Algorithm implementation variants - detailed code examples and optimizations"
     ],
     "id": "ed7a195a-ac0b-4bcf-a541-71bd708a8fa7",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f",
-      "a35e5a12-703a-464b-afa9-74b867493f9b"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "0ea44860-6e80-421e-bbc9-9d384b67beb6",
@@ -2833,9 +2740,7 @@
       "Online resource: Khan Academy - 'Matrix Row Operations and Gaussian Elimination' interactive modules with step-by-step examples"
     ],
     "id": "0ea44860-6e80-421e-bbc9-9d384b67beb6",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "18e14e88-9204-4351-a1d6-4cab94c3d42e",
@@ -2889,9 +2794,7 @@
       "Online resource: GeeksforGeeks Hash Table Implementation Guide - practical coding examples and optimization techniques"
     ],
     "id": "7a6de353-1ef5-4939-a8a3-5fe1b81ff199",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "972d163f-107b-4394-b224-56807ed610ba",
@@ -3069,9 +2972,7 @@
       "Desmos Graphing Calculator tutorials: 'Visualizing Systems of Equations' - hands-on graphical analysis tools"
     ],
     "id": "82a2bb51-fcc8-45ae-b897-ba5adbfe65b2",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b526651a-2860-4149-95b3-4637b5ce367a",
@@ -3097,9 +2998,7 @@
       "Online resource: GeeksforGeeks - BFS and DFS implementation tutorials with interactive visualizations and step-by-step execution traces"
     ],
     "id": "b526651a-2860-4149-95b3-4637b5ce367a",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e38383e0-604c-473b-a521-744f51e9a034",
@@ -3127,9 +3026,7 @@
       "Documentation: scikit-learn preprocessing guide - comprehensive reference for transformation methods"
     ],
     "id": "e38383e0-604c-473b-a521-744f51e9a034",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b926343d-46a1-4be4-b91d-6c7bdc461b6a",
@@ -3184,9 +3081,7 @@
       "Online simulation: PhET Interactive Simulations - 'Energy Skate Park' module with guided worksheet"
     ],
     "id": "dc29d446-21b9-4755-9634-7842dbc90f28",
-    "prerequisites": [
-      "6c282356-79e8-46cb-bfa7-ac58ddb241cb"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "902bfd56-c38a-4245-bf64-2d7b7c0d1f63",
@@ -3214,9 +3109,7 @@
       "Research paper: 'Cuckoo Hashing' (Pagh & Rodler, 2004) - guaranteed constant-time operations through dual-table approach"
     ],
     "id": "902bfd56-c38a-4245-bf64-2d7b7c0d1f63",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a99aa44b-152b-45db-a0dd-23af78745e8c",
@@ -3272,9 +3165,7 @@
       "Online resource: Khan Academy - Systems of Equations module including video tutorials and interactive practice problems"
     ],
     "id": "020d17e8-6fdf-48c9-b361-b7ab4277519d",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a36d2a14-f92e-41fc-adec-703fa770b4e1",
@@ -3359,9 +3250,7 @@
       "Application article: 'Linear Programming in Business Decision Making' (Mathematics Teacher, 2020) - focus on real-world system applications"
     ],
     "id": "d3287ad4-0e85-4e66-8628-5f4cf7c00687",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "0715a63a-286e-4683-9b2a-192e98e7ddac",
@@ -3534,9 +3423,7 @@
       "Technical guide: scikit-learn documentation - Preprocessing and Feature Selection sections with code examples"
     ],
     "id": "05e9583c-3d5f-4e7e-b1ed-687ae1d69816",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c193ce65-fccb-4dc4-83dc-0526b0b21e74",
@@ -3563,9 +3450,7 @@
       "Online resource: Desmos Graphing Calculator - interactive quadratic transformation activities and guided practice exercises"
     ],
     "id": "c193ce65-fccb-4dc4-83dc-0526b0b21e74",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "812aaf10-f308-404d-9d1b-48e5e34649e4",
@@ -3594,9 +3479,7 @@
       "Supplementary reading: 'Real-World Applications of Linear Systems' handout with case studies from business, engineering, and social sciences"
     ],
     "id": "812aaf10-f308-404d-9d1b-48e5e34649e4",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7d72402c-0b15-4f1f-b435-1f8fc3df1bc4",
@@ -3625,9 +3508,7 @@
       "Supplementary text: Elementary Linear Algebra Chapter 6.1-6.3 (Anton & Rorres, 2019) pp. 342-378"
     ],
     "id": "7d72402c-0b15-4f1f-b435-1f8fc3df1bc4",
-    "prerequisites": [
-      "f9e5d79b-7610-45d4-8a3d-9c09c8751d91"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f6101ea5-460c-44ab-b3ea-7d44eeaa31a5",
@@ -3655,9 +3536,7 @@
       "Python Machine Learning: Chapter 4 'Building Good Training Sets' (Raschka & Mirjalili, 2019) pp. 108-142"
     ],
     "id": "f6101ea5-460c-44ab-b3ea-7d44eeaa31a5",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "fe76b1db-f14b-420a-9e75-37e841e12dd5",
@@ -3684,9 +3563,7 @@
       "Online resource: Visualgo.net BST module - interactive BST operation demonstrations and complexity analysis"
     ],
     "id": "fe76b1db-f14b-420a-9e75-37e841e12dd5",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "76e9436d-1081-4160-940d-917a49a8f700",
@@ -3716,9 +3593,7 @@
       "Supplementary reading: 'Data Structures and Algorithm Analysis' Chapter 4 'Trees' (Weiss, 4th Edition) pp. 131-186"
     ],
     "id": "76e9436d-1081-4160-940d-917a49a8f700",
-    "prerequisites": [
-      "96e4d069-01c5-4eb5-91fc-38ef0250cb70"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5b9aecaa-a5a0-44af-97a2-78b00ba6e9ed",
@@ -3747,9 +3622,7 @@
       "MIT OpenCourseWare: 18.06 Linear Algebra Lecture 2 videos on elimination with matrices"
     ],
     "id": "5b9aecaa-a5a0-44af-97a2-78b00ba6e9ed",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "3dcb9f78-36c5-4711-a538-6297695432c2",
@@ -3779,9 +3652,7 @@
       "Documentation: NetworkX Python library documentation - Graph creation, manipulation, and built-in algorithm implementations"
     ],
     "id": "3dcb9f78-36c5-4711-a538-6297695432c2",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d16e8420-7074-49ff-8b85-ddaefd25fc30",
@@ -3809,9 +3680,7 @@
       "Research paper: 'Consistent Hashing and Random Trees' (Karger et al., 1997) - sections 1-2 for distributed hashing fundamentals"
     ],
     "id": "d16e8420-7074-49ff-8b85-ddaefd25fc30",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "992dbc2d-ceab-44d6-99a0-0f2e6b2a5c6c",
@@ -3866,9 +3735,7 @@
       "Documentation: Scikit-learn Feature Selection Guide - complete user guide with code examples"
     ],
     "id": "31f4c192-089b-4fd1-9b79-03f6949e3031",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c6c19bf4-4b31-4733-a016-17beba418733",
@@ -3979,9 +3846,7 @@
       "Online resource: GeeksforGeeks - Comprehensive guide to hash table collision handling with interactive visualizations"
     ],
     "id": "3e2a950f-79a4-49f7-b2fb-1d368a3cbf75",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e73ec15c-a3e9-4390-9af1-c1e1b997b1e2",
@@ -4042,9 +3907,7 @@
       "Online Resource: Khan Academy Systems of Equations module - interactive practice problems and video explanations"
     ],
     "id": "86bb68d4-1381-4a3d-a827-3bb9d5e361d6",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "cd3e511e-92fe-49af-9645-0f6ceca17636",
@@ -4073,9 +3936,7 @@
       "Supplementary reading: Khan Academy Quadratic Functions unit - video lessons on completing the square and quadratic formula derivation"
     ],
     "id": "cd3e511e-92fe-49af-9645-0f6ceca17636",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6d00a2ab-2bf3-4841-9c67-8e5fc42bc22c",
@@ -4100,9 +3961,7 @@
       "Online resource: Khan Academy Calculus - Derivative Introduction and Rules modules with interactive exercises"
     ],
     "id": "6d00a2ab-2bf3-4841-9c67-8e5fc42bc22c",
-    "prerequisites": [
-      "2c663722-77d3-4240-80c3-569480d4690d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5afb4a62-c8f3-4798-8ee0-e544b3829ba4",
@@ -4129,9 +3988,7 @@
       "Online resource: GeeksforGeeks - Hash Table implementation examples with performance benchmarks"
     ],
     "id": "5afb4a62-c8f3-4798-8ee0-e544b3829ba4",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5a700706-7b06-4de9-bf16-846a969b95a9",
@@ -4214,9 +4071,7 @@
       "MIT OpenCourseWare: 18.06 Linear Algebra Lecture Notes 1-3 - theoretical foundations with worked examples"
     ],
     "id": "9ca61d70-9036-4fea-b7f7-b0de2887a823",
-    "prerequisites": [
-      "f9e5d79b-7610-45d4-8a3d-9c09c8751d91"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5bc8e5cb-c6de-4ddb-87cb-74fc163b852a",
@@ -4245,9 +4100,7 @@
       "Research paper: Engineering a Sort Function (Bentley & McIlroy, 1993) - practical optimization techniques"
     ],
     "id": "5bc8e5cb-c6de-4ddb-87cb-74fc163b852a",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9ddf88ac-a048-4435-9298-3fdc1c5348e6",
@@ -4274,9 +4127,7 @@
       "Online resource: Kaggle Learn Feature Engineering Course - interactive notebooks on advanced encoding and selection techniques"
     ],
     "id": "9ddf88ac-a048-4435-9298-3fdc1c5348e6",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b13a4f18-0541-4f58-bb62-f3cc508f0000",
@@ -4304,9 +4155,7 @@
       "Documentation: scikit-learn Feature Selection Guide - preprocessing.html and feature_selection.html sections with code examples"
     ],
     "id": "b13a4f18-0541-4f58-bb62-f3cc508f0000",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f4046819-c769-4f6d-9131-0ff33768265f",
@@ -4362,9 +4211,7 @@
       "Application article: Linear Programming Applications in Business (Mathematical Reviews, 2023) - focus on constraint modeling"
     ],
     "id": "26dcd239-427f-457a-845c-90a1d20f1b76",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d5186a9d-5f34-4309-ab86-bf54c07f2b4b",
@@ -4391,9 +4238,7 @@
       "Khan Academy online modules: 'Systems of Linear Equations' - interactive practice problems and video explanations"
     ],
     "id": "d5186a9d-5f34-4309-ab86-bf54c07f2b4b",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "1b8caf63-4d50-4dea-a81f-bf87677e01d2",
@@ -4475,9 +4320,7 @@
       "Documentation: scikit-learn preprocessing module - study StandardScaler, LabelEncoder, and SelectKBest classes with examples"
     ],
     "id": "0681eb7e-ca80-4a1e-81f4-08b35ba834c0",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ee2c2363-4a70-418e-a2f4-a19d920b78cf",
@@ -4505,9 +4348,7 @@
       "MIT OpenCourseWare 18.06: Linear Algebra lectures 1-3 video content with accompanying problem sets"
     ],
     "id": "ee2c2363-4a70-418e-a2f4-a19d920b78cf",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "cf5e6b7c-52d1-4a7c-8344-7fdad353c2a6",
@@ -4563,9 +4404,7 @@
       "Application Article: 'Linear Programming in Business Decision Making' (Mathematics Teacher, 2023) - focus on system setup and interpretation"
     ],
     "id": "f82b037d-8bde-42fa-baae-ad398e9bd739",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "601e08ae-2c55-4511-b786-9ba54a82fe32",
@@ -4592,9 +4431,7 @@
       "Online resource: Kaggle Learn - Feature Engineering course modules covering practical implementations and case studies"
     ],
     "id": "601e08ae-2c55-4511-b786-9ba54a82fe32",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "0e4e4800-298a-415c-8740-180dfdcd0f68",
@@ -4626,9 +4463,7 @@
       "Case study: Feature Engineering for Time Series Forecasting (Brownlee, 2020) - domain-specific techniques and validation approaches"
     ],
     "id": "0e4e4800-298a-415c-8740-180dfdcd0f68",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "233a6858-1c41-4029-8662-0974d7c8a8d4",
@@ -4655,9 +4490,7 @@
       "Khan Academy: Linear Systems and Matrices - complete interactive modules on Gaussian elimination"
     ],
     "id": "233a6858-1c41-4029-8662-0974d7c8a8d4",
-    "prerequisites": [
-      "f9e5d79b-7610-45d4-8a3d-9c09c8751d91"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "37816b89-ca3e-423f-b1c6-f02ff455d3e6",
@@ -4744,9 +4577,7 @@
       "MIT OpenCourseWare: Linear Algebra video lectures 1-3 with accompanying notes"
     ],
     "id": "3905db6d-e20c-480d-bbf6-4f77d9c65a19",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9cd77a10-ce32-4192-a467-16b83d418c07",
@@ -4831,9 +4662,7 @@
       "Research paper: 'Consistent Hashing and Random Trees' (Karger et al., 1997) - applications in distributed systems"
     ],
     "id": "cca14ea7-32e2-4277-aa92-8d3763b2b644",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "0ecddc57-a39f-46a9-bc86-050eae5229b8",
@@ -4861,9 +4690,7 @@
       "Code repository: GitHub - 'BST Implementation Examples' focusing on different deletion strategies"
     ],
     "id": "0ecddc57-a39f-46a9-bc86-050eae5229b8",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2c129324-1f0e-4b05-a338-63bedc60c3fb",
@@ -4920,9 +4747,7 @@
       "Desmos Activity Builder: Graphical representations of linear systems - visual intersection analysis"
     ],
     "id": "fb8f93a1-185f-4fc3-a317-ffe11eec080a",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a67e73f9-7d13-477f-8a0f-93432e361cee",
@@ -4979,9 +4804,7 @@
       "Documentation: Python dict implementation details - CPython source code analysis on GitHub"
     ],
     "id": "413ae69c-19a4-4633-82ce-7b1e0d5d94b6",
-    "prerequisites": [
-      "89a252e2-498d-45b8-b176-9e888551959f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "138c30f8-0c73-4282-bc98-da104e9f0ea2",
@@ -5008,9 +4831,7 @@
       "Online resource: Desmos Graphing Calculator - Activity Builder lessons on quadratic transformations and real-world modeling scenarios"
     ],
     "id": "138c30f8-0c73-4282-bc98-da104e9f0ea2",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "06a7e10a-b71c-4b61-9870-cba25a39cda4",
@@ -5037,9 +4858,7 @@
       "Online resource: Kaggle Learn - Feature Engineering course modules 1-4 with hands-on exercises"
     ],
     "id": "06a7e10a-b71c-4b61-9870-cba25a39cda4",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8454cf51-8bb2-4f79-b9e5-aa27a30c6df4",
@@ -5065,9 +4884,7 @@
       "Supplementary article: Real-World Applications of Linear Systems (Mathematics Teacher, 2020) - focus on business and science examples"
     ],
     "id": "8454cf51-8bb2-4f79-b9e5-aa27a30c6df4",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "564078dd-83c8-47f4-861a-cae481161d8d",
@@ -5125,9 +4942,7 @@
       "Research paper: \"Data Leakage in Machine Learning\" (Kaufman et al., 2012) - practical examples and detection methods"
     ],
     "id": "6a98bee0-9017-43dd-a12e-3d7629cab496",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b13d6ef1-f148-4f9b-b7af-a418e73f66c8",
@@ -5156,9 +4971,7 @@
       "Case study: 'A/B Testing at Netflix' (Harvard Business Review, 2019) - real-world hypothesis testing application"
     ],
     "id": "b13d6ef1-f148-4f9b-b7af-a418e73f66c8",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "93659f04-3d3c-4f94-813d-81ae63af637e",
@@ -5187,9 +5000,7 @@
       "Documentation: scikit-learn Feature Selection guide - comprehensive API reference with code examples"
     ],
     "id": "93659f04-3d3c-4f94-813d-81ae63af637e",
-    "prerequisites": [
-      "38386727-086d-47e7-873b-465566f4067d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b9ef4763-e25e-4962-a13c-9e007c839830",
@@ -5274,9 +5085,7 @@
       "Khan Academy: Linear Transformations and Matrices - interactive exercises and video demonstrations"
     ],
     "id": "9869d100-50b4-4508-89d0-5a42d01d3769",
-    "prerequisites": [
-      "f9e5d79b-7610-45d4-8a3d-9c09c8751d91"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "727b053c-bdea-4415-97aa-6bb89e655979",
@@ -5331,9 +5140,7 @@
       "Online resource: GeeksforGeeks - Graph Algorithm Visualizations and implementation examples with step-by-step traces"
     ],
     "id": "040e0e46-330d-497b-9ac4-85e85eaef503",
-    "prerequisites": [
-      "70b08eb6-393f-41d7-a737-0f32e9823fcd"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7e728bd2-6640-4ff3-9c61-400f1a33580c",
@@ -5390,9 +5197,7 @@
       "Documentation: Python heapq module and NetworkX library - practical tools for graph algorithm implementation"
     ],
     "id": "7dac9aed-1ff6-4038-bf44-be15fe7b2f13",
-    "prerequisites": [
-      "70b08eb6-393f-41d7-a737-0f32e9823fcd"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "98a22d0a-db29-4549-9c0a-539fd7cd0198",
@@ -5587,9 +5392,7 @@
       "Online resource: Khan Academy - \"Matrix Row Operations\" interactive modules with step-by-step practice problems"
     ],
     "id": "a8a29287-06ea-46a9-bc7c-734f07da7a90",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "02feddf1-a247-4f18-bf48-8aa372577b57",
@@ -5643,9 +5446,7 @@
       "Supplementary article: 'Real-World Applications of Quadratic Functions' (Mathematics Teacher, 2020) - focus on modeling techniques"
     ],
     "id": "22609f5b-902c-4695-9ca5-c9ea73f9fe60",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c42ff91e-5652-4682-a24a-2c8363be8410",
@@ -5673,9 +5474,7 @@
       "Technical blog: 'Feature Engineering for Machine Learning' on Towards Data Science - practical examples with code implementations"
     ],
     "id": "c42ff91e-5652-4682-a24a-2c8363be8410",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "03065995-960b-4bc4-98d7-aba0b7c2db78",
@@ -5788,9 +5587,7 @@
       "Documentation: Python dict implementation (PEP 456) - real-world hash table design decisions"
     ],
     "id": "2f2ef57a-8269-4ecb-b998-7c64f9ad852c",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e35c6a1e-0592-4fdf-a26e-8c641db5fdfc",
@@ -5820,9 +5617,7 @@
       "Desmos Graphing Calculator guide: 'Visualizing Systems of Equations' - hands-on graphical exploration techniques"
     ],
     "id": "e35c6a1e-0592-4fdf-a26e-8c641db5fdfc",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9d3f6e08-f093-408e-b648-282eab3784e5",
@@ -5908,9 +5703,7 @@
       "Algorithm Design Manual: Chapter 5 'Graph Traversal' (Skiena, 2020) pp. 161-190 - practical applications and war stories"
     ],
     "id": "54360d71-395d-48e6-8cc1-93f290719e0d",
-    "prerequisites": [
-      "70b08eb6-393f-41d7-a737-0f32e9823fcd"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "bd981f90-da6a-4780-bbc8-d96e8d2e2cd5",
@@ -5938,9 +5731,7 @@
       "Research paper: Consistent Hashing and Random Trees (Karger et al., 1997) - applications in distributed systems"
     ],
     "id": "bd981f90-da6a-4780-bbc8-d96e8d2e2cd5",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "37047410-f9a5-40a1-af74-b0bdc50f76a6",
@@ -6022,9 +5813,7 @@
       "Online resource: PhET Interactive Simulations - Faraday's Electromagnetic Lab for virtual experimentation"
     ],
     "id": "83258800-a9f6-4733-87a6-572693cd253c",
-    "prerequisites": [
-      "55292031-be6a-44eb-9953-1549b41a8b19"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "42bb881b-c1ab-4910-8ba7-c7c03495c4d6",
@@ -6052,9 +5841,7 @@
       "Documentation: Python TreeLib library - understanding professional BST implementations"
     ],
     "id": "42bb881b-c1ab-4910-8ba7-c7c03495c4d6",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8deeb8ac-c2bf-4502-8bce-e524ca01b0de",
@@ -6109,9 +5896,7 @@
       "Research paper: 'Deep Feature Synthesis: Towards Automating Data Science Endeavors' (Kanter & Veeramachaneni, 2015) - foundational paper on automated feature engineering"
     ],
     "id": "b2282a39-9e65-46a4-be64-6de81f69a5f4",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ae3bb59d-e2cc-4726-8057-7ef704d5b469",
@@ -6251,9 +6036,7 @@
       "Online resource: Desmos Graphing Calculator - Interactive tutorials on quadratic transformations and parameter exploration"
     ],
     "id": "9ddc018c-330a-4634-a6d3-94553eacb7e6",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5b6d5cf0-bfaa-40c3-92b6-5cb194d8f703",
@@ -6280,9 +6063,7 @@
       "Online resource: GeeksforGeeks BST Implementation Guide - complete code examples with step-by-step explanations"
     ],
     "id": "5b6d5cf0-bfaa-40c3-92b6-5cb194d8f703",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "96192ee8-edeb-4cfc-84ee-21e15b875917",
@@ -6310,9 +6091,7 @@
       "Documentation: scikit-learn Feature Selection Guide - comprehensive reference for implementation details and parameter tuning"
     ],
     "id": "96192ee8-edeb-4cfc-84ee-21e15b875917",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6efab410-cd88-433c-ada9-d5fc193d43e7",
@@ -6399,9 +6178,7 @@
       "Research paper: 'A dichromatic framework for balanced trees' (Guibas & Sedgewick, 1978) - foundation for understanding tree balancing"
     ],
     "id": "5f3eab54-6730-41e6-bb1a-68b5fa3324ad",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2cc643d0-2e95-41c3-bb89-bd2514800b24",
@@ -6519,9 +6296,7 @@
       "Research paper: Robin Hood Hashing (Celis et al., 1985) - advanced open addressing technique analysis"
     ],
     "id": "89aa8292-8429-4673-93dd-47d3281749c7",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c42ebbe8-b328-4d69-97d6-74c5ec22513b",
@@ -6578,9 +6353,7 @@
       "Supplementary reading: Introduction to Matrix Theory (Horn & Johnson, 2021) pp. 23-45 - theoretical foundations"
     ],
     "id": "440b4cc2-3354-49e8-b117-0a91165cfb50",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "afb0e218-e3b6-4f0a-b8ae-43d2178c9678",
@@ -6608,9 +6381,7 @@
       "Technical documentation: scikit-learn Feature Selection and Preprocessing guides - hands-on reference for implementation"
     ],
     "id": "afb0e218-e3b6-4f0a-b8ae-43d2178c9678",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "fd877b89-8c76-47c5-8bd7-6605c162fbad",
@@ -6637,9 +6408,7 @@
       "Online resource: Python Documentation - dict implementation details and CPython hash function source code analysis"
     ],
     "id": "fd877b89-8c76-47c5-8bd7-6605c162fbad",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "bab7058e-bceb-4e08-9abb-8205ee8f2b5e",
@@ -6667,9 +6436,7 @@
       "Supplementary: LeetCode problems 98, 700, 701 for hands-on BST coding practice"
     ],
     "id": "bab7058e-bceb-4e08-9abb-8205ee8f2b5e",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "54401db0-67fa-4a4c-aa1c-66d5694dc936",
@@ -6724,9 +6491,7 @@
       "Online resource: GeeksforGeeks Graph Algorithms section - interactive examples and implementation variations for DFS, BFS, and shortest path algorithms"
     ],
     "id": "fb61ee96-ebe0-4049-8f83-d1aa4a58d4ca",
-    "prerequisites": [
-      "70b08eb6-393f-41d7-a737-0f32e9823fcd"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d8b16ed0-d051-4d4b-bec6-5966960de14e",
@@ -6811,9 +6576,7 @@
       "Interactive Tutorial: VisuAlgo Graph Traversal modules - algorithm visualization and step-through examples"
     ],
     "id": "aacd3bf1-2b7e-4363-91ac-854325acd823",
-    "prerequisites": [
-      "70b08eb6-393f-41d7-a737-0f32e9823fcd"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8f3aa3c3-9a1c-4f8e-8032-c8fa89741edf",
@@ -6841,9 +6604,7 @@
       "Research paper: Cache-Efficient Binary Search Trees (Brodal et al., 2018) - practical optimization techniques"
     ],
     "id": "8f3aa3c3-9a1c-4f8e-8032-c8fa89741edf",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6c282356-79e8-46cb-bfa7-ac58ddb241cb",
@@ -6899,9 +6660,7 @@
       "Khan Academy: Systems of equations with elimination - matrix method exercises and video tutorials"
     ],
     "id": "4a1d5f9f-a266-4e11-b226-31573447adb1",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "21caa9bc-f97f-441f-9f09-4940d5cecf20",
@@ -6960,9 +6719,7 @@
       "Research paper: An Introduction to Variable and Feature Selection (Guyon & Elisseeff, 2003) - Sections on filter and wrapper methods"
     ],
     "id": "ab2f9d5f-3b57-4c24-9959-073a953b4f5d",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f93e0d7a-c9b4-4ac8-bec6-a7a2a16ce507",
@@ -6990,9 +6747,7 @@
       "GeeksforGeeks: 'Binary Search Tree Implementation' - code examples and edge cases"
     ],
     "id": "f93e0d7a-c9b4-4ac8-bec6-a7a2a16ce507",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "de61958b-99ce-4817-be4e-4ddc4683a409",
@@ -7020,9 +6775,7 @@
       "Technical paper: A Survey of Feature Selection Methods (Li et al., 2020) - Comparative analysis of selection algorithms"
     ],
     "id": "de61958b-99ce-4817-be4e-4ddc4683a409",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d2b4edab-17b1-487b-afa7-c82f73016276",
@@ -7051,9 +6804,7 @@
       "MIT OpenCourseWare: 18.06 Linear Algebra - Lecture notes 2-4 covering elimination and matrix operations"
     ],
     "id": "d2b4edab-17b1-487b-afa7-c82f73016276",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "72b8d1a4-025a-493c-9ac5-c7cbe33297af",
@@ -7078,9 +6829,7 @@
       "Online resource: GeeksforGeeks Hash Table tutorials - collision resolution implementation examples and visualization tools"
     ],
     "id": "72b8d1a4-025a-493c-9ac5-c7cbe33297af",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8de29f18-1f60-4c22-88b5-be59f3a11970",
@@ -7107,9 +6856,7 @@
       "Online resource: Khan Academy Linear Algebra - Gaussian Elimination interactive modules with practice problems"
     ],
     "id": "8de29f18-1f60-4c22-88b5-be59f3a11970",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e5dd8586-9999-48c4-9b66-c8e3568b083e",
@@ -7194,9 +6941,7 @@
       "Research paper: Consistent Hashing for Distributed Systems (Karger et al., 1997) - advanced applications in system design"
     ],
     "id": "2e314ccf-2482-4990-a9d9-c06496d9ff38",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4db676e7-3e87-46ce-8595-cbbf1c48ee94",
@@ -7224,9 +6969,7 @@
       "Documentation: scikit-learn Feature Selection Guide - comprehensive reference for selection algorithms and implementation"
     ],
     "id": "4db676e7-3e87-46ce-8595-cbbf1c48ee94",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "53ac8678-ad0c-48f9-983f-c7fa20d97194",
@@ -7254,9 +6997,7 @@
       "Khan Academy: Quadratic Functions unit - video tutorials on completing the square and real-world applications"
     ],
     "id": "53ac8678-ad0c-48f9-983f-c7fa20d97194",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "314e169f-bba3-421c-9be6-9ceaf0feb2b4",
@@ -7430,9 +7171,7 @@
       "Supplementary Article: 'When to Use BSTs vs Hash Tables' (Stack Overflow Engineering Blog) - practical decision-making criteria"
     ],
     "id": "262fdc47-82a9-4ffe-ab2d-31a6c784b5a2",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8be77f84-dd86-450e-b546-bf58c4f843e6",
@@ -7460,9 +7199,7 @@
       "Visualgo.net: Binary Search Tree module - interactive animations of BST operations"
     ],
     "id": "8be77f84-dd86-450e-b546-bf58c4f843e6",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "1e3d0934-1bf7-431f-965e-e3df8882617f",
@@ -7490,9 +7227,7 @@
       "Khan Academy: 'Quadratic Functions' unit - video lessons on vertex form, standard form conversions, and word problems"
     ],
     "id": "1e3d0934-1bf7-431f-965e-e3df8882617f",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "1c9c187e-9d2b-4e55-93ac-deb7075db14b",
@@ -7519,9 +7254,7 @@
       "Online resource: Kaggle Learn Feature Engineering Course - modules on categorical encodings and feature selection with hands-on exercises"
     ],
     "id": "1c9c187e-9d2b-4e55-93ac-deb7075db14b",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c32b4040-ea0b-4314-bfdd-6fb117e6b8f0",
@@ -7546,9 +7279,7 @@
       "Application examples: Real-World Math Applications workbook - Business and Economics Problems (Chapter 7) pp. 89-104"
     ],
     "id": "c32b4040-ea0b-4314-bfdd-6fb117e6b8f0",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9966e238-c4ac-4e88-b295-f2c6e8a2a6b1",
@@ -7578,9 +7309,7 @@
       "Documentation: scikit-learn preprocessing module - StandardScaler, OneHotEncoder, and SelectKBest classes with code examples"
     ],
     "id": "9966e238-c4ac-4e88-b295-f2c6e8a2a6b1",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "3af20818-8578-4731-bce9-c05fac7c1b38",
@@ -7607,9 +7336,7 @@
       "Khan Academy: Systems of Equations module - practice problems and visual demonstrations"
     ],
     "id": "3af20818-8578-4731-bce9-c05fac7c1b38",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6c566b1c-aa6a-46be-8e94-c04f8ceaf644",
@@ -7638,9 +7365,7 @@
       "Research paper: 'An Introduction to Variable and Feature Selection' (Guyon & Elisseeff, 2003) - foundational theory and methods"
     ],
     "id": "6c566b1c-aa6a-46be-8e94-c04f8ceaf644",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5f0c2741-ad7e-474f-9993-8e994da421f4",
@@ -7668,9 +7393,7 @@
       "Journal article: Applications of Linear Systems in Economic Modeling (Johnson, 2020) - focus on supply-demand equilibrium examples"
     ],
     "id": "5f0c2741-ad7e-474f-9993-8e994da421f4",
-    "prerequisites": [
-      "258b127f-1cb9-40e8-8208-c57a40541211"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d9fb0bbb-6518-474b-9ab2-a7f5aa2ed8ed",
@@ -7753,9 +7476,7 @@
       "Online resource: Khan Academy Linear Systems module - interactive graphing exercises and solution verification"
     ],
     "id": "e980785e-ce14-4107-a2d3-bc2aa452651d",
-    "prerequisites": [
-      "35333f06-1204-4e32-b35b-9db27ed8236a"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4daebb6a-4f7f-4c9f-ae5a-71864e31f3fa",
@@ -7868,9 +7589,7 @@
       "Research paper: 'The Power of Simple Tabulation Hashing' (Patrascu & Thorup, 2012) - advanced hash function analysis"
     ],
     "id": "999eeb94-1b7a-4aa2-b674-eb85eabedc6c",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "84cb8a77-dd16-4d29-9abb-ab5572bf616d",
@@ -7900,9 +7619,7 @@
       "Visualgo.net interactive module: BST visualization tool for algorithm tracing"
     ],
     "id": "84cb8a77-dd16-4d29-9abb-ab5572bf616d",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7d9852fc-f00c-4f75-920c-e63802471679",
@@ -7989,9 +7706,7 @@
       "Khan Academy: Linear Algebra section 'Solving systems with elimination' - interactive practice problems and video demonstrations"
     ],
     "id": "0c465f1e-6222-420e-831f-1ee68eeb4c64",
-    "prerequisites": [
-      "f9e5d79b-7610-45d4-8a3d-9c09c8751d91"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "1da5cd94-b2e3-488a-af1c-6e72b6155472",
@@ -8071,9 +7786,7 @@
       "Application examples: 'Linear Systems in Business Applications' worksheet with break-even and mixture problems"
     ],
     "id": "48da8357-97c3-4001-baa8-98dda54794da",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7d4744ad-51d2-46df-90ef-4410e7b64c39",
@@ -8100,9 +7813,7 @@
       "Online resource: GeeksforGeeks BST Implementation Guide - deletion algorithm visualization and code examples"
     ],
     "id": "7d4744ad-51d2-46df-90ef-4410e7b64c39",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f9ad0603-be67-4c5b-b4a8-605825308c9f",
@@ -8132,9 +7843,7 @@
       "LeetCode: Graph algorithm problems #200, #207, #743 - practice problems with solutions"
     ],
     "id": "f9ad0603-be67-4c5b-b4a8-605825308c9f",
-    "prerequisites": [
-      "70b08eb6-393f-41d7-a737-0f32e9823fcd"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d8b8e0fe-b8f5-4955-a694-38032d312e8f",
@@ -8163,9 +7872,7 @@
       "Visualgo.net: Binary Search Tree visualization tool - interactive algorithm demonstrations"
     ],
     "id": "d8b8e0fe-b8f5-4955-a694-38032d312e8f",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4dc500b9-da5d-449d-853c-c7aa388f06d5",
@@ -8222,9 +7929,7 @@
       "GeoGebra classroom activities: 'Visualizing Systems of Equations' - geometric interpretation exercises"
     ],
     "id": "ff6794e1-fe85-4cf7-8096-ca58970e2744",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8e932927-ff7c-47b6-8fb2-d40e8373233a",
@@ -8253,9 +7958,7 @@
       "Application article: Linear Programming in Business Optimization (Mathematics Teacher, 2019) - real-world modeling focus"
     ],
     "id": "8e932927-ff7c-47b6-8fb2-d40e8373233a",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "3c96d77c-549c-47b0-b471-a343087c917f",
@@ -8285,9 +7988,7 @@
       "Visualgo.net: Binary Search Tree visualization - interactive tree operations and complexity demonstrations"
     ],
     "id": "3c96d77c-549c-47b0-b471-a343087c917f",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a228014f-a908-46a2-bc8d-a7751db48f10",
@@ -8315,9 +8016,7 @@
       "Documentation: Scikit-learn Feature Selection Guide - Technical reference for preprocessing and selection APIs"
     ],
     "id": "a228014f-a908-46a2-bc8d-a7751db48f10",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e86b3ec3-187f-4a27-954a-47e78f1c14c4",
@@ -8432,9 +8131,7 @@
       "Online resource: GeeksforGeeks Hash Table Implementation Guide - practical coding examples and common pitfalls"
     ],
     "id": "45a5ae06-fce7-4a69-ab93-c047f74831a8",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2fcd535f-3904-4342-9461-330987595bda",
@@ -8572,9 +8269,7 @@
       "Documentation: scikit-learn preprocessing and feature selection documentation with worked examples"
     ],
     "id": "3ea876ed-82ad-4dcd-9991-2016a85ae7a4",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a29ca73a-fb74-42c4-a419-854b40caa142",
@@ -8629,9 +8324,7 @@
       "Visualgo.net: Binary Search Tree module - interactive algorithm animations and step-by-step execution"
     ],
     "id": "7ad04bff-37ca-446a-88fd-e9af6e4ce3bd",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8d3a2798-6748-4254-aba6-3636497bd3ea",
@@ -8717,9 +8410,7 @@
       "Documentation: scikit-learn Feature Selection Guide - preprocessing and feature_selection modules with code examples"
     ],
     "id": "e7ed4ae1-18a7-4ce5-8c58-799b02b499bd",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "88c55562-3b76-411c-a712-44220b795b6e",
@@ -8747,9 +8438,7 @@
       "Online resource: GeeksforGeeks Graph Algorithms Section - BFS/DFS implementation examples and practice problems"
     ],
     "id": "88c55562-3b76-411c-a712-44220b795b6e",
-    "prerequisites": [
-      "70b08eb6-393f-41d7-a737-0f32e9823fcd"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "aeb56fd3-0662-438b-be4e-73a36f9ace93",
@@ -8775,9 +8464,7 @@
       "Online resource: Desmos Classroom Activities - 'Parabola Sliders' and 'Projectile Motion' interactive modules"
     ],
     "id": "aeb56fd3-0662-438b-be4e-73a36f9ace93",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "337e492a-4d7d-443b-8143-d88b1dcca833",
@@ -8804,9 +8491,7 @@
       "Online resource: Kaggle Learn Feature Engineering Course - comprehensive tutorials with code examples and practice datasets"
     ],
     "id": "337e492a-4d7d-443b-8143-d88b1dcca833",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e0ce7ed0-3d30-4caf-83b1-2f67d0ce2611",
@@ -8862,9 +8547,7 @@
       "Technical paper: Feature Engineering and Selection: A Practical Approach (Kuhn & Johnson, 2019) - chapters 6-8 on numeric predictors and handling categorical data"
     ],
     "id": "6676a1a6-e9c9-48e0-8d82-7669b4ed1f0b",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "185314ec-ebe0-4d75-aefd-a2ce72034b02",
@@ -8892,9 +8575,7 @@
       "Documentation: scikit-learn Feature Selection Guide - complete user guide with code examples"
     ],
     "id": "185314ec-ebe0-4d75-aefd-a2ce72034b02",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e5747a78-dd4c-4487-99e9-0461551bcc76",
@@ -8921,9 +8602,7 @@
       "Supplementary article: Real-World Applications of Linear Systems (Mathematics Teacher, 2021) - business and engineering case studies"
     ],
     "id": "e5747a78-dd4c-4487-99e9-0461551bcc76",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "57f3cbb1-0e80-474c-977b-3a03317af8e3",
@@ -8949,9 +8628,7 @@
       "Application article: Linear Programming in Business (Mathematics Teacher, 2021) - focus on system setup and constraint interpretation"
     ],
     "id": "57f3cbb1-0e80-474c-977b-3a03317af8e3",
-    "prerequisites": [
-      "48da8357-97c3-4001-baa8-98dda54794da"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8077532f-bbf3-427f-a649-ff2fe289143a",
@@ -8978,9 +8655,7 @@
       "Supplemental article: Applications of Quadratic Functions in Physics and Engineering (Mathematics Teacher, 2022) - focus on projectile motion modeling"
     ],
     "id": "8077532f-bbf3-427f-a649-ff2fe289143a",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "440a756a-76d7-4b1c-9a2a-6db8450fa496",
@@ -9008,9 +8683,7 @@
       "Online resource: PhET Interactive Simulations - Faraday's Law simulation and accompanying guided activities"
     ],
     "id": "440a756a-76d7-4b1c-9a2a-6db8450fa496",
-    "prerequisites": [
-      "55292031-be6a-44eb-9953-1549b41a8b19"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "953508d6-9b54-420f-a48e-683e5ba84d48",
@@ -9036,9 +8709,7 @@
       "Online resource: GeeksforGeeks - 'Hashing Implementation in Python' with working code examples and complexity analysis"
     ],
     "id": "953508d6-9b54-420f-a48e-683e5ba84d48",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "65c8f04d-a2d6-49d4-ab7f-f9af76dd7871",
@@ -9066,9 +8737,7 @@
       "Research paper: Cuckoo Hashing (Pagh & Rodler, 2004) - guaranteed O(1) worst-case lookup performance"
     ],
     "id": "65c8f04d-a2d6-49d4-ab7f-f9af76dd7871",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "48e699b7-38a6-45a5-945c-507bf4c69330",
@@ -9096,9 +8765,7 @@
       "Documentation: scikit-learn Feature Selection guide - comprehensive overview of selection algorithms and implementation"
     ],
     "id": "48e699b7-38a6-45a5-945c-507bf4c69330",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6f83c289-2af3-45b1-b582-3c29fecf6e3d",
@@ -9126,9 +8793,7 @@
       "Online resource: GeeksforGeeks Dynamic Programming section - comprehensive problem set with solutions and complexity analysis"
     ],
     "id": "6f83c289-2af3-45b1-b582-3c29fecf6e3d",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "32bd448f-f985-4156-83b0-a3c5f4872f3e",
@@ -9155,9 +8820,7 @@
       "Online resource: GeeksforGeeks - 'Graph Algorithms' section covering implementation details and optimization techniques"
     ],
     "id": "32bd448f-f985-4156-83b0-a3c5f4872f3e",
-    "prerequisites": [
-      "70b08eb6-393f-41d7-a737-0f32e9823fcd"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4aa24abb-41b4-44e7-b384-6bbb8287d578",
@@ -9185,9 +8848,7 @@
       "Khan Academy: 'Systems of Linear Equations' module - interactive practice problems and video explanations"
     ],
     "id": "4aa24abb-41b4-44e7-b384-6bbb8287d578",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b2d832ff-994a-4321-af9b-f47fc4f267d2",
@@ -9243,9 +8904,7 @@
       "Supplementary: 'Hash Table Performance in Practice' (Knuth, 1998) The Art of Computer Programming Vol. 3 pp. 513-558"
     ],
     "id": "e300a3d3-97ca-44ad-9923-511558cadaef",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "73323e5d-5428-4fcd-9e01-f9cb11e80176",
@@ -9271,9 +8930,7 @@
       "Online resource: GeeksforGeeks - comprehensive hash table tutorials with implementation examples and visualization tools"
     ],
     "id": "73323e5d-5428-4fcd-9e01-f9cb11e80176",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5c937034-928e-4ea5-8cd8-0b003df5bd9a",
@@ -9301,9 +8958,7 @@
       "Research paper: 'Robin Hood Hashing' (Celis et al., 1985) - advanced open addressing technique for uniform performance"
     ],
     "id": "5c937034-928e-4ea5-8cd8-0b003df5bd9a",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2ac866b4-cd78-45f8-9b6c-95640d67328c",
@@ -9330,9 +8985,7 @@
       "Online Resource: VisuAlgo BST Module - interactive tree operations and complexity visualization exercises"
     ],
     "id": "2ac866b4-cd78-45f8-9b6c-95640d67328c",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "85f750d9-1bfa-4dc1-b752-2b0bd4e0331e",
@@ -9361,9 +9014,7 @@
       "Research paper: 'Consistent Hashing and Random Trees' (Karger et al., 1997) - advanced applications in distributed systems"
     ],
     "id": "85f750d9-1bfa-4dc1-b752-2b0bd4e0331e",
-    "prerequisites": [
-      "4bf154da-f2a5-40b1-b2d4-d39c682b4460"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d428c61f-67fe-430c-9b0c-a65483585626",
@@ -9390,9 +9041,7 @@
       "Online resource: Desmos Graphing Calculator Activity Builder - 'Quadratic Transformations Interactive Lessons' with guided discovery activities"
     ],
     "id": "d428c61f-67fe-430c-9b0c-a65483585626",
-    "prerequisites": [
-      "aeb56fd3-0662-438b-be4e-73a36f9ace93"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b23a3d42-5b8a-406b-8467-d56688d4ccc8",
@@ -9476,9 +9125,7 @@
       "MIT OpenCourseWare: Linear Algebra Lecture 2 - Elimination with Matrices video content and transcript"
     ],
     "id": "799ca02a-db74-4a53-a647-c19b3fa5310a",
-    "prerequisites": [
-      "48da8357-97c3-4001-baa8-98dda54794da"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2ac832b4-85f1-4c15-b293-6c066b4afd45",
@@ -9504,9 +9151,7 @@
       "Online resource: Desmos Graphing Calculator Activity Builder - 'Parabola Transformations Interactive' with guided exploration exercises"
     ],
     "id": "2ac832b4-85f1-4c15-b293-6c066b4afd45",
-    "prerequisites": [
-      "aeb56fd3-0662-438b-be4e-73a36f9ace93"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "59e16cb2-75dd-4c52-a4de-b4e445070981",
@@ -9536,9 +9181,7 @@
       "Supplementary: Paul's Online Math Notes - Systems of Equations section for additional worked examples"
     ],
     "id": "59e16cb2-75dd-4c52-a4de-b4e445070981",
-    "prerequisites": [
-      "48da8357-97c3-4001-baa8-98dda54794da"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5770ec1f-774e-474a-9431-92d57ce1d69d",
@@ -9591,9 +9234,7 @@
       "Supplementary reading: Real-World Applications of Linear Systems (Mathematics Teacher, 2021) - focus on modeling scenarios"
     ],
     "id": "ea68a615-2004-42bd-9287-d527dd7ac4ce",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ae2360df-1ad6-47d9-8fca-88199a163223",
@@ -9621,9 +9262,7 @@
       "Documentation: Plotly Python Graphing Library - Interactive visualization techniques and best practices"
     ],
     "id": "ae2360df-1ad6-47d9-8fca-88199a163223",
-    "prerequisites": [
-      "4ab69afe-4cf4-4655-bd4f-5bdbeffc3dab"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "58d2b4ac-d039-49e3-bba4-8757752b9581",
@@ -9651,9 +9290,7 @@
       "Research paper: 'Cuckoo Hashing' (Pagh & Rodler, 2004) - guaranteed O(1) worst-case lookup performance"
     ],
     "id": "58d2b4ac-d039-49e3-bba4-8757752b9581",
-    "prerequisites": [
-      "2f2ef57a-8269-4ecb-b998-7c64f9ad852c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e222a9be-6bbb-4cc9-938b-806af760e03d",
@@ -9680,9 +9317,7 @@
       "Online resource: GeeksforGeeks - 'Binary Search Tree Data Structure' including interactive visualizations and code examples"
     ],
     "id": "e222a9be-6bbb-4cc9-938b-806af760e03d",
-    "prerequisites": [
-      "42bb881b-c1ab-4910-8ba7-c7c03495c4d6"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "39b1f974-d254-4447-bb4b-cd98a20eea4e",
@@ -9710,9 +9345,7 @@
       "Feature Engineering for Machine Learning: Chapters 3-5 covering numerical transformations and categorical encodings (Zheng & Casari, 2018) pp. 41-112"
     ],
     "id": "39b1f974-d254-4447-bb4b-cd98a20eea4e",
-    "prerequisites": [
-      "c42ff91e-5652-4682-a24a-2c8363be8410"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "993faec9-07ad-438a-a4b2-e85b97966290",
@@ -9765,9 +9398,7 @@
       "Online resource: Khan Academy Systems of Equations unit - practice problems and video explanations for visual learners"
     ],
     "id": "cfeedcb3-e968-4698-ad41-733033fcd76e",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d",
@@ -9882,9 +9513,7 @@
       "Supplementary: Griffiths Introduction to Electrodynamics Chapter 7.1-7.2 (2017) pp. 301-325 for advanced mathematical treatment"
     ],
     "id": "c49211ef-1359-4458-bc6f-2e61e021c533",
-    "prerequisites": [
-      "440a756a-76d7-4b1c-9a2a-6db8450fa496"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ece05bb1-36e1-4dda-8c47-068cbff95ffc",
@@ -9914,9 +9543,7 @@
       "GeoGebra online activities: 'Visualizing Linear Systems' - geometric interpretation tools"
     ],
     "id": "ece05bb1-36e1-4dda-8c47-068cbff95ffc",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "024c60c5-f82e-4cf3-bbdd-697481099a45",
@@ -9947,9 +9574,7 @@
       "Khan Academy: Work and Energy unit - video tutorials and practice problems for reinforcement"
     ],
     "id": "024c60c5-f82e-4cf3-bbdd-697481099a45",
-    "prerequisites": [
-      "dc29d446-21b9-4755-9634-7842dbc90f28"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "470b7ece-e80d-424f-956b-8b7f01cf9d5f",
@@ -10009,9 +9634,7 @@
       "Desmos Classroom Activity: 'Marbleslides: Lines' - graphical system solving practice"
     ],
     "id": "df55fe2c-ecb8-49b3-b063-359e4b8605d6",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "3d88141f-27a7-451c-aa9d-5a2f0dec63ad",
@@ -10040,9 +9663,7 @@
       "Khan Academy: 'Systems of Linear Equations' module - interactive practice problems and video explanations"
     ],
     "id": "3d88141f-27a7-451c-aa9d-5a2f0dec63ad",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "3226c6f1-c1c7-4ec6-b165-5db523ef2828",
@@ -10071,9 +9692,7 @@
       "scikit-learn documentation: Preprocessing and Feature Selection modules - focus on practical implementation examples"
     ],
     "id": "3226c6f1-c1c7-4ec6-b165-5db523ef2828",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "0c121bab-fee6-424c-b329-82ec1d4f1cd7",
@@ -10189,9 +9808,7 @@
       "Technical guide: scikit-learn documentation - Preprocessing and Feature Selection user guide with code examples"
     ],
     "id": "745f936b-5f3a-4fd0-8960-95d569996f30",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7c97db3c-04e0-4002-9aec-c2254590b43a",
@@ -10219,9 +9836,7 @@
       "Research paper: 'An Introduction to Variable and Feature Selection' (Guyon & Elisseeff, 2003) - theoretical foundations and algorithm comparisons"
     ],
     "id": "7c97db3c-04e0-4002-9aec-c2254590b43a",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b5224c60-6947-4025-834c-67a761fafad7",
@@ -10278,9 +9893,7 @@
       "Online resource: Desmos Graphing Calculator - Activity Builder lessons on quadratic transformations and real-world modeling"
     ],
     "id": "25bf46b2-9e6d-4d5f-9a65-2838ed472979",
-    "prerequisites": [
-      "aeb56fd3-0662-438b-be4e-73a36f9ace93"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "01b0261a-a596-4b0f-8066-3df6e909ec03",
@@ -10308,9 +9921,7 @@
       "Documentation: Scikit-learn User Guide - Preprocessing data and Feature selection sections with code examples"
     ],
     "id": "01b0261a-a596-4b0f-8066-3df6e909ec03",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9d1a65ed-a88f-43dd-83bc-4562b398720b",
@@ -10455,9 +10066,7 @@
       "Online resource: GeoGebra Linear Algebra activities - specifically 'Visualizing Systems of Equations' interactive tool"
     ],
     "id": "5112e896-0370-4808-af07-6a0e95243b01",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "51a136ad-23ab-44c0-a5b6-9200f6cf45b1",
@@ -10484,9 +10093,7 @@
       "Online resource: Desmos Activity Builder - 'Modeling with Quadratics' interactive lessons and data exploration tools"
     ],
     "id": "51a136ad-23ab-44c0-a5b6-9200f6cf45b1",
-    "prerequisites": [
-      "aeb56fd3-0662-438b-be4e-73a36f9ace93"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e2dabf97-2935-4ccd-8d5f-fc96db548c65",
@@ -10514,9 +10121,7 @@
       "Documentation: scikit-learn Feature Selection Guide - comprehensive API reference and examples"
     ],
     "id": "e2dabf97-2935-4ccd-8d5f-fc96db548c65",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "37df8640-282e-4604-bb21-f7512c675bcf",
@@ -10567,9 +10172,7 @@
       "Online resource: Khan Academy - \"Systems of Linear Equations\" interactive modules and practice problems"
     ],
     "id": "7bb69b7d-ba43-45ac-820e-78b9eea50f32",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2ce14811-2148-486a-98a2-0ef0aff7dc0e",
@@ -10597,9 +10200,7 @@
       "Documentation: Scikit-learn Feature Selection Guide - Comprehensive overview of selection algorithms and implementation examples"
     ],
     "id": "2ce14811-2148-486a-98a2-0ef0aff7dc0e",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "372921f3-0df3-4884-aa8d-130f03df4171",
@@ -10764,9 +10365,7 @@
       "Online resource: Khan Academy - 'Matrices and Gaussian Elimination' video series (lessons 1-6) with interactive practice problems"
     ],
     "id": "d9ba1539-d139-4d2b-8ed0-38f58f78003e",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c17a9179-5a1e-4ab6-904d-fe015ec12fb8",
@@ -10795,9 +10394,7 @@
       "Supplementary: MIT OpenCourseWare 8.03 Lecture Notes on Superposition - mathematical derivations and advanced examples"
     ],
     "id": "c17a9179-5a1e-4ab6-904d-fe015ec12fb8",
-    "prerequisites": [
-      "dfb9fe2f-dada-4ff7-ba32-894876b4ba57"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "77f130e4-291d-4e2f-b90e-82b98f4b282a",
@@ -10824,9 +10421,7 @@
       "GeeksforGeeks: Graph Algorithms section - implementation examples and interactive visualizations"
     ],
     "id": "77f130e4-291d-4e2f-b90e-82b98f4b282a",
-    "prerequisites": [
-      "441bedc7-46e1-4730-9337-c66715d8f186"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2eccae6a-264e-4760-98a3-3218dc0ed051",
@@ -10885,9 +10480,7 @@
       "Documentation: Scikit-learn Feature Selection and Preprocessing modules - practical implementation examples"
     ],
     "id": "2807ebd9-481f-474b-aedc-468fd4f3302b",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c88f82c3-47eb-409a-b66d-689f36472437",
@@ -10914,9 +10507,7 @@
       "Online Resource: PhET Interactive Simulations - 'Photoelectric Effect' simulation with guided worksheet activities"
     ],
     "id": "c88f82c3-47eb-409a-b66d-689f36472437",
-    "prerequisites": [
-      "c49211ef-1359-4458-bc6f-2e61e021c533"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2052f20a-0920-45d8-9358-e7d7f03c4d65",
@@ -10945,9 +10536,7 @@
       "Supplementary material: GeoGebra interactive matrix calculator tutorials and exploration activities"
     ],
     "id": "2052f20a-0920-45d8-9358-e7d7f03c4d65",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d00cc2e3-90c0-4836-afab-44de1cea0ca2",
@@ -10976,9 +10565,7 @@
       "Research paper: 'An Introduction to Variable and Feature Selection' (Guyon & Elisseeff, 2003) - focus on sections 2-4 for theoretical foundations"
     ],
     "id": "d00cc2e3-90c0-4836-afab-44de1cea0ca2",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "53578d93-c9a7-4aad-9c73-14667857e7e7",
@@ -11033,9 +10620,7 @@
       "GeeksforGeeks: 'Graph Data Structure And Algorithms' - implementation examples and complexity analysis"
     ],
     "id": "31603863-ada0-4492-bfb8-3167f7b7522a",
-    "prerequisites": [
-      "441bedc7-46e1-4730-9337-c66715d8f186"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "fe889d41-0148-4e99-98a7-e87c5f0de696",
@@ -11116,9 +10701,7 @@
       "Khan Academy: Matrix operations and properties - interactive exercises on matrix arithmetic and row operations"
     ],
     "id": "771a854d-927e-4db5-8bad-1af94be8f384",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "25d91e28-0756-4a81-a247-7a97a7557516",
@@ -11146,9 +10729,7 @@
       "Online resource: GeeksforGeeks - Dijkstra's Algorithm implementation variations and optimization techniques"
     ],
     "id": "25d91e28-0756-4a81-a247-7a97a7557516",
-    "prerequisites": [
-      "441bedc7-46e1-4730-9337-c66715d8f186"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8ab5cde5-4b95-49ba-88fb-c85311c96cdc",
@@ -11204,9 +10785,7 @@
       "Desmos Classroom Activity: Linear Function Explorer - technology-enhanced graphing exercises"
     ],
     "id": "09480d64-93a1-4c01-b11c-02322db76bcd",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "bac6c5cd-cc69-4270-b7b4-cf8cd7423688",
@@ -11317,9 +10896,7 @@
       "Journal article: 'Real-World Applications of Linear Systems in Supply Chain Management' (Operations Research Quarterly, 2020) - case study examples"
     ],
     "id": "b2e82c76-37d5-4a6b-8056-f5a9523d4f12",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e5878e85-a279-4af7-9d1c-f5a88c9d1280",
@@ -11430,9 +11007,7 @@
       "Interactive resource: Desmos Graphing Calculator tutorials for visualizing system solutions"
     ],
     "id": "a9f12c3c-ede5-4dbe-b2cd-ce7f4199ec8d",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "06fbf1f3-924e-4b2f-8bbd-8776a6fd08f2",
@@ -11461,9 +11036,7 @@
       "Supplementary reading: Graphing Calculator Guide for Linear Functions (Texas Instruments, 2022) - technology integration"
     ],
     "id": "06fbf1f3-924e-4b2f-8bbd-8776a6fd08f2",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9eae5aab-363a-4a79-ac81-85a968b9da5a",
@@ -11546,9 +11119,7 @@
       "Journal article: Applications of Linear Systems in Economics (Henderson, 2019) - focus on market equilibrium examples"
     ],
     "id": "5f96a4fe-1c09-4632-9fcc-497bef097344",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5d3d84e7-6d5c-40ba-9da8-9fc8ac32ed13",
@@ -11635,9 +11206,7 @@
       "Online resource: Khan Academy - Linear Functions module including practice exercises and video explanations"
     ],
     "id": "c9c881ee-2cfb-4e3b-8cae-6dfe56ecfbb6",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "bd5ab68c-1f73-4cc7-8293-3832a71b3805",
@@ -11664,9 +11233,7 @@
       "Online resource: PhET Interactive Simulations - 'Faraday's Electromagnetic Lab' simulation with guided worksheet activities"
     ],
     "id": "bd5ab68c-1f73-4cc7-8293-3832a71b3805",
-    "prerequisites": [
-      "440a756a-76d7-4b1c-9a2a-6db8450fa496"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "57a3a570-6895-4225-8db7-f47196e849ca",
@@ -11694,9 +11261,7 @@
       "Documentation: Scikit-learn User Guide sections on feature selection and preprocessing - focus on practical implementation examples"
     ],
     "id": "57a3a570-6895-4225-8db7-f47196e849ca",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "12ff7133-d9bc-49a6-9bea-bf20e08f7067",
@@ -11723,9 +11288,7 @@
       "Online resource: GeeksforGeeks Algorithm Visualization - interactive Dijkstra's and Floyd-Warshall demonstrations with step-by-step execution"
     ],
     "id": "12ff7133-d9bc-49a6-9bea-bf20e08f7067",
-    "prerequisites": [
-      "441bedc7-46e1-4730-9337-c66715d8f186"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "44c6d245-e9e5-45ee-a5f7-be8a5813e5f8",
@@ -11753,9 +11316,7 @@
       "Online resource: GeoGebra Graphing Calculator - visualization tools for 3D system solutions"
     ],
     "id": "44c6d245-e9e5-45ee-a5f7-be8a5813e5f8",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5e1a1964-4ef0-45d5-8787-67edab5944b5",
@@ -11781,9 +11342,7 @@
       "Khan Academy: 'Intro to Parabolas' and 'Quadratic Word Problems' modules with interactive practice exercises"
     ],
     "id": "5e1a1964-4ef0-45d5-8787-67edab5944b5",
-    "prerequisites": [
-      "aeb56fd3-0662-438b-be4e-73a36f9ace93"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a9985acb-7166-43e2-8091-56e9378c9a61",
@@ -11978,9 +11537,7 @@
       "Application article: 'Linear Programming in Business Applications' (Mathematics Teacher, 2020) - focus on setup and interpretation sections"
     ],
     "id": "46ff7b6a-626f-442d-9945-69469d4740c4",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "47cc4b16-325a-4962-a582-e6d1b2a6aa76",
@@ -12181,9 +11738,7 @@
       "Supplementary reading: 'Functions and Change: A Modeling Approach to College Algebra' (Crauder et al., 2020) pp. 45-72"
     ],
     "id": "5d97eb02-7f28-42ab-bab6-08044ad64e91",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8576c711-f146-494d-8a3f-efac9b445653",
@@ -12210,9 +11765,7 @@
       "Online resource: Desmos Classroom Activities - 'Parabola Sliders' and 'Projectile Motion' interactive lessons"
     ],
     "id": "8576c711-f146-494d-8a3f-efac9b445653",
-    "prerequisites": [
-      "aeb56fd3-0662-438b-be4e-73a36f9ace93"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7eb078f2-7dea-4883-a900-cf825c7053c7",
@@ -12267,9 +11820,7 @@
       "Khan Academy: 'Quadratic Functions and Equations' unit - video lessons on completing the square and optimization problems"
     ],
     "id": "f46198dc-e416-40e0-be5b-d30b82b4bbbd",
-    "prerequisites": [
-      "aeb56fd3-0662-438b-be4e-73a36f9ace93"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7455cccf-42f3-4694-a01e-d9f3d80607e9",
@@ -12353,9 +11904,7 @@
       "Khan Academy: Matrix row operations and Gaussian elimination - interactive exercises and video tutorials"
     ],
     "id": "592d37cf-220f-4ee7-b6ae-562d278124af",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5855541b-b2d2-4f8a-bd92-301acedb6db2",
@@ -12439,9 +11988,7 @@
       "Kaggle Learn: Feature Engineering course - complete all 5 lessons with practical exercises"
     ],
     "id": "152ff7ea-9f3c-448e-ac00-19af9f9fbf4d",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5a17bdde-37a7-44ae-9b2b-3a2570c58794",
@@ -12470,9 +12017,7 @@
       "Supplementary resource: GeoGebra graphing activities for visualizing system solutions"
     ],
     "id": "5a17bdde-37a7-44ae-9b2b-3a2570c58794",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "bbc22e63-e18c-40fb-8b81-37c8e86d6f18",
@@ -12556,9 +12101,7 @@
       "Technical article: Automated Feature Engineering in Practice (Kanter & Veeramachaneni, 2015) - focus on systematic approaches"
     ],
     "id": "e05ab377-b95d-4913-bb60-788e740df259",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "247c2822-560f-4818-a583-b1c6aa587823",
@@ -12583,9 +12126,7 @@
       "Online resource: Khan Academy - 'Systems of Linear Equations' interactive lessons and practice problems"
     ],
     "id": "247c2822-560f-4818-a583-b1c6aa587823",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8f13127c-b9bd-4e90-bb78-485760d0becd",
@@ -12641,9 +12182,7 @@
       "Online resource: Visualgo.net - interactive graph algorithm visualizations for Dijkstra's and Floyd-Warshall algorithms"
     ],
     "id": "6bc2b55e-da4f-47af-a999-5817e6de004a",
-    "prerequisites": [
-      "441bedc7-46e1-4730-9337-c66715d8f186"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7d139407-9d6a-4fed-bc07-6b3865cafb99",
@@ -12754,9 +12293,7 @@
       "Khan Academy: Matrix operations and Gaussian elimination modules - computational practice exercises"
     ],
     "id": "3039c799-dcbd-4cde-a1f6-35ab6e819fe2",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "df11e60a-a241-467d-9a25-3ec35f022ffa",
@@ -12811,9 +12348,7 @@
       "Online resource: Khan Academy Linear Algebra - Gaussian Elimination interactive exercises and video series"
     ],
     "id": "17c4ba27-14bb-44d9-8c25-6a749ea474f2",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4a9571a3-79e6-42fe-ab9a-4e8b73359f67",
@@ -12896,9 +12431,7 @@
       "Application article: \"Linear Programming in Business Decision Making\" (Mathematics in Context, 2022) - focus on real-world system applications"
     ],
     "id": "f8d6749c-560c-4a36-ae3c-bf69e6b01214",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ce43d0ea-d341-4c93-b92e-615427e3c617",
@@ -12928,9 +12461,7 @@
       "Reference guide: Matrix Methods for Linear Systems (Paul's Online Math Notes) - computational procedures"
     ],
     "id": "ce43d0ea-d341-4c93-b92e-615427e3c617",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b073fbe4-e803-4f2d-a5b7-d1c4a597077c",
@@ -13075,9 +12606,7 @@
       "Supplementary: MIT OpenCourseWare 8.02 Lecture Notes on 'Electromagnetic Induction' - advanced mathematical treatment"
     ],
     "id": "82fb6079-6ec0-480b-90f5-7e72d187758a",
-    "prerequisites": [
-      "440a756a-76d7-4b1c-9a2a-6db8450fa496"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2235663b-249e-4c44-8f60-48f0a05398b1",
@@ -13106,9 +12635,7 @@
       "Documentation: Featuretools library documentation - Deep Feature Synthesis tutorial and time series aggregation examples"
     ],
     "id": "2235663b-249e-4c44-8f60-48f0a05398b1",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c5065a2a-872c-4074-8373-7e4e0db7bb79",
@@ -13195,9 +12722,7 @@
       "Documentation: scikit-learn preprocessing and feature selection modules - comprehensive method reference and examples"
     ],
     "id": "9e6aa2f8-0908-423b-bbfb-6cdd7913cb40",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ea7cd52d-f906-415d-9910-ced092211e3e",
@@ -13365,9 +12890,7 @@
       "GeoGebra Classroom: Systems of Linear Equations visualization tools - graphical and algebraic solution methods"
     ],
     "id": "48a67085-e4c5-4a1b-968b-62f2a6c8dc07",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5fae4205-5996-4ad7-8611-c9f063baf782",
@@ -13452,9 +12975,7 @@
       "Online resource: Khan Academy Linear Algebra - Matrix operations and systems solving interactive exercises"
     ],
     "id": "a29fc458-f1c1-4ee2-9458-226d11f73165",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5c44e53c-554a-4e2c-bc6f-9b6a2a5a6b71",
@@ -13483,9 +13004,7 @@
       "Documentation: scikit-learn Feature Selection and Preprocessing modules - implementation examples"
     ],
     "id": "5c44e53c-554a-4e2c-bc6f-9b6a2a5a6b71",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "416719b8-63fc-4884-ad9c-03d5540a0e76",
@@ -13572,9 +13091,7 @@
       "Supplementary resource: GeoGebra graphing activities for visualizing system solutions and geometric interpretations"
     ],
     "id": "058614cd-0dd3-4ef0-aa6f-5110da7b413b",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ab466d8b-7e13-4f80-a780-8b20e1eb50b8",
@@ -13602,9 +13119,7 @@
       "Documentation: Scikit-learn Feature Selection user guide - preprocessing and feature selection APIs"
     ],
     "id": "ab466d8b-7e13-4f80-a780-8b20e1eb50b8",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "74d01f30-ebf7-4ec9-8581-c982f99b947c",
@@ -13637,9 +13152,7 @@
       "Coursera: Algorithms Specialization Week 5 - Dijkstra's Algorithm video lectures and supplementary materials"
     ],
     "id": "74d01f30-ebf7-4ec9-8581-c982f99b947c",
-    "prerequisites": [
-      "441bedc7-46e1-4730-9337-c66715d8f186"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8d88cf7d-0a62-4d22-98a3-f71c43afe218",
@@ -13723,9 +13236,7 @@
       "Research paper: 'An Empirical Evaluation of Supervised Learning in High Dimensions' (Domingos, 2012) - feature selection implications"
     ],
     "id": "a4d845bb-7f5e-4a11-87e0-75c97e8d4bdc",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4b9724b9-ea90-4ce7-a886-acdc08e31a4d",
@@ -13778,9 +13289,7 @@
       "Online resource: Khan Academy - 'Systems of Linear Equations' interactive exercises and video explanations"
     ],
     "id": "d59b81b9-6029-4114-b21f-7fb137050cb1",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2c4f2f54-44d6-4341-9d1e-3c593d03a0f5",
@@ -13835,9 +13344,7 @@
       "Technical blog: \"Feature Selection Techniques in Machine Learning\" on Towards Data Science - comparative analysis of selection methods"
     ],
     "id": "59ccac57-44e3-47b7-817e-7527439bb8ca",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "cfb3e32e-4323-4b25-b41a-43bf90666817",
@@ -13895,9 +13402,7 @@
       "Technical blog: Towards Data Science 'Feature Engineering Techniques' series - industry best practices and case studies"
     ],
     "id": "90977f93-d9a6-4be2-a1ee-b50ee3fb8f05",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6d8068d3-45c9-4423-9c9e-67386f4af71e",
@@ -13924,9 +13429,7 @@
       "Online resource: Khan Academy - 'Systems of Equations' unit with interactive practice problems and video explanations"
     ],
     "id": "6d8068d3-45c9-4423-9c9e-67386f4af71e",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f1965c52-24de-47f1-a32d-0c13d86019a2",
@@ -14154,9 +13657,7 @@
       "Online resource: PhET Interactive Simulations - Photoelectric Effect simulation with guided worksheet activities"
     ],
     "id": "5584bfd6-3e43-4e13-8347-167832d56a60",
-    "prerequisites": [
-      "c49211ef-1359-4458-bc6f-2e61e021c533"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7e7d30f4-6629-4f35-9b65-b6e234064bdf",
@@ -14184,9 +13685,7 @@
       "Research paper: 'An Introduction to Variable and Feature Selection' (Guyon & Elisseeff, 2003) Journal of Machine Learning Research - sections on filter and wrapper methods"
     ],
     "id": "7e7d30f4-6629-4f35-9b65-b6e234064bdf",
-    "prerequisites": [
-      "6bbf57b2-c9fb-42fe-964a-8fa4ac17729d"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b8caf401-fb42-437a-ba06-a8639ab097c8",
@@ -14239,9 +13738,7 @@
       "Khan Academy: Matrix method for solving systems - interactive examples and practice problems"
     ],
     "id": "2fb4bccf-e7d7-4aeb-bc29-889319bc92fa",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "bc5948bf-1a2d-4797-9bdd-4b74c0a958e9",
@@ -14299,9 +13796,7 @@
       "Online resource: Desmos Matrix Calculator tutorial and GeoGebra 3D system visualizations for geometric interpretation"
     ],
     "id": "431e7664-a6be-4aef-b7bc-6c947c468fdf",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "cc10646e-9ca6-46ad-bd2c-9a400fea0020",
@@ -14388,9 +13883,7 @@
       "Khan Academy: Linear Algebra module - specifically 'Vectors and Spaces' and 'Matrix Transformations' sections with interactive exercises"
     ],
     "id": "4c7566eb-ac62-4544-a7f2-ef59c972c012",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "af25fe2c-de80-4a41-8d59-f58cf8307be8",
@@ -14418,9 +13911,7 @@
       "OpenStax College Algebra: Section 7.6-7.8 (Abramson, 2021) pp. 542-578"
     ],
     "id": "af25fe2c-de80-4a41-8d59-f58cf8307be8",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4d5acebf-cefa-49a0-96d7-ec183677064e",
@@ -14507,9 +13998,7 @@
       "MIT OpenCourseWare: Linear Algebra Lecture 3 'Multiplication and Inverse Matrices' video and accompanying notes"
     ],
     "id": "9c6d900b-e131-4f39-a876-409566289464",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6f3da89c-4222-41f8-b472-8aff6517674f",
@@ -14617,9 +14106,7 @@
       "Supplementary: MIT OpenCourseWare 18.06 Lecture Notes 1-3 - theoretical foundations"
     ],
     "id": "00762489-9103-4d7b-8e64-b4e28bbc4971",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6d49bc27-aa6f-491b-b21b-92f71b3f9fde",
@@ -14758,9 +14245,7 @@
       "GeoGebra Classroom: 3D Linear Systems Visualization - interactive geometric representations"
     ],
     "id": "b62e8603-b107-47d5-933f-5b0ffc53e941",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f9f947f1-0d8c-47f7-b2aa-5d021d409278",
@@ -14876,9 +14361,7 @@
       "Khan Academy: Matrix row operations and Gaussian elimination - interactive tutorials and practice problems"
     ],
     "id": "2fead586-240d-4b34-9e63-145953be9c6b",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "fe022f70-a3ec-45d1-8071-3a44a6d39261",
@@ -15073,9 +14556,7 @@
       "Online resource: PhET Interactive Simulations - Faraday's Electromagnetic Lab simulation with guided worksheet"
     ],
     "id": "0b3e6f39-7403-4954-8cc9-d32bfcdcdc38",
-    "prerequisites": [
-      "440a756a-76d7-4b1c-9a2a-6db8450fa496"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2cf07e91-4289-43ae-85ea-49090b29b907",
@@ -15193,9 +14674,7 @@
       "Interactive Guide: Desmos Graphing Calculator tutorial for visualizing systems of equations"
     ],
     "id": "22cdc904-eb71-4e9a-b0b7-5f420c790fed",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d8fa8ce1-4aa4-4c78-b0fc-744c822ebf70",
@@ -15305,9 +14784,7 @@
       "Online resource: Desmos Graphing Calculator - interactive quadratic function exploration activities and guided practice modules"
     ],
     "id": "de2b2edc-a8f6-4b61-b817-054ca6b54bd3",
-    "prerequisites": [
-      "aeb56fd3-0662-438b-be4e-73a36f9ace93"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7c2b68df-d5ab-4303-a338-c29122178a14",
@@ -15395,9 +14872,7 @@
       "Desmos Activity Builder: 'Parabola Sliders' - interactive exploration of parameter effects on quadratic graphs"
     ],
     "id": "7da776ed-a67e-49f6-9ebe-08091ac19904",
-    "prerequisites": [
-      "aeb56fd3-0662-438b-be4e-73a36f9ace93"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b20877cb-5032-4679-b6e6-0d1a6d54cf55",
@@ -15425,9 +14900,7 @@
       "Online resource: PhET Interactive Simulations - Wave Interference simulation with guided exploration activities"
     ],
     "id": "b20877cb-5032-4679-b6e6-0d1a6d54cf55",
-    "prerequisites": [
-      "dfb9fe2f-dada-4ff7-ba32-894876b4ba57"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b628be50-e179-4a3c-b15a-3b359c377b39",
@@ -15601,9 +15074,7 @@
       "Desmos Activity Builder: 'Parabola Investigation' - interactive exploration of parameter effects"
     ],
     "id": "732afa78-6a12-499b-8aa5-20b7d5f102c6",
-    "prerequisites": [
-      "aeb56fd3-0662-438b-be4e-73a36f9ace93"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f65d5067-8b28-4b84-90a0-6ac667969377",
@@ -15773,9 +15244,7 @@
       "Khan Academy: Linear Systems module - interactive practice problems and step-by-step solutions"
     ],
     "id": "e18a3677-75a6-4207-968a-6d5e9a9758fe",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "230697d4-1ee3-4194-943d-4d6477cb2cee",
@@ -15860,9 +15329,7 @@
       "Supplementary reading: 'Introduction to Electrodynamics' Chapter 7.1-7.2 (Griffiths, 2017) pp. 301-320 - advanced mathematical treatment"
     ],
     "id": "39ea5f4a-018e-47a5-9573-9a0ce18b9f54",
-    "prerequisites": [
-      "440a756a-76d7-4b1c-9a2a-6db8450fa496"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f81bac44-7cd0-4966-9e4f-5a5e8fb8801c",
@@ -15890,9 +15357,7 @@
       "Video series: Khan Academy Quadratic Functions unit - supplementary explanations and worked examples"
     ],
     "id": "f81bac44-7cd0-4966-9e4f-5a5e8fb8801c",
-    "prerequisites": [
-      "aeb56fd3-0662-438b-be4e-73a36f9ace93"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2d94eefa-3157-472e-82e7-9cc38adf8e8f",
@@ -15950,9 +15415,7 @@
       "Online resource: Desmos Graphing Calculator - interactive quadratic function explorer activities and transformation demonstrations"
     ],
     "id": "3b32d5e6-056b-4706-bffd-5734bbc64c5a",
-    "prerequisites": [
-      "aeb56fd3-0662-438b-be4e-73a36f9ace93"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a4b6506f-ed12-444e-9cc8-80d0e1d287e7",
@@ -15980,9 +15443,7 @@
       "Online resource: Khan Academy Linear Algebra - Matrix Operations and Systems of Equations modules with interactive examples"
     ],
     "id": "a4b6506f-ed12-444e-9cc8-80d0e1d287e7",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "94d3ac5c-a5b7-4f87-b3a7-47084b8f74ce",
@@ -16037,9 +15498,7 @@
       "Khan Academy: Linear Systems and Matrices - complete video series and practice exercises"
     ],
     "id": "02fce355-18c0-421e-a05b-574cad196f1e",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "45a7183d-5f3e-47ad-a3c3-4ba77063765b",
@@ -16289,9 +15748,7 @@
       "Online resource: Khan Academy - Systems of Linear Equations module including video tutorials and practice exercises"
     ],
     "id": "dae4505d-5539-4c3a-9392-8d379ee16053",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ff4ce453-7ae9-47f6-8cbc-4a9fc8cdab28",
@@ -16374,9 +15831,7 @@
       "Supplementary article: 'Real-World Applications of Linear Systems' (Mathematics Teacher, 2021) - focus on modeling techniques"
     ],
     "id": "cb6fe927-e740-4456-9ba8-bdffdf1acbea",
-    "prerequisites": [
-      "ea68a615-2004-42bd-9287-d527dd7ac4ce"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c302e184-7284-4565-a74f-83decc136474",
@@ -16403,9 +15858,7 @@
       "Online resource: Khan Academy - 'Linear Functions' module including video lessons and practice exercises"
     ],
     "id": "c302e184-7284-4565-a74f-83decc136474",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "144a0128-c372-47e3-96b7-c475585c1f9c",
@@ -16460,9 +15913,7 @@
       "Online resource: Desmos Graphing Calculator tutorials - Linear Function Investigations module"
     ],
     "id": "79b62715-d216-4c4f-ace6-5949de7c319c",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9401b3c7-3875-41b5-a97c-d93d34ad2b68",
@@ -16631,9 +16082,7 @@
       "Supplementary reading: Mathematical Modeling with Linear Functions (Khan Academy) - video series on slope interpretation"
     ],
     "id": "ce5c1df3-f500-4e80-8638-47bda7695f4e",
-    "prerequisites": [
-      "4dc500b9-da5d-449d-853c-c7aa388f06d5"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d29831e9-3149-4bf5-bcb2-e8f05360f645",
@@ -16941,9 +16390,7 @@
       "Online resource: PhET Interactive Simulations - 'Wave Interference' simulation with guided exploration activities"
     ],
     "id": "4df78b54-cf1b-4f78-962d-76de8343f4bf",
-    "prerequisites": [
-      "c17a9179-5a1e-4ab6-904d-fe015ec12fb8"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f01c4667-3aa9-4a2f-bf22-d73ec2bb0557",
@@ -16999,9 +16446,7 @@
       "Article: 'Real-World Applications of Linear Systems' (Mathematics Teacher, 2022) - focus on modeling techniques"
     ],
     "id": "a5dc686f-21fc-4f78-8fbd-e54dae7ddcdb",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "cb1927c7-11d3-43d6-a5f7-67d0409a1c44",
@@ -17057,9 +16502,7 @@
       "Supplementary reading: Physics Classroom Tutorial on Electromagnetic Induction - conceptual reinforcement"
     ],
     "id": "f3f8ab8e-bd1a-4ce3-ba1b-158d7bb10138",
-    "prerequisites": [
-      "440a756a-76d7-4b1c-9a2a-6db8450fa496"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "632e68a3-814f-48f5-89b6-ad3142404797",
@@ -17112,9 +16555,7 @@
       "Online resource: Khan Academy - 'Matrix Solutions to Linear Systems' interactive modules and practice problems"
     ],
     "id": "f523f179-edba-49b2-8000-5cfc827c8fa7",
-    "prerequisites": [
-      "a5dc686f-21fc-4f78-8fbd-e54dae7ddcdb"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "3bb80dd0-d5b2-4ce0-9d19-39987da8ff24",
@@ -17171,9 +16612,7 @@
       "Supplementary article: Applications of Linear Systems in Economics (Stewart, 2019) - focus on supply-demand modeling"
     ],
     "id": "1dc50649-cd0d-464c-98b6-84464ea28464",
-    "prerequisites": [
-      "a5dc686f-21fc-4f78-8fbd-e54dae7ddcdb"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5f63572b-cfbb-4c5d-9992-31bcb2861121",
@@ -17203,9 +16642,7 @@
       "Supplementary reading: Khan Academy 'Quadratic Word Problems' module - real-world application examples"
     ],
     "id": "5f63572b-cfbb-4c5d-9992-31bcb2861121",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "11f71f5c-25fa-452e-a381-47cc2c3a6de3",
@@ -17233,9 +16670,7 @@
       "Supplementary: MIT OpenCourseWare 8.02 Lecture Notes on Electromagnetic Induction - mathematical derivations"
     ],
     "id": "11f71f5c-25fa-452e-a381-47cc2c3a6de3",
-    "prerequisites": [
-      "440a756a-76d7-4b1c-9a2a-6db8450fa496"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "89b8de2d-613d-4c3c-8adf-ef5514ee106b",
@@ -17319,9 +16754,7 @@
       "Online resource: PhET Interactive Simulations - 'Wave Interference' and 'Single Slit Diffraction' modules with guided exploration activities"
     ],
     "id": "589e77d0-35fd-49e1-a3ac-676da0baa600",
-    "prerequisites": [
-      "c17a9179-5a1e-4ab6-904d-fe015ec12fb8"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "046b7c1f-b1bf-45e4-8f48-3261677685b6",
@@ -17548,9 +16981,7 @@
       "Khan Academy: Linear Algebra module - specifically 'Solving systems with matrices' video series and practice exercises"
     ],
     "id": "d0e677d9-8bfd-41c3-834e-d5d7e72bf7a7",
-    "prerequisites": [
-      "a5dc686f-21fc-4f78-8fbd-e54dae7ddcdb"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "324da43d-b18d-4493-9ed6-62ea478ca6d0",
@@ -17577,9 +17008,7 @@
       "Online resource: Khan Academy - 'Systems of Linear Equations' complete module with interactive practice problems"
     ],
     "id": "324da43d-b18d-4493-9ed6-62ea478ca6d0",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4afe667c-7223-43be-a80b-f8bff26d4780",
@@ -17808,9 +17237,7 @@
       "Khan Academy: Linear Algebra module 'Solving systems with matrices' - interactive exercises and step-by-step examples with immediate feedback"
     ],
     "id": "5b12b408-8306-4b24-9182-3e0e86fa1468",
-    "prerequisites": [
-      "a5dc686f-21fc-4f78-8fbd-e54dae7ddcdb"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "01e99fdd-7e15-428d-9a39-6e71d26822bf",
@@ -17839,9 +17266,7 @@
       "Supplementary resource: GeoGebra Matrix Calculator tutorials for visualization and verification of solutions"
     ],
     "id": "01e99fdd-7e15-428d-9a39-6e71d26822bf",
-    "prerequisites": [
-      "a5dc686f-21fc-4f78-8fbd-e54dae7ddcdb"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "0671f1eb-4d25-4d58-8a2f-38330e852cfa",
@@ -17897,9 +17322,7 @@
       "Khan Academy: Systems of equations module - practice problems and step-by-step solutions"
     ],
     "id": "3f7d1122-1b84-49e9-96af-b6abe44c73e1",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4e02d581-d605-4158-8008-4c91271f3c18",
@@ -17982,9 +17405,7 @@
       "Khan Academy: Systems of Linear Equations module - interactive practice problems and video explanations"
     ],
     "id": "a948d9d4-8a9a-47e2-8079-14a843f7fb14",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "82bef87c-377c-42fa-a888-38bc02f806dd",
@@ -18121,9 +17542,7 @@
       "Application examples: 'Real-World Applications of Linear Systems' (Mathematics Teacher Journal, 2020) - business and science contexts"
     ],
     "id": "5b643e3a-bb94-4e74-9506-bd3f5c845af4",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "21f1ed57-aaa8-4b7b-832f-e7e8d4ee7693",
@@ -18204,9 +17623,7 @@
       "Khan Academy online modules: 'Matrices' and 'Systems of Linear Equations' - complete practice exercises on Gaussian elimination"
     ],
     "id": "6ef6428e-279f-4d6b-a01a-15cd61f7d94c",
-    "prerequisites": [
-      "a5dc686f-21fc-4f78-8fbd-e54dae7ddcdb"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "37cd58ca-4d95-4526-895d-25dd374060a1",
@@ -18487,9 +17904,7 @@
       "Application article: Linear Programming in Business Applications (Mathematics Teacher, 2019) - focus on optimization examples"
     ],
     "id": "965ea0c2-16a2-4544-9178-88e680dbcfef",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "156d7d07-04c5-4695-b6fa-cb44d3f985c6",
@@ -18516,9 +17931,7 @@
       "Online simulation: PhET Interactive Simulations 'Faraday's Electromagnetic Lab' - complete guided exploration activities"
     ],
     "id": "156d7d07-04c5-4695-b6fa-cb44d3f985c6",
-    "prerequisites": [
-      "440a756a-76d7-4b1c-9a2a-6db8450fa496"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f5591235-78c6-4a0f-b213-c2a529fa2e44",
@@ -18547,9 +17960,7 @@
       "Online resource: GeoGebra Classroom - 'Visualizing Linear Systems' interactive activities"
     ],
     "id": "f5591235-78c6-4a0f-b213-c2a529fa2e44",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "25494810-3eb1-47a2-b657-f6e4e64e12f9",
@@ -18578,9 +17989,7 @@
       "Desmos Graphing Calculator: Matrix calculator tutorial and system visualization tools"
     ],
     "id": "25494810-3eb1-47a2-b657-f6e4e64e12f9",
-    "prerequisites": [
-      "a5dc686f-21fc-4f78-8fbd-e54dae7ddcdb"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c1dc89c5-1f59-47df-9e51-27bf4a088261",
@@ -18663,9 +18072,7 @@
       "Online resource: GeeksforGeeks - 'Graph Algorithms' section covering implementation details and coding examples with visual demonstrations"
     ],
     "id": "c5059226-e44a-441f-913b-34a5b495aa8f",
-    "prerequisites": [
-      "493a74ed-f462-489a-8d0d-8093b1ab29ae"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "21e2638a-9bba-43df-960f-486f44917f3c",
@@ -18693,9 +18100,7 @@
       "Journal article: Applications of Linear Systems in Network Analysis (Johnson, 2020) - focus on sections 1-3 for modeling techniques"
     ],
     "id": "21e2638a-9bba-43df-960f-486f44917f3c",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a8aa2fec-b0a5-46a5-bd33-7bc73a7a65a6",
@@ -18891,9 +18296,7 @@
       "Research paper: Robin Hood Hashing (Celis et al., 1986) - advanced open addressing optimization techniques"
     ],
     "id": "71ad9f4c-7fa9-4af2-a796-e2dcbc2bb572",
-    "prerequisites": [
-      "493a74ed-f462-489a-8d0d-8093b1ab29ae"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "74bedfe7-381d-4185-89f2-024406819f90",
@@ -18977,9 +18380,7 @@
       "Visualgo.net: Graph Traversal section - animated algorithm demonstrations and step-by-step execution"
     ],
     "id": "7140bd90-7016-4a74-a503-3e1fd8db8960",
-    "prerequisites": [
-      "493a74ed-f462-489a-8d0d-8093b1ab29ae"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "79f05eab-d632-46bc-85c7-e1b6adcfa3b8",
@@ -19004,9 +18405,7 @@
       "Khan Academy: Systems of Linear Equations unit - practice problems and video explanations"
     ],
     "id": "79f05eab-d632-46bc-85c7-e1b6adcfa3b8",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c",
@@ -19063,9 +18462,7 @@
       "Supplementary reading: Physics LibreTexts - Motional EMF and Magnetic Braking applications"
     ],
     "id": "3a6def17-b8e8-4d35-ba69-6caa365e22c0",
-    "prerequisites": [
-      "c49211ef-1359-4458-bc6f-2e61e021c533"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a60e0084-f6d0-4817-9cd7-588085c9f9cf",
@@ -19093,9 +18490,7 @@
       "Documentation: Scikit-learn Feature Selection Guide - comprehensive overview of selection algorithms and implementation examples"
     ],
     "id": "a60e0084-f6d0-4817-9cd7-588085c9f9cf",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e4b08510-fc11-4660-969d-cb5356f36b62",
@@ -19206,9 +18601,7 @@
       "Online resource: PhET Wave Interference Simulation - interactive exploration of water, sound, and light wave interference patterns"
     ],
     "id": "5f528afe-4e83-4354-b946-16e3651883ef",
-    "prerequisites": [
-      "4df78b54-cf1b-4f78-962d-76de8343f4bf"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e76cd637-ec19-42b8-a157-a44755fa4fdd",
@@ -19236,9 +18629,7 @@
       "Documentation: Scikit-learn Feature Selection Guide - comprehensive overview of selection methods and implementation examples"
     ],
     "id": "e76cd637-ec19-42b8-a157-a44755fa4fdd",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "427e415a-e511-4996-89d7-91500cc673a3",
@@ -19266,9 +18657,7 @@
       "Documentation: scikit-learn Feature Selection guide - comparing SelectKBest, RFE, and SelectFromModel classes"
     ],
     "id": "427e415a-e511-4996-89d7-91500cc673a3",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6435a47c-64b5-4f7d-beff-fc1b742c9b35",
@@ -19325,9 +18714,7 @@
       "Research paper: 'AutoML: A Survey of the State-of-the-Art' - Feature Engineering Automation section (He et al., 2021) pp. 15-23"
     ],
     "id": "b12a5048-5545-4553-81b0-8b103d290d02",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a7608251-9280-4f93-8ff3-b1dc49bbdc39",
@@ -19355,9 +18742,7 @@
       "Supplementary Reading: Chapter 4.1-4.3 in College Algebra (OpenStax, 2021) - quadratic function properties"
     ],
     "id": "a7608251-9280-4f93-8ff3-b1dc49bbdc39",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "870b584d-b080-4132-9a2e-2ad1b00d0f43",
@@ -19385,9 +18770,7 @@
       "Case study: Kaggle Learn - Feature Engineering course modules covering practical applications"
     ],
     "id": "870b584d-b080-4132-9a2e-2ad1b00d0f43",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9808f6c8-20d2-4d54-a981-5eea7114ce2e",
@@ -19475,9 +18858,7 @@
       "GeoGebra Linear Algebra Toolkit - visualization tools for geometric interpretation of solution sets"
     ],
     "id": "6eb351a7-0543-4593-90b2-92bba344e6bb",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c4d77a37-f574-495f-97ff-c2ea3a495549",
@@ -19505,9 +18886,7 @@
       "Documentation: scikit-learn preprocessing module - StandardScaler, LabelEncoder, and feature_selection submodules"
     ],
     "id": "c4d77a37-f574-495f-97ff-c2ea3a495549",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c1c4665a-093b-4388-9809-feaafd49a11e",
@@ -19561,9 +18940,7 @@
       "Supplementary reading: Data Structures and Algorithm Analysis, Ch 4.3 'Binary Search Trees' (Weiss, 2014) pp. 132-151"
     ],
     "id": "5915eef2-bde0-4359-be67-e6506d001356",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "375275b7-f0c5-4338-8371-f90378a4b8be",
@@ -19590,9 +18967,7 @@
       "Online resource: GeeksforGeeks Hash Table Implementation - practical coding examples and visualization tools"
     ],
     "id": "375275b7-f0c5-4338-8371-f90378a4b8be",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c52a9416-ce5f-41da-a5ad-c85dac9efbe4",
@@ -19619,9 +18994,7 @@
       "Online resource: Desmos Graphing Calculator - interactive quadratic transformation activities and guided practice problems"
     ],
     "id": "c52a9416-ce5f-41da-a5ad-c85dac9efbe4",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "1f2a0da0-2818-47ab-80dc-3cd56e306793",
@@ -19649,9 +19022,7 @@
       "LeetCode: Binary Tree Problems Discussion - community solutions and optimization strategies for common BST interview questions"
     ],
     "id": "1f2a0da0-2818-47ab-80dc-3cd56e306793",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7b64d9e4-73ce-48b7-8cd9-8de3ec6a9c92",
@@ -19732,9 +19103,7 @@
       "Documentation: Scikit-learn User Guide - Preprocessing Data and Feature Selection sections with practical examples"
     ],
     "id": "aaf6edfa-3888-4366-b04b-de70710dcea6",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a67a58d6-af79-4ca8-b02b-7acaa7bdcb78",
@@ -19763,9 +19132,7 @@
       "Supplementary reading: Khan Academy Quadratic Functions unit - video lessons and practice problems"
     ],
     "id": "a67a58d6-af79-4ca8-b02b-7acaa7bdcb78",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "32fe9cc1-cb5a-40bf-a60e-b355778e602d",
@@ -19794,9 +19161,7 @@
       "Supplementary article: 'Linear Systems in Economics' (Mathematical Economics Quarterly, 2021) - real-world applications focus"
     ],
     "id": "32fe9cc1-cb5a-40bf-a60e-b355778e602d",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "3288c7e3-0da0-4ff5-888b-6c2ccd93e5d6",
@@ -19822,9 +19187,7 @@
       "Online resource: Khan Academy Linear Algebra - Gaussian Elimination interactive modules and practice problems"
     ],
     "id": "3288c7e3-0da0-4ff5-888b-6c2ccd93e5d6",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "98809eda-ef0e-4caf-941b-596d36f37571",
@@ -19851,9 +19214,7 @@
       "Online resource: LeetCode Graph Problems - focus on traversal and shortest path problem sets with detailed solutions and complexity analysis"
     ],
     "id": "98809eda-ef0e-4caf-941b-596d36f37571",
-    "prerequisites": [
-      "ed1e8288-0065-407b-b6fd-be5fd3119620"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "83ee2838-acbb-4b6b-ab8e-92250247952a",
@@ -19882,9 +19243,7 @@
       "Online resource: Coursera Algorithm Specialization - Hash Tables module with interactive visualizations"
     ],
     "id": "83ee2838-acbb-4b6b-ab8e-92250247952a",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a88e7b9f-c626-4e64-a213-56d3eb7611de",
@@ -19912,9 +19271,7 @@
       "Python Data Science Handbook: Chapter 5.4-5.6 (VanderPlas, 2016) pp. 347-389 - dimensionality reduction techniques"
     ],
     "id": "a88e7b9f-c626-4e64-a213-56d3eb7611de",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5a554e6f-edbc-488a-8803-aebfd59829fd",
@@ -19944,9 +19301,7 @@
       "Research paper: Cuckoo Hashing (Pagh & Rodler, 2004) - advanced collision resolution technique with worst-case guarantees"
     ],
     "id": "5a554e6f-edbc-488a-8803-aebfd59829fd",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "802125ef-f038-4aca-9b5f-b5d91558b70b",
@@ -19975,9 +19330,7 @@
       "Online resource: GeoGebra Graphing Calculator - interactive linear system visualization activities"
     ],
     "id": "802125ef-f038-4aca-9b5f-b5d91558b70b",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "30e4cb61-ff64-46cc-a443-f8a4da105bcc",
@@ -20059,9 +19412,7 @@
       "Supplementary reading: Problem Solving with Algorithms and Data Structures, Chapter 7 (Miller & Ranum, 2011) pp. 223-267 - Python-specific implementations"
     ],
     "id": "651a1d21-ba00-40d7-9172-a7532d080f2f",
-    "prerequisites": [
-      "ed1e8288-0065-407b-b6fd-be5fd3119620"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f3d20892-7c03-4449-bec1-2f1977674e6d",
@@ -20090,9 +19441,7 @@
       "GeoGebra Activity: 'Visualizing Systems of Linear Equations' - interactive exploration of solution types"
     ],
     "id": "f3d20892-7c03-4449-bec1-2f1977674e6d",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7f233f03-946c-4cac-971f-572de5dcbbe1",
@@ -20210,9 +19559,7 @@
       "Supplementary reading: Introduction to Electrodynamics Chapter 7.1-7.2 (Griffiths, 2017) pp. 301-320"
     ],
     "id": "8462eca9-0ebf-451a-ab33-b64f6a27a7cc",
-    "prerequisites": [
-      "c49211ef-1359-4458-bc6f-2e61e021c533"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4a2284f8-a1bf-4da4-aa5b-8c10e4929985",
@@ -20239,9 +19586,7 @@
       "Online resource: GeeksforGeeks - Complete guide to hash table implementation with code examples and performance benchmarks"
     ],
     "id": "4a2284f8-a1bf-4da4-aa5b-8c10e4929985",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b076352b-b2df-41c3-ac83-7319ca73c2f7",
@@ -20268,9 +19613,7 @@
       "Online resource: PhET Interactive Simulations - 'Faraday's Law' and 'Generator' simulations with guided worksheets"
     ],
     "id": "b076352b-b2df-41c3-ac83-7319ca73c2f7",
-    "prerequisites": [
-      "c49211ef-1359-4458-bc6f-2e61e021c533"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a690d428-5baa-4fa2-b555-7367b97286d4",
@@ -20358,9 +19701,7 @@
       "Online resource: Python dictionaries implementation deep dive - Real Python tutorial on CPython's hash table internals and resize strategies"
     ],
     "id": "ef860467-2815-4b67-be85-87fd0659d0f4",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d5ad0e87-7164-4cc1-a873-a98e2f928682",
@@ -20387,9 +19728,7 @@
       "Online resource: GeeksforGeeks Graph Algorithms section - BFS and DFS tutorials with interactive examples and code walkthroughs"
     ],
     "id": "d5ad0e87-7164-4cc1-a873-a98e2f928682",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8f904e20-350f-458c-ac22-a71af9086660",
@@ -20443,9 +19782,7 @@
       "Online resource: Khan Academy Linear Systems Unit - interactive practice problems and solution verification tools"
     ],
     "id": "3ba80645-067d-40b1-84bb-df253a0e3356",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a4080544-1ef6-4727-857f-e87fc3f6ad47",
@@ -20474,9 +19811,7 @@
       "Reference Guide: Matrix Calculator Tutorial (Symbolab) - step-by-step Gaussian elimination examples"
     ],
     "id": "a4080544-1ef6-4727-857f-e87fc3f6ad47",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d206f60c-bad1-4ccc-81db-4a380a453608",
@@ -20503,9 +19838,7 @@
       "Online resource: Khan Academy - 'Matrix Row Operations and Gaussian Elimination' interactive modules with step-by-step examples"
     ],
     "id": "d206f60c-bad1-4ccc-81db-4a380a453608",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "0388b0c4-63f9-4040-bb11-f89601f7b9bb",
@@ -20534,9 +19867,7 @@
       "Online Resource: GeeksforGeeks Graph Algorithms section - implementation examples and practice problems"
     ],
     "id": "0388b0c4-63f9-4040-bb11-f89601f7b9bb",
-    "prerequisites": [
-      "ed1e8288-0065-407b-b6fd-be5fd3119620"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e57dcbdf-e370-4e69-b40d-1ea052746780",
@@ -20621,9 +19952,7 @@
       "MIT OpenCourseWare: Linear Algebra Lecture 2 - Elimination with Matrices (Strang) - video lecture and notes"
     ],
     "id": "334dea85-9eec-464e-a302-a5c690dc5760",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "703a85cf-ed12-4a06-bbdd-d10be0e15d4b",
@@ -20650,9 +19979,7 @@
       "Khan Academy: Matrix row operations and Gaussian elimination - complete interactive exercises"
     ],
     "id": "703a85cf-ed12-4a06-bbdd-d10be0e15d4b",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "1bcb8b7c-cb6e-48af-8cb3-bf17c33086c3",
@@ -20681,9 +20008,7 @@
       "Documentation: scikit-learn Feature Selection guide - comprehensive overview of selection algorithms and implementation"
     ],
     "id": "1bcb8b7c-cb6e-48af-8cb3-bf17c33086c3",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "92d99aee-e6a0-4938-95bd-d78b3f276f23",
@@ -20711,9 +20036,7 @@
       "Documentation: Scikit-learn Feature Selection Guide - preprocessing and feature_selection modules"
     ],
     "id": "92d99aee-e6a0-4938-95bd-d78b3f276f23",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "0afb1daa-6e2b-4f16-b179-1d10ce0a5483",
@@ -20741,9 +20064,7 @@
       "Research paper: 'Robin Hood Hashing' (Celis et al., 1986) - advanced collision resolution technique"
     ],
     "id": "0afb1daa-6e2b-4f16-b179-1d10ce0a5483",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "63f06532-b56d-4b37-9734-7c355bfa4358",
@@ -20799,9 +20120,7 @@
       "Online resource: GeeksforGeeks - 'Hashing Data Structure' tutorial series covering implementation examples and performance benchmarks"
     ],
     "id": "f162f0fd-6f67-4cf9-9100-da626a5dea74",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "3ad76d93-1418-4a11-ae3d-f26931f57694",
@@ -20859,9 +20178,7 @@
       "Khan Academy: Work and Energy unit - video lectures on energy conservation applications"
     ],
     "id": "b1c5f680-c0e9-4f88-bd67-9ada5ab875c8",
-    "prerequisites": [
-      "024c60c5-f82e-4cf3-bbdd-697481099a45"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "705b82bf-7ff1-42cc-8367-243ddf3f6822",
@@ -20976,9 +20293,7 @@
       "Supplementary article: Applications of Linear Systems in Network Analysis (Mathematics Magazine, 2020) - focus on practical modeling techniques"
     ],
     "id": "8cb6c0e3-b602-44b6-9755-e3a8933d6b03",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "444c58a9-e398-4ed9-8dac-e44876e3408c",
@@ -21004,9 +20319,7 @@
       "Online resource: Khan Academy - Systems of Equations module with interactive practice problems"
     ],
     "id": "444c58a9-e398-4ed9-8dac-e44876e3408c",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9e25afcc-958c-4fa8-bcaa-8360aced5901",
@@ -21034,9 +20347,7 @@
       "GeeksforGeeks: Dynamic Programming articles - Overlapping Subproblems Property and Optimal Substructure Property"
     ],
     "id": "9e25afcc-958c-4fa8-bcaa-8360aced5901",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "dc951201-9378-427c-a33b-f9d85f50b843",
@@ -21063,9 +20374,7 @@
       "Online resource: PhET Interactive Simulations - Faraday's Electromagnetic Lab for virtual experimentation"
     ],
     "id": "dc951201-9378-427c-a33b-f9d85f50b843",
-    "prerequisites": [
-      "c49211ef-1359-4458-bc6f-2e61e021c533"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b8e3631a-7b04-4481-a3f5-4c2f01193db4",
@@ -21092,9 +20401,7 @@
       "Supplemental article: Real-World Applications of Linear Systems (Mathematics Teacher, 2020) - focus on modeling techniques"
     ],
     "id": "b8e3631a-7b04-4481-a3f5-4c2f01193db4",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "df2581d0-ce9c-4636-b3a3-2aba13db04c1",
@@ -21122,9 +20429,7 @@
       "GeeksforGeeks online resource: Graph Data Structure tutorials - implementation examples and visualization tools"
     ],
     "id": "df2581d0-ce9c-4636-b3a3-2aba13db04c1",
-    "prerequisites": [
-      "ed1e8288-0065-407b-b6fd-be5fd3119620"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "0ff1e6a5-d750-4878-bc0b-9caed7813619",
@@ -21209,9 +20514,7 @@
       "Documentation: NetworkX Python library - implementation examples and API reference for graph algorithms"
     ],
     "id": "9b2304f0-fc72-4163-87de-ac92372a88b5",
-    "prerequisites": [
-      "ed1e8288-0065-407b-b6fd-be5fd3119620"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8da1a3c0-b7e9-4f13-a14b-03b780f7eadd",
@@ -21266,9 +20569,7 @@
       "Online resource: Khan Academy Linear Algebra - 'Solving systems with matrices' modules including practice problems"
     ],
     "id": "f8869eb7-25d3-46a9-850e-4414fea4578e",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6b86a515-512e-47df-a89c-5c4d06578640",
@@ -21295,9 +20596,7 @@
       "Online resource: Desmos Activity Builder - Parabola Transformations interactive lessons and real-world modeling activities"
     ],
     "id": "6b86a515-512e-47df-a89c-5c4d06578640",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f1f9cb12-a9d1-4471-b868-f1ae45e20655",
@@ -21325,9 +20624,7 @@
       "Research paper: 'An Introduction to Variable and Feature Selection' (Guyon & Elisseeff, 2003) - focus on filter and wrapper methods"
     ],
     "id": "f1f9cb12-a9d1-4471-b868-f1ae45e20655",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "57ade8e0-0e87-482e-9ceb-2e2b7bf5f196",
@@ -21355,9 +20652,7 @@
       "Documentation: Scikit-learn Feature Selection documentation with practical examples and parameter tuning guides"
     ],
     "id": "57ade8e0-0e87-482e-9ceb-2e2b7bf5f196",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "fd108cbb-aee8-4f22-87e1-8aa3df2fb42f",
@@ -21412,9 +20707,7 @@
       "Online resource: Python dictionaries implementation deep-dive on Real Python - practical hash table analysis"
     ],
     "id": "2b9623b4-7520-4dde-81d3-d012721f37d3",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7c6e99e1-9313-4a45-a351-8dcd2e5bccef",
@@ -21441,9 +20734,7 @@
       "Khan Academy: Linear Algebra module - 'Gaussian elimination and row echelon form' interactive exercises"
     ],
     "id": "7c6e99e1-9313-4a45-a351-8dcd2e5bccef",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6f60f95c-4c1c-443e-ae30-02653eb337f8",
@@ -21471,9 +20762,7 @@
       "Online resource: Towards Data Science - 'Feature Engineering Techniques' article series focusing on categorical encoding and numerical transformations"
     ],
     "id": "6f60f95c-4c1c-443e-ae30-02653eb337f8",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8c9a3523-3b71-431a-9edd-41cdff47effc",
@@ -21531,9 +20820,7 @@
       "Online resource: PhET Interactive Simulations - Faraday's Electromagnetic Lab for virtual experimentation with flux and induction"
     ],
     "id": "aa55243c-e278-4ccd-822a-90f7e5d0f659",
-    "prerequisites": [
-      "c49211ef-1359-4458-bc6f-2e61e021c533"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9d593e74-721e-4d6d-8a1b-803814796f3d",
@@ -21561,9 +20848,7 @@
       "GeoGebra Classroom: Linear Systems Visualization - geometric interpretation activities"
     ],
     "id": "9d593e74-721e-4d6d-8a1b-803814796f3d",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e0c0a662-c205-47c1-b885-8c7486d6ca26",
@@ -21619,9 +20904,7 @@
       "GeoGebra Classroom: 'Linear Systems Visualizer' - interactive matrix calculator and graphing tools"
     ],
     "id": "45734847-1cb9-4234-a364-45a41b1e0877",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "30a80bd7-61bb-43a8-b623-4fd371c0782c",
@@ -21650,9 +20933,7 @@
       "Application article: Linear Programming in Business Decision Making (Mathematics Teacher, 2020) - focus on real-world modeling"
     ],
     "id": "30a80bd7-61bb-43a8-b623-4fd371c0782c",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4b87f483-01a3-47d4-975f-e6aba6f6e7cf",
@@ -21680,9 +20961,7 @@
       "Coursera Algorithms Specialization: Week 4 videos on tree operations and complexity analysis"
     ],
     "id": "4b87f483-01a3-47d4-975f-e6aba6f6e7cf",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "0a60e6ac-568d-459d-b087-dbd9f407c739",
@@ -21711,9 +20990,7 @@
       "Online resource: GeeksforGeeks Graph Algorithms section - implementation examples and interactive visualizations"
     ],
     "id": "0a60e6ac-568d-459d-b087-dbd9f407c739",
-    "prerequisites": [
-      "ed1e8288-0065-407b-b6fd-be5fd3119620"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "fd512371-b4f9-4f88-9465-a92e5d105a29",
@@ -21771,9 +21048,7 @@
       "Supplementary resource: 'Real-World Applications of Linear Systems' handout - economics and engineering case studies"
     ],
     "id": "8235049b-2262-41ea-8399-742ba4f3cedc",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4f16fc41-71b7-4541-85af-cd67f2341544",
@@ -21857,9 +21132,7 @@
       "LeetCode Problems: #200 Number of Islands, #133 Clone Graph - practical algorithm application exercises"
     ],
     "id": "e1964886-3218-47ff-8d7b-a0e113e70259",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "cb5e880b-91f1-4d23-9438-518ea870da79",
@@ -21941,9 +21214,7 @@
       "Online resource: LeetCode Graph Problems - complete 'Network Delay Time' and 'Cheapest Flights Within K Stops' problems with detailed explanations"
     ],
     "id": "ccbebe45-6c6c-44e5-85b9-8f2780d85120",
-    "prerequisites": [
-      "ed1e8288-0065-407b-b6fd-be5fd3119620"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "fc2f730d-bc19-4b32-9cb6-8c9963616ada",
@@ -21972,9 +21243,7 @@
       "Supplementary: LeetCode problems 98, 450, 701 for practical implementation practice"
     ],
     "id": "fc2f730d-bc19-4b32-9cb6-8c9963616ada",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9fa7836f-5b0c-490d-ab58-094b6acfe657",
@@ -22002,9 +21271,7 @@
       "3Blue1Brown Essence of Linear Algebra: Videos 3, 4, and 10 covering transformations and eigenvectors"
     ],
     "id": "9fa7836f-5b0c-490d-ab58-094b6acfe657",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "886bc2ab-9cff-4df0-87af-e205c1b6ede0",
@@ -22032,9 +21299,7 @@
       "Case study: Renewable Energy Systems and Energy Storage (MIT OpenCourseWare) - mechanical energy applications in wind and hydroelectric power"
     ],
     "id": "886bc2ab-9cff-4df0-87af-e205c1b6ede0",
-    "prerequisites": [
-      "b1c5f680-c0e9-4f88-bd67-9ada5ab875c8"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f4e8e065-7d9d-44ba-9a6b-a4c5bb8e50e2",
@@ -22063,9 +21328,7 @@
       "Supplemental reading: Physics Classroom - Standing Wave Patterns and Harmonics - mathematical analysis with visual representations"
     ],
     "id": "f4e8e065-7d9d-44ba-9a6b-a4c5bb8e50e2",
-    "prerequisites": [
-      "4df78b54-cf1b-4f78-962d-76de8343f4bf"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "89e7d2ca-2a5b-4c56-bfa1-5a49fbd15db8",
@@ -22094,9 +21357,7 @@
       "Khan Academy online: Matrix operations and Gaussian elimination interactive lessons with practice problems"
     ],
     "id": "89e7d2ca-2a5b-4c56-bfa1-5a49fbd15db8",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b669d1bb-fe43-4ad0-8d85-e80fc637fd20",
@@ -22157,9 +21418,7 @@
       "Desmos Graphing Calculator tutorial: Visualizing Systems of Equations - interactive exploration guide"
     ],
     "id": "d3d53a93-5dac-4135-9080-e31d3c2fb9eb",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d382135a-e760-4be5-890c-6cccda9ed9df",
@@ -22218,9 +21477,7 @@
       "Industry case study: 'Feature Engineering at Airbnb' (Airbnb Engineering Blog, 2021) - real-world application of automated feature engineering at scale"
     ],
     "id": "7016e78f-6074-4dae-aa81-037751ea8534",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "cf0dc20d-8c6c-4fb5-bb17-5cd70d29168f",
@@ -22248,9 +21505,7 @@
       "Technical article: 'Hash Table Performance in Practice' (Java Collections Framework Documentation) - real-world optimization strategies"
     ],
     "id": "cf0dc20d-8c6c-4fb5-bb17-5cd70d29168f",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "689d8999-49a4-465a-8b18-426c7505f745",
@@ -22309,9 +21564,7 @@
       "Journal article: Applications of Linear Systems in Economics (Henderson & Quandt, 2018) - focus on equilibrium models and optimization"
     ],
     "id": "8e18116f-6f40-42a5-8e37-b5675e7a2737",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "dfc92d33-caec-465e-9e50-0e0afa9cdc3b",
@@ -22428,9 +21681,7 @@
       "Documentation: NetworkX Python library - graph creation and built-in traversal methods for comparison"
     ],
     "id": "5baf69c9-0e4a-4bdd-ad00-3dadc9b9b637",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "99af9700-170d-4321-80c6-618f1b0e3a78",
@@ -22486,9 +21737,7 @@
       "Research paper: 'Algorithm Engineering for Shortest Path Problems' (Sanders & Schultes, 2007) - modern optimization approaches"
     ],
     "id": "b5074d44-affa-41f6-bca5-e4c9b1d7b87f",
-    "prerequisites": [
-      "ed1e8288-0065-407b-b6fd-be5fd3119620"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6c45dc88-b9e8-44d2-baaf-d9f56801d723",
@@ -22517,9 +21766,7 @@
       "Technical article: 'Hash Table Performance Analysis' on Algorithm Visualizer - interactive demonstrations of collision scenarios"
     ],
     "id": "6c45dc88-b9e8-44d2-baaf-d9f56801d723",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "18fa5cf9-b73f-45e0-a549-0304405a9174",
@@ -22545,9 +21792,7 @@
       "Journal article: Applications of Linear Systems in Business Mathematics (Smith, 2021) - real-world modeling examples"
     ],
     "id": "18fa5cf9-b73f-45e0-a549-0304405a9174",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "91a61200-0650-4513-852b-aa89c689758a",
@@ -22662,9 +21907,7 @@
       "Online resource: PhET Electric Field Simulation - interactive field mapping and visualization tools"
     ],
     "id": "7cb3dd35-fb64-4836-ac85-25d2fb2890c9",
-    "prerequisites": [
-      "55292031-be6a-44eb-9953-1549b41a8b19"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "332ea850-2c0a-4b08-8aa4-95b98fca59be",
@@ -22720,9 +21963,7 @@
       "Desmos Activity Builder: 'Parabola Sliders' - dynamic exploration of parameter effects on parabola shape and position"
     ],
     "id": "06d40c7f-0030-4cf0-8497-65a465be093d",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "24783331-a996-456d-bd1c-6cf751e4a046",
@@ -22750,9 +21991,7 @@
       "Khan Academy online modules: Systems of Linear Equations - graphical and algebraic methods with interactive exercises"
     ],
     "id": "24783331-a996-456d-bd1c-6cf751e4a046",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4be2703e-b2e1-4ef1-8546-df7161850cb9",
@@ -22780,9 +22019,7 @@
       "Documentation: Scikit-learn Feature Selection Guide - comprehensive overview of selection algorithms and implementation"
     ],
     "id": "4be2703e-b2e1-4ef1-8546-df7161850cb9",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ab867d5f-d22d-4480-bcc3-163b21dcdc89",
@@ -22866,9 +22103,7 @@
       "Supplementary reading: Algorithms Chapter 4: Graphs (Sedgewick & Wayne, 2021) pp. 518-571 - alternative implementation approaches and practical considerations"
     ],
     "id": "ad889df8-9928-46be-b5a1-7b84325f4f0c",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "fb7ade59-b50f-4c83-8f62-d27ecc536c72",
@@ -22895,9 +22130,7 @@
       "Online resource: Khan Academy - Matrix Row Operations interactive exercises and video explanations"
     ],
     "id": "fb7ade59-b50f-4c83-8f62-d27ecc536c72",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "39ee1d64-e414-44a5-970a-cfbfce5b18a0",
@@ -22926,9 +22159,7 @@
       "Documentation: Scikit-learn Feature Selection Guide - comprehensive implementation examples and best practices"
     ],
     "id": "39ee1d64-e414-44a5-970a-cfbfce5b18a0",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "47192f1f-bc99-4332-b8d5-1361219453e9",
@@ -23011,9 +22242,7 @@
       "Journal article: 'Real-World Applications of Linear Systems in Business' (Mathematics Teacher, 2020) - practical problem-solving contexts"
     ],
     "id": "56e3a471-3e05-4e70-9bef-ce9808c65dbd",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "eefa5886-14aa-4dfb-b7b3-47b34ca8ee55",
@@ -23041,9 +22270,7 @@
       "LeetCode: BST problem set (problems 98, 230, 450, 700, 701) - practical application exercises"
     ],
     "id": "eefa5886-14aa-4dfb-b7b3-47b34ca8ee55",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9a6094c9-1582-4f91-89b2-479880549d01",
@@ -23072,9 +22299,7 @@
       "Research paper: 'A Dichromatic Framework for Balanced Trees' (Guibas & Sedgewick, 1978) - theoretical foundations for tree balancing"
     ],
     "id": "9a6094c9-1582-4f91-89b2-479880549d01",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "b7c60a22-d669-4002-bd48-7eb593b43f8a",
@@ -23103,9 +22328,7 @@
       "Research paper: Cuckoo Hashing (Pagh & Rodler, 2004) - advanced collision resolution technique with worst-case guarantees"
     ],
     "id": "b7c60a22-d669-4002-bd48-7eb593b43f8a",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "407a1f3b-0835-4412-8b46-427153908c7f",
@@ -23160,9 +22383,7 @@
       "Online resource: Desmos Graphing Calculator - Interactive quadratic function exploration activities and transformation demonstrations"
     ],
     "id": "cf0bf3c8-24b5-4384-a60b-b551aa949ea1",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a0ac546a-366e-4bd0-a27f-c34e7cdd5536",
@@ -23189,9 +22410,7 @@
       "Online resource: Khan Academy Linear Systems module - interactive practice problems and video explanations"
     ],
     "id": "a0ac546a-366e-4bd0-a27f-c34e7cdd5536",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d14c22c0-2684-40be-a5cb-f1486727e1dd",
@@ -23217,9 +22436,7 @@
       "Khan Academy online: 'Systems of Linear Equations' module - focus on substitution and elimination methods"
     ],
     "id": "d14c22c0-2684-40be-a5cb-f1486727e1dd",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ee6c450d-cb7c-4f9f-8bf2-90af67ec8cc4",
@@ -23275,9 +22492,7 @@
       "Online resource: GeeksforGeeks - 'Shortest Path Algorithms' interactive visualizations and code examples"
     ],
     "id": "f1d47a93-7993-43c5-87aa-6455b35d3d95",
-    "prerequisites": [
-      "ed1e8288-0065-407b-b6fd-be5fd3119620"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "838b093b-5338-4199-911c-860fa8f4e56c",
@@ -23307,9 +22522,7 @@
       "Technical blog: 'Feature Engineering Best Practices' (Towards Data Science) - industry case studies and common mistakes"
     ],
     "id": "838b093b-5338-4199-911c-860fa8f4e56c",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "dc9d4df5-f83f-4a90-8c0e-c1461ad42497",
@@ -23368,9 +22581,7 @@
       "GeeksforGeeks: Graph Data Structure and Algorithms - implementation examples and complexity analysis"
     ],
     "id": "247d571e-a248-4d9a-9865-590f0d881c80",
-    "prerequisites": [
-      "ed1e8288-0065-407b-b6fd-be5fd3119620"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c36c1989-7510-4500-a00c-8712129dd6a2",
@@ -23398,9 +22609,7 @@
       "Technical paper: An Empirical Comparison of Supervised Learning Algorithms (Caruana & Niculescu-Mizil, 2006) - Feature preprocessing impact analysis"
     ],
     "id": "c36c1989-7510-4500-a00c-8712129dd6a2",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f738df79-be34-4e23-82f9-72f4672f4045",
@@ -23425,9 +22634,7 @@
       "Online resource: Khan Academy Linear Algebra - Matrix method videos and practice exercises on systems solving"
     ],
     "id": "f738df79-be34-4e23-82f9-72f4672f4045",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "f5672451-ad71-465d-822e-eeb447fa4892",
@@ -23453,9 +22660,7 @@
       "Online resource: GeeksforGeeks Hash Table implementation tutorials - practical coding examples and optimization techniques"
     ],
     "id": "f5672451-ad71-465d-822e-eeb447fa4892",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9c936d6e-18ce-4945-b33f-bd7cd4a3bfc6",
@@ -23484,9 +22689,7 @@
       "Documentation: scikit-learn preprocessing and feature selection modules with worked examples"
     ],
     "id": "9c936d6e-18ce-4945-b33f-bd7cd4a3bfc6",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5bc80357-998d-4462-853a-c7310e71ac17",
@@ -23572,9 +22775,7 @@
       "Supplementary: Visualgo BST Interactive Tutorial - visual representation of tree operations and rotations"
     ],
     "id": "b034b6cb-b0ee-4f04-8ca7-37cba895519b",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "cde5445f-5938-4b13-aaa2-7f78d858b3f0",
@@ -23602,9 +22803,7 @@
       "Online resource: GeeksforGeeks - Graph Data Structure implementations with interactive examples and complexity analysis"
     ],
     "id": "cde5445f-5938-4b13-aaa2-7f78d858b3f0",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "87778bba-7e02-4dfa-ac48-9747a7b638a9",
@@ -23633,9 +22832,7 @@
       "Research paper: Robin Hood Hashing (Celis et al., 1986) - advanced open addressing technique for optional deeper study"
     ],
     "id": "87778bba-7e02-4dfa-ac48-9747a7b638a9",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "756ba912-5396-4ead-8b78-d047974defad",
@@ -23665,9 +22862,7 @@
       "Documentation: Python NetworkX library - professional graph analysis tools and built-in algorithms"
     ],
     "id": "756ba912-5396-4ead-8b78-d047974defad",
-    "prerequisites": [
-      "ed1e8288-0065-407b-b6fd-be5fd3119620"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "fb15a140-6478-46b2-b045-69ceb6103a7a",
@@ -23723,9 +22918,7 @@
       "Supplementary reading: Khan Academy - Quadratic Formula derivation and discriminant analysis modules"
     ],
     "id": "e9fdf837-53ac-4b00-b216-91012b23f850",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ed5f5bd4-7f32-4d23-b3e3-712ecfc4913a",
@@ -23777,9 +22970,7 @@
       "Online resource: PhET Interactive Simulations - Masses and Springs simulation with accompanying worksheet activities"
     ],
     "id": "b9672e71-f9ec-4e15-afdd-3b59beb834c8",
-    "prerequisites": [
-      "7d61b335-f028-419d-80d0-9eccecdee368"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "24e836c6-0f92-4f65-8e26-59f196352365",
@@ -23806,9 +22997,7 @@
       "Khan Academy: Matrix operations and systems - complete Gaussian elimination module"
     ],
     "id": "24e836c6-0f92-4f65-8e26-59f196352365",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8251ca05-ae41-48d8-859d-67f1d33ee45f",
@@ -23837,9 +23026,7 @@
       "Research paper: Feature Engineering and Selection: A Practical Approach (Kuhn & Johnson, 2019) Ch. 6-8 - advanced encoding and selection strategies"
     ],
     "id": "8251ca05-ae41-48d8-859d-67f1d33ee45f",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "93cc2e01-5eec-456b-9c0f-ce6fc3d7bdb3",
@@ -23892,9 +23079,7 @@
       "Online resource: Desmos Graphing Calculator - Interactive Quadratic Explorer activities and transformation tutorials"
     ],
     "id": "daf68901-0890-4791-8db8-7105331ae18c",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7fb84c7e-5019-48ed-a61b-77d9f42e0f83",
@@ -23921,9 +23106,7 @@
       "Online resource: Kaggle Learn - Feature Engineering course modules 1-4 covering transformation techniques and feature selection methods"
     ],
     "id": "7fb84c7e-5019-48ed-a61b-77d9f42e0f83",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "766e2ef8-8b06-4d02-8f3c-8b8d0ab6ee32",
@@ -23952,9 +23135,7 @@
       "Research paper: 'Cuckoo Hashing' (Pagh & Rodler, 2004) - worst-case O(1) lookup guarantees"
     ],
     "id": "766e2ef8-8b06-4d02-8f3c-8b8d0ab6ee32",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "81b5ac8c-4f7c-449a-8796-0966e6d2f810",
@@ -24009,9 +23190,7 @@
       "Online resource: Visualgo BST Module - interactive visualization of tree operations and balancing"
     ],
     "id": "88c27c46-9516-4153-852c-c2782718a9aa",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "2655fa87-455a-4bf8-91fb-f27ea574f0d1",
@@ -24096,9 +23275,7 @@
       "MIT OpenCourseWare: 18.06 Linear Algebra - Lecture 2 'Elimination with Matrices' including worked examples"
     ],
     "id": "9889c697-b179-41cd-9cda-0eff911af846",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e7142013-f375-4eb5-8b8a-8c00708771bb",
@@ -24153,9 +23330,7 @@
       "Online resource: LeetCode Dynamic Programming Study Plan - problems 1-10 with editorial solutions"
     ],
     "id": "8465b962-8224-471a-8458-61b9e2a6d0b5",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4db8c774-24f9-4fb7-ae51-639421110c9a",
@@ -24183,9 +23358,7 @@
       "Industry article: 'Hash Table Implementation in Python Dictionary' (Real Python, 2023) - CPython internals and optimization techniques"
     ],
     "id": "4db8c774-24f9-4fb7-ae51-639421110c9a",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "98cf9e4f-56b5-43d0-951f-8825254517b7",
@@ -24212,9 +23385,7 @@
       "Khan Academy: Matrix Operations module - computational practice exercises"
     ],
     "id": "98cf9e4f-56b5-43d0-951f-8825254517b7",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4e39eabe-06b5-4ced-8d10-277cadd5da11",
@@ -24243,9 +23414,7 @@
       "Technical article: 'Hash Functions and Their Applications' (IEEE Computer, 2019) - modern cryptographic and non-cryptographic hash functions"
     ],
     "id": "4e39eabe-06b5-4ced-8d10-277cadd5da11",
-    "prerequisites": [
-      "d622368f-5c80-4432-8360-531d83ee305c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "77ec401c-40ae-497d-a6e6-f189af843f24",
@@ -24274,9 +23443,7 @@
       "Supplementary reading: Khan Academy - Quadratic Word Problems article series with step-by-step examples"
     ],
     "id": "77ec401c-40ae-497d-a6e6-f189af843f24",
-    "prerequisites": [
-      "5663b249-8f99-46b0-825a-4d65d38efd8f"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c3dcc9aa-26c4-42e5-9e9d-b50e0637730d",
@@ -24304,9 +23471,7 @@
       "Documentation: Scikit-learn User Guide - sections 4.3 (preprocessing) and 1.13 (feature selection)"
     ],
     "id": "c3dcc9aa-26c4-42e5-9e9d-b50e0637730d",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9f709ae1-9fba-4022-a3d7-c5a4126598ea",
@@ -24363,9 +23528,7 @@
       "Technical Application: 'How Electric Generators Work' (Khan Academy Physics) - video series with practice problems"
     ],
     "id": "173efcb2-78de-4115-b229-6b8b96cc65b4",
-    "prerequisites": [
-      "c49211ef-1359-4458-bc6f-2e61e021c533"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "1de4e069-908f-4c79-9ff4-77829fef602d",
@@ -24422,9 +23585,7 @@
       "MIT OpenCourseWare: 18.06 Linear Algebra - Lecture notes on Elimination and Matrix Operations"
     ],
     "id": "f1585288-928c-41cd-93fa-dc5c1c84c34d",
-    "prerequisites": [
-      "324da43d-b18d-4493-9ed6-62ea478ca6d0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e285c855-041a-4d3e-85c2-e193b4791c1d",
@@ -24510,9 +23671,7 @@
       "Blog post: 'Feature Engineering for Machine Learning' (Towards Data Science) - Industry best practices and case studies"
     ],
     "id": "f405c99c-536c-4027-a624-bedaba52ca8c",
-    "prerequisites": [
-      "6e3a1cbd-30e2-4f66-a179-0e397cf47e9c"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "663dc2bb-ae56-43e4-9282-0811360477de",
@@ -24595,9 +23754,7 @@
       "Khan Academy: Matrix methods for solving systems - complete module with interactive exercises"
     ],
     "id": "821ac459-75b4-4eb2-984e-01791b8d57ba",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d9b4e21e-d0c9-4377-9ef5-450f24629cae",
@@ -24625,9 +23782,7 @@
       "Research paper: The Power of Simple Tabulation Hashing (Patrascu & Thorup, 2012) - advanced hash function design principles"
     ],
     "id": "d9b4e21e-d0c9-4377-9ef5-450f24629cae",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "fdd9ff2b-d019-44de-8afd-26368eba939a",
@@ -24713,9 +23868,7 @@
       "Online resource: GeeksforGeeks Graph Algorithms section - implementation examples and complexity analysis"
     ],
     "id": "e5907b96-d5ca-4ca5-8e36-87fe1573bd34",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "9cab02bf-49e0-4d6b-9910-36969a48d4aa",
@@ -24743,9 +23896,7 @@
       "Visualgo.net: Binary Search Tree module - interactive animations for insertion, deletion, and traversal operations"
     ],
     "id": "9cab02bf-49e0-4d6b-9910-36969a48d4aa",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "79af0f11-50a6-4708-a525-b5ce3bf5c7e0",
@@ -24803,9 +23954,7 @@
       "Research paper: 'Practical Applications of Shortest Path Algorithms in Modern Computing' (Chen et al., 2023) - real-world case studies"
     ],
     "id": "2e263f2d-2b72-4e23-a1e6-7a8ac021d707",
-    "prerequisites": [
-      "e5907b96-d5ca-4ca5-8e36-87fe1573bd34"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "3910eaaf-be63-499e-8fa3-85ccb032e793",
@@ -24833,9 +23982,7 @@
       "Online resource: PhET Interactive Simulations - 'Wave Interference' and 'Single Slit Diffraction' modules with guided worksheets"
     ],
     "id": "3910eaaf-be63-499e-8fa3-85ccb032e793",
-    "prerequisites": [
-      "4df78b54-cf1b-4f78-962d-76de8343f4bf"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "253a9074-9f19-46c0-b15e-cf8f61640980",
@@ -24863,9 +24010,7 @@
       "Supplementary reading: Khan Academy - 'Vertex Form and Transformations' video series with practice exercises"
     ],
     "id": "253a9074-9f19-46c0-b15e-cf8f61640980",
-    "prerequisites": [
-      "0b0bd423-c273-4791-8129-0480d7a4a2cc"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "0b0bd423-c273-4791-8129-0480d7a4a2cc",
@@ -24977,9 +24122,7 @@
       "Online resource: GeeksforGeeks Graph Algorithms Section - implementation examples and complexity analysis with interactive coding problems"
     ],
     "id": "30ce2066-a4a9-454f-aa33-ff23336d4b6d",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "03d825a2-b12e-4c42-8962-40b207cf0d54",
@@ -25006,9 +24149,7 @@
       "Online resource: Python.org Documentation - dict implementation details and hash() function specification"
     ],
     "id": "03d825a2-b12e-4c42-8962-40b207cf0d54",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "25c25a76-32bc-4e21-adc2-56de53c637e8",
@@ -25062,9 +24203,7 @@
       "Online resource: Khan Academy - 'Systems of Linear Equations' module including video lectures and interactive practice problems"
     ],
     "id": "bafc56b0-8efa-4135-9de6-bded5ffeaabc",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c88dfe2b-49fc-4d1d-a142-323fe63cb716",
@@ -25121,9 +24260,7 @@
       "Supplemental reading: Khan Academy Quadratic Functions unit - vertex form and graphing transformations"
     ],
     "id": "a598a4b0-f70c-4acf-8e68-934747b26191",
-    "prerequisites": [
-      "0b0bd423-c273-4791-8129-0480d7a4a2cc"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "fa58478d-1dae-4944-b309-e80c1fda077a",
@@ -25176,9 +24313,7 @@
       "Supplementary reading: Real-World Applications of Linear Systems (Mathematics Teacher, 2021) - focus on modeling examples"
     ],
     "id": "64575ae0-f001-4986-9db1-e23b82151d2d",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a3cdfeb1-5bad-446b-a959-e159cae123fb",
@@ -25208,9 +24343,7 @@
       "LeetCode: Binary Tree Problems - practice problems 94, 98, and 230 for hands-on experience"
     ],
     "id": "a3cdfeb1-5bad-446b-a959-e159cae123fb",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "dbd77ce0-03bf-4232-99ea-50a8d83238a6",
@@ -25236,9 +24369,7 @@
       "Online resource: VisuAlgo BST Module - interactive tree operations and complexity visualization"
     ],
     "id": "dbd77ce0-03bf-4232-99ea-50a8d83238a6",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6808dce6-87dc-4a94-8d03-e0bfbc325b9d",
@@ -25295,9 +24426,7 @@
       "Documentation: Python collections module and Java TreeMap implementation analysis for real-world BST usage"
     ],
     "id": "8936163a-6b90-4734-bd0f-e65d425f9451",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "213222f7-55d3-44aa-bf64-dd65b4149e01",
@@ -25326,9 +24455,7 @@
       "MIT OpenCourseWare: 8.03 Physics III Lecture Notes on Standing Waves - mathematical derivations and examples"
     ],
     "id": "213222f7-55d3-44aa-bf64-dd65b4149e01",
-    "prerequisites": [
-      "4df78b54-cf1b-4f78-962d-76de8343f4bf"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e69df331-f33f-4f78-a902-7053a614de27",
@@ -25386,9 +24513,7 @@
       "Documentation: Python dict and Java HashMap source code analysis - real-world optimization techniques"
     ],
     "id": "02ffe508-e1ef-4b34-b33b-03df531f84d6",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "07d9232f-bac1-4def-a4d3-da6e847974f3",
@@ -25414,9 +24539,7 @@
       "Online resource: VisuAlgo Binary Search Trees - interactive AVL rotation demonstrations and step-by-step algorithm visualization"
     ],
     "id": "07d9232f-bac1-4def-a4d3-da6e847974f3",
-    "prerequisites": [
-      "9cab02bf-49e0-4d6b-9910-36969a48d4aa"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "28af1253-3968-495f-8dc8-36a1c1200073",
@@ -25475,9 +24598,7 @@
       "Scikit-learn documentation: Feature selection and preprocessing modules - implementation examples and best practices"
     ],
     "id": "f70d8c1a-ab8b-43f6-bfb2-ee9417de626d",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d81d60a5-310c-4b90-96c3-7c729076c03f",
@@ -25534,9 +24655,7 @@
       "Online resource: Khan Academy Quantum Physics - Wave-Particle Duality modules with practice problems"
     ],
     "id": "d597a02b-6cc3-44ef-8bb1-7cb60778690d",
-    "prerequisites": [
-      "c88f82c3-47eb-409a-b66d-689f36472437"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e5b40b1e-99f1-4841-a660-ed0c02c9c6eb",
@@ -25565,9 +24684,7 @@
       "Documentation: scikit-learn Feature Selection Guide - comprehensive overview of automated selection methods"
     ],
     "id": "e5b40b1e-99f1-4841-a660-ed0c02c9c6eb",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5ea2919f-4a27-4c4a-9b00-3b07e9ae57f5",
@@ -25626,9 +24743,7 @@
       "Desmos Graphing Calculator: 'Systems of Equations' activity builder - visualization tools for geometric interpretation"
     ],
     "id": "29ad1140-afd7-464f-b260-06ef7a1fb9d4",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4b31ba53-2979-4093-ae07-e92c29a72a93",
@@ -25655,9 +24770,7 @@
       "Khan Academy: Linear Algebra module sections on 'Matrix Row Operations' and 'Solving Systems with Matrices' - interactive examples and practice"
     ],
     "id": "4b31ba53-2979-4093-ae07-e92c29a72a93",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "3bace247-7da1-4f75-9881-9f1e3592cd90",
@@ -25683,9 +24796,7 @@
       "Khan Academy: 'Intro to Parabolas' and 'Quadratic Word Problems' video series with practice exercises"
     ],
     "id": "3bace247-7da1-4f75-9881-9f1e3592cd90",
-    "prerequisites": [
-      "0b0bd423-c273-4791-8129-0480d7a4a2cc"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "1076e168-5def-449c-aad7-671a566ba96f",
@@ -25742,9 +24853,7 @@
       "Online resource: GeeksforGeeks - 'Hashing Data Structure' comprehensive tutorial series covering implementation examples"
     ],
     "id": "ea3bb695-da00-405c-88af-7d351ffc9123",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62",
@@ -25831,9 +24940,7 @@
       "LeetCode: Graph problems section - practice problems ranging from medium to hard difficulty"
     ],
     "id": "8959505f-c76a-4390-a58f-d4c03b2dd051",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7355f52a-f8d1-4b76-af11-2e4733673a6f",
@@ -25860,9 +24967,7 @@
       "Online resource: GeeksforGeeks BST Implementation Tutorial - interactive code examples and visualizations"
     ],
     "id": "7355f52a-f8d1-4b76-af11-2e4733673a6f",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "255299af-e1ed-435b-bb98-1762aa4576d2",
@@ -25892,9 +24997,7 @@
       "Supplementary reading: The Principia Chapter 1 excerpts (Newton, translated edition) - historical context and original formulations"
     ],
     "id": "255299af-e1ed-435b-bb98-1762aa4576d2",
-    "prerequisites": [
-      "6c282356-79e8-46cb-bfa7-ac58ddb241cb"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6bf33d94-a166-4ce4-ba23-5dee79848166",
@@ -26033,9 +25136,7 @@
       "Online resource: Khan Academy Linear Algebra - 'Matrix Row Operations' interactive modules and practice problems"
     ],
     "id": "0cd22bd9-842d-4321-b683-29851920dd9b",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "37ab403f-6b37-42d6-82e5-63ac09129836",
@@ -26063,9 +25164,7 @@
       "Documentation: Scikit-learn preprocessing and feature selection modules with practical examples"
     ],
     "id": "37ab403f-6b37-42d6-82e5-63ac09129836",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ba5f5aa1-db1f-4065-aa47-3735c6641793",
@@ -26091,9 +25190,7 @@
       "Online resource: VisuAlgo BST Module - interactive visualization of insertion, deletion, and rotation operations"
     ],
     "id": "ba5f5aa1-db1f-4065-aa47-3735c6641793",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "01675de1-61dc-4b87-9f84-6d2d22e43315",
@@ -26120,9 +25217,7 @@
       "Online resource: Kaggle Learn - Feature Engineering course modules on creating features and feature selection techniques"
     ],
     "id": "01675de1-61dc-4b87-9f84-6d2d22e43315",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "55af093a-0368-4c51-806c-4ffe48f6e6b8",
@@ -26178,9 +25273,7 @@
       "Documentation: Python dict implementation details from CPython source code - real-world hash table optimization"
     ],
     "id": "fc9142ba-58ed-47a1-b092-c9f5c9fcb09c",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a2928b4c-5e8e-42fa-bf82-b8a392346d97",
@@ -26266,9 +25359,7 @@
       "Supplementary reading: 'The Feynman Lectures on Physics Vol. II' (Feynman, 1964) Chapter 17 - conceptual understanding"
     ],
     "id": "ba27ce02-d3c8-44c0-b5fc-713782dff761",
-    "prerequisites": [
-      "c49211ef-1359-4458-bc6f-2e61e021c533"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6fade458-3ee9-440c-89a4-908188f8d188",
@@ -26297,9 +25388,7 @@
       "Khan Academy: 'Intro to parabolas' and 'Quadratic word problems' video series with practice exercises"
     ],
     "id": "6fade458-3ee9-440c-89a4-908188f8d188",
-    "prerequisites": [
-      "0b0bd423-c273-4791-8129-0480d7a4a2cc"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8ec9ce5e-0c9d-41d2-bd1c-9bbb885c3ead",
@@ -26326,9 +25415,7 @@
       "Online resource: GeeksforGeeks Graph Algorithms section - implementation examples and practice problems"
     ],
     "id": "8ec9ce5e-0c9d-41d2-bd1c-9bbb885c3ead",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4c56e777-328e-4cd1-a280-dc149b2b992e",
@@ -26411,9 +25498,7 @@
       "Documentation: Python bisect module and Java TreeMap class - studying built-in BST implementations"
     ],
     "id": "823d7752-28fd-4450-9491-265fa460f870",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "72aa25ab-b084-4e76-8c89-bc80b9cbd397",
@@ -26441,9 +25526,7 @@
       "Research paper: 'Feature Engineering and Selection: A Practical Approach' (Kuhn & Johnson, 2019) Chapter 6 pp. 103-128 on engineering numeric predictors"
     ],
     "id": "72aa25ab-b084-4e76-8c89-bc80b9cbd397",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "16a639f1-ef68-4aba-ad87-ef397e5e03aa",
@@ -26471,9 +25554,7 @@
       "Documentation: Python collections module and Java TreeMap class - understanding built-in BST implementations"
     ],
     "id": "16a639f1-ef68-4aba-ad87-ef397e5e03aa",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7909b240-5a75-4df1-8748-f637fd389357",
@@ -26501,9 +25582,7 @@
       "Technical paper: Automated Feature Engineering for Deep Learning (Kanter & Veeramachaneni, 2015) - Modern approaches to automated feature creation"
     ],
     "id": "7909b240-5a75-4df1-8748-f637fd389357",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "e335114a-4b58-4bcc-af3a-74f4b5c822c7",
@@ -26617,9 +25696,7 @@
       "GeoGebra Classroom: 'Visualizing Linear Systems' activities - graphical representations and dynamic manipulation tools"
     ],
     "id": "e23a04c3-1448-445e-890c-665a703ad0c7",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "17a2a42e-5aa3-4dcb-889e-6dc4b0286ec8",
@@ -26645,9 +25722,7 @@
       "Online resource: GeeksforGeeks - Interactive graph algorithm visualizations and implementation examples"
     ],
     "id": "17a2a42e-5aa3-4dcb-889e-6dc4b0286ec8",
-    "prerequisites": [
-      "e5907b96-d5ca-4ca5-8e36-87fe1573bd34"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7ba1ad15-2e9a-447f-9ca7-e30608522f72",
@@ -26676,9 +25751,7 @@
       "Video lectures: MIT 8.01 Physics I Lecture 10 - Hooke's Law, Simple Harmonic Motion (30 minutes)"
     ],
     "id": "7ba1ad15-2e9a-447f-9ca7-e30608522f72",
-    "prerequisites": [
-      "b9672e71-f9ec-4e15-afdd-3b59beb834c8"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "a0361322-6c96-45a6-af5a-3764f7ed632c",
@@ -26733,9 +25806,7 @@
       "Khan Academy online: 'Systems of Linear Equations' modules - interactive practice problems with immediate feedback"
     ],
     "id": "773afa62-3cd7-4e04-89e6-21c05b4ea889",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "94f3ac09-9e2d-4047-93d9-06083cdff9bf",
@@ -26794,9 +25865,7 @@
       "GeeksforGeeks: Dijkstra's Algorithm Implementation - step-by-step coding tutorial with visualization"
     ],
     "id": "e7972189-bac4-4ece-82af-d6ebc0fcba11",
-    "prerequisites": [
-      "e5907b96-d5ca-4ca5-8e36-87fe1573bd34"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "da22ca08-ad24-4e52-b39f-3ec979d63c2d",
@@ -26824,9 +25893,7 @@
       "Supplementary reading: Physics Classroom - Electromagnetic Induction module covering conceptual foundations"
     ],
     "id": "da22ca08-ad24-4e52-b39f-3ec979d63c2d",
-    "prerequisites": [
-      "c49211ef-1359-4458-bc6f-2e61e021c533"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "6ee6bc6f-512f-4790-b8f8-0fffa2148101",
@@ -26854,9 +25921,7 @@
       "Research paper: 'Robin Hood Hashing' (Celis, Larson, Munro, 1985) - advanced open addressing technique"
     ],
     "id": "6ee6bc6f-512f-4790-b8f8-0fffa2148101",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "725d6799-1e3d-4f87-aff1-d4b57fab17a7",
@@ -26885,9 +25950,7 @@
       "Interactive tutorial: VisuAlgo Graph Traversal Module - step-by-step algorithm visualization and practice problems"
     ],
     "id": "725d6799-1e3d-4f87-aff1-d4b57fab17a7",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "97de39f4-2768-464e-b9b2-9041fb7c6f0e",
@@ -26914,9 +25977,7 @@
       "Online resource: Khan Academy - 'Matrix Row Operations' interactive exercises and video series"
     ],
     "id": "97de39f4-2768-464e-b9b2-9041fb7c6f0e",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "831dacbc-30a1-4ceb-991c-8f26dddcb8e8",
@@ -26943,9 +26004,7 @@
       "Online resource: PhET Interactive Simulations - Faraday's Electromagnetic Lab simulation with guided worksheet"
     ],
     "id": "831dacbc-30a1-4ceb-991c-8f26dddcb8e8",
-    "prerequisites": [
-      "c49211ef-1359-4458-bc6f-2e61e021c533"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "440a3aa2-ecf5-4ffb-bb12-095f22b5d1f0",
@@ -26975,9 +26034,7 @@
       "Interactive visualization: VisuAlgo Graph Traversal module for algorithm step-by-step demonstration"
     ],
     "id": "440a3aa2-ecf5-4ffb-bb12-095f22b5d1f0",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d346ad24-b46e-4167-ac0d-7f9cdd5c772b",
@@ -27005,9 +26062,7 @@
       "Documentation: Scikit-learn Feature Selection Guide - practical implementation examples"
     ],
     "id": "d346ad24-b46e-4167-ac0d-7f9cdd5c772b",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "12d11bbc-b2c8-448c-9564-1f06e48cf1d5",
@@ -27035,9 +26090,7 @@
       "Research paper: 'Cuckoo Hashing' (Pagh & Rodler, 2004) - guaranteed O(1) worst-case lookup time analysis"
     ],
     "id": "12d11bbc-b2c8-448c-9564-1f06e48cf1d5",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "216d2826-b5aa-4025-a9d8-85b52350bfc0",
@@ -27065,9 +26118,7 @@
       "Supplementary article: Applications of Linear Systems in Economics (Mathematics Magazine, 2021) - focus on supply-demand equilibrium examples"
     ],
     "id": "216d2826-b5aa-4025-a9d8-85b52350bfc0",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "656ad633-be91-446b-9110-107040a28041",
@@ -27094,9 +26145,7 @@
       "Kaggle Learn: Feature Engineering course modules 1-4 - Interactive exercises on creating and selecting features"
     ],
     "id": "656ad633-be91-446b-9110-107040a28041",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "1d50443f-f063-4203-8c65-f08c92f3f00d",
@@ -27124,9 +26173,7 @@
       "Supplementary: Khan Academy Physics - Newton's Laws section videos 1-6 for concept reinforcement"
     ],
     "id": "1d50443f-f063-4203-8c65-f08c92f3f00d",
-    "prerequisites": [
-      "6c282356-79e8-46cb-bfa7-ac58ddb241cb"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "35b3b185-fe7c-470e-a52f-30d7a5df9e1a",
@@ -27211,9 +26258,7 @@
       "MIT OpenCourseWare: Lecture 15 'Dynamic Programming' video and transcripts - visual explanations of state transitions"
     ],
     "id": "a97f9525-c739-4da1-a3e1-d483fefe780b",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "96b8e4b3-3b41-4921-84f8-3ca370d04044",
@@ -27242,9 +26287,7 @@
       "MIT OpenCourseWare: 18.06 Linear Algebra - Lecture 2 videos on elimination and matrix operations"
     ],
     "id": "96b8e4b3-3b41-4921-84f8-3ca370d04044",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "891a731e-ca96-4108-a8b3-26c2f6255b9e",
@@ -27273,9 +26316,7 @@
       "Research paper: Consistent Hashing and Random Trees (Karger et al., 1997) - applications in distributed systems"
     ],
     "id": "891a731e-ca96-4108-a8b3-26c2f6255b9e",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "1db25288-a097-4e3b-af53-48e0fde7a3bb",
@@ -27331,9 +26372,7 @@
       "Documentation: Python dict and Java HashMap source code analysis - real-world implementation strategies"
     ],
     "id": "0936cf91-c7ff-41e6-9307-8b118736ee29",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d2f65ef2-87e5-4ab8-8043-5b2d6db9da80",
@@ -27362,9 +26401,7 @@
       "Research paper: 'Consistent Hashing and Random Trees' (Karger et al., 1997) - distributed systems applications"
     ],
     "id": "d2f65ef2-87e5-4ab8-8043-5b2d6db9da80",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "07fed52e-deba-4988-81ea-127f11402162",
@@ -27390,9 +26427,7 @@
       "Online resource: Khan Academy Linear Algebra - Gaussian elimination interactive exercises and video tutorials"
     ],
     "id": "07fed52e-deba-4988-81ea-127f11402162",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "50fb6b34-284c-4950-b99a-b614efac8329",
@@ -27418,9 +26453,7 @@
       "Online resource: Khan Academy - Matrix Row Operations interactive exercises and video tutorials"
     ],
     "id": "50fb6b34-284c-4950-b99a-b614efac8329",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "4a8461a9-3b73-47d3-8273-7431350cbc18",
@@ -27450,9 +26483,7 @@
       "Documentation: Scikit-learn Feature Selection Guide - focus on univariate selection and recursive feature elimination examples"
     ],
     "id": "4a8461a9-3b73-47d3-8273-7431350cbc18",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "5b33fcf3-ffe9-4746-a629-dd9e053383a7",
@@ -27563,9 +26594,7 @@
       "Online resource: Kaggle Learn - Feature Engineering course modules 1-4 covering creation and selection techniques"
     ],
     "id": "396a2381-3a5a-413c-a8aa-c23b472be325",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "51325562-0eb7-485a-877f-c4ca60fc4827",
@@ -27593,9 +26622,7 @@
       "Documentation: scikit-learn Feature Selection Guide - focus on SelectKBest, RFE, and SelectFromModel implementations"
     ],
     "id": "51325562-0eb7-485a-877f-c4ca60fc4827",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "0be46958-19a8-4b7b-a408-68e5b8594318",
@@ -27678,9 +26705,7 @@
       "Khan Academy: Linear Algebra module - 'Solving systems with matrices' interactive lessons and practice problems"
     ],
     "id": "f0a6d332-f71f-48e5-a781-032dee8ca779",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "c3805736-eda2-4bdb-9747-fcd77e05bb03",
@@ -27735,9 +26760,7 @@
       "Online resource: Kaggle Learn - Feature Engineering course modules 1-4 with interactive coding exercises"
     ],
     "id": "bb576e6b-e9d9-407a-981b-2ff6f1f28225",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ab4f34b0-4f71-441b-8e8d-d07630e9bb2c",
@@ -27765,9 +26788,7 @@
       "scikit-learn documentation: Preprocessing and Feature Selection modules - technical implementation details and API reference"
     ],
     "id": "ab4f34b0-4f71-441b-8e8d-d07630e9bb2c",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "225368b6-8ea2-4ec2-bc70-2f1c966a2499",
@@ -27794,9 +26815,7 @@
       "Online resource: scikit-learn documentation - Feature selection and preprocessing modules with code examples"
     ],
     "id": "225368b6-8ea2-4ec2-bc70-2f1c966a2499",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "8074692a-eae5-4b97-a98a-2c5f45dd0f33",
@@ -27825,9 +26844,7 @@
       "MIT OpenCourseWare: 18.06 Linear Algebra Lecture 2 - Elimination with matrices (video + notes)"
     ],
     "id": "8074692a-eae5-4b97-a98a-2c5f45dd0f33",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7a0cede4-999a-4ce9-83cd-de7103e8cb75",
@@ -27857,9 +26874,7 @@
       "Interactive visualization: VisuAlgo Graph Traversal and Shortest Path modules - step-through animations of DFS, BFS, and Dijkstra's algorithms"
     ],
     "id": "7a0cede4-999a-4ce9-83cd-de7103e8cb75",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "d683be70-873c-46bd-a3da-c0caf8fcd6e6",
@@ -27887,9 +26902,7 @@
       "Research paper: 'A Note on Two Problems in Connexion with Graphs' (Dijkstra, 1959) - original algorithm publication with historical context"
     ],
     "id": "d683be70-873c-46bd-a3da-c0caf8fcd6e6",
-    "prerequisites": [
-      "3c276d13-d54f-46de-a5c9-4a9a2b4ddc62"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "ce73be90-da47-451b-92b9-5acccf1e6ced",
@@ -27915,9 +26928,7 @@
       "Khan Academy online modules: 'Systems of Linear Equations' - interactive practice with substitution and elimination methods"
     ],
     "id": "ce73be90-da47-451b-92b9-5acccf1e6ced",
-    "prerequisites": [
-      "5c94af9f-aa06-484e-9b8a-a63c99a75ed1"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "7d6fd8ed-c3b1-40d4-a3e8-ab79587a7c44",
@@ -27973,9 +26984,7 @@
       "Documentation: scikit-learn Feature Selection user guide with code examples"
     ],
     "id": "9039e82e-6141-42ea-925b-6d12bc9f4150",
-    "prerequisites": [
-      "79af0f11-50a6-4708-a525-b5ce3bf5c7e0"
-    ]
+    "prerequisites": []
   },
   {
     "module_id": "95546de4-dc17-4bf4-a361-6c84941f1b39",
