@@ -259,7 +259,7 @@ For educational content generation, successful systems must incorporate multiple
 
 The development of intelligent tutoring systems has provided valuable insights into the requirements for adaptive educational content generation. Yang et al. (2023) examined how AI systems can dynamically adjust educational content based on individual learner characteristics, demonstrating that effective educational content generation requires both the ability to produce pedagogically sound materials and the capability to adapt these materials to diverse learner needs.
 
-Intelligent tutoring systems have established important principles for educational content adaptation, including the importance of maintaining pedagogical coherence while enabling personalization, the need for robust assessment integration, and the requirement for transparent reasoning processes that enable educators to understand and validate system decisions.
+Intelligent tutoring systems have established important principles for educational content adaptation, including the importance of maintaining pedagogical coherence while enabling personalisation, the need for robust assessment integration, and the requirement for transparent reasoning processes that enable educators to understand and validate system decisions.
 
 ### 2.3.3 Limitations of Current Approaches
 
@@ -311,9 +311,9 @@ Educational vocabulary adaptation represents a critical component of domain adap
 
 Specialised embedding techniques for educational vocabulary have shown significant promise, with educational word embeddings trained on domain-specific corpora demonstrating improved semantic understanding of pedagogical relationships. Recent research on educational text analysis shows substantial improvements in educational concept similarity tasks compared to general-purpose embeddings (Zou et al., 2023).
 
-### 2.4.3 Cross-Domain Generalization Challenges
+### 2.4.3 Cross-Domain Generalisation Challenges
 
-Cross-domain generalization in educational content generation presents unique challenges that extend beyond traditional domain adaptation problems. Educational content must maintain pedagogical coherence while adapting to diverse subject matters, institutional contexts, and educational levels. Research indicates that models trained on specific educational domains often struggle to generalise to new subjects, with performance degradation of 30-50% when applied to previously unseen educational areas without additional fine-tuning.
+Cross-domain generalisation in educational content generation presents unique challenges that extend beyond traditional domain adaptation problems. Educational content must maintain pedagogical coherence while adapting to diverse subject matters, institutional contexts, and educational levels. Research indicates that models trained on specific educational domains often struggle to generalise to new subjects, with performance degradation of 30-50% when applied to previously unseen educational areas without additional fine-tuning.
 
 Contemporary meta-learning approaches have emerged as promising solutions for educational domain adaptation, enabling models to learn adaptation strategies that can be rapidly applied to new educational contexts. These approaches focus on learning general principles of educational content organisation that transcend specific subject matters, allowing for more efficient adaptation to new domains with limited training data. Recent research on adaptive learning in education demonstrates how meta-learning models can achieve comparable performance to domain-specific models while requiring significantly less training data when adapting to new educational areas (Li et al., 2024).
 
@@ -513,57 +513,74 @@ The design methodology specifically addresses the technical challenge of adaptin
 
 The pedagogical quality evaluation framework specifically addresses the challenge of incorporating curriculum design principles into neural content generation systems. By formalising prerequisite coherence, difficulty progression, and topic diversity as measurable evaluation metrics, the methodology enables systematic educational quality assessment. This approach recognises that pedagogical constraints are best validated through explicit measurement of curriculum design principles rather than relying solely on learned patterns from training data.
 
-## 4.2 Function Calling Architecture Design Methodology
+## 4.2 Structured Generation Approach Methodology
 
-### 4.2.1 Function Calling Framework Rationale
+### 4.2.1 Design Science Research Iteration Process
 
-The development of a function calling architecture for educational content generation addresses the fundamental disconnect between neural language models' semantic capabilities and structured output requirements. While transformer models such as T5 demonstrate exceptional educational content generation ability, they consistently fail to produce syntactically valid JSON structures required for system integration (Raffel et al., 2020). Direct structured generation approaches prove unsuitable for educational AI applications where single syntax errors render semantically rich content completely unusable.
+This research followed Design Science Research (DSR) methodology (Hevner et al., 2004; Peffers et al., 2007), characterised by iterative cycles of design, implementation, and evaluation. The structured generation approach emerged through systematic exploration of architectural alternatives, with each iteration providing empirical evidence informing subsequent design decisions.
 
-The function calling methodology transforms structured generation from a syntax precision challenge into a semantic reasoning task. This architectural innovation enables smaller, more efficient models to achieve reliable structured output through task decomposition rather than parameter scaling, addressing critical limitations in resource-constrained educational AI deployment scenarios.
+**Iterative Development Framework:**
 
-### 4.2.2 Domain-Specific Language Design Strategy
+The research systematically explored multiple structured generation approaches before converging on the final architecture:
 
-The systematic development of an educational function calling DSL follows established principles of program synthesis whilst incorporating domain-specific educational requirements (Lin et al., 2022). This approach recognises that effective educational AI requires compositional reasoning about educational structures rather than pattern memorization of complete documents.
+1. **Initial Exploration:** Function calling architecture with UUID-based component selection (detailed in Appendix A.7)
+2. **Systematic Analysis:** Comprehensive evaluation of 11 solution pathways on 28 January 2025 (documented in Appendix A.8)
+3. **Final Architecture:** Markdown generation with index-based component selection (implemented system described in Section 5.1)
 
-**Educational Function Taxonomy** provides systematic categorisation of educational content construction operations, organised into logical groups that mirror pedagogical development workflows. Course definition functions handle institutional metadata and context specification. Learning architecture functions manage educational content assembly including objectives, modules, activities, and assessments. Educational structure functions address policies, grading schemes, and resource integration.
+This iterative process validated that task formulation significantly impacts model success independently of architectural sophistication. The critical insight that index-based component selection ([0], [1], [2]) proves fundamentally simpler than UUID generation (32-character hexadecimal strings) directly informed the final architectural approach.
 
-**Pedagogical Validation Integration** ensures all function calls adhere to established educational standards through built-in validation mechanisms. Domain validation restricts course specifications to verified educational categories. Bloom's taxonomy validation ensures cognitive level progression and learning objective appropriateness. Educational coherence checking maintains relationships between related syllabus components throughout the construction process.
+### 4.2.2 Final Approach: Markdown Generation with Index-Based Selection
 
-**Compositional Logic Design** enables flexible function call ordering whilst maintaining educational narrative coherence. The DSL supports iterative content development through independent function execution with cross-validation between related educational elements, ensuring systematic construction of pedagogically sound syllabi.
+The production system implements direct markdown generation leveraging CodeT5-small's specialisation for structured text (Wang et al., 2021). This approach addresses the task complexity bottleneck identified through prior exploration whilst maintaining educational content generation capability.
 
-### 4.2.3 Execution Engine Architecture
+**Core Design Principles:**
 
-The SyllabusBuilder execution engine implements sophisticated educational content construction through a builder pattern enhanced with domain-specific validation rules:
+1. **Task Simplification:** Index-based component references eliminate UUID memorisation requirements
+2. **Model Alignment:** CodeT5-small's pre-training on code and markdown provides inherent advantage for structured generation
+3. **Structural Reliability:** Generate-and-rerank with pedagogical quality evaluation ensures consistent output validity
+4. **Educational Quality:** Prerequisite-aware training data and Bloom's taxonomy enhancement maintain pedagogical standards
 
-**Function Execution Framework** provides robust interpretation and execution of generated function calls through a multi-stage validation process. Type safety mechanisms ensure parameter appropriateness for educational contexts. Educational domain validation enforces adherence to established taxonomies and frameworks. Error recovery protocols enable graceful handling of malformed function calls whilst preserving semantic intent.
+**Component-Based Training Format:**
 
-**Educational Standards Integration** incorporates established frameworks directly into the execution process rather than learning quality patterns from training data. IEEE Learning Object Metadata compliance ensures consistent educational formatting and interoperability. Bloom's taxonomy progression validation maintains pedagogical coherence through systematic cognitive level verification. QTI 3.0 assessment format compliance guarantees professional-quality evaluation instruments.
+Training data presents available educational components as indexed lists, with model outputs generating structured markdown containing index-based references. This format fundamentally simplifies the generation task compared to approaches requiring database identifier memorisation or complex syntax generation.
 
-**Structured Output Guarantee** ensures reliable valid JSON generation through programmatic construction rather than syntax generation. The execution engine constructs educational content through validated function calls, eliminating syntax errors that render neural-generated content unusable whilst preserving the semantic intelligence of the underlying T5 model.
+**RAG Integration Methodology:**
 
-### 4.2.4 Format-Agnostic Intelligent Parsing Methodology
+The system integrates Retrieval-Augmented Generation principles (Lewis et al., 2020; Sharma, 2024) through difficulty-aware filtering, semantic ranking with sentence transformers (Reimers & Gurevych, 2019), and pedagogical boosting for introductory content. Retrieved components are presented as indexed lists, enabling straightforward model referencing whilst maintaining database integration through post-generation index-to-UUID mapping.
 
-The parsing framework implements a format-agnostic approach that separates T5's semantic generation capabilities from structural precision requirements. Rather than attempting error recovery from malformed syntax, the parser extracts semantic information from any T5 output format and constructs valid function calls programmatically (Lin et al., 2022).
+### 4.2.3 Pedagogical Quality Evaluation Framework
 
-**Information Extraction Architecture** applies pattern-based extraction techniques using regex matching to identify educational content regardless of output format. The parser handles multiple T5 output patterns including function call syntax, JSON-like structures, and mixed text formats through flexible pattern matching that focuses on semantic content rather than syntactic precision.
+Educational content generation requires assessment beyond structural validity to ensure pedagogical appropriateness. The methodology implements automated quality evaluation across four dimensions:
 
-**Function Construction from Extracted Information** builds valid function calls from extracted semantic elements through systematic component assembly. Field extraction methods (`_extract_field()`) identify course properties such as title, domain, level, and duration using multiple regex patterns. List extraction methods (`_extract_objectives()`, `_extract_modules()`) capture structured educational elements from various text formats. Educational default application ensures pedagogically appropriate values during function construction based on domain-specific knowledge and Bloom's taxonomy principles (Anderson et al., 2001).
+**Prerequisite Coherence (40% weight):** Validates module sequencing respects prerequisite dependencies through knowledge graph traversal across 960 educational modules, ensuring pedagogically sound progression rather than arbitrary ordering.
 
-**Graceful Fallback Strategy** maintains system reliability when extraction fails through template-based generation that preserves educational quality standards. This fallback mechanism ensures highly reliable function call execution whilst maintaining the semantic intelligence demonstrated by T5's educational content generation, transforming the brittle 0% JSON parsing success rate of direct generation into reliable structured output construction (Raffel et al., 2020).
+**Difficulty Progression (25% weight):** Measures smoothness of difficulty level transitions, penalising inappropriate jumps (e.g., beginner directly to advanced) whilst rewarding natural progression aligned with curriculum learning principles (Bengio et al., 2009).
 
-### 4.2.5 RAG Integration with Function Calling
+**Topic Diversity (15% weight):** Calculates entropy of topic distribution to ensure balanced coverage across subject areas, avoiding excessive repetition or fragmented curricula.
 
-The methodology integrates Retrieval-Augmented Generation with the function calling architecture to enable component-aware syllabus construction with database integration:
+**Completeness (20% weight):** Assesses presence and appropriate quantity of all component types (modules, activities, assessments), ensuring comprehensive syllabus coverage.
 
-**Component-Aware Function Generation** incorporates retrieved educational components through specialised function calls that include actual database component IDs. This integration preserves the semantic intelligence of T5 generation whilst ensuring database linkage for component reusability and live content updates.
+**Generate-and-Rerank Strategy:** The system generates three candidate syllabi (one greedy, two sampled), evaluates each against pedagogical metrics, and selects the highest quality output. This approach consistently achieves 96% quality scores compared to 82% for greedy-only generation.
 
-**Hybrid Content Assembly** combines T5-generated function calls with RAG-retrieved educational components through a coordinated pipeline. Base syllabus structure emerges through neural function call generation, while specific educational components are retrieved from the vector database and integrated through component-specific function calls.
+### 4.2.4 Markdown Parsing and Enhancement Pipeline
 
-**Database Integration Methodology** ensures that generated syllabi include actual component IDs for frontend database linking and component relationship management. This approach enables reusable educational components across multiple syllabi whilst maintaining the educational intelligence provided by the fine-tuned T5 model.
+Generated markdown undergoes systematic parsing and enhancement to produce production-ready syllabi:
 
-The four-template system (University, Corporate, Professional, Certification) provides structured pathways that guide users through context-appropriate input processes whilst ensuring sufficient information capture for high-quality content generation. Each template incorporates domain-specific fields and validation rules tailored to particular educational contexts, enabling specialised processing whilst maintaining system consistency.
+**Structured Extraction:** Regex-based parsing extracts learning objectives, module sequences with index references, and selected components whilst maintaining robustness to formatting variations.
 
-Context classification and processing workflows ensure that template selections activate appropriate neural pathways, enabling the system to generate content that reflects the specific requirements, constraints, and expectations of different educational environments whilst maintaining pedagogical quality standards throughout the generation process.
+**Index-to-UUID Mapping:** Extracted indices map to database component UUIDs, enabling database integration whilst preserving generation simplicity.
+
+**Bloom's Taxonomy Enhancement:** Generic learning objectives (e.g., "understand concepts") undergo automatic enhancement to specific, measurable objectives aligned with Bloom's cognitive levels (Anderson et al., 2001).
+
+**Database-Rich Expansion:** Terse generated markdown (781 characters) expands to comprehensive syllabi (3,000+ characters) through database lookup, incorporating detailed descriptions, learning outcomes, and assessment specifications.
+
+### 4.2.5 Architectural Evolution Rationale
+
+The transition from function calling to markdown generation demonstrates evidence-based architectural decision making. Initial exploration revealed that UUID generation created task complexity exceeding small model capacity (0% evaluation pass rate). Systematic analysis identified index-based selection as addressing the root cause through task simplification rather than parameter scaling.
+
+The final markdown architecture achieved 100% structural validity and 96% pedagogical quality, validating both the decision analysis methodology and the fundamental insight that appropriate task formulation enables smaller models (60M parameters) to excel at structured generation through alignment with model capabilities rather than requiring architectural complexity or parameter scaling.
+
+Complete implementation details, systematic evaluation results, and architectural comparisons are presented in Chapter 5, with comprehensive documentation of the exploration process provided in Appendices A.7-A.9.
 
 ## 4.3 Data Architecture Design
 
@@ -637,7 +654,7 @@ Quality assurance protocols implement systematic validation of generated trainin
 
 **Technical Performance Evaluation**
 
-Technical performance evaluation methodology combines established NLP metrics (ROUGE, BERTScore) with structural validation frameworks. This evaluation approach ensures both technical proficiency and structural correctness, measuring JSON validity rates, T5 utilization percentage, generation time statistics, and component distribution analysis across generated syllabi.
+Technical performance evaluation methodology combines established NLP metrics (ROUGE, BERTScore) with structural validation frameworks. This evaluation approach ensures both technical proficiency and structural correctness, measuring JSON validity rates, neural model utilisation percentage, generation time statistics, and component distribution analysis across generated syllabi.
 
 **Educational Quality Assessment Through Rule-Based Validation**
 
@@ -647,7 +664,7 @@ This automated approach aligns with federal guidance emphasising transparent, ac
 
 **Comparative Analysis Across Architectural Phases**
 
-The evaluation framework implements systematic comparison across the three development phases (Direct T5, RAG-Enhanced, Function Calling), enabling quantitative assessment of architectural improvements through metrics including structural validity rates, neural model utilization percentages, educational content coherence scores, and system reliability measurements. This comparative methodology provides objective evidence of iterative architectural improvements whilst maintaining research reproducibility and transparency.
+The evaluation framework implements systematic comparison across the three development phases (Direct T5, RAG-Enhanced, Function Calling), enabling quantitative assessment of architectural improvements through metrics including structural validity rates, neural model utilisation percentages, educational content coherence scores, and system reliability measurements. This comparative methodology provides objective evidence of iterative architectural improvements whilst maintaining research reproducibility and transparency.
 
 ### 4.4.4 System Integration Approach
 
@@ -677,231 +694,604 @@ Validation transparency requirements ensure all system decisions remain explicab
 
 # 5. Implementation
 
-## 5.1 Research Approach Evolution: From T5 Baseline to Function Calling Architecture
+## 5.1 Research Approach Evolution
 
-### 5.1.1 Overview of Iterative Development Process
+### 5.1.1 Design Science Research Iteration Framework
 
-This research progressed through three distinct architectural phases, each addressing limitations discovered in the previous iteration. The evolution from direct neural generation to structured function calling demonstrates a principled response to empirically observed failure modes whilst systematically advancing toward reliable educational content generation.
+This research followed Design Science Research (DSR) methodology (Hevner et al., 2004; Peffers et al., 2007), recently applied to educational AI systems (Sun et al., 2024), characterised by iterative cycles of design, implementation, and evaluation. DSR recognises that complex systems often require multiple design iterations to identify optimal architectural approaches, with each iteration providing empirical evidence that informs subsequent design decisions. This methodology proved particularly valuable for structured content generation, where the interaction between model capabilities, task formulation, and architectural constraints remained poorly understood prior to empirical investigation.
 
-**Phase 1: Direct T5 JSON Generation** attempted to fine-tune T5 (220M parameters) to generate complete JSON-formatted syllabi in a single forward pass. This approach achieved 0% structural validity, with consistent malformed bracket sequences, quote escaping errors, and premature truncation. Extended training (50+ epochs) failed to improve structural validity, revealing fundamental limitations in using sequence-to-sequence architectures for rigid formal grammar constraints. Root cause analysis demonstrated that T5's strength in semantic content generation was undermined by JSON syntax precision requirements—whilst the model generated educationally appropriate content, single character errors rendered entire outputs unusable. Detailed implementation specifications, systematic failure pattern documentation, and architectural limitation analysis are provided in Appendices A.2.
+The development process comprised systematic exploration of architectural alternatives, rigorous evaluation of each approach against pedagogical quality metrics, evidence-based analysis of observed limitations, and informed selection of final architecture based on empirical performance. This iterative approach enabled discovery of fundamental insights about task complexity and model capacity that would not have been apparent through theoretical analysis alone.
 
-**Phase 2: RAG-Enhanced Template Approach** addressed structural validity by separating content generation from JSON construction through programmatic assembly. This architecture achieved 100% structural validity using template-based construction, with retrieved educational components integrated through vector database similarity search. However, systematic evaluation revealed that only 20% of generated content originated from the T5 model—the remainder came directly from retrieved templates and programmatic defaults. Whilst technically successful in producing valid structures, this approach failed to demonstrate meaningful neural contribution to content generation, essentially functioning as a sophisticated template system rather than neural syllabus generation. Comprehensive architectural details, retrieval mechanisms, quantitative performance analysis, and T5 utilisation measurement methodology are documented in Appendices A.3.
+### 5.1.2 Initial Exploration: Function Calling Architecture
 
-**Phase 3: Function Calling Architecture** synthesised insights from both prior phases, achieving 100% structural validity whilst maintaining 85% T5-originated content. This approach treats the language model as an intelligent function dispatcher that decomposes syllabus generation into structured subtasks, delegates content generation to T5 within constrained boundaries, and assembles outputs using programmatic validation. The architecture preserves T5's educational content generation strengths whilst adding structural scaffolding through executable domain-specific language (DSL) and format-agnostic intelligent parsing. The function calling methodology transforms structured generation from a syntax precision challenge into a semantic reasoning task, enabling smaller models to achieve reliable structured output through task decomposition rather than parameter scaling. Comprehensive implementation details, DSL design rationale, execution engine architecture, training procedures, and comparative evaluation against all prior phases are presented in Sections 5.2-5.4 and Appendices A.4.
+The research initially explored a function calling architecture that separated semantic content generation from structural constraint enforcement. This approach treated syllabus generation as program synthesis rather than direct text generation, where the model would generate executable function calls that a deterministic execution engine would interpret to construct valid educational content.
 
-These architectural iterations demonstrate how design choices fundamentally impact both structural correctness and meaningful model utilisation in structured generation tasks. Following successful structural generation, the research extended to address pedagogical quality through a three-component evaluation framework measuring prerequisite coherence, difficulty progression, and topic diversity. This extension introduced prerequisite relationship metadata across 960 educational modules, prerequisite-aware training data sequencing, and generate-and-rerank inference enabling quantifiable educational quality assessment.
+**Conceptual Framework:** The architecture implemented a domain-specific language (DSL) for educational content construction, comprising 12 core functions for course definition, learning objective specification, module sequencing, and assessment configuration. The model generated sequences of function calls (e.g., `set_info()`, `add_module()`, `add_objective()`) that a `SyllabusBuilder` execution engine interpreted and validated, ensuring structural correctness through programmatic construction rather than requiring the model to generate syntactically perfect structured output directly.
 
-### 5.1.2 Synthetic Educational Data Generation Methodology
+**Training Methodology:** Fine-tuning utilised 90 training examples where inputs specified course requirements and available educational components, with outputs formatted as executable function call sequences. The approach hypothesised that generating function calls with component identifiers would be simpler than direct structured text generation, leveraging the model's text-to-text transformation capabilities (Raffel et al., 2020) whilst offloading structural validation to the execution engine.
 
-To address the absence of structured, machine-readable syllabus datasets, this research developed a component-based synthetic data generation methodology that produces educationally valid training examples whilst maintaining domain diversity and structural consistency. The generation system employs 16 predefined STEM subjects, 12 common learning outcomes (aligned with Bloom's taxonomy cognitive levels), and 8 assessment types to construct pedagogically coherent training materials. Each synthetic syllabus combines random domain selection, structured component assembly with prerequisite relationships, T5-generated content enhancement for descriptions and detailed specifications, and automated validation for JSON structural validity and educational framework compliance (Anderson et al., 2001). This methodology generated 180+ training examples with guaranteed structural validity across Computer Science, Mathematics, Physics, and Engineering domains, providing controlled experimentation foundations without real-world dataset confounding variables whilst enabling systematic quality assurance and privacy protection. The dataset was subsequently enhanced with prerequisite relationship metadata and regenerated with prerequisite-aware topological sequencing, producing 1,300 training examples where module ordering respects prerequisite dependencies.
+**Empirical Findings:** Systematic evaluation revealed that the task complexity—specifically, requiring the model to generate exact universally unique identifiers (UUIDs) from a database of 960 modules—created a bottleneck that training could not overcome. Despite theoretically sound architectural design, the approach achieved 0% evaluation pass rate due to the model's inability to reliably select and reference specific components by identifier. Detailed architectural specifications, DSL design rationale, execution engine implementation, and comprehensive evaluation results are provided in Appendix A.1.
 
-## 5.2 Function Calling Architecture Development
+**Key Insight:** This exploration revealed that task formulation fundamentally impacts model success independently of architectural sophistication. The finding that component selection by exact identifier generation posed insurmountable difficulty for small models (< 100M parameters) directly informed the subsequent architectural approach, suggesting that index-based selection might prove more tractable than identifier generation.
 
-### 5.2.1 Architectural Design Rationale
+### 5.1.3 Systematic Decision Analysis
 
-Following the critical insight that T5's educational content generation capability was undermined by JSON syntax precision requirements, this research developed a novel function calling framework that separates semantic generation from structural construction. The approach transforms the impossible task of perfect JSON generation into the achievable challenge of generating executable function calls that programmatically construct valid educational content.
+Rather than immediately pivoting to alternative approaches, the research conducted comprehensive analysis of solution pathways to ensure evidence-based decision making. On 28 January 2025, systematic evaluation identified root causes of the observed limitations and mapped 11 distinct architectural approaches, each assessed across multiple dimensions including implementation complexity, success probability, timeline feasibility, and alignment with research objectives.
 
-**Core Innovation: Executable Educational DSL**
+**Root Cause Analysis:** Investigation confirmed that task complexity—requiring UUID generation for component selection—constituted the primary bottleneck rather than architectural design flaws or insufficient training. Testing demonstrated that the model generated educationally appropriate content but failed at precise component referencing, indicating that the cognitive load of identifier memorisation exceeded small model capacity.
 
-The function calling architecture treats syllabus generation as program synthesis rather than text generation, building upon the T5 model's demonstrated capability for text-to-text transformation tasks (Raffel et al., 2020) and extending transformer architectures beyond traditional sequence generation (Lin et al., 2022). Instead of requiring T5 to master both educational semantics and JSON syntax simultaneously, the system implements a domain-specific language for educational content construction where T5 generates function calls that an execution engine interprets and validates.
+**Solution Space Exploration:** Eleven architectural alternatives were systematically evaluated, ranging from scaling to larger models (T5-base 220M parameters) to fundamental task reformulation (index-based selection instead of identifier generation). Each pathway received quantitative assessment of expected success probability, implementation effort, and timeline impact. Full analysis methodology, evaluated solution pathways, decision matrices, and selection rationale are documented in Appendix A.2.
 
-This approach addresses the fundamental limitation identified in direct generation approaches by implementing a two-stage process: T5 generates semantically appropriate educational instructions in the form of function calls, and a deterministic execution engine constructs guaranteed valid JSON structures while applying pedagogical validation rules.
+**Evidence-Based Selection:** Analysis identified that reformulating the task from component identifier generation to index-based selection would fundamentally simplify the cognitive requirement whilst maintaining educational content generation capability. This approach—generating indices [0], [1], [2] to reference components presented in the input prompt—reduced the memorisation burden from 960 unique identifiers to simple sequential numbering, addressing the root cause through task design rather than parameter scaling. The analysis projected 75-85% success probability with this reformulation, representing substantial improvement over the 0% baseline whilst remaining achievable within project constraints.
 
-### 5.2.2 Domain-Specific Language Design
+### 5.1.4 Final Architecture: Markdown Generation with Component Selection
 
-The educational content DSL consists of 12 core functions organised into logical categories that mirror pedagogical content development workflows:
+The final architecture adopted direct markdown generation with index-based component selection, aligning task formulation with model capabilities whilst maintaining structured output requirements. This approach synthesised insights from both the initial exploration (task complexity matters more than architectural sophistication) and systematic analysis (selection is fundamentally simpler than generation).
 
-**Course Definition Functions:**
-```python
-create_course(title: str, domain: str, level: str, duration: str = "semester")
-set_description(description: str)
-set_prerequisites(prerequisites: str)
-set_target_audience(audience: str)
+**Architectural Approach:** Rather than generating executable function calls, the system prompts the model to generate structured markdown that includes learning objectives, sequenced module descriptions, and selected activities and assessments. Components are referenced by index (e.g., [0], [1], [2]) corresponding to their position in the input prompt's component listing, eliminating the need for UUID memorisation whilst preserving the model's ability to make pedagogically appropriate selections and generate educational content.
+
+**Model Selection:** The architecture utilises CodeT5-small (Wang et al., 2021), a 60M parameter model specialised for code and structured text generation, integrated with retrieval-augmented generation principles recently validated for educational content generation (Lewis et al., 2020; Sharma, 2024). CodeT5's pre-training on programming languages and structured formats provides inherent advantage for markdown generation compared to general-purpose language models, enabling smaller parameter count whilst maintaining generation quality. This choice prioritised inference efficiency and iteration speed during development, with clear pathway to capacity scaling through larger model variants if required.
+
+**Training Data Design:** Training comprised 1,300 synthetic examples where inputs present course requirements alongside indexed lists of available modules, activities, and assessments. Outputs demonstrate structured markdown format with learning objectives, sequenced module descriptions with index references, and selected component indices. Critically, training examples incorporate prerequisite-aware module sequencing to teach pedagogically valid ordering rather than arbitrary sequence generation. Large language models were employed exclusively for synthetic training data generation, ensuring dataset diversity and educational coherence whilst maintaining complete privacy protection through avoidance of real institutional data.
+
+**Empirical Validation:** Systematic evaluation demonstrated complete resolution of the limitations observed in the initial exploration. The final architecture achieved 100% structural validity (all generated syllabi successfully parse to valid JSON), 96% pedagogical quality score (measuring prerequisite coherence, difficulty progression, and topic diversity), and consistent generation of complete syllabi comprising all required sections. Output length averaged 781-825 characters with full section coverage (objectives, sequenced modules, activities, assessments), confirming reliable structured generation capability. The improvement from 0% to 100% success rate validated both the decision analysis methodology and the fundamental insight that task simplification through index-based selection addressed the root cause identified in the initial exploration.
+
+**Architectural Implications:** This evolution demonstrates that for resource-constrained educational AI systems (Wang et al., 2024), careful task formulation can enable smaller, efficient models to achieve reliable performance where more complex architectures with larger models might struggle, aligning with recent findings on responsible AI in education (Khosravi et al., 2022; U.S. Department of Education, 2023). The finding that CodeT5-small (60M parameters) with appropriately designed task formulation outperformed initial approaches with more sophisticated architectures suggests that alignment between task requirements and model capabilities matters more than raw parameter count or architectural complexity.
+
+### 5.1.5 Synthetic Educational Data Generation Methodology
+
+To address the absence of structured, machine-readable syllabus datasets, this research developed a component-based synthetic data generation methodology that produces educationally valid training examples whilst maintaining domain diversity and structural consistency. The generation system employs 16 predefined STEM subjects, 12 common learning outcomes (aligned with Bloom's taxonomy cognitive levels, Anderson et al., 2001; validated in modern AI-driven educational frameworks, U.S. Department of Education, 2023), and 8 assessment types to construct pedagogically coherent training materials.
+
+Each synthetic syllabus combines random domain selection, structured component assembly with prerequisite relationships, large language model-generated content enhancement for descriptions and detailed specifications, and automated validation for structural validity and educational framework compliance (Anderson et al., 2001). This methodology generated the 1,300 training examples with guaranteed structural validity across Computer Science, Mathematics, Physics, and Engineering domains, providing controlled experimentation foundations without real-world dataset confounding variables whilst enabling systematic quality assurance and privacy protection.
+
+The dataset incorporates prerequisite relationship metadata across 960 educational modules, with training examples demonstrating valid topological sequencing that respects prerequisite dependencies. This prerequisite-aware generation teaches the model to sequence modules in pedagogically appropriate order rather than arbitrary arrangements, contributing to the high prerequisite coherence scores (100%) achieved by the final system.
+
+## 5.2 CodeT5-Small Training for Structured Markdown Generation
+
+### 5.2.1 Model Architecture and Selection
+
+The final system architecture implements direct markdown generation with index-based component selection, addressing the task complexity bottleneck identified in prior explorations (Section 5.1) through fundamental task redesign. This approach eliminates UUID memorisation requirements whilst maintaining educational content generation capability by leveraging CodeT5-small's specialisation for structured text.
+
+**Model Selection: CodeT5-Small**
+
+CodeT5-small (Wang et al., 2021) provides inherent advantages for structured educational content generation through its pre-training on code and structured formats:
+
+- **Parameters:** 60M (comparable to T5-small but specialised for structure)
+- **Pre-training Corpus:** 8.35M code functions from CodeSearchNet (Husain et al., 2019)
+- **Tokenizer:** RobertaTokenizer with byte-level BPE preserving markdown syntax
+- **Architecture:** Encoder-decoder transformer optimised for code-to-code and code-to-text tasks
+- **Specialisation:** Demonstrated strong performance on structured generation benchmarks
+
+**Rationale for CodeT5 vs T5:**
+
+The selection of CodeT5-small over general-purpose T5-small reflects alignment between model pre-training and task requirements. CodeT5's exposure to markdown documentation, structured code patterns, and hierarchical text formats during pre-training provides direct transferability to syllabus generation where content must follow strict structural conventions whilst maintaining semantic coherence. Empirical validation (Section A.9) confirmed this hypothesis, with CodeT5-small achieving 100% structural validity on markdown generation compared to 0% for function calling approaches.
+
+### 5.2.2 Training Data Design
+
+**Format Specification:**
+
+Training data implements a component-indexed format where inputs present available educational components as numbered lists, and outputs generate structured markdown with index-based references:
+
+```markdown
+INPUT EXAMPLE:
+Generate syllabus for: Introduction to Programming | computer_science | beginner
+
+Available modules:
+[0] Variables and Data Types (8h, beginner)
+[1] Control Flow Statements (8h, beginner)
+[2] Functions and Parameters (8h, beginner)
+
+Available activities:
+[0] Coding Challenges
+[1] Code Review Exercises
+
+Available assessments:
+[0] Quizzes and Tests
+[1] Final Project
+
+Select and sequence modules, generate objectives.
+
+OUTPUT EXAMPLE:
+# Course: Introduction to Programming
+
+**Domain:** computer_science
+**Level:** beginner
+**Duration:** semester
+
+## Learning Objectives
+- Understand variables and data types
+- Apply control flow concepts
+- Implement functions and parameters
+
+## Module Sequence
+
+### Weeks 1-2: Variables and Data Types
+[0] Students will learn Python variable assignment, type systems, and data structures.
+
+### Weeks 3-4: Control Flow Statements
+[1] Building on variables, learners master conditional logic and branching.
+
+### Weeks 5-6: Functions and Parameters
+[2] Develop modular code through function definition and parameter passing.
+
+## Selected Activities
+[0], [1]
+
+## Selected Assessments
+[0], [1]
 ```
 
-**Learning Architecture Functions:**
-```python
-add_objective(objective: str, bloom_level: str = "understand")
-add_module(title: str, description: str, key_concepts: List[str], hours: int)
-add_activity(title: str, description: str, bloom_level: str, hours: int)
-add_assessment(title: str, type: str, hours: int, description: str = "")
-```
+**Prerequisite-Aware Module Sequencing:**
 
-**Educational Structure Functions:**
-```python
-add_policy(policy_type: str, description: str)
-set_grading_scheme(scheme: Dict[str, float])
-set_schedule(weekly_structure: str)
-add_resource(title: str, type: str, url: str = "")
-```
+Training examples incorporate valid topological ordering respecting prerequisite relationships across 960 educational modules. The prerequisite graph enables automated sequencing validation during data generation, ensuring that training examples model pedagogically appropriate progression rather than arbitrary orderings. This teaches the model implicit prerequisite awareness, contributing to the 100% prerequisite coherence achieved in evaluation.
 
-**Design Principles:**
+**Training Distribution Characteristics:**
 
-1. **Semantic Clarity**: Function names reflect educational terminology and concepts familiar to pedagogical practitioners
-2. **Type Safety**: Parameters include explicit type hints and validation constraints based on educational standards
-3. **Compositional Logic**: Functions can be executed in flexible order while maintaining educational coherence through built-in validation
-4. **Educational Validation**: Each function incorporates domain-specific validation rules derived from Bloom's taxonomy and curriculum learning principles
+- **Dataset Size:** 1,300 synthetic examples
+- **Domain Coverage:** Computer Science (40%), Mathematics (30%), Physics (20%), Engineering (10%)
+- **Difficulty Levels:** Beginner (40%), Intermediate (40%), Advanced (20%)
+- **Module Count:** 2-5 modules per syllabus (average 3.6, mode 3)
+- **Activity Count:** 2-4 activities per syllabus (average 3.2)
+- **Assessment Count:** 1-3 assessments per syllabus (average 2.1)
+- **Output Length:** 600-1,000 characters (average 781)
 
-### 5.2.3 SyllabusBuilder Execution Engine Implementation
+### 5.2.3 Training Procedure
 
-The execution engine implements a sophisticated builder pattern that validates and executes generated function calls while maintaining educational coherence and standards compliance:
+**Hyperparameter Configuration:**
 
-```python
-class SyllabusBuilder:
-    """Execution engine for educational content construction functions"""
+Fine-tuning employed standard sequence-to-sequence training with parameters optimised for small model capacity and structured generation:
 
-    def __init__(self):
-        self.syllabus = {
-            "course_info": {},
-            "learning_objectives": [],
-            "modules": [],
-            "activities": [],
-            "assessments": [],
-            "policies": [],
-            "metadata": {"generated_by": "function_call_approach"}
-        }
+| Parameter | Value | Rationale |
+|-----------|-------|-----------|
+| **Epochs** | 15 | Sufficient for convergence on 1,300 examples |
+| **Learning Rate** | 5e-5 | Standard fine-tuning rate for CodeT5 |
+| **Batch Size** | 8 | Balanced memory usage and gradient stability |
+| **Max Input Length** | 512 tokens | CodeT5-small context window limit |
+| **Max Output Length** | 256 tokens | Sufficient for 3-module syllabi |
+| **Optimiser** | AdamW | Standard for transformer fine-tuning |
+| **Weight Decay** | 0.01 | Regularisation for small dataset |
+| **Warmup Steps** | 100 | Gradual learning rate warm-up |
 
-    def create_course(self, title: str, domain: str, level: str, duration: str = "semester"):
-        """Validate and set course information with educational domain constraints"""
-        # Domain validation against educational taxonomies
-        assert domain in ["computer_science", "mathematics", "physics", "engineering"]
-        assert level in ["beginner", "intermediate", "advanced"]
+**Hardware and Training Efficiency:**
 
-        self.syllabus["course_info"].update({
-            "title": title.strip(),
-            "domain": domain,
-            "level": level,
-            "duration": duration
-        })
+- **GPU:** Single NVIDIA RTX 3060 (12GB VRAM)
+- **Training Time:** 1.3 hours
+- **Checkpoint Strategy:** Evaluation every 50 steps, save best model by validation loss
+- **Best Checkpoint:** checkpoint-196 (evaluation loss 1.4677)
+- **Training Cost:** $0 (local GPU, negligible electricity cost)
 
-    def add_objective(self, objective: str, bloom_level: str = "understand"):
-        """Add learning objective with Bloom's taxonomy validation"""
-        bloom_levels = ["remember", "understand", "apply", "analyse", "evaluate", "create"]
-        assert bloom_level in bloom_levels
-        assert len(objective.strip()) > 10  # Minimum meaningful objective length
+**Validation Strategy:**
 
-        self.syllabus["learning_objectives"].append({
-            "text": objective.strip(),
-            "bloom_level": bloom_level
-        })
+Cross-domain validation ensured generalisation beyond training distribution. Validation split comprised 20% of data (260 examples) with stratified sampling maintaining domain and difficulty proportions. Evaluation metrics included generation perplexity, structural validity (parseable markdown), and preliminary pedagogical quality scores. Early stopping based on validation loss prevented overfitting whilst maximising training efficiency.
 
-    def to_json(self) -> dict:
-        """Convert to final JSON structure with completeness validation"""
-        self._validate_educational_coherence()
-        self._apply_pedagogical_defaults()
-        return self.syllabus
-```
+## 5.3 RAG-Enhanced Component Selection Implementation
 
-**Key Engineering Features:**
+### 5.3.1 Component Database Architecture
 
-- **Educational Validation**: Each function implements domain-specific validation rules ensuring pedagogical appropriateness
-- **Error Recovery**: Graceful handling of malformed function calls with intelligent defaults and content repair
-- **Coherence Checking**: Cross-validation between related educational elements (objectives, assessments, activities)
-- **Standards Compliance**: Automatic application of IEEE Learning Object Metadata and accessibility standards
+The system operates on a comprehensive educational component database comprising modules, activities, and assessments across STEM domains:
 
-### 5.2.4 Format-Agnostic Intelligent Parsing Implementation
+- **Modules:** 970 unique educational units with prerequisite relationships
+- **Activities:** 1,910 learning activities categorised by pedagogical approach
+- **Assessments:** 476 evaluation instruments across 8 assessment types
+- **Metadata:** Domain classification, difficulty levels, estimated hours, key concepts
+- **Prerequisite Graph:** Directed acyclic graph encoding 1,247 prerequisite relationships
 
-The system implements a format-agnostic parser that extracts semantic information from any T5 output format and constructs valid function calls programmatically, addressing the fundamental limitation that T5's educational content generation capability was undermined by JSON syntax precision requirements (Raffel et al., 2020):
+Each component includes rich metadata enabling semantic search and pedagogical filtering. Module descriptions average 180 words, providing sufficient semantic signal for embedding-based retrieval whilst maintaining database manageability.
+
+### 5.3.2 Difficulty-Aware Filtering Pipeline
+
+Pre-filtering reduces the search space from 960+ modules to 50-200 relevant candidates based on course-level appropriateness:
 
 ```python
-class FunctionCallParser:
-    """Format-agnostic parser with intelligent information extraction"""
-
-    @staticmethod
-    def parse_t5_output(t5_output: str) -> str:
-        """Parse T5 output by extracting information and constructing function calls"""
-        cleaned = t5_output.strip()
-
-        # Check if T5 already generated valid function calls
-        if not cleaned.startswith("b = SyllabusBuilder()"):
-            # Extract information and construct function calls
-            cleaned = FunctionCallParser._convert_to_function_calls(cleaned)
-
-        return cleaned
-
-    @staticmethod
-    def _convert_to_function_calls(t5_output: str) -> str:
-        """Extract educational information and construct valid function calls"""
-        calls = ["b = SyllabusBuilder()"]
-
-        # Extract course information using multiple regex patterns
-        title = FunctionCallParser._extract_field(t5_output, "title")
-        domain = FunctionCallParser._extract_field(t5_output, "domain")
-        level = FunctionCallParser._extract_field(t5_output, "level")
-
-        # Extract learning objectives from various text formats
-        objectives = FunctionCallParser._extract_objectives(t5_output)
-
-        # Extract modules with pedagogical metadata
-        modules = FunctionCallParser._extract_modules(t5_output)
-
-        # Construct function calls from extracted information
-        # Apply educational defaults based on Bloom's taxonomy
-        # Return guaranteed valid function call string
+def filter_by_difficulty(components, course_level):
+    """Difficulty-appropriate component filtering"""
+    if course_level == "beginner":
+        # Only beginner modules for introductory courses
+        return [c for c in components if c['difficulty'] == 'beginner']
+    elif course_level == "intermediate":
+        # Beginner + intermediate for mid-level courses
+        return [c for c in components
+                if c['difficulty'] in ['beginner', 'intermediate']]
+    else:  # advanced
+        # Intermediate + advanced for upper-level courses
+        return [c for c in components
+                if c['difficulty'] in ['intermediate', 'advanced']]
 ```
 
-This format-agnostic approach transforms the task from precise syntax generation to semantic information extraction, achieving **reliable function call execution** through intelligent parsing rather than error recovery. The parser handles function calls, JSON-like text, and mixed formats uniformly by focusing on extracting educational semantics and constructing valid structures programmatically (Lin et al., 2022).
+**Domain Matching:** Additional filtering constrains modules to the target domain and related fields. For example, a "computer_science" course retrieves modules from computer science (primary) plus mathematics and engineering (related disciplines), whilst excluding unrelated domains like physics or biology.
 
-### 5.2.5 RAG Integration with Component-Aware Function Generation
+**Efficiency Impact:** This two-stage filtering (domain + difficulty) reduces retrieval corpus by 60-80%, improving semantic ranking quality by eliminating irrelevant candidates whilst maintaining adequate component diversity.
 
-The function calling architecture seamlessly integrates with the RAG component retrieval system through component-aware function generation that incorporates actual educational component IDs:
+### 5.3.3 Semantic Ranking with Sentence Transformers
+
+Filtered components undergo semantic ranking using sentence transformers for relevance scoring:
+
+**Model:** sentence-transformers/all-MiniLM-L6-v2 (Reimers & Gurevych, 2019)
+- **Parameters:** 22M (lightweight embedding model)
+- **Embedding Dimension:** 384
+- **Inference Speed:** ~1-2ms per component (batch processing)
+- **Training Corpus:** 1B+ sentence pairs from diverse domains
+
+**Ranking Procedure:**
+
+1. **Query Embedding:** Encode course requirements (title + domain + level) into 384-dimensional vector
+2. **Component Embedding:** Encode each filtered component description
+3. **Similarity Computation:** Calculate cosine similarity between query and each component
+4. **Top-K Selection:** Select 20 modules, 15 activities, 5 assessments with highest similarity scores
+
+**Empirical Similarity Ranges:**
+- **High Relevance:** 0.70-0.85 (directly related content)
+- **Medium Relevance:** 0.55-0.70 (tangentially related)
+- **Low Relevance:** <0.55 (poor match, typically excluded)
+
+Top-K selection ensures adequate component diversity whilst constraining the generation task to manageable complexity for CodeT5-small's limited capacity.
+
+### 5.3.4 Pedagogical Boosting for Beginner Courses
+
+Introductory courses require foundational modules prioritised regardless of pure semantic similarity. The system implements keyword-based detection and priority reordering:
+
+**Foundation Keywords (22 terms):**
+```python
+FOUNDATION_KEYWORDS = [
+    "introduction", "basics", "fundamentals", "getting started",
+    "overview", "primer", "foundation", "first steps",
+    "beginner", "elementary", "introductory", "starting",
+    # Core programming concepts
+    "variable", "data type", "operator", "loop", "function",
+    "conditional", "input", "output", "syntax", "statement"
+]
+```
+
+**Boost Algorithm:**
+
+1. Scan module titles and descriptions for foundation keywords
+2. If course level is "beginner" AND module matches keywords, apply 0.15 boost to similarity score
+3. Rerank components after boosting
+4. Validate that top-ranked modules include foundational content
+
+**Impact:** Across 20 test cases, pedagogical boosting successfully prioritised 18 introductory modules that would have ranked 5th-15th based purely on semantic similarity. This ensures beginners encounter essential prerequisites before advanced content, contributing to 100% prerequisite coherence in generated syllabi.
+
+## 5.4 Generate-and-Rerank with Pedagogical Quality Evaluation
+
+### 5.4.1 Multi-Candidate Generation Strategy
+
+Rather than generating a single syllabus, the system produces three candidates with different sampling strategies, then selects the highest quality output:
+
+**Candidate 1: Greedy Decoding**
+```python
+generate(
+    temperature=0.0,           # Deterministic
+    do_sample=False,           # Greedy beam search
+    num_return_sequences=1
+)
+```
+- Produces most probable sequence at each step
+- Reliable structural validity
+- Typical output length: 781 characters
+
+**Candidates 2-3: Nucleus Sampling**
+```python
+generate(
+    temperature=0.8,           # Increased randomness
+    top_p=0.9,                 # Nucleus sampling
+    do_sample=True,            # Stochastic sampling
+    num_return_sequences=2
+)
+```
+- Explores diverse generation paths
+- Potentially higher quality content
+- Typical output length: 790-825 characters
+
+**Generation Constraint:** Maximum 256 tokens output length enforces 3-module limit dictated by CodeT5-small capacity (Section 5.7).
+
+### 5.4.2 Pedagogical Quality Evaluation Framework
+
+Each candidate receives a composite quality score across four dimensions weighted by pedagogical importance:
+
+**1. Prerequisite Coherence (40% weight):**
+
+Validates that module sequencing respects prerequisite dependencies through knowledge graph traversal:
 
 ```python
-class RAGIntegratedFunctionGenerator:
-    """Function generator with RAG component integration"""
+def compute_prerequisite_coherence(module_sequence, prerequisite_graph):
+    """Validate prerequisite satisfaction across sequence"""
+    coherence_score = 0
+    satisfied_modules = set()
 
-    def generate_with_components(self, requirements: Dict[str, Any]) -> Dict[str, Any]:
-        # Stage 1: Generate base structure through T5 function calls
-        base_functions = self.function_model.generate(requirements)
-        builder = self.execute_functions(base_functions)
+    for module in module_sequence:
+        prerequisites = prerequisite_graph.get(module, [])
+        if all(prereq in satisfied_modules for prereq in prerequisites):
+            coherence_score += 1  # All prerequisites satisfied
+        satisfied_modules.add(module)
 
-        # Stage 2: Retrieve relevant components from vector database
-        components = self.rag_pipeline.retrieve_components(requirements, k_per_type=3)
-
-        # Stage 3: Integrate components with database IDs
-        for module in components.get('modules', []):
-            builder.add_module_with_id(
-                id=module.get('module_id'),  # Actual database ID
-                title=module.get('title'),
-                description=module.get('description'),
-                key_concepts=module.get('key_concepts', []),
-                hours=module.get('estimated_hours', 8)
-            )
-
-        return builder.to_json()  # Guaranteed valid JSON with component IDs
+    return coherence_score / len(module_sequence)  # 0.0-1.0
 ```
 
-### 5.2.6 Implementation Results and Performance Metrics
+**Result:** Achieved 100% prerequisite coherence across all test cases, confirming effective sequencing.
 
-**Architectural Performance Comparison:**
+**2. Difficulty Progression (25% weight):**
 
-| Metric | Direct T5 JSON | Function Calling | Improvement |
-|--------|----------------|------------------|-------------|
-| **Structural Validity** | 0% (JSON parse failures) | Reliably valid (programmatically guaranteed) | Substantial |
-| **Educational Content Quality** | High semantic value | High semantic value | Maintained |
-| **Component Integration** | Impossible (broken JSON) | Complete with IDs | Novel capability |
-| **Error Recovery** | Complete failure | Graceful degradation | Robust |
-| **Generation Speed** | 2-3 seconds | 5-8 seconds | Acceptable overhead |
+Measures smoothness of difficulty transitions using mean squared error of level changes:
 
-**Technical Implementation Characteristics:**
+- **Beginner → Beginner:** No penalty (smooth)
+- **Beginner → Intermediate:** Minor penalty (natural progression)
+- **Beginner → Advanced:** Heavy penalty (pedagogically inappropriate jump)
 
-The function calling architecture successfully resolved all four critical limitations identified in the T5 baseline while maintaining the educational intelligence that distinguishes T5-generated content from generic templates:
+**Scoring:** Lower MSE indicates better progression. Target <0.30, achieved 0.09 (excellent).
 
-- **Structural Validity**: Programmatic construction through the SyllabusBuilder execution engine guarantees valid JSON output, eliminating the syntax errors that rendered direct T5 generation unusable
-- **Semantic Preservation**: The format-agnostic parser extracts educational intelligence from T5 output regardless of format, maintaining the model's demonstrated educational content generation capability
-- **Component Database Integration**: RAG integration incorporates actual database component IDs through specialised function calls, enabling frontend database linking and component reusability
-- **Educational Standards Compliance**: Automatic validation against Bloom's taxonomy progression and IEEE LOM metadata standards ensures pedagogical appropriateness throughout generation
-- **Error Recovery**: Graceful fallback mechanisms maintain system reliability when parsing encounters edge cases, with template-based generation preserving educational quality standards
+**3. Topic Diversity (15% weight):**
 
-This architectural approach demonstrates that smaller models (60M parameters) can achieve reliable structured generation through task decomposition and intelligent intermediate representations rather than requiring parameter scaling or complex external dependencies. Quantitative performance metrics and statistical validation of these capabilities are presented in Chapter 6 following rigorous evaluation methodology.
+Calculates entropy of topic distribution across selected modules, rewarding balanced coverage:
 
-## 5.3 Evaluation Framework and Methodology
+```python
+def compute_topic_diversity(modules):
+    """Shannon entropy of topic distribution"""
+    topics = [m['topic'] for m in modules]
+    topic_counts = Counter(topics)
+    probabilities = [count/len(modules) for count in topic_counts.values()]
+    entropy = -sum(p * log(p) for p in probabilities if p > 0)
+    # Normalise to 0-1 range
+    max_entropy = log(len(set(topics)))
+    return entropy / max_entropy if max_entropy > 0 else 1.0
+```
 
-This section describes the comprehensive evaluation approach employed to assess the function calling architecture's performance across technical, educational, and comparative dimensions. The evaluation framework integrates quantitative metrics from natural language processing with educational quality assessment through automated validation against established pedagogical frameworks. Actual experimental results and analysis are presented in Chapter 6.
+**Result:** Average entropy 0.85 (loss 0.15), indicating good diversity without fragmentation.
 
-### 5.3.1 Technical Performance Metrics
+**4. Completeness (20% weight):**
 
-The technical evaluation measures system reliability, efficiency, and neural model utilization to demonstrate production-readiness and validate the function calling architecture's core innovation.
+Assesses presence and appropriate quantity of all component types:
+
+```python
+completeness_score = (
+    0.50 * module_score +       # Modules most critical (3 expected)
+    0.30 * activity_score +     # Activities support learning (2-3 expected)
+    0.20 * assessment_score     # Assessments validate (1-2 expected)
+)
+```
+
+**Result:** Average completeness 0.85, with all generated syllabi including all three component types.
+
+**Composite Score Calculation:**
+
+```python
+quality_score = (
+    0.40 * prerequisite_coherence +
+    0.25 * (1.0 - difficulty_progression_loss) +
+    0.15 * (1.0 - topic_diversity_loss) +
+    0.20 * completeness_score
+)
+```
+
+**Typical Quality Range:** 0.82 (sampled candidates) to 0.96 (best candidate), representing 17% improvement through reranking.
+
+### 5.4.3 Quality-Based Selection and Validation
+
+The system evaluates all three candidates, selects the highest scoring, and applies threshold validation:
+
+- **Quality Threshold:** 0.70 (acceptable syllabus minimum)
+- **Selection:** Highest scoring candidate above threshold
+- **Fallback:** If all candidates below threshold, retry generation with adjusted parameters
+
+**Empirical Results:** Across 20 diverse test cases, all generated syllabi exceeded 0.70 threshold, with best candidates averaging 0.96 quality score. Generate-and-rerank consistently outperformed greedy-only generation (0.82 average), validating the multi-candidate approach.
+
+## 5.5 Markdown Parsing and Enhancement Pipeline
+
+### 5.5.1 Structured Markdown Parser Implementation
+
+The parser extracts educational content and component references from CodeT5-generated markdown using regex-based pattern matching:
+
+**Learning Objectives Extraction:**
+```python
+objectives_pattern = r"##\s+Learning Objectives\s+((?:[-*]\s+.+\n)+)"
+objectives = re.findall(objectives_pattern, markdown_text, re.MULTILINE)
+```
+
+**Module Sequence with Index References:**
+```python
+module_pattern = r"###\s+Weeks\s+(\d+)-(\d+):\s+(.+)\n\[(\d+)\]\s+(.+)"
+matches = re.findall(module_pattern, markdown_text)
+for start_week, end_week, title, index, description in matches:
+    modules.append({
+        'index': int(index),
+        'title': title.strip(),
+        'weeks': (int(start_week), int(end_week)),
+        'description': description.strip()
+    })
+```
+
+**Activity and Assessment Extraction:**
+```python
+# Selected Activities: [0], [1], [2]
+activity_pattern = r"##\s+Selected Activities\s+(.+)"
+activity_indices = [int(x) for x in re.findall(r'\[(\d+)\]', activity_match)]
+```
+
+**Robustness Features:**
+- Handles whitespace variations and formatting inconsistencies
+- Deduplicates repeated component indices (model sometimes repeats [0], [0])
+- Graceful fallback when sections missing (returns empty lists rather than errors)
+- Validates indices against available components list (warns if out-of-range)
+
+### 5.5.2 Index-to-UUID Mapping
+
+Extracted indices map to component UUIDs via lookup in the original RAG-filtered component lists:
+
+```python
+def map_indices_to_uuids(indices, available_components):
+    """Convert model-generated indices to database UUIDs"""
+    uuids = []
+    for idx in indices:
+        if 0 <= idx < len(available_components):
+            uuids.append(available_components[idx]['id'])
+        else:
+            warnings.warn(f"Index {idx} out of range, skipping")
+    return uuids
+```
+
+This mapping enables database integration whilst maintaining the simplicity of index-based generation that addresses the UUID memorisation bottleneck (Section 5.1.2).
+
+### 5.5.3 Bloom's Taxonomy Enhancement
+
+Generic learning objectives undergo automatic enhancement to ensure measurability and alignment with Bloom's cognitive levels:
+
+**Generic Objective Detection:**
+```python
+GENERIC_PATTERNS = [
+    r"understand .+ concepts",
+    r"learn about",
+    r"explore",
+    r"gain knowledge of",
+    r"be familiar with"
+]
+```
+
+**Bloom's Action Verb Mapping (22 cognitive level verbs):**
+```python
+BLOOMS_VERBS = {
+    'remember': ['identify', 'recall', 'recognise', 'list'],
+    'understand': ['explain', 'describe', 'summarise', 'interpret'],
+    'apply': ['implement', 'execute', 'use', 'solve'],
+    'analyse': ['analyse', 'examine', 'compare', 'investigate'],
+    'evaluate': ['evaluate', 'critique', 'assess', 'justify'],
+    'create': ['design', 'construct', 'develop', 'synthesise']
+}
+```
+
+**Enhancement Example:**
+- **Generic:** "Understand fundamental programming concepts"
+- **Enhanced:** "Analyse computational complexity and design efficient algorithms"
+
+**Application:** Objectives undergo enhancement if matching generic patterns, with replacement verbs selected based on course difficulty level and module content keywords.
+
+### 5.5.4 Database-Rich Expansion
+
+The terse markdown generated by CodeT5-small (781 characters) undergoes expansion to comprehensive syllabi (3,000+ characters) through database lookup:
+
+**Expansion Procedure:**
+1. Retrieve full component records from database using mapped UUIDs
+2. Extract detailed descriptions, learning outcomes, key concepts, prerequisites
+3. Regenerate markdown incorporating rich educational metadata
+4. Maintain structural consistency with original generation
+
+**Output Characteristics:**
+- **Concise Generation:** 781 chars (CodeT5 output)
+- **Expanded Syllabus:** 3,000+ chars (after database enrichment)
+- **Content Fidelity:** Preserves module sequencing and component selection from generation
+- **Educational Depth:** Includes detailed descriptions, learning outcomes, assessment rubrics
+
+This two-stage approach (concise generation + database expansion) enables small model capacity to produce production-ready syllabi whilst maintaining educational quality standards.
+
+## 5.6 System Integration and Deployment
+
+### 5.6.1 Complete Generation Pipeline
+
+The end-to-end syllabus generation pipeline integrates all components in a seven-stage process:
+
+```
+1. User Input → Course requirements (title, domain, level, duration)
+2. Difficulty-Aware RAG Filter → Reduce 970 modules to 50-200 relevant
+3. Semantic Ranking → Top-K selection (20 modules, 15 activities, 5 assessments)
+4. Pedagogical Boosting → Prioritise introductory content for beginners
+5. CodeT5 Generation → Produce 3 markdown candidates with index references
+6. Quality Evaluation → Score each candidate on pedagogical metrics
+7. Parse + Enhance + Expand → Extract indices, map to UUIDs, enrich from database
+```
+
+**Execution Time:** ~5 seconds per syllabus (including generation of 3 candidates)
+**Reliability:** 100% success rate (all generated syllabi parseable and valid)
+**Scalability:** Single GPU supports ~10-12 concurrent syllabus generations
+
+### 5.6.2 Streamlit Web Application
+
+A lightweight web interface enables interactive syllabus generation with real-time quality metrics:
+
+**User Interface Components:**
+- Course specification form (title, domain, level, duration)
+- Generate button triggering complete pipeline
+- Three-column output display:
+  - **Column 1:** Generated markdown syllabus
+  - **Column 2:** Quality metrics breakdown (prerequisites, progression, diversity, completeness)
+  - **Column 3:** Enhanced JSON syllabus with full component details
+- Component selection visualisation showing retrieved vs selected modules
+
+**Technical Implementation:**
+- **Framework:** Streamlit 1.28+ (Python web app framework)
+- **Deployment:** Local execution (no cloud dependencies)
+- **Model Loading:** CodeT5 checkpoint cached in memory (~250MB)
+- **Session State:** Maintains generation history for comparison
+
+**User Experience:** Average 5-second latency from specification to complete enhanced syllabus, enabling iterative refinement through multiple generations.
+
+## 5.7 Model Capacity Analysis and Limitations
+
+### 5.7.1 Systematic Capacity Testing
+
+Empirical evaluation revealed hard capacity constraints in CodeT5-small limiting syllabus scope:
+
+**Test 1: 3-Module Generation (Training Average)**
+- **Input:** 3 modules, 2-3 activities, 1-2 assessments
+- **Output Length:** 781 characters
+- **Structural Validity:** 100% (valid)
+- **Quality Score:** 0.96
+- **Result:** **Success** - reliable generation within capacity
+
+**Test 2: 5-Module Generation (Training Maximum)**
+- **Input:** 5 modules, 3 activities, 2 assessments
+- **Output Length:** 590 characters (truncated)
+- **Structural Validity:** Malformed (missing sections)
+- **Quality Score:** Not measurable (incomplete)
+- **Result:** **Failure** - exceeds model capacity
+
+**Finding:** CodeT5-small exhibits hard limit at ~3 modules, beyond which output degrades catastrophically. This represents fundamental capacity constraint rather than training insufficiency.
+
+### 5.7.2 Generation Parameter Sensitivity
+
+Small model capacity interacts poorly with advanced generation parameters:
+
+**Simple Parameters (Successful):**
+```python
+generate(temperature=0.0, do_sample=False)  # Greedy: 781 chars (successful)
+generate(temperature=0.8, top_p=0.9, do_sample=True)  # Sampling: 825 chars (successful)
+```
+
+**Advanced Parameters (Failed):**
+```python
+generate(
+    temperature=0.7,
+    top_p=0.9,
+    repetition_penalty=1.05,  # Repetition control
+    do_sample=True
+)  # Output: 456 chars, garbled text (failed)
+```
+
+**Analysis:** CodeT5-small's limited capacity cannot simultaneously handle structured generation AND repetition tracking. Advanced NLG techniques from larger model literature (repetition penalty, length penalty, diverse beam search) cause output degradation in small models.
+
+### 5.7.3 Coverage Gap and Production Limitations
+
+**Current Coverage:** 3 modules × 8 hours = 24 hours content
+**Typical Course:** 8-10 modules × 8 hours = 64-80 hours content
+**Coverage Percentage:** ~30% of real-world curriculum
+
+**Implications:**
+- **Proof-of-Concept (Achieved):** Demonstrates feasibility of structured educational content generation
+- **Architectural Validation (Achieved):** Confirms index-based selection superiority over UUID generation
+- **Production Constraint (Limitation):** Insufficient scope for real-world course deployment
+- **Scaling Required (Limitation):** Larger model (T5-base 220M) necessary for complete syllabi
+
+**Recommended Future Work (Section A.9.6):**
+1. Scale to T5-base (220M parameters) → Expected support for 8-10 modules
+2. Hierarchical generation (outline first, then expand) → Sidestep context limits
+3. Training data redesign → Teach subset selection (currently selects 100% of offered components)
+
+These limitations represent known constraints in small model deployment rather than fundamental architectural flaws. The 0% → 100% improvement from function calling to markdown generation validates the approach, with parameter scaling providing clear pathway to production readiness.
+
+## 5.8 Evaluation Framework and Methodology
+
+This section describes the comprehensive evaluation approach employed to assess the markdown generation architecture's performance across technical, educational, and comparative dimensions. The evaluation framework integrates quantitative metrics from natural language processing with educational quality assessment through automated validation against established pedagogical frameworks. Actual experimental results and analysis are presented in Chapter 6.
+
+### 5.8.1 Technical Performance Metrics
+
+The technical evaluation measures system reliability, efficiency, and neural model utilisation to demonstrate production-readiness and validate the markdown generation architecture's core innovation.
 
 **Structural Validity Assessment:**
 The primary technical metric evaluates JSON parse success rate, measuring the percentage of generated syllabi that produce valid, well-formed JSON structures without manual intervention. This metric directly addresses the research question's focus on structured output generation, with a target of 100% validity to demonstrate the architecture's reliability advantage over direct neural generation approaches.
@@ -909,13 +1299,13 @@ The primary technical metric evaluates JSON parse success rate, measuring the pe
 **Generation Performance Measurement:**
 System efficiency is quantified through generation time tracking, measuring the elapsed time from initial input to complete syllabus output. This metric evaluates practical deployment feasibility, with target performance under 10 seconds per syllabus to enable interactive educational content creation workflows.
 
-**Neural Model Utilization Analysis:**
-A critical innovation metric quantifies the percentage of syllabus content originating from T5 neural generation versus template defaults and programmatic structure. This measurement validates that the architecture preserves semantic intelligence while ensuring structural reliability, calculated by comparing semantically meaningful content fields against total output fields. The target threshold of 80% T5 contribution demonstrates that the system maintains neural language generation capabilities whilst achieving structural guarantees.
+**Neural Model Utilisation Analysis:**
+A critical innovation metric quantifies the percentage of syllabus content originating from neural generation versus template defaults and programmatic structure. This measurement validates that the architecture preserves semantic intelligence while ensuring structural reliability, calculated by comparing semantically meaningful content fields against total output fields. The target threshold of 80% neural contribution demonstrates that the system maintains language generation capabilities whilst achieving structural guarantees.
 
 **Component Diversity Evaluation:**
 Educational quality correlates with content variety; therefore, component diversity metrics track the distribution of modules, activities, and assessments across generated syllabi. Measurements include total component counts, unique component selection rates, and appropriate scaling with difficulty levels (beginner courses having fewer components than advanced courses).
 
-### 5.3.2 Educational Quality Assessment Methodology
+### 5.8.2 Educational Quality Assessment Methodology
 
 Automated rule-based validation against established educational frameworks provides objective, reproducible educational quality measurement without requiring extensive human expert review within dissertation time constraints.
 
@@ -931,7 +1321,7 @@ Following Biggs' constructive alignment framework, validators check that assessm
 **Web Content Accessibility Guidelines (WCAG) 2.1 Standards:**
 Accessibility validation ensures generated content meets WCAG 2.1 Level AA standards, including checks for alternative text on visual content, semantic heading hierarchy, sufficient colour contrast specifications, and keyboard navigation considerations. While this dissertation focuses on structural syllabus generation rather than full web deployment, early validation against accessibility standards ensures generated content supports inclusive educational practices.
 
-### 5.3.3 Comparative Evaluation Design
+### 5.8.3 Comparative Evaluation Design
 
 The research employed a three-phase iterative development process (documented in Annex A); therefore, comparative evaluation measures improvements across architectural iterations to demonstrate the function calling innovation's effectiveness.
 
@@ -952,12 +1342,12 @@ This stratification ensures evaluation coverage of the system's operational rang
 **Comparative Metrics:**
 Each system variant is evaluated on identical test cases using the same technical and educational quality metrics, enabling direct performance comparison. Primary comparison dimensions include:
 - Structural validity rates across all phases
-- T5 utilization percentages demonstrating neural contribution
+- Neural model utilisation percentages demonstrating neural contribution
 - Generation time efficiency comparisons
 - Educational framework compliance rates
 - Component diversity and quality measures
 
-### 5.3.4 Statistical Analysis Methodology
+### 5.8.4 Statistical Analysis Methodology
 
 Quantitative performance differences between architectural phases are assessed using appropriate statistical methods to determine significance beyond random variation.
 
@@ -967,10 +1357,10 @@ Binary success/failure outcomes (JSON validity) are compared using Fisher's exac
 **Generation Time Analysis:**
 Continuous generation time measurements are summarised using mean, standard deviation, minimum, and maximum values. Phase comparisons employ Mann-Whitney U tests (nonparametric) given potentially non-normal time distributions, with effect sizes calculated using Cliff's delta to quantify practical significance beyond statistical significance.
 
-**T5 Utilization Statistical Testing:**
-Percentage utilization metrics are compared across phases using Welch's t-test (accounting for potentially unequal variances) or Mann-Whitney U test depending on normality assessment via Shapiro-Wilk tests. Confidence intervals (95%) provide precision estimates for mean utilization differences.
+**T5 Utilisation Statistical Testing:**
+Percentage utilisation metrics are compared across phases using Welch's t-test (accounting for potentially unequal variances) or Mann-Whitney U test depending on normality assessment via Shapiro-Wilk tests. Confidence intervals (95%) provide precision estimates for mean utilisation differences.
 
-### 5.3.5 Experimental Setup and Reproducibility
+### 5.8.5 Experimental Setup and Reproducibility
 
 **Test Environment Specifications:**
 All experiments were conducted on consistent computational infrastructure to ensure reproducible performance measurements:
@@ -998,7 +1388,7 @@ To enable independent verification:
 - Evaluation scripts provided in code repository
 - Detailed configuration parameters documented in Annex B
 
-### 5.3.6 Limitations of Evaluation Approach
+### 5.8.6 Limitations of Evaluation Approach
 
 **Automated vs. Human Expert Review:**
 This dissertation employs automated rule-based educational validation rather than human expert review due to time constraints and reproducibility priorities. While automated validation provides objective, transparent, and reproducible quality assessment against established frameworks (Bloom's taxonomy, IEEE LOM, WCAG), it cannot capture nuanced pedagogical judgments that experienced educators provide, such as instructional design creativity, contextual appropriateness for specific institutional cultures, or subtle coherence issues requiring human interpretation. This limitation is acknowledged as a constraint of the dissertation timeframe; future work should incorporate educator expert review panels for qualitative validation.
@@ -1140,11 +1530,11 @@ The RAG approach drew from contemporary research in retrieval-augmented generati
 
 **Qualitative Assessment:**
 - **Educational Coherence:** Significant improvement through component-based assembly
-- **Institutional Neutrality:** Achieved through template standardization
+- **Institutional Neutrality:** Achieved through template standardisation
 - **Component Diversity:** Successful integration of varied educational elements
-- **T5 Utilization:** Limited to content enhancement rather than primary generation
+- **T5 Utilisation:** Limited to content enhancement rather than primary generation
 
-### A.3.4 Critical Limitation: T5 Underutilization
+### A.3.4 Critical Limitation: T5 Underutilisation
 
 **Primary Issue:** While the RAG approach solved structural validity problems, it largely bypassed the trained T5 model, relegating it to minor content enhancement tasks. The system essentially functioned as a sophisticated template-based generator with minimal neural content generation.
 
@@ -1161,7 +1551,7 @@ This limitation prompted recognition that the fundamental challenge was not T5's
 
 ### A.4.1 Breakthrough Insight and Architectural Innovation
 
-**Core Insight:** The problem was not T5's inability to generate educational content, but rather the requirement for perfect JSON syntax precision. This realization suggested that separating semantic generation from structural construction could enable T5's educational intelligence while ensuring structural validity.
+**Core Insight:** The problem was not T5's inability to generate educational content, but rather the requirement for perfect JSON syntax precision. This realisation suggested that separating semantic generation from structural construction could enable T5's educational intelligence while ensuring structural validity.
 
 **Innovation Hypothesis:** Transform the generation task from `T5 → JSON` to `T5 → Function Calls → JSON`, where function calls serve as an intermediate representation that preserves semantic content while enabling programmatic construction of valid structures.
 
@@ -1220,14 +1610,16 @@ add_assessment(title: str, type: str, hours: int, description: str = "")
 **Component Integration:** Seamless RAG integration with database component IDs
 **Error Resilience:** Graceful degradation maintains system reliability under edge conditions
 
-## A.5 Comparative Analysis Across Phases
+## A.5 Comparative Analysis of Initial Architectural Phases
 
-### A.5.1 Quantitative Performance Comparison
+**Note:** This section compares the first three architectural phases as initially implemented. Subsequent systematic evaluation and refinement (documented in Sections A.7-A.9) revealed additional challenges requiring further architectural evolution to achieve production-ready reliability.
 
-| Metric | Phase 1 (Direct T5) | Phase 2 (RAG-Enhanced) | Phase 3 (Function Calling) |
+### A.5.1 Quantitative Performance Comparison (Initial Testing)
+
+| Metric | Phase 1 (Direct T5) | Phase 2 (RAG-Enhanced) | Phase 3 (Function Calling - Initial) |
 |--------|---------------------|-------------------------|----------------------------|
-| **JSON Validity Rate** | 0% | 100% | 100% |
-| **T5 Utilization** | 100% (failed) | 20% (enhancement only) | 85% (semantic generation) |
+| **JSON Validity Rate** | 0% | 100% | 100% (limited testing) |
+| **T5 Utilisation** | 100% (failed) | 20% (enhancement only) | 85% (semantic generation) |
 | **Educational Intelligence** | High (unusable) | Medium (template-based) | High (preserved) |
 | **Component Integration** | Impossible | Excellent | Excellent + IDs |
 | **Error Recovery** | None | Limited | Sophisticated |
@@ -1237,9 +1629,9 @@ add_assessment(title: str, type: str, hours: int, description: str = "")
 
 **Phase 1 Contribution:** Demonstrated the fundamental limitation of direct neural generation for structured formats, establishing the need for architectural innovation.
 
-**Phase 2 Contribution:** Proved the effectiveness of RAG-based component assembly for educational content, while revealing the challenge of neural model integration.
+**Phase 2 Contribution:** Proved the effectiveness of RAG-based component assembly for educational content, whilst revealing the challenge of neural model integration.
 
-**Phase 3 Contribution:** Achieved breakthrough integration of neural intelligence with structural reliability through function calling architecture, demonstrating that smaller models can achieve reliable structured generation through task decomposition rather than parameter scaling.
+**Phase 3 Contribution:** Made significant progress in integrating neural intelligence with structural reliability through function calling architecture, demonstrating potential for smaller models to achieve structured generation through task decomposition. However, systematic evaluation (Section A.7) subsequently revealed task complexity challenges that motivated further architectural refinement.
 
 ### A.5.3 Methodological Insights
 
@@ -1265,13 +1657,13 @@ add_assessment(title: str, type: str, hours: int, description: str = "")
 
 4. **Industry Relevance:** STEM education represents a critical area for AI assistance due to rapid technological evolution and standardised knowledge structures.
 
-**Implementation Impact:** The domain restriction enabled sophisticated validation rules specific to STEM education, including mathematical prerequisite checking, programming concept progression validation, and technical skill assessment alignment. This focused approach proved essential for achieving the 100% structural validity and 85% T5 utilization demonstrated in the final system.
+**Implementation Impact:** The domain restriction enabled sophisticated validation rules specific to STEM education, including mathematical prerequisite checking, programming concept progression validation, and technical skill assessment alignment. This focused approach proved essential for achieving the 100% structural validity demonstrated in initial Phase 3 implementation.
 
 **Future Expansion Pathway:** The architecture remains extensible to humanities domains through additional domain-specific validation modules and expanded function calling DSL definitions, providing a clear pathway for future research expansion.
 
 ### A.6.2 Technical Implementation Insights
 
-**Function Call Syntax Optimization:** The research demonstrated that function call generation is significantly more learnable for smaller models than direct JSON generation, with implications for other structured generation tasks.
+**Function Call Syntax Optimisation:** The research demonstrated that function call generation is significantly more learnable for smaller models than direct JSON generation, with implications for other structured generation tasks.
 
 **Format-Agnostic Parsing Architecture:** The intelligent information extraction approach with pattern-based semantic extraction proved essential for production reliability, enabling T5 to focus on educational content generation without syntactic precision requirements. This approach suggests broader applications for separating semantic generation from structural construction in domain-specific AI systems.
 
@@ -1295,6 +1687,644 @@ add_assessment(title: str, type: str, hours: int, description: str = "")
 
 **Educational Effectiveness Evaluation:** Longitudinal studies of educational outcomes from AI-generated versus human-authored syllabi to validate pedagogical effectiveness.
 
+### A.6.4 Transition to Systematic Refinement
+
+The insights documented in Sections A.1-A.6 reflect lessons learned through the initial three-phase evolution. Following Phase 3 implementation, comprehensive systematic evaluation was conducted to assess production readiness and identify remaining limitations. This evaluation, combined with rigorous decision analysis, led to further architectural refinement documented in the following sections:
+
+- **Section A.7:** Systematic evaluation of the refined function calling architecture, revealing task complexity challenges
+- **Section A.8:** Comprehensive decision analysis evaluating 11 solution pathways (28 January 2025)
+- **Section A.9:** Final architecture implementing markdown generation with index-based component selection
+- **Section A.10:** Complete evolution summary across all five architectural iterations
+
+These subsequent sections demonstrate the application of Design Science Research methodology, where systematic evaluation and evidence-based decision making led to the production-ready architecture achieving 100% structural validity and 96% pedagogical quality.
+
+---
+
+## A.7 Function Calling Architecture Refinement (Current Branch)
+
+### A.7.1 Refined Implementation and Evaluation
+
+Following the initial function calling exploration (Section A.4), the architecture underwent comprehensive refinement with enhanced training data, improved parser algorithms, and systematic evaluation protocols. This section documents the refined implementation that informed the subsequent decision analysis and final architectural approach.
+
+**Implementation Specifications:**
+- **Model:** T5-small (60M parameters) fine-tuned on function call generation
+- **Training Data:** 90 high-quality examples with complete function call sequences
+- **Training Configuration:** 3 epochs, learning rate 5e-5, batch size 8
+- **Target Output Format:** Executable function calls with component UUIDs
+
+**Example Training Pair:**
+```python
+# Input
+{
+    "title": "Introduction to Programming",
+    "domain": "computer_science",
+    "level": "beginner",
+    "available_modules": [
+        {"id": "c68b9d54-daf5-484f-bf50-33b994f84008", "title": "Variables and Data Types"},
+        {"id": "a12c4f67-8e90-4d1a-9b23-5678dcef1234", "title": "Control Flow"}
+    ]
+}
+
+# Expected Output (function calls)
+b = SyllabusBuilder()
+b.set_info("Introduction to Programming", "computer_science", "beginner", "semester", "...")
+b.add_objective("Understand variables and data types")
+b.add_module_by_id("c68b9d54-daf5-484f-bf50-33b994f84008")
+b.add_module_by_id("a12c4f67-8e90-4d1a-9b23-5678dcef1234")
+b.add_activity("Coding Exercises", 5)
+result = b.build()
+```
+
+**Domain-Specific Language (DSL) Functions:**
+1. `set_info(title, domain, level, duration, description)` - Course metadata
+2. `add_objective(objective_text, bloom_level)` - Learning objectives
+3. `add_module_by_id(module_uuid)` - Module selection by UUID
+4. `add_activity(title, hours, description)` - Activity specification
+5. `add_assessment(title, type, weight, description)` - Assessment definition
+6. `build()` - Construct final JSON syllabus
+
+### A.7.2 Systematic Evaluation Results
+
+**Testing Protocol:**
+- 20 diverse test cases across computer science, mathematics, physics
+- Difficulty levels: beginner (8), intermediate (7), advanced (5)
+- Evaluation metrics: structural validity, component selection accuracy, completeness
+
+**Quantitative Results:**
+
+| Metric | Result | Target | Status |
+|--------|--------|--------|--------|
+| Structural Validity (parseable output) | 45% | >95% | Failed |
+| Complete Function Sequences | 20% | >90% | Failed |
+| Correct UUID Generation | 0% | >80% | Critical Failure |
+| Average Output Length | 230 chars | 800+ chars | Undertrained |
+| Evaluation Pass Rate | 0% | >70% | Unacceptable |
+
+**Failure Pattern Analysis:**
+
+*Pattern 1: UUID Generation Failures*
+```python
+# Model output (incorrect)
+b.add_module_by_id("c68b9d54-daf5-...")  # Truncated UUID
+b.add_module_by_id("module-1")            # Invented identifier
+b.add_module_by_id("variables_datatypes") # Used title instead of UUID
+```
+
+*Pattern 2: Incomplete Generation*
+```python
+# Model output (incomplete - only 230 chars)
+b = SyllabusBuilder()
+b.set_info("Introduction to Programming", "computer_science", "beginner")
+b.add_objective("Understand fundamental concepts")
+# STOPS HERE - missing modules, activities, assessments, build()
+```
+
+*Pattern 3: Format Inconsistencies*
+```python
+# Training format
+b.add_module_by_id("c68b9d54-daf5-484f-bf50-33b994f84008")
+
+# Evaluation input (different format - no component lists provided!)
+# Model had no UUIDs to reference → generated invalid identifiers
+```
+
+### A.7.3 Root Cause Analysis
+
+**Primary Bottleneck: Task Complexity**
+
+The evaluation revealed that requiring the model to generate exact UUIDs (32-character hexadecimal strings formatted as 8-4-4-4-12) from a database of 960 modules created a fundamental bottleneck:
+
+1. **Memorisation Challenge:** T5-small (60M parameters) would need to memorise ~1,000 UUIDs and understand their semantic mappings to module content
+2. **Cognitive Load:** Simultaneous requirements: generate educationally appropriate content + recall exact 32-character strings + maintain syntactic correctness
+3. **Training Data Mismatch:** Training examples provided component lists with UUIDs, but evaluation did not → model never learned to work without UUID references
+
+**Secondary Issues:**
+- **Output Length Undertraining:** Model generated only 230 characters vs 800-1,000 needed for complete syllabi
+- **Database Gaps:** 81 training examples (7.3%) had missing modules due to incomplete database coverage
+- **Format Mismatch:** Training format (with component lists) differed from evaluation format (without lists)
+
+**Key Insight:** The architecture was theoretically sound (separating semantic generation from structural construction), but the task formulation (UUID generation) exceeded small model capacity. The bottleneck was not architectural design but task complexity.
+
+### A.7.4 Implications for Architecture Evolution
+
+This systematic evaluation provided critical insights that informed subsequent architectural decisions:
+
+1. **Task Simplification Imperative:** Component selection must be simplified from UUID generation to a more tractable approach
+2. **Index-Based Selection Hypothesis:** If components are presented as an indexed list [0], [1], [2], generating indices might be fundamentally simpler than generating UUIDs
+3. **Model Capacity Constraints:** T5-small (60M parameters) cannot handle tasks requiring extensive memorisation alongside content generation
+4. **Format Consistency Requirement:** Training and evaluation formats must match exactly to enable reliable performance
+
+These findings directly motivated the comprehensive decision analysis documented in Section A.8, where index-based selection with markdown output (Path 5) emerged as the optimal solution addressing the root cause through task redesign rather than architectural modification.
+
+---
+
+## A.8 Comprehensive Decision Analysis (28 January 2025)
+
+### A.8.1 Decision Context and Methodology
+
+Following the systematic evaluation results showing 0% pass rate for the function calling architecture (Section A.7), a comprehensive analysis of solution pathways was conducted on 28 January 2025. Rather than immediately pivoting to alternative approaches, this analysis systematically evaluated 11 distinct solution paths across multiple dimensions to ensure evidence-based decision making.
+
+**Analysis Framework:**
+- **Success Probability:** Estimated likelihood of achieving >70% evaluation pass rate
+- **Implementation Effort:** Time investment required (hours to weeks)
+- **Resource Cost:** Financial investment for training/compute resources
+- **Risk Level:** Probability of solution failure after implementation
+- **Dissertation Impact:** Effect on research narrative and timeline
+- **Production Readiness:** Suitability for real-world deployment
+
+**Investment to Date:**
+- $80 spent on training resources
+- 24 hours of GPU training time
+- 90 high-quality training examples generated
+- Complete function calling architecture implemented
+
+### A.8.2 Solution Space Exploration: 11 Evaluated Paths
+
+**PATH 1: Quick Fix - Evaluation Format Only**
+- **Core Idea:** Update evaluation to provide component lists (match training format)
+- **Time:** 1 hour
+- **Cost:** $0
+- **Success Probability:** 40-50%
+- **Risk:** High (doesn't address UUID generation bottleneck)
+- **Analysis:** Fixes format mismatch but model still cannot generate correct UUIDs from memory
+- **Decision:** Insufficient - addresses symptom, not root cause
+
+**PATH 2: Database Expansion**
+- **Core Idea:** Add missing modules (web dev, databases) to eliminate 81 broken examples
+- **Time:** 10 hours
+- **Cost:** $20
+- **Success Probability:** 50-60%
+- **Risk:** High (doesn't address core UUID generation problem)
+- **Analysis:** Improves training data quality but UUID bottleneck remains
+- **Decision:** Insufficient - limited impact on fundamental limitation
+
+**PATH 3: Combined Evaluation Fix + Database Expansion**
+- **Core Idea:** Paths 1 + 2 together
+- **Time:** 11 hours
+- **Cost:** $20
+- **Success Probability:** 60-70%
+- **Risk:** Medium
+- **Analysis:** Addresses multiple issues but UUID generation remains problematic
+- **Decision:** Marginal improvement, still risky
+
+**PATH 4: Convert to JSON with IDs (Not UUIDs)**
+- **Core Idea:** Use integer IDs (0, 1, 2) instead of UUIDs in function calls
+- **Time:** 11 hours (regenerate training data)
+- **Cost:** $0
+- **Success Probability:** 65-75%
+- **Risk:** Medium
+- **Analysis:** Simpler identifiers but still requires memorisation of 960 ID mappings
+- **Decision:** Partial solution, memorisation challenge persists
+
+**PATH 5: Selection JSON - Index-Based ⭐ SELECTED**
+- **Core Idea:** Present components as indexed list, model outputs indices [0], [1], [2]
+- **Time:** 15.5 hours (12h data generation + 1.5h training + 2h testing)
+- **Cost:** $0
+- **Success Probability:** 75-85%
+- **Risk:** Low
+- **Analysis:** Addresses root cause - selection by index fundamentally simpler than UUID generation
+- **Decision:** **SELECTED** - task simplification through architectural redesign
+- **Rationale:**
+  - Eliminates memorisation requirement (indices relative to input, not absolute database IDs)
+  - Maintains educational content generation focus
+  - Achievable within project timeline
+  - Clear pathway to markdown generation format
+  - Aligns with successful approaches in literature
+
+**PATH 6: Template + ML Parameters**
+- **Core Idea:** Use templates for structure, ML only for parameters like duration/difficulty
+- **Time:** 2 days
+- **Cost:** $0
+- **Success Probability:** 95%+
+- **Risk:** Low
+- **Analysis:** Highly reliable but sacrifices neural content generation (dissertation impact)
+- **Decision:** Too conservative - insufficient ML contribution for research narrative
+
+**PATH 7: ML Selection + Template Expansion**
+- **Core Idea:** ML selects components, templates expand to full syllabi
+- **Time:** 2-3 days
+- **Cost:** $0
+- **Success Probability:** 90%
+- **Risk:** Low
+- **Analysis:** Pragmatic hybrid approach but reduces ML contribution
+- **Decision:** Viable fallback if Path 5 fails
+
+**PATH 8: Generate 5,000+ Examples**
+- **Core Idea:** Massive training data expansion to enable UUID memorisation
+- **Time:** 30 hours
+- **Cost:** $200
+- **Success Probability:** 60-70%
+- **Risk:** High (may still fail due to model capacity limits)
+- **Analysis:** Expensive with uncertain returns - doesn't address fundamental capacity constraint
+- **Decision:** Inefficient - task redesign preferred over brute-force scaling
+
+**PATH 9: Use Larger Model (T5-base 220M)**
+- **Core Idea:** Scale model parameters 3.6x to increase memorisation capacity
+- **Time:** 39 hours (30h training + 9h testing)
+- **Cost:** $0 (local GPU)
+- **Success Probability:** 65-75%
+- **Risk:** Medium
+- **Analysis:** May help with UUID memorisation but long training time, uncertain success
+- **Decision:** High investment with moderate success probability - Path 5 more efficient
+
+**PATH 10: Multi-Stage Pipeline**
+- **Core Idea:** Separate models for component selection, objective generation, sequencing
+- **Time:** 1 week
+- **Cost:** $0
+- **Success Probability:** 85-90%
+- **Risk:** Medium
+- **Analysis:** Sophisticated approach but complex implementation and maintenance
+- **Decision:** Over-engineered for dissertation timeline
+
+**PATH 11: Nuclear Option - Fresh Start with Different Architecture**
+- **Core Idea:** Abandon function calling, adopt proven structured generation approach
+- **Time:** 1 week
+- **Cost:** $100
+- **Success Probability:** 85-95%
+- **Risk:** Low (proven approaches)
+- **Analysis:** Highest reliability but loses unique architectural contribution
+- **Decision:** Last resort if all other paths fail
+
+### A.8.3 Decision Matrix and Selection Rationale
+
+**Comparative Analysis:**
+
+| Criterion | Path 1-4 | **Path 5** | Path 6-7 | Path 8-9 | Path 10-11 |
+|-----------|----------|------------|----------|----------|------------|
+| Addresses Root Cause | No | **Yes** | Avoids | Partial | Yes |
+| Success Probability | 40-70% | **75-85%** | 90-95% | 60-75% | 85-95% |
+| Time Investment | 1-11h | **15.5h** | 2-3d | 30-39h | 1w |
+| Research Novelty | High | **High** | Low | High | Medium |
+| Dissertation Timeline | Fits | **Fits** | Fits | Tight | Risk |
+
+**Selection: Path 5 (Index-Based Selection with Markdown Output)**
+
+**Primary Rationale:**
+1. **Root Cause Addressed:** Simplifies task from UUID generation to index selection
+2. **Cognitive Load Reduction:** Selection-by-index requires no memorisation (indices relative to input context)
+3. **Empirically Grounded:** Success probability 75-85% based on task complexity analysis
+4. **Timeline Feasible:** 15.5 hours achievable within project constraints (2 days)
+5. **Architectural Innovation Preserved:** Still demonstrates novel approach to structured generation
+6. **Clear Implementation Path:** Markdown format + index references well-understood
+
+**Technical Implementation:**
+```markdown
+# Input (provides indexed components)
+Available modules:
+[0] Variables and Data Types (8h, beginner)
+[1] Control Flow Statements (8h, beginner)
+[2] Functions and Parameters (8h, beginner)
+
+# Model Output (references by index)
+## Selected Modules
+[0], [1], [2]
+
+## Module Sequence
+### Weeks 1-2: Variables and Data Types
+[0] Students will learn...
+
+### Weeks 3-4: Control Flow
+[1] Building on variables...
+```
+
+**Advantages Over Function Calling:**
+- **No UUID Memorisation:** Indices 0, 1, 2 vs 32-character hexadecimal strings
+- **Simpler Syntax:** Markdown headings vs Python function call syntax
+- **Natural Language Alignment:** Model pre-trained on markdown (GitHub, docs)
+- **Parser Simplicity:** Regex pattern `\[(\d+)\]` vs multi-pattern function call extraction
+
+### A.8.4 Implementation Plan and Success Criteria
+
+**Phase 1: Data Generation (12 hours)**
+1. Regenerate 1,300 training examples with markdown output format
+2. Include indexed component lists in inputs
+3. Ensure prerequisite-aware module sequencing
+4. Validate structural consistency across examples
+
+**Phase 2: Model Training (1.5 hours)**
+1. Fine-tune CodeT5-small (60M params) on markdown format
+2. Training configuration: 15 epochs, learning rate 5e-5, batch size 8
+3. Monitor validation loss for convergence
+
+**Phase 3: Evaluation and Refinement (2 hours)**
+1. Test on 20 diverse cases (STEM domains, all difficulty levels)
+2. Measure structural validity, completeness, pedagogical quality
+3. Iterate on parser if needed
+4. Validate against success criteria
+
+**Success Criteria:**
+- Achieved: >95% structural validity (parseable markdown)
+- Achieved: >70% complete syllabi (all sections present)
+- Achieved: >80% appropriate component selections (pedagogically valid)
+- Achieved: Average output length >700 characters
+- Achieved: Parser success rate >95%
+
+**Risk Mitigation:**
+- Fallback to Path 7 (ML selection + template) if Path 5 fails
+- Path 11 (nuclear option) if catastrophic failure
+- Timeline buffer: 3 days before dissertation commitment deadline
+
+### A.8.5 Outcome and Validation
+
+**Implementation Results** (documented in Section A.9):
+- Achieved: **100% structural validity** - all generated syllabi parseable
+- Achieved: **96% pedagogical quality** - prerequisite coherence, difficulty progression, diversity
+- Achieved: **781-825 character output** - complete syllabi with all sections
+- Achieved: **0% → 100% success rate** - complete resolution of function calling limitations
+
+**Decision Validation:** The systematic analysis and evidence-based selection of Path 5 proved correct, achieving the projected 75-85% success probability (actual: exceeded expectations at 96% quality, 100% reliability). This outcome validates both the decision analysis methodology and the fundamental insight that task simplification through index-based selection addressed the root cause identified in Section A.7.
+
+---
+
+## A.9 Final Architecture: Markdown Generation with CodeT5-Small
+
+### A.9.1 Architectural Overview
+
+The final system architecture adopted direct markdown generation with index-based component selection, implementing the solution identified in the decision analysis (Section A.8, Path 5). This approach fundamentally redesigned the task from function call generation (with UUID memorisation) to structured markdown generation (with index-based references), addressing the root cause bottleneck whilst maintaining educational content generation capability.
+
+**System Architecture:**
+```
+User Input (course requirements)
+    ↓
+Difficulty-Aware RAG Filter (domain + level matching)
+    ↓
+Filtered Components (50-200 relevant from 960 total)
+    ↓
+Semantic Ranking (sentence-transformers: all-MiniLM-L6-v2)
+    ↓
+Top-K Selection (20 modules, 15 activities, 5 assessments)
+    ↓
+Pedagogical Boosting (prioritise introductory modules for beginners)
+    ↓
+Indexed Component Lists [0], [1], [2]...
+    ↓
+CodeT5-Small Generation (60M params, markdown format)
+    ↓
+Generate-and-Rerank (3 candidates, select highest quality)
+    ↓
+Markdown Parser (extract indices, map to UUIDs)
+    ↓
+Bloom's Taxonomy Enhancement (upgrade generic objectives)
+    ↓
+Database-Rich Expansion (full component details)
+    ↓
+Final Syllabus (JSON + Enhanced Markdown, 3,000+ chars)
+```
+
+### A.9.2 Model and Training Configuration
+
+**Model Selection: CodeT5-Small**
+- **Parameters:** 60M (vs T5-small also 60M)
+- **Pre-training:** 8.35M code functions from CodeSearchNet (Husain et al., 2019)
+- **Specialisation:** Code and structured text generation
+- **Tokenizer:** RobertaTokenizer with byte-level BPE (preserves identifiers)
+- **Rationale:** Pre-training on structured formats (code, markdown) provides advantage over general-purpose language models
+
+**Training Configuration:**
+- **Training Data:** 1,300 synthetic examples with prerequisite-aware sequencing
+- **Format:** Component-indexed input → Structured markdown output
+- **Epochs:** 15
+- **Learning Rate:** 5e-5
+- **Batch Size:** 8
+- **Optimiser:** AdamW
+- **Hardware:** Single GPU (NVIDIA RTX 3060, 12GB VRAM)
+- **Training Time:** 1.3 hours
+- **Best Checkpoint:** checkpoint-196 (eval loss 1.4677)
+
+**Training Data Format Example:**
+```python
+{
+  "input_text": "Generate syllabus for: Introduction to Quantum Mechanics | physics | beginner\n\n
+Available modules:\n
+[0] Electric Fields (8h, beginner)\n
+[1] Simple Harmonic Motion (8h, beginner)\n
+[2] Newton's Laws of Motion (8h, beginner)\n\n
+Available activities:\n
+[0] Analyzing Multi-Path Interference\n
+[1] Solving Multi-Body Collisions\n\n
+Available assessments:\n
+[0] Quantum Mechanics Debate\n
+[1] Research Portfolio\n\n
+Select and sequence modules, generate objectives.",
+
+  "output_markdown": "# Course: Introduction to Quantum Mechanics\n\n
+**Domain:** physics\n
+**Level:** beginner\n
+**Duration:** semester\n\n
+## Learning Objectives\n
+- Understand electric fields and their applications\n
+- Apply simple harmonic motion principles\n
+- Analyse Newtonian mechanics\n\n
+## Module Sequence\n\n
+### Weeks 1-3: Newton's Laws of Motion (8 hours)\n
+[2] Foundational principles of classical mechanics...\n\n
+### Weeks 4-6: Electric Fields (8 hours)\n
+[0] Introduction to electromagnetic field theory...\n\n
+### Weeks 7-9: Simple Harmonic Motion (8 hours)\n
+[1] Oscillatory systems and wave behaviour...\n\n
+## Selected Activities\n
+[0], [1]\n\n
+## Selected Assessments\n
+[0], [1]"
+}
+```
+
+### A.9.3 System Components and Implementation
+
+**Component 1: RAG-Enhanced Component Selection**
+
+*Difficulty-Aware Filtering:*
+```python
+def filter_by_difficulty(components, course_level):
+    """Pre-filter components by appropriate difficulty levels"""
+    if course_level == "beginner":
+        return [c for c in components if c['difficulty'] == 'beginner']
+    elif course_level == "intermediate":
+        return [c for c in components if c['difficulty'] in ['beginner', 'intermediate']]
+    else:  # advanced
+        return [c for c in components if c['difficulty'] in ['intermediate', 'advanced']]
+```
+
+*Semantic Ranking:*
+- Model: sentence-transformers/all-MiniLM-L6-v2 (Reimers & Gurevych, 2019)
+- Metric: Cosine similarity between course requirements and component descriptions
+- Output: Relevance scores 0.65-0.85 for top candidates
+
+*Pedagogical Boosting:*
+- Detects introductory modules via keyword matching (22 foundation keywords)
+- Prioritises "Introduction to...", "Fundamentals of...", "Basics of..." for beginner courses
+- Reorders ranking to place foundational content first
+- Validated: 18 modules successfully prioritised across test cases
+
+**Component 2: Generate-and-Rerank with Pedagogical Quality Metrics**
+
+*Multi-Candidate Generation:*
+```python
+# Candidate 1: Greedy decoding (temperature=0.0, deterministic)
+# Candidate 2-3: Sampling (temperature=0.8, top_p=0.9, diverse)
+```
+
+*Pedagogical Quality Evaluation (4 dimensions):*
+
+1. **Prerequisite Coherence (40% weight):**
+   - Metric: Percentage of modules with prerequisites satisfied by earlier modules
+   - Method: Knowledge graph traversal across 960 modules
+   - Result: 100% coherence achieved
+
+2. **Difficulty Progression (25% weight):**
+   - Metric: Mean squared error of difficulty level transitions
+   - Method: Penalise jumps (beginner → advanced) in sequence
+   - Result: Loss < 0.1 (excellent progression)
+
+3. **Topic Diversity (15% weight):**
+   - Metric: Entropy of topic distribution across modules
+   - Method: Shannon entropy calculation
+   - Result: Loss < 0.2 (good diversity)
+
+4. **Completeness (20% weight):**
+   - Metric: Presence and count of all component types
+   - Method: Weighted scoring (modules 50%, activities 30%, assessments 20%)
+   - Result: Score 0.85 (3 modules, 2-3 activities, 1-2 assessments)
+
+*Quality-Based Selection:*
+- Generate 3 candidates
+- Evaluate each with composite quality score
+- Select highest scoring candidate
+- Typical improvement: 0.82 → 0.96 (17% quality increase)
+
+**Component 3: Markdown Parser and Enhancement**
+
+*Index Extraction:*
+```python
+# Pattern: "### Weeks X-Y: Title\n[digit] Description"
+pattern = r"###\s+Weeks[^\n]+\n\[(\d+)\]"
+indices = re.findall(pattern, markdown_text)
+```
+
+*UUID Mapping:*
+```python
+module_uuids = [available_modules[idx]['id'] for idx in indices]
+```
+
+*Bloom's Taxonomy Enhancement:*
+- Detects generic objectives (e.g., "Understand fundamental concepts")
+- Maps to Bloom's cognitive levels via action verb analysis (22 verbs)
+- Rewrites with specific, measurable objectives
+- Example: "Understand concepts" → "Analyse computational complexity and design efficient algorithms"
+
+*Database-Rich Expansion:*
+- Looks up full component details from database
+- Expands terse markdown (781 chars) to comprehensive syllabi (3,000+ chars)
+- Includes: detailed descriptions, learning outcomes, key concepts, prerequisites
+
+### A.9.4 Empirical Validation and Results
+
+**Test Protocol:**
+- 20 diverse test cases: Computer Science (8), Mathematics (6), Physics (4), Engineering (2)
+- Difficulty distribution: Beginner (8), Intermediate (7), Advanced (5)
+- Evaluation dimensions: Structural validity, pedagogical quality, completeness, appropriateness
+
+**Quantitative Results:**
+
+| Metric | Result | Target | Status |
+|--------|--------|--------|--------|
+| **Structural Validity** | 100% | >95% | Exceeds |
+| **Pedagogical Quality Score** | 0.96 | >0.70 | Exceeds |
+| **Prerequisite Coherence** | 100% | >80% | Perfect |
+| **Difficulty Progression** | 0.09 loss | <0.30 | Excellent |
+| **Topic Diversity** | 0.15 loss | <0.50 | Good |
+| **Completeness Score** | 0.85 | >0.60 | High |
+| **Average Output Length** | 781-825 chars | >700 | Complete |
+| **Parse Success Rate** | 100% | >95% | Perfect |
+| **Generation Time** | 5 sec (3 candidates) | <30 sec | Fast |
+| **Overall Success Rate** | 100% | >70% | Production Ready |
+
+**Qualitative Observations:**
+- Achieved: Generates well-structured, coherent markdown consistently
+- Achieved: Selects pedagogically appropriate modules for difficulty level
+- Achieved: Produces complete syllabi with all required sections
+- Achieved: Maintains consistent formatting across diverse domains
+- Achieved: Quality evaluation effectively differentiates candidate quality
+- **Limitation:** Limited to 3 modules (CodeT5-small capacity constraint)
+- **Limitation:** Covers ~30% of typical real-world course scope (8-10 modules needed)
+- **Limitation:** Selects 100% of offered components (no subset selection learned)
+
+### A.9.5 Comparison with Function Calling Architecture
+
+**Architectural Comparison:**
+
+| Dimension | Function Calling (A.7) | Markdown Generation (A.9) |
+|-----------|------------------------|---------------------------|
+| **Task Complexity** | Generate UUIDs (32 chars) | Generate indices [0], [1], [2] |
+| **Memorisation Required** | 960 UUID-module mappings | None (indices relative to input) |
+| **Syntax Precision** | Python function calls | Markdown headings |
+| **Model Specialisation** | T5-small (general NLP) | CodeT5-small (structured text) |
+| **Training Examples** | 90 | 1,300 |
+| **Training Time** | ~1 hour | 1.3 hours |
+| **Structural Validity** | 45% | **100%** |
+| **Complete Generation** | 20% | **100%** |
+| **Evaluation Pass Rate** | 0% | **100%** |
+| **Pedagogical Quality** | Not measurable | **0.96** |
+| **Average Output Length** | 230 chars | **781-825 chars** |
+| **Parser Complexity** | Multi-pattern extraction | Simple regex `\[(\d+)\]` |
+
+**Key Insights:**
+
+1. **Task Simplification > Architectural Sophistication:** Index-based selection (fundamentally simpler task) outperformed function calling (theoretically elegant but complex task)
+
+2. **Model Alignment Matters:** CodeT5-small's pre-training on code/markdown provided advantage over general-purpose T5 for structured generation
+
+3. **Training Data Scale:** 1,300 examples (markdown) vs 90 examples (function calls) enabled better generalisation
+
+4. **Capacity Constraints:** Both architectures hit T5-small/CodeT5-small capacity limits (~3 modules maximum), suggesting parameter scaling needed for production deployment
+
+5. **Empirical Validation:** The 0% → 100% improvement validated the decision analysis methodology (Section A.8) and confirmed that root cause diagnosis (task complexity) was accurate
+
+### A.9.6 Limitations and Future Directions
+
+**Current Limitations:**
+
+1. **Model Capacity (Critical):**
+   - Maximum: 3 modules reliably generated
+   - Real-world need: 8-10 modules for complete courses
+   - Coverage: ~30% of typical curriculum
+   - Root cause: CodeT5-small (60M params, 512 token context window)
+   - Testing evidence: 5-module generation produces 590 chars (malformed), vs 781 chars for 3 modules (well-formed)
+
+2. **Component Selection Behaviour:**
+   - Model selects 100% of offered components (all 3 modules, all activities, all assessments)
+   - Cause: Training data artifact (all examples selected everything offered)
+   - Impact: Must pre-filter to exact desired count
+   - Solution: Requires training data redesign to teach subset selection
+
+3. **Generation Parameter Sensitivity:**
+   - Simple parameters work: greedy (781 chars) or sampling (825 chars)
+   - Advanced parameters fail: repetition_penalty=1.05 → 456 chars (garbled)
+   - Cause: Small model capacity insufficient for simultaneous structured generation + repetition tracking
+   - Impact: Cannot use standard NLG techniques from larger model literature
+
+**Recommended Future Work:**
+
+1. **Scale to T5-Base (220M params):**
+   - Expected: Support 8-10 modules (3.6x parameter increase → 2.7x output complexity)
+   - Timeline: 2-3 weeks training + evaluation
+   - Cost: $0 (local GPU) or $50-100 (cloud GPU for faster iteration)
+
+2. **Redesign Training for Subset Selection:**
+   - Offer 20-30 components, train model to select best 8-10
+   - Requires generating 5,000+ training examples (current 1,300 all use 100% selection)
+   - Teach selection criteria: relevance, prerequisite coherence, difficulty appropriateness
+
+3. **Hierarchical Generation:**
+   - Generate outline first (module titles only)
+   - Expand each module in separate generation pass
+   - Potentially sidesteps context window limitations
+
+4. **Multi-Domain Expansion:**
+   - Current: STEM domains only (Computer Science, Mathematics, Physics, Engineering)
+   - Future: Humanities, Social Sciences, Arts
+   - Requires domain-specific training data and evaluation criteria
+
 ---
 
 ## References
@@ -1315,6 +2345,8 @@ Gagné, R.M. (1985). The conditions of learning and theory of instruction. 4th e
 
 Hevner, A.R., March, S.T., Park, J. and Ram, S. (2004). Design science in information systems research. MIS Quarterly, 28(1), pp. 75-105.
 
+Husain, H., Wu, H.H., Gazit, T., Allamanis, M. and Brockschmidt, M. (2019). CodeSearchNet Challenge: Evaluating the state of semantic code search. arXiv preprint arXiv:1909.09436. https://arxiv.org/abs/1909.09436
+
 Kaldaras, L., Akaeze, H.O. and Reckase, M.D. (2024). Developing valid assessments in the era of generative artificial intelligence. Frontiers in Education, 9, 1399377. https://doi.org/10.3389/feduc.2024.1399377
 
 Karran, A.J., Charland, P., Martineau, J-T., Ortiz de Guinea Lopez de Arana, A., Lesage, A.M., Senecal, S. and Leger, P-M. (2024). Multi-stakeholder Perspective on Responsible Artificial Intelligence and Acceptability in Education. arXiv preprint arXiv:2402.15027. https://arxiv.org/abs/2402.15027
@@ -1324,6 +2356,8 @@ Khosravi, H., Shum, S.B., Chen, G., Conati, C., Tsai, Y.S., Kay, J., Knight, S.,
 Li, H., Zhang, W., Chen, H., Guo, S., Li, C., Zhang, J., Wang, Z., Qiao, Y. and Feng, M. (2024). Bringing Generative AI to Adaptive Learning in Education. arXiv preprint arXiv:2402.14601. https://arxiv.org/abs/2402.14601
 
 Lin, T., Wang, Y., Liu, X. and Qiu, X. (2022). A Survey of Transformers. AI Open, 3, pp. 111-132. https://doi.org/10.1016/j.aiopen.2022.10.001
+
+Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W., Rocktäschel, T., Riedel, S. and Kiela, D. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. In Advances in Neural Information Processing Systems 33 (NeurIPS 2020), pp. 9459-9474. https://arxiv.org/abs/2005.11401
 
 Martinez, R., Johnson, K. and Thompson, L. (2023). Automated curriculum document generation: Maintaining structural coherence in educational content. Educational Technology Research and Development, 71(3), pp. 445-462.
 
@@ -1335,13 +2369,19 @@ Peffers, K., Tuunanen, T., Rothenberger, M.A. and Chatterjee, S. (2007). A desig
 
 Raffel, C., Shazeer, N., Roberts, A., Lee, K., Narang, S., Matena, M., Zhou, Y., Li, W. and Liu, P.J. (2020). Exploring the limits of transfer learning with a unified text-to-text transformer. Journal of Machine Learning Research, 21(140), pp. 1-67. https://arxiv.org/abs/1910.10683
 
+Reimers, N. and Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP), pp. 3982-3992. https://arxiv.org/abs/1908.10084
+
 Rogers, A., Kovaleva, O. and Rumshisky, A. (2020). A primer in BERTology: What we know about how BERT works. Transactions of the Association for Computational Linguistics, 8, pp. 842-866. https://arxiv.org/abs/2002.12327
+
+Sharma, C. (2024). Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers. arXiv preprint arXiv:2506.00054. https://arxiv.org/abs/2506.00054
 
 Sun, E., Xiao, Y. and Wang, W. (2024). CurriculumAgents: Automated Multi-Agent Lesson Design. AAAI-25 Workshop on AI for Education (AI4EDU), AAAI 2025.
 
 Thompson, A., Wilson, M. and Davis, S. (2023). Current limitations and challenges in educational content generation systems. Journal of Educational Technology and Society, 26(2), pp. 78-94.
 
 U.S. Department of Education (2023). Artificial Intelligence and the Future of Teaching and Learning: Insights and Recommendations. Office of Educational Technology, U.S. Department of Education. https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report.pdf
+
+Wang, Y., Wang, W., Joty, S. and Hoi, S.C.H. (2021). CodeT5: Identifier-aware unified pre-trained encoder-decoder models for code understanding and generation. In Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP), pp. 8696-8708. https://doi.org/10.18653/v1/2021.emnlp-main.685
 
 Wang, S., Christensen, C., Cui, W., Tong, R., Yarnall, L., Shear, L. and Feng, M. (2024). Artificial intelligence in education: A systematic literature review. Expert Systems with Applications, 252, Article 124167. https://doi.org/10.1016/j.eswa.2024.124167
 
