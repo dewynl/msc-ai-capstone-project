@@ -193,10 +193,12 @@ class MarkdownSyllabusParser:
             r"## Module Sequence\n+(.*?)(?=\n## |\Z)", markdown, re.DOTALL
         )
 
-        if not section_match:
-            return []
-
-        section_text = section_match.group(1)
+        if section_match:
+            section_text = section_match.group(1)
+        else:
+            # Fallback: Look for ### Week patterns anywhere in the document
+            # (Model sometimes skips the "## Module Sequence" header)
+            section_text = markdown
 
         # Extract indices from subsections
         # Pattern matches: ### Weeks X-Y: Title (hours)\n[index] description
@@ -248,30 +250,47 @@ class MarkdownSyllabusParser:
         warnings: List[str],
     ) -> List[str]:
         """
-        Convert indices to UUIDs with validation.
+        Convert indices to UUIDs with validation and deduplication.
 
         Args:
-            indices: List of indices from model output
+            indices: List of indices from model output (may contain duplicates)
             available_components: Array model saw (same rag_context)
             component_type: 'modules', 'activities', or 'assessments'
             warnings: List to append warnings to
 
         Returns:
-            List of UUIDs
+            List of UUIDs (deduplicated, order preserved)
         """
         uuids = []
+        seen_uuids = set()  # Track duplicates
+        duplicate_count = 0
 
         for idx in indices:
             if 0 <= idx < len(available_components):
                 # Valid index - get UUID
                 component = available_components[idx]
-                uuids.append(component["id"])
+                uuid = component["id"]
+
+                # Skip if we've already seen this UUID
+                if uuid in seen_uuids:
+                    duplicate_count += 1
+                    continue
+
+                seen_uuids.add(uuid)
+                uuids.append(uuid)
             else:
                 # Invalid index - warn and skip
                 warnings.append(
                     f"Invalid {component_type} index [{idx}] "
                     f"(max: {len(available_components) - 1})"
                 )
+
+        # Warn if duplicates were found
+        if duplicate_count > 0:
+            warnings.append(
+                f"Removed {duplicate_count} duplicate {component_type} "
+                f"(model generated same index multiple times)"
+            )
 
         return uuids
 

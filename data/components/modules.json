@@ -28003,5 +28003,182 @@
     ],
     "id": "95546de4-dc17-4bf4-a361-6c84941f1b39",
     "prerequisites": []
+  },
+  {
+    "id": "b030dcfc-7911-4d5b-ae40-9c1dfc862cc9",
+    "title": "Variables and Data Types in Python",
+    "description": "Learn how to store and manipulate different types of data in Python. This module covers variable assignment, working with integers, floats, strings, and booleans, as well as converting between data types. You'll practice creating variables to store user information, perform calculations, and build text-based programs.",
+    "domain": "computer_science",
+    "difficulty": "beginner",
+    "estimated_hours": 8,
+    "key_concepts": [
+      "variable_assignment",
+      "integer_and_float_operations",
+      "string_basics",
+      "boolean_values",
+      "type_conversion"
+    ],
+    "prerequisites": []
+  },
+  {
+    "id": "ba302d37-d6f9-4464-a9b1-98c11bfa0890",
+    "title": "Python Syntax Fundamentals",
+    "description": "Master the essential syntax rules that make Python code readable and functional. This module teaches you how to use print() and input() functions, write comments for documentation, understand Python's indentation rules, and apply basic arithmetic and comparison operators. You'll build simple interactive programs that communicate with users.",
+    "domain": "computer_science",
+    "difficulty": "beginner",
+    "estimated_hours": 7,
+    "key_concepts": [
+      "print_and_input_functions",
+      "code_comments",
+      "indentation_rules",
+      "arithmetic_operators",
+      "comparison_operators"
+    ],
+    "prerequisites": []
+  },
+  {
+    "id": "5c81302a-9ecc-401f-89a4-80c86fc6a705",
+    "title": "Control Flow with Conditional Statements",
+    "description": "Discover how to make your programs make decisions using conditional logic. This module covers if, elif, and else statements, comparison operators, and boolean logic with and, or, and not. You'll create programs that respond differently based on user input, such as grade calculators and age verification systems.",
+    "domain": "computer_science",
+    "difficulty": "beginner",
+    "estimated_hours": 8,
+    "key_concepts": [
+      "if_elif_else_statements",
+      "comparison_operators",
+      "boolean_logic",
+      "nested_conditionals",
+      "logical_operators"
+    ],
+    "prerequisites": []
+  },
+  {
+    "id": "d25c9692-1a42-4f6c-8fd1-713741f1fe49",
+    "title": "Loops and Iteration in Python",
+    "description": "Learn how to automate repetitive tasks using for and while loops. This module teaches you how to iterate through sequences with for loops, use the range() function for numerical loops, create condition-based while loops, and control loop execution with break and continue statements. You'll build programs like countdown timers, multiplication tables, and data processors.",
+    "domain": "computer_science",
+    "difficulty": "beginner",
+    "estimated_hours": 9,
+    "key_concepts": [
+      "for_loops",
+      "while_loops",
+      "range_function",
+      "break_and_continue",
+      "loop_iteration_patterns"
+    ],
+    "prerequisites": []
+  },
+  {
+    "id": "aa666292-d729-4eee-b11d-4fb386271240",
+    "title": "Defining and Using Functions",
+    "description": "Understand how to organize code into reusable blocks with functions. This module covers function definition using def, passing parameters and arguments, returning values, and understanding variable scope. You'll create custom functions for calculations, text processing, and code organization to make your programs more modular and maintainable.",
+    "domain": "computer_science",
+    "difficulty": "beginner",
+    "estimated_hours": 9,
+    "key_concepts": [
+      "function_definition",
+      "parameters_and_arguments",
+      "return_values",
+      "variable_scope",
+      "function_reusability"
+    ],
+    "prerequisites": []
+  },
+  {
+    "id": "6870fdff-65b7-4801-a461-ae42c2592182",
+    "title": "Lists and List Operations",
+    "description": "Learn to work with Python lists, one of the most versatile data structures. Master creating, accessing, modifying, and iterating through lists. Explore essential list methods like append, insert, remove, sort, and slice operations.",
+    "domain": "computer_science",
+    "difficulty": "beginner",
+    "estimated_hours": 7,
+    "key_concepts": [
+      "list creation",
+      "indexing and slicing",
+      "list methods",
+      "list comprehensions",
+      "nested lists"
+    ],
+    "prerequisites": [
+      "python-basics",
+      "python-loops"
+    ]
+  },
+  {
+    "id": "b76b5eb7-346c-41a8-a5fd-364c8e0cf1af",
+    "title": "String Manipulation",
+    "description": "Master string operations and text processing in Python. Learn string methods for searching, replacing, splitting, and formatting text. Understand string immutability, concatenation, and common text manipulation patterns used in real-world applications.",
+    "domain": "computer_science",
+    "difficulty": "beginner",
+    "estimated_hours": 6,
+    "key_concepts": [
+      "string methods",
+      "string formatting",
+      "string slicing",
+      "text processing",
+      "regular expressions basics"
+    ],
+    "prerequisites": [
+      "python-basics",
+      "python-lists-operations"
+    ]
+  },
+  {
+    "id": "5446ed40-c602-4b87-b51b-3599820398bb",
+    "title": "Dictionaries",
+    "description": "Explore Python dictionaries for storing key-value pairs and managing structured data. Learn to create, access, update, and iterate through dictionaries. Understand dictionary methods, nested dictionaries, and when to use dictionaries versus other data structures.",
+    "domain": "computer_science",
+    "difficulty": "beginner",
+    "estimated_hours": 8,
+    "key_concepts": [
+      "key-value pairs",
+      "dictionary methods",
+      "dictionary iteration",
+      "nested dictionaries",
+      "dictionary comprehensions"
+    ],
+    "prerequisites": [
+      "python-basics",
+      "python-lists-operations"
+    ]
+  },
+  {
+    "id": "a337550a-eb85-4232-a5b6-6ce8d4065eb3",
+    "title": "File Input/Output",
+    "description": "Learn to read from and write to files in Python for data persistence. Master file handling techniques including opening, reading, writing, and closing files. Explore different file modes, working with text and CSV files, and best practices for file management.",
+    "domain": "computer_science",
+    "difficulty": "beginner",
+    "estimated_hours": 8,
+    "key_concepts": [
+      "file operations",
+      "reading files",
+      "writing files",
+      "file modes",
+      "context managers",
+      "CSV handling"
+    ],
+    "prerequisites": [
+      "python-basics",
+      "python-string-manipulation"
+    ]
+  },
+  {
+    "id": "a9304597-7d8a-43d5-972b-2ba83ba6606e",
+    "title": "Error Handling",
+    "description": "Understand how to handle errors and exceptions gracefully in Python programs. Learn try-except blocks, catching specific exceptions, and raising custom errors. Explore debugging techniques and writing robust code that handles unexpected situations without crashing.",
+    "domain": "computer_science",
+    "difficulty": "beginner",
+    "estimated_hours": 7,
+    "key_concepts": [
+      "try-except blocks",
+      "exception types",
+      "raising exceptions",
+      "finally clause",
+      "debugging techniques",
+      "error messages"
+    ],
+    "prerequisites": [
+      "python-basics",
+      "python-functions"
+    ]
   }
 ]

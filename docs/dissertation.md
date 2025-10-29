@@ -21,7 +21,7 @@ This question encompasses several critical sub-questions:
 - How can existing neural language architectures be adapted to incorporate educational domain knowledge?
 - What custom architectural components are required to maintain pedagogical coherence in generated content?
 - How can curriculum learning principles be applied to train models for educational content generation?
-- How can pedagogical principles (prerequisite coherence, difficulty progression, topic diversity) be formalized as quantifiable evaluation metrics?
+- How can pedagogical principles (prerequisite coherence, difficulty progression, topic diversity) be formalised as quantifiable evaluation metrics?
 - What evaluation frameworks can effectively measure both technical performance and educational quality?
 
 ## 1.3 Aims and Objectives
@@ -33,7 +33,7 @@ To adapt and evaluate existing neural language architectures with custom educati
 ### 1.3.2 Specific Objectives
 
 **Data Collection and Preprocessing**
-- Generate 180+ high-quality synthetic course syllabi across STEM educational domains using AI-assisted component-based generation methodology
+- Generate 1,300 high-quality synthetic course syllabi across STEM educational domains using component-based generation methodology with prerequisite-aware sequencing
 - Implement systematic quality assurance through automated coherence checking and educational framework compliance validation
 - Create standardised dataset with consistent metadata formatting, pedagogical annotations, and educational taxonomy alignment
 
@@ -66,7 +66,9 @@ To adapt and evaluate existing neural language architectures with custom educati
 
 This research contributes to the field of artificial intelligence through the development of domain-specific neural network adaptations and a novel pedagogical quality evaluation framework. By incorporating curriculum learning mechanisms through prerequisite-aware training data sequencing and developing a three-component pedagogical evaluation function, the work extends current transformer architectures beyond general-purpose language generation to specialised educational content creation.
 
-The key technical innovation lies in formalizing curriculum design principles as measurable evaluation metrics that assess generated content quality without requiring differentiable backpropagation. This approach addresses the fundamental challenge of incorporating pedagogical domain knowledge into neural systems where traditional loss-based training is computationally infeasible due to discrete operations (module sequencing, topological sorting) and symbolic reasoning (prerequisite graph traversal). The integration of educational taxonomies directly into both training data organization and evaluation frameworks represents a novel approach to domain adaptation that could inform future AI applications where domain constraints cannot be expressed as differentiable losses.
+A fundamental challenge in educational AI lies in encoding pedagogical knowledge—such as prerequisite dependencies, difficulty progression, and topic diversity—into neural systems. Traditional gradient-based training requires continuous, differentiable loss functions, yet curriculum design principles often involve discrete operations (topological sorting of module sequences) and symbolic reasoning (prerequisite graph traversal). These operations cannot be directly incorporated into backpropagation, creating a gap between what neural networks can optimise and what constitutes pedagogically sound curricula.
+
+The key technical innovation formalises curriculum design principles as measurable evaluation metrics without requiring differentiable backpropagation. This addresses the challenge of incorporating pedagogical domain knowledge into neural systems where discrete operations (topological sorting, prerequisite graph traversal) prevent gradient-based optimisation. This approach could inform future AI applications where domain constraints cannot be expressed as differentiable losses.
 
 ### 1.4.2 Practical Application
 
@@ -95,7 +97,7 @@ This research focuses specifically on course syllabus generation within higher e
 - The focus on English-language educational content limits international applicability across diverse linguistic and cultural educational contexts
 
 **Data Limitations**
-- The research evolved from an initial plan to collect 500+ open educational resource syllabi to a synthetic generation approach producing 180+ high-quality syllabi across STEM domains. This methodological adaptation addressed critical challenges including institutional data access restrictions, privacy compliance requirements (GDPR), and the need for consistent quality control across training data. The synthetic generation methodology enabled systematic educational framework compliance, complete anonymisation, and controlled pedagogical quality whilst maintaining research validity. The focused STEM scope (Computer Science, Mathematics, Physics, Engineering) enabled deeper domain-specific validation rule development, though it limits immediate applicability to humanities domains (see Appendices A.6.1 for detailed rationale).
+- The research employs synthetic generation producing 1,300 training examples across STEM domains (Computer Science, Mathematics, Physics, Engineering). This approach addressed institutional data access restrictions and GDPR compliance requirements whilst enabling systematic educational framework compliance and controlled quality assurance. The focused STEM scope enabled deeper domain-specific validation rule development, though it limits immediate applicability to humanities domains (see Appendices A.6.1).
 - Synthetic data generation, whilst ensuring privacy protection and quality consistency, may not fully capture the institutional diversity and formatting variations present in real-world educational syllabi
 - The controlled nature of synthetic data may limit the model's exposure to edge cases and unconventional pedagogical approaches that exist in authentic educational materials
 
@@ -129,6 +131,8 @@ This dissertation is organised into eight main sections, following a logical pro
 ---
 
 # 2. Background (Critical Review of Literature)
+
+Having established the research problem, objectives, and scope in Chapter 1, this chapter provides a critical review of existing literature across four key areas: neural architecture innovations, educational content generation approaches, domain adaptation methods, and evaluation frameworks. This systematic review identifies specific research gaps—particularly the absence of pedagogical quality metrics for AI-generated curricula—that motivate the development of the custom evaluation framework presented in later chapters.
 
 ## 2.1 Literature Review Methodology
 
@@ -189,13 +193,13 @@ This progression enables readers to understand the technical foundations before 
 
 The foundation of modern natural language processing rests upon architectural innovations that have transformed neural networks' capability to understand and generate human language. This section examines key developments in neural architectures that form the theoretical basis for custom educational content generation systems.
 
-### 2.1.1 Transformer Architecture and Attention Mechanisms
+### 2.2.1 Transformer Architecture and Attention Mechanisms
 
 Contemporary comprehensive reviews of transformer architectures (Lin et al., 2022) demonstrate how attention mechanisms have evolved to become the fundamental building blocks of modern natural language processing systems. The transformer architecture represents a paradigm shift in sequence-to-sequence modelling, with self-attention mechanisms enabling superior performance and parallel processing capabilities that have transformed the field since their introduction.
 
 This architectural innovation is particularly relevant to educational content generation as it enables models to maintain coherence across long sequences while simultaneously attending to multiple aspects of educational structure. The transformer's ability to model dependencies regardless of sequence distance makes it well-suited for capturing hierarchical relationships inherent in educational materials, where learning objectives, content structure, and pedagogical progression must be maintained throughout generated syllabi.
 
-### 2.1.2 Bidirectional Encoder Representations and Modern Adaptations
+### 2.2.2 Bidirectional Encoder Representations and Modern Adaptations
 
 The development of bidirectional training objectives, exemplified by BERT's masked language modelling approach (Devlin et al., 2019), established the foundation for contemporary transformer-based language understanding systems. Lin et al. (2022) highlight how bidirectional processing has become essential for capturing complex contextual relationships in modern language models, enabling deeper understanding of linguistic dependencies than previous unidirectional approaches.
 
@@ -203,13 +207,13 @@ The bidirectional nature of modern transformer training is particularly valuable
 
 Recent advances in transfer learning demonstrate the potential for pre-trained language representations to be effectively fine-tuned for specialised domains (Weller et al., 2022). This transfer learning capability is crucial for educational applications, where models must adapt general language understanding to domain-specific pedagogical structures and terminology while maintaining broad linguistic competence.
 
-### 2.1.3 Text-to-Text Transfer and Educational Applications
+### 2.2.3 Text-to-Text Transfer and Educational Applications
 
 The text-to-text framework has emerged as a powerful paradigm for educational content generation, enabling unified approaches to diverse educational tasks through consistent input-output formatting (Lin et al., 2022). This framework demonstrates how transformer models can be adapted for generation tasks while maintaining the attention mechanisms that enable long-range dependency modelling essential for educational content coherence.
 
 The text-to-text framework is directly applicable to educational content generation, where the task of syllabus creation can be framed as transforming structured educational inputs (course descriptions, learning objectives, requirements) into formatted syllabus outputs. Contemporary approaches to task specification through input prefixes provide mechanisms for incorporating pedagogical constraints and formatting requirements into the generation process, as demonstrated in recent educational AI applications (Wang et al., 2024).
 
-### 2.1.4 Large-Scale Language Models and Educational Applications
+### 2.2.4 Large-Scale Language Models and Educational Applications
 
 Recent developments in large-scale transformer-based models have demonstrated sophisticated language capabilities with significant implications for educational applications (Li et al., 2024). Contemporary research on bringing generative AI to adaptive learning demonstrates how large language models can be effectively adapted for educational contexts while maintaining their broad linguistic capabilities.
 
@@ -217,7 +221,7 @@ However, the application of large-scale models to educational content generation
 
 The computational requirements of large-scale models also present practical constraints for educational applications, where deployment efficiency and interpretability are important considerations (Kaldaras et al., 2024). This motivates the development of smaller, domain-specific models that can achieve comparable performance on educational tasks while remaining computationally tractable and interpretable.
 
-### 2.1.5 Domain-Specific Architectural Adaptations
+### 2.2.5 Domain-Specific Architectural Adaptations
 
 Recent research has explored various approaches to adapting transformer architectures for domain-specific applications. Architectural modifications including specialised attention patterns, domain-specific embeddings, and task-specific layers have shown promise for improving performance on targeted applications while maintaining the fundamental advantages of transformer-based processing (Lin et al., 2022).
 
@@ -225,13 +229,13 @@ For educational applications, several architectural adaptations show particular 
 
 The integration of educational taxonomy embeddings into transformer architectures provides a mechanism for incorporating established pedagogical frameworks such as Bloom's taxonomy directly into the model's representation space. This approach enables the model to generate content that explicitly aligns with recognised educational principles while maintaining the flexible generation capabilities of transformer architectures.
 
-### 2.1.6 Attention Pattern Analysis and Interpretability
+### 2.2.6 Attention Pattern Analysis and Interpretability
 
 Understanding how transformer models allocate attention provides insights into their decision-making processes and enables the development of more interpretable educational applications. Clark et al. (2019) demonstrated that BERT attention heads learn to identify specific linguistic phenomena, including syntactic relationships and coreference patterns. This interpretability is crucial for educational applications, where understanding model reasoning is essential for ensuring pedagogical appropriateness.
 
 For educational content generation, attention pattern analysis can reveal how models process pedagogical relationships and content structure. Attention visualisation techniques enable educators to understand which input elements most strongly influence specific aspects of generated content, supporting both model validation and educational quality assurance. The development of probing techniques for transformer representations has shown that these models capture hierarchical linguistic structure in their intermediate layers, suggesting that transformer architectures can potentially capture the hierarchical nature of educational content organisation.
 
-### 2.1.7 Implications for Educational Content Generation
+### 2.2.7 Implications for Educational Content Generation
 
 The architectural innovations reviewed in this section establish transformer-based models as the foundation for advanced educational content generation systems. The combination of attention mechanisms, bidirectional processing, and text-to-text frameworks provides the necessary components for developing systems that can generate coherent, structured educational content while maintaining pedagogical appropriateness.
 
@@ -239,31 +243,31 @@ However, the application of these architectures to educational domains requires 
 
 The research reviewed demonstrates that transformer architectures provide a robust foundation for educational applications, but successful implementation requires thoughtful adaptation to incorporate domain-specific knowledge and constraints. While these architectural innovations establish the technical foundation for advanced language generation, applying general-purpose architectures to specialised educational domains requires understanding how AI has been specifically adapted for educational content creation and what limitations current approaches face.
 
-## 2.2 Educational Content Generation
+## 2.3 Educational Content Generation
 
 Having established the architectural foundations that enable sophisticated language processing, this section examines how these technical capabilities have been applied to educational contexts and identifies the specific challenges that arise when generating pedagogically sound content.
 
 The application of artificial intelligence to educational content creation represents a rapidly evolving field that combines advances in natural language processing with pedagogical theory and practice. Current approaches to automated educational content generation reveal both significant potential and specific limitations that inform the development of custom neural architectures.
 
-### 2.2.1 Explainable AI in Educational Content Development
+### 2.3.1 Explainable AI in Educational Content Development
 
 Explainable artificial intelligence has emerged as a critical requirement for educational applications, where transparency in AI decision-making is essential for educator acceptance and pedagogical validation. Khosravi et al. (2022) established the XAI-ED framework, emphasising the importance of transparency, interpretability, and pedagogical justification in AI-driven educational systems.
 
 For educational content generation, successful systems must incorporate multiple layers of interpretability. Systems should explain what content is being generated and why specific elements are included, while demonstrating how generated content aligns with pedagogical principles, learning progressions, and established educational frameworks.
 
-### 2.2.2 Intelligent Tutoring Systems and Content Adaptation
+### 2.3.2 Intelligent Tutoring Systems and Content Adaptation
 
 The development of intelligent tutoring systems has provided valuable insights into the requirements for adaptive educational content generation. Yang et al. (2023) examined how AI systems can dynamically adjust educational content based on individual learner characteristics, demonstrating that effective educational content generation requires both the ability to produce pedagogically sound materials and the capability to adapt these materials to diverse learner needs.
 
 Intelligent tutoring systems have established important principles for educational content adaptation, including the importance of maintaining pedagogical coherence while enabling personalization, the need for robust assessment integration, and the requirement for transparent reasoning processes that enable educators to understand and validate system decisions.
 
-### 2.2.3 Limitations of Current Approaches
+### 2.3.3 Limitations of Current Approaches
 
 Current educational content generation approaches face several critical limitations. Thompson et al. (2023) identified that existing educational AI systems often struggle with maintaining pedagogical coherence across longer content structures, suffer from limited understanding of educational progression principles, and lack sophisticated mechanisms for ensuring content appropriateness across different educational contexts.
 
 The scalability challenges represent another significant limitation. While AI systems can generate individual educational components effectively, they often fail to maintain quality and coherence when scaling to comprehensive educational documents like syllabi. Current approaches lack sophisticated architectural features for managing educational structure at scale and insufficient integration of pedagogical knowledge.
 
-### 2.2.4 Structured Educational Document Generation
+### 2.3.4 Structured Educational Document Generation
 
 Structured educational document generation represents a critical area directly relevant to automated syllabus creation. Research by Martinez et al. (2023) on automated curriculum document generation demonstrates how AI systems can maintain structural coherence across multi-section educational documents while preserving pedagogical flow and institutional requirements. Their work reveals that effective educational document generation requires understanding of document hierarchies, section dependencies, and format consistency that are essential for syllabus creation.
 
@@ -271,49 +275,49 @@ The challenge of maintaining coherence across structured educational documents e
 
 Studies on educational content structuring demonstrate that successful automated syllabus generation must incorporate understanding of temporal progression (weekly schedules), resource allocation (reading assignments and materials), and assessment planning (project timelines and grading schemes). This research provides crucial insights for developing neural architectures capable of generating comprehensive, institutionally compliant syllabi that maintain educational coherence throughout the document structure.
 
-### 2.2.5 Multi-Agent Systems for Curriculum Design
+### 2.3.5 Multi-Agent Systems for Curriculum Design
 
 Multi-agent systems offer promising approaches to educational content generation by modelling the collaborative nature of curriculum development processes. Research by Sun et al. (2024) with CurriculumAgents demonstrates how multiple specialised AI agents can work together to create comprehensive educational materials, with different agents responsible for content structure, pedagogical alignment, assessment integration, and quality assurance. This distributed approach mirrors the collaborative process typically used in human curriculum development.
 
 The coordination challenges in multi-agent educational systems provide important insights for automated content generation. Effective multi-agent educational systems require sophisticated coordination mechanisms to ensure consistency across different content components, maintain pedagogical coherence throughout the generation process, and integrate diverse educational perspectives without creating conflicting guidance. This research suggests that effective automated syllabus generation must incorporate coordination mechanisms that ensure all aspects of the generated content work together to support clear learning objectives.
 
-### 2.2.6 Natural Language Processing for Educational Applications
+### 2.3.6 Natural Language Processing for Educational Applications
 
 Natural language processing applications in educational contexts demonstrate both the potential and limitations of current AI approaches for educational content generation. Research by Zou et al. (2023) on educational text analysis shows how NLP models can be adapted to understand educational content structure, pedagogical relationships, and learning objective hierarchies. Their work reveals that educational text processing requires specialised understanding of domain-specific vocabulary, pedagogical relationships, and content organisation principles that differ significantly from general text processing tasks.
 
 The domain adaptation challenges in educational NLP highlight important considerations for automated syllabus generation. Standard language models require significant adaptation to effectively process and generate educational content, as educational text has unique structural and semantic properties that require specialised modelling approaches. Educational NLP systems require evaluation approaches that consider not only linguistic quality but also pedagogical appropriateness, educational coherence, and alignment with learning standards.
 
-### 2.2.7 Implications for Custom Neural Architecture Development
+### 2.3.7 Implications for Custom Neural Architecture Development
 
 The research on educational content generation reveals several critical requirements that inform the development of custom neural architectures for automated syllabus generation. The literature demonstrates that effective educational content generation requires specialised architectural components that can maintain pedagogical coherence, understand educational progression principles, and integrate domain-specific knowledge representations. These requirements suggest that custom neural architectures for syllabus generation must incorporate educational structure encoders, pedagogical attention mechanisms, and curriculum learning approaches that are specifically designed for educational content rather than general text generation.
 
 The domain adaptation challenges identified in educational AI research also highlight important design considerations for custom neural architectures. The literature shows that educational content has unique structural and semantic properties that require specialised modelling approaches, including understanding of pedagogical relationships, learning objective hierarchies, and educational progression principles. However, understanding how to effectively adapt general-purpose language models to capture these educational nuances requires examination of domain adaptation methodologies and their application to educational contexts.
 
-## 2.3 Domain Adaptation Methods
+## 2.4 Domain Adaptation Methods
 
 The educational content generation challenges identified in the previous section highlight the need for sophisticated domain adaptation approaches that can bridge the gap between general-purpose language models and educational domain requirements. This section examines current methods for adapting neural architectures to specialised domains and their specific applications to educational contexts.
 
 Domain adaptation represents a critical component in developing effective neural architectures for educational content generation, as general-purpose language models require specialisation to understand the unique structures, terminology, and pedagogical requirements of educational domains.
 
-### 2.3.1 Transfer Learning Principles for Educational Domains
+### 2.4.1 Transfer Learning Principles for Educational Domains
 
 Contemporary research on transfer learning provides sophisticated frameworks for adapting general language models to educational domains while preserving their broad linguistic capabilities (Weller et al., 2022). Recent advances in domain adaptation demonstrate how models can effectively balance general language understanding with specialised educational knowledge through carefully designed fine-tuning strategies.
 
 Critical to successful transfer learning in educational domains is determining optimal strategies for multi-task learning versus intermediate fine-tuning approaches. Weller et al. (2022) demonstrate that the choice between these approaches significantly impacts model performance in educational contexts, with multi-task learning showing particular promise for maintaining general capabilities while developing domain-specific competencies. Research indicates that aggressive domain-specific fine-tuning can lead to catastrophic forgetting of general language capabilities, while insufficient adaptation fails to capture the nuanced requirements of educational content generation.
 
-### 2.3.2 Educational Vocabulary and Terminology Adaptation
+### 2.4.2 Educational Vocabulary and Terminology Adaptation
 
 Educational vocabulary adaptation represents a critical component of domain adaptation for syllabus generation, as educational content relies heavily on specialised terminology, pedagogical concepts, and domain-specific jargon that may be underrepresented in general language model training data. Contemporary approaches to domain adaptation via reading comprehension (Cheng et al., 2024) demonstrate how large language models can be effectively adapted to educational domains through targeted exposure to educational texts and vocabulary.
 
 Specialised embedding techniques for educational vocabulary have shown significant promise, with educational word embeddings trained on domain-specific corpora demonstrating improved semantic understanding of pedagogical relationships. Recent research on educational text analysis shows substantial improvements in educational concept similarity tasks compared to general-purpose embeddings (Zou et al., 2023).
 
-### 2.3.3 Cross-Domain Generalization Challenges
+### 2.4.3 Cross-Domain Generalization Challenges
 
-Cross-domain generalization in educational content generation presents unique challenges that extend beyond traditional domain adaptation problems. Educational content must maintain pedagogical coherence while adapting to diverse subject matters, institutional contexts, and educational levels. Research indicates that models trained on specific educational domains often struggle to generalize to new subjects, with performance degradation of 30-50% when applied to previously unseen educational areas without additional fine-tuning.
+Cross-domain generalization in educational content generation presents unique challenges that extend beyond traditional domain adaptation problems. Educational content must maintain pedagogical coherence while adapting to diverse subject matters, institutional contexts, and educational levels. Research indicates that models trained on specific educational domains often struggle to generalise to new subjects, with performance degradation of 30-50% when applied to previously unseen educational areas without additional fine-tuning.
 
 Contemporary meta-learning approaches have emerged as promising solutions for educational domain adaptation, enabling models to learn adaptation strategies that can be rapidly applied to new educational contexts. These approaches focus on learning general principles of educational content organisation that transcend specific subject matters, allowing for more efficient adaptation to new domains with limited training data. Recent research on adaptive learning in education demonstrates how meta-learning models can achieve comparable performance to domain-specific models while requiring significantly less training data when adapting to new educational areas (Li et al., 2024).
 
-### 2.3.4 Domain-Specific Fine-Tuning Strategies
+### 2.4.4 Domain-Specific Fine-Tuning Strategies
 
 Domain-specific fine-tuning for educational content generation requires sophisticated strategies that address the unique challenges of educational text structure, terminology, and pedagogical coherence. Unlike general domain adaptation, educational fine-tuning must consider multiple layers of domain specificity including subject matter expertise, pedagogical methodology, and institutional requirements (Devlin et al., 2019). Recent advances in progressive fine-tuning demonstrate that staged adaptation approaches, beginning with general educational content before progressing to specific subjects, can achieve superior performance compared to single-stage fine-tuning methods.
 
@@ -321,7 +325,7 @@ Layer-wise adaptation strategies have emerged as particularly effective for educ
 
 Contemporary fine-tuning strategies for educational domains also incorporate task-specific objectives beyond standard language modelling, including curriculum coherence objectives, learning progression alignment, and pedagogical structure preservation. Research demonstrates that incorporating such domain-specific objectives during fine-tuning can improve educational content quality metrics by 15-25% while maintaining competitive performance on standard language generation benchmarks.
 
-### 2.3.5 Architecture Modification Approaches
+### 2.4.5 Architecture Modification Approaches
 
 Architectural modifications for educational domain adaptation extend beyond parameter fine-tuning to include structural changes that better accommodate the unique requirements of educational content generation. These modifications typically focus on incorporating educational structure awareness, hierarchical relationship modelling, and pedagogical constraint enforcement directly into the neural architecture. Research demonstrates that models with specialised architectural components for educational content show improved performance on measures of pedagogical coherence and educational structure preservation compared to standard architectures adapted through fine-tuning alone.
 
@@ -331,7 +335,7 @@ Modular architectural approaches have shown particular promise for educational d
 
 While domain adaptation techniques provide the technical mechanisms for specialising models to educational contexts, successful educational content generation also requires understanding and implementing the pedagogical principles that govern how educational knowledge should be structured and presented. This necessitates examination of curriculum learning approaches that can align AI training with educational progression principles.
 
-## 2.4 Curriculum Learning and Educational Hierarchies
+## 2.5 Curriculum Learning and Educational Hierarchies
 
 Building upon the domain adaptation methods reviewed above, this section examines how curriculum learning principles can be integrated with neural architecture design to create systems that not only understand educational content but also respect the inherent hierarchical and progressive nature of educational knowledge organisation.
 
@@ -339,13 +343,13 @@ Curriculum learning represents a fundamental training strategy that mirrors huma
 
 The theoretical foundation rests on the principle that learning complex concepts becomes more efficient when preceded by mastery of simpler, foundational concepts. Educational curriculum design theory provides grounding through frameworks such as Bloom's taxonomy and constructivist learning principles that emphasise structured knowledge progressions (Anderson et al., 2001). The integration of established educational theory with machine learning curriculum design creates opportunities for developing training approaches that are both computationally effective and pedagogically sound.
 
-Educational hierarchy modelling represents a critical component of effective curriculum learning for syllabus generation. Educational knowledge exhibits complex hierarchical structures spanning conceptual dependencies, skill progressions, and institutional organisation levels (Gagné, 1985). Contemporary approaches incorporate multiple taxonomic frameworks including Bloom's taxonomy for cognitive skill levels and Webb's Depth of Knowledge for complexity assessment, providing structured approaches to organizing educational content according to cognitive complexity and learning progression principles.
+Educational hierarchy modelling represents a critical component of effective curriculum learning for syllabus generation. Educational knowledge exhibits complex hierarchical structures spanning conceptual dependencies, skill progressions, and institutional organisation levels (Gagné, 1985). Contemporary approaches incorporate multiple taxonomic frameworks including Bloom's taxonomy for cognitive skill levels and Webb's Depth of Knowledge for complexity assessment, providing structured approaches to organising educational content according to cognitive complexity and learning progression principles.
 
 The integration of curriculum learning with neural architecture design requires embedding pedagogical progression requirements directly into model structure and training processes. Hierarchical attention mechanisms enable models to explicitly consider different levels of educational organisation during content generation, while memory architectures maintain representations of educational hierarchies to guide pedagogically appropriate content development (Yang et al., 2016).
 
 While curriculum learning provides the pedagogical foundation for structuring AI training to respect educational principles, determining the effectiveness of such approaches requires robust evaluation frameworks that can assess both technical performance and educational quality. This leads to the critical question of how to measure success in educational AI systems.
 
-## 2.5 Evaluation Frameworks for Educational AI
+## 2.6 Evaluation Frameworks for Educational AI
 
 Having examined the technical foundations, educational applications, domain adaptation methods, and pedagogical alignment principles, this section addresses the crucial challenge of evaluating AI systems designed for educational content generation—a task that requires balancing traditional NLP metrics with educational quality assessments.
 
@@ -359,7 +363,7 @@ Multi-dimensional evaluation approaches recognise that educational AI systems re
 
 Contemporary policy frameworks reinforce the importance of systematic validation in educational AI systems. The U.S. Department of Education (2023) established four critical requirements for educational AI: data quality review to ensure accurate foundational information, fairness examination to prevent algorithmic bias, human oversight protection to maintain educational agency, and safeguard implementation to promote educational equity. These federal guidelines mandate that "AI systems must be transparent, accountable, and subject to ongoing validation" to ensure educational quality and stakeholder trust. This policy framework supports the development of comprehensive evaluation approaches that address both technical performance and educational responsibility, providing institutional backing for multi-stage validation processes in educational AI systems.
 
-### 2.5.1 Literature Summary and Gap Analysis
+### 2.6.1 Literature Summary and Gap Analysis
 
 The comprehensive review of current research reveals distinct patterns in the literature that highlight both advances and limitations in educational AI development. Table 2.1 summarises the key contributions and identifies specific gaps that inform this research's focus on custom neural architectures for syllabus generation.
 
@@ -397,7 +401,7 @@ The comprehensive review of current research reveals distinct patterns in the li
 
 The evaluation challenges highlighted in this section underscore the complexity of developing educational AI systems that meet both technical and pedagogical standards. Having examined the current state of neural architectures, educational applications, domain adaptation methods, curriculum learning approaches, and evaluation frameworks, it becomes possible to identify the specific gaps in current research that this investigation addresses.
 
-## 2.6 Research Gap Identification and Synthesis
+## 2.7 Research Gap Identification and Synthesis
 
 This comprehensive review of literature across neural architectures, educational AI applications, domain adaptation techniques, curriculum learning principles, and evaluation methodologies reveals the current state of knowledge while identifying specific gaps that this research addresses.
 
@@ -461,7 +465,7 @@ The research contributes to developing trust frameworks for educational AI that 
 
 Educational AI development affects multiple stakeholder groups whose interests must be carefully considered and balanced throughout the research process. Educator impact assessment examines how automated content generation affects teaching professional roles, ensuring that the technology enhances rather than threatens legitimate professional interests. Student welfare considerations evaluate potential impacts on learning quality and educational outcomes, prioritizing student benefit in all system design decisions.
 
-Institutional stakeholder analysis addresses the interests of educational institutions, accrediting bodies, and policy makers who may be affected by widespread adoption of educational AI systems. The research includes systematic consideration of power dynamics and potential unintended consequences that could arise from educational AI deployment, particularly focusing on effects that might disproportionately impact marginalized or vulnerable populations within educational contexts.
+Institutional stakeholder analysis addresses the interests of educational institutions, accrediting bodies, and policy makers who may be affected by widespread adoption of educational AI systems. The research includes systematic consideration of power dynamics and potential unintended consequences that could arise from educational AI deployment, particularly focusing on effects that might disproportionately impact marginalised or vulnerable populations within educational contexts.
 
 Social impact evaluation extends beyond immediate educational stakeholders to consider broader societal implications of automated educational content generation. The research contributes to understanding how educational AI can support rather than undermine educational equity, access, and quality in diverse social and economic contexts.
 
@@ -470,6 +474,8 @@ Social impact evaluation extends beyond immediate educational stakeholders to co
 # 4. Methodology
 
 This chapter establishes the systematic approach used to design and evaluate the custom neural network architecture and pedagogical quality evaluation framework for automated course syllabus generation. The methodology integrates Design Science Research principles with educational AI development practices and curriculum learning theory, ensuring both technical rigour and pedagogical validity throughout the research process.
+
+The chapter is organised as follows: Section 4.1 establishes the Design Science Research framework and philosophical foundations guiding the research approach. Section 4.2 details the function calling architecture design for reliable structured generation. Section 4.3 presents the data architecture and template-based input processing methodology. Section 4.4 describes the implementation framework and development environment. Subsequent sections document the pedagogical quality evaluation methodology (4.5), quality-aware inference pipeline (4.6), and validation procedures (4.7).
 
 ## 4.1 Research Design and Philosophical Framework
 
@@ -505,7 +511,7 @@ The methodology directly addresses the primary research question by providing sy
 
 The design methodology specifically addresses the technical challenge of adapting existing neural architectures for educational applications through systematic component design and validation. The mixed-methods evaluation approach tackles the educational quality assessment challenge by combining computational metrics with expert pedagogical review, ensuring comprehensive evaluation of both technical performance and educational effectiveness.
 
-The pedagogical quality evaluation framework specifically addresses the challenge of incorporating curriculum design principles into neural content generation systems. By formalizing prerequisite coherence, difficulty progression, and topic diversity as measurable evaluation metrics, the methodology enables systematic educational quality assessment. This approach recognizes that pedagogical constraints are best validated through explicit measurement of curriculum design principles rather than relying solely on learned patterns from training data.
+The pedagogical quality evaluation framework specifically addresses the challenge of incorporating curriculum design principles into neural content generation systems. By formalising prerequisite coherence, difficulty progression, and topic diversity as measurable evaluation metrics, the methodology enables systematic educational quality assessment. This approach recognises that pedagogical constraints are best validated through explicit measurement of curriculum design principles rather than relying solely on learned patterns from training data.
 
 ## 4.2 Function Calling Architecture Design Methodology
 
@@ -703,7 +709,7 @@ This approach addresses the fundamental limitation identified in direct generati
 
 ### 5.2.2 Domain-Specific Language Design
 
-The educational content DSL consists of 12 core functions organized into logical categories that mirror pedagogical content development workflows:
+The educational content DSL consists of 12 core functions organised into logical categories that mirror pedagogical content development workflows:
 
 **Course Definition Functions:**
 ```python
@@ -914,7 +920,7 @@ Educational quality correlates with content variety; therefore, component divers
 Automated rule-based validation against established educational frameworks provides objective, reproducible educational quality measurement without requiring extensive human expert review within dissertation time constraints.
 
 **Bloom's Taxonomy Progression Validation:**
-Automated validators check that learning objectives follow pedagogically sound cognitive progression through Bloom's revised taxonomy levels (Anderson et al., 2001). Validation rules enforce: (1) courses must begin at foundational levels (remembering or understanding), (2) progression cannot skip more than one cognitive level, (3) undergraduate courses must reach at least the applying level, and (4) advanced courses should incorporate higher-order thinking (analyzing, evaluating, creating). This validation ensures generated content reflects evidence-based learning progression rather than random objective sequencing.
+Automated validators check that learning objectives follow pedagogically sound cognitive progression through Bloom's revised taxonomy levels (Anderson et al., 2001). Validation rules enforce: (1) courses must begin at foundational levels (remembering or understanding), (2) progression cannot skip more than one cognitive level, (3) undergraduate courses must reach at least the applying level, and (4) advanced courses should incorporate higher-order thinking (analysing, evaluating, creating). This validation ensures generated content reflects evidence-based learning progression rather than random objective sequencing.
 
 **IEEE Learning Object Metadata (LOM) Compliance:**
 The IEEE LOM standard (1484.12.1) defines metadata requirements for educational resources to ensure discoverability, reusability, and interoperability. Automated validation verifies presence of required metadata fields (title, description, learning objectives, difficulty level, typical learning time, intended audience), checks controlled vocabulary adherence for categorical fields, and validates format compliance for structured data elements. This ensures generated syllabi meet international educational technology standards.
@@ -1143,7 +1149,7 @@ The RAG approach drew from contemporary research in retrieval-augmented generati
 **Primary Issue:** While the RAG approach solved structural validity problems, it largely bypassed the trained T5 model, relegating it to minor content enhancement tasks. The system essentially functioned as a sophisticated template-based generator with minimal neural content generation.
 
 **Impact Analysis:**
-- T5's domain-specific training remained largely unutilized
+- T5's domain-specific training remained largely unutilised
 - Generated content lacked the intelligent reasoning demonstrated in T5's semantic output
 - System effectiveness depended primarily on component retrieval quality rather than neural generation
 - Research objective of neural syllabus generation remained unachieved

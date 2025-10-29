@@ -18,7 +18,7 @@ class SyllabusGenerator:
     Loads the trained model and provides a simple generate() method.
     """
 
-    def __init__(self, model_path: str = "models/codet5-markdown-FULL"):
+    def __init__(self, model_path: str = "models/codet5-sequenced/checkpoint-196"):
         """
         Initialize the generator with trained model.
 
@@ -146,7 +146,7 @@ Select relevant components and generate markdown syllabus."""
     except FileNotFoundError as e:
         print(f"Error: {e}")
         print(
-            "\nPlease ensure the model is trained and located at models/codet5-markdown-FULL/"
+            "\nPlease ensure the model is trained and located at models/codet5-sequenced/checkpoint-196/"
         )
     except Exception as e:
         print(f"Error during generation: {e}")

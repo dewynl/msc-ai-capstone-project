@@ -97,7 +97,7 @@ def get_db_manager():
     return get_supabase_manager()
 
 
-@st.cache_data(ttl=3600)  # Cache for 1 hour
+@st.cache_data(ttl=60)  # Cache for 1 minute (dev mode)
 def load_rag_database():
     """Load all educational components from local JSON files for RAG context.
 
@@ -246,12 +246,12 @@ def render_example_presets():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        if st.button("🖥️ Computer Science", use_container_width=True):
+        if st.button("🖥️ Introduction to Programming", use_container_width=True):
             st.session_state.preset = {
-                "title": "Introduction to Programming",
+                "title": "Introduction to Python Programming",
                 "domain": "computer_science",
                 "level": "beginner",
-                "description": "Fundamental programming concepts using Python, including variables, control structures, functions, and basic data structures.",
+                "description": "Foundational programming concepts using Python, including variables, data types, control flow (conditionals and loops), functions, lists, dictionaries, string manipulation, file I/O, and error handling.",
             }
             st.rerun()
 
@@ -757,6 +757,13 @@ def main():
                                     f"- **Score range:** {mod_stats.get('min_score', 0):.4f} - {mod_stats.get('max_score', 0):.4f}"
                                 )
 
+                                # Show pedagogical boost status
+                                if mod_stats.get("pedagogical_boost", False):
+                                    boost_count = mod_stats.get("boost_count", 0)
+                                    st.write(
+                                        f"- **✅ Pedagogical boost applied:** {boost_count} intro modules moved to top"
+                                    )
+
                                 st.write("\n**Activities:**")
                                 act_stats = ranking_stats.get("activities", {})
                                 st.write(
@@ -815,15 +822,10 @@ def main():
                         with st.expander("🔍 Debug: RAG Context & Selection Details"):
                             st.markdown("### What the Model Saw (First 10 Modules)")
 
-                            # Get filtered modules (what model saw) - filter by BOTH domain AND difficulty
-                            filtered_mods = [
-                                m
-                                for m in rag_database["modules"]
-                                if m.get("difficulty") == level
-                                and m.get("domain") == domain
-                            ][:10]
+                            # Get RANKED modules (what model actually saw after semantic ranking + boost)
+                            ranked_mods = metadata.get("ranked_modules", [])[:10]
 
-                            for i, mod in enumerate(filtered_mods):
+                            for i, mod in enumerate(ranked_mods):
                                 selected = (
                                     "✅"
                                     if mod["id"] in syllabus.get("modules", [])
@@ -849,7 +851,7 @@ def main():
 
                             st.markdown("### RAG Retrieval Summary")
                             st.write(
-                                f"- Model had access to **{len(filtered_mods)} filtered modules** (limited to 20 in prompt)"
+                                f"- Model had access to **{min(len(ranked_mods), 3)} modules** (training avg: 3.6, using 3 for capacity)"
                             )
                             st.write(
                                 f"- Model selected **{len(selected_module_ids)}** from those options"

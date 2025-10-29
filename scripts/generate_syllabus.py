@@ -46,26 +46,33 @@ def build_prompt(
     prompt += f"{course_requirements.get('domain', 'general')} | "
     prompt += f"{course_requirements.get('level', 'beginner')}\n\n"
 
+    # MATCH TRAINING DATA FORMAT: Training had 2-5 modules (avg 3.6), 2-4 activities, 1-3 assessments
+    # Test shows model FAILS at 5 modules (generates garbage, incomplete output)
+    # Use training AVERAGE (3-4) for reliable generation
     prompt += "Available modules:\n"
-    for i, mod in enumerate(modules[:20]):  # Limit to 20 to fit token budget
+    for i, mod in enumerate(modules[:3]):  # Training avg ≈ 3.6, using 3 for stability
         title = mod.get("title", "Unknown")
-        hours = mod.get("estimated_hours", 0)
-        difficulty = mod.get("difficulty", "N/A")
+        hours = mod.get("estimated_hours", 8)
+        difficulty = mod.get("difficulty", "beginner")
         prompt += f"[{i}] {title} ({hours}h, {difficulty})\n"
 
     prompt += "\nAvailable activities:\n"
-    for i, act in enumerate(activities[:15]):  # Limit to 15
+    for i, act in enumerate(activities[:3]):  # Training avg ≈ 3.1, using 3
         title = act.get("title", "Unknown")
-        hours = act.get("estimated_hours", 0)
-        prompt += f"[{i}] {title} ({hours}h)\n"
+        prompt += f"[{i}] {title}\n"
 
     prompt += "\nAvailable assessments:\n"
-    for i, ass in enumerate(assessments[:5]):  # Limit to 5
+    for i, ass in enumerate(assessments[:2]):  # Training avg ≈ 2.0, using 2
         title = ass.get("title", "Unknown")
-        atype = ass.get("assessment_type", "N/A")
-        prompt += f"[{i}] {title} ({atype})\n"
+        prompt += f"[{i}] {title}\n"
 
-    prompt += "\nSelect relevant components and generate markdown syllabus."
+    prompt += "\nSelect and sequence modules, generate objectives."
+
+    # Debug: Print full prompt to verify format matches training
+    print(f"   DEBUG: Full prompt ({len(prompt)} chars):")
+    print("   " + "=" * 70)
+    print(prompt)
+    print("   " + "=" * 70)
 
     return prompt
 
@@ -212,7 +219,7 @@ def generate_complete_syllabus(
         available_module_ids=available_module_ids,
         num_candidates=3,
         temperature=0.8,
-        max_length=600,
+        max_length=1500,  # Increased to allow complete syllabi with activities/assessments
     )
 
     print(f"   Generated {len(markdown_simple)} characters")
@@ -286,6 +293,7 @@ def generate_complete_syllabus(
         "metadata": {
             "filter_stats": filter_stats,
             "ranking_stats": ranking_stats,
+            "ranked_modules": ranked_modules,  # Top 20 ranked modules (after boost)
             "selected_modules_count": len(parse_result.syllabus.get("modules", [])),
             "selected_activities_count": len(
                 parse_result.syllabus.get("activities", [])

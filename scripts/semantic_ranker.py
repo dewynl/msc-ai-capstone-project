@@ -188,6 +188,154 @@ class SemanticRanker:
 
         return ranked
 
+    def _is_intro_module(self, module: Dict) -> bool:
+        """Check if a module is an introductory/foundational module."""
+        intro_keywords = [
+            "variable",
+            "syntax",
+            "basic",
+            "fundamental",
+            "loop",
+            "iteration",
+            "conditional",
+            "if statement",
+            "function",
+            "parameter",
+            "return",
+            "data type",
+            "assignment",
+            "operator",
+            "control flow",
+            "list",
+            "string manipulation",
+            "dictionary",
+            "dict",
+            "file i/o",
+            "file input",
+            "file output",
+            "error handling",
+            "exception",
+        ]
+        advanced_keywords = [
+            "advanced",
+            "optimization",
+            "analysis",
+            "eda",
+            "exploratory",
+            "data analysis",
+            "machine learning",
+            "deep learning",
+            "algorithm",
+            "data structure",
+            "hash table",
+            "tree",
+            "graph",
+            "network",
+        ]
+
+        title_lower = module.get("title", "").lower()
+        has_intro = any(kw in title_lower for kw in intro_keywords)
+        has_advanced = any(kw in title_lower for kw in advanced_keywords)
+        return has_intro and not has_advanced
+
+    def _boost_intro_modules(
+        self,
+        ranked_modules: List[Tuple[Dict, float]],
+        course_requirements: Dict,
+    ) -> List[Tuple[Dict, float]]:
+        """
+        Boost ranking of introductory modules for beginner courses.
+
+        This is a pedagogical heuristic to fix the semantic ranking limitation
+        where general sentence transformers prioritize keyword matches over
+        pedagogical appropriateness for absolute beginner courses.
+
+        Example problem:
+        - Course: "Introduction to Python Programming"
+        - "Exploratory Data Analysis with Python" ranks higher than "Variables"
+        - Reason: Both mention "Python", but EDA requires variables as prerequisite
+
+        Args:
+            ranked_modules: List of (module, score) tuples from semantic ranking
+            course_requirements: Course requirements dict
+
+        Returns:
+            Reordered list with intro modules boosted to top
+        """
+        # Keywords that identify foundational introductory modules
+        intro_keywords = [
+            "variable",
+            "syntax",
+            "basic",
+            "fundamental",
+            "loop",
+            "iteration",
+            "conditional",
+            "if statement",
+            "function",  # Matches "Defining and Using Functions"
+            "parameter",
+            "return",
+            "data type",
+            "assignment",
+            "operator",
+            "control flow",
+            "list",  # Matches "Lists and List Operations"
+            "string manipulation",  # Matches "String Manipulation"
+            "dictionary",  # Matches "Dictionaries"
+            "dict",  # Alternative for dictionaries
+            "file i/o",  # Matches "File Input/Output"
+            "file input",
+            "file output",
+            "error handling",  # Matches "Error Handling"
+            "exception",  # Alternative for error handling
+        ]
+
+        # Keywords that indicate advanced topics (avoid false positives)
+        advanced_keywords = [
+            "advanced",
+            "optimization",
+            "analysis",
+            "eda",
+            "exploratory",
+            "data analysis",
+            "machine learning",
+            "deep learning",
+            "algorithm",
+            "data structure",
+            "hash table",
+            "tree",
+            "graph",
+            "network",
+        ]
+
+        intro_modules = []
+        other_modules = []
+
+        for module, score in ranked_modules:
+            title_lower = module.get("title", "").lower()
+            description_lower = module.get("description", "").lower()
+
+            # Check if module matches intro keywords
+            has_intro_keyword = any(kw in title_lower for kw in intro_keywords)
+
+            # Check if module contains advanced keywords (avoid false positives)
+            has_advanced_keyword = any(kw in title_lower for kw in advanced_keywords)
+
+            # Classify module
+            if has_intro_keyword and not has_advanced_keyword:
+                intro_modules.append((module, score))
+            else:
+                other_modules.append((module, score))
+
+        # Return intro modules first, then others
+        boosted = intro_modules + other_modules
+
+        print(
+            f"   Pedagogical boost: {len(intro_modules)} intro modules moved to top (beginner course)"
+        )
+
+        return boosted
+
     def rank_all_components(
         self,
         modules: List[Dict],
@@ -223,8 +371,21 @@ class SemanticRanker:
 
         # Rank modules
         ranked_modules = self.rank_components(
-            modules, course_requirements, "modules", top_k=top_k_modules
+            modules, course_requirements, "modules", top_k=None  # Get all ranked first
         )
+
+        # Apply pedagogical boost for beginner courses
+        course_level = course_requirements.get("level", "intermediate")
+        print(
+            f"   DEBUG: Course level = '{course_level}' (checking for beginner boost)"
+        )
+        if course_level.lower() == "beginner":  # Case-insensitive comparison
+            ranked_modules = self._boost_intro_modules(
+                ranked_modules, course_requirements
+            )
+
+        # Now take top K after boosting
+        ranked_modules = ranked_modules[:top_k_modules]
 
         # Rank activities
         ranked_activities = self.rank_components(
@@ -242,6 +403,15 @@ class SemanticRanker:
         top_assessments = [comp for comp, score in ranked_assessments]
 
         # Compute statistics
+        boost_applied = (
+            course_requirements.get("level", "intermediate").lower() == "beginner"
+        )
+        boost_count = (
+            len([m for m, s in ranked_modules if self._is_intro_module(m)])
+            if boost_applied
+            else 0
+        )
+
         ranking_stats = {
             "modules": {
                 "input_count": len(modules),
@@ -257,6 +427,8 @@ class SemanticRanker:
                 "max_score": (
                     max(score for _, score in ranked_modules) if ranked_modules else 0
                 ),
+                "pedagogical_boost": boost_applied,
+                "boost_count": boost_count,
             },
             "activities": {
                 "input_count": len(activities),
