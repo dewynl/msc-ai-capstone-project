@@ -18,25 +18,30 @@ class SyllabusGenerator:
     Loads the trained model and provides a simple generate() method.
     """
 
-    def __init__(self, model_path: str = "models/codet5-sequenced/checkpoint-196"):
+    def __init__(self, model_path: str = None):
         """
         Initialize the generator with trained model.
 
         Args:
-            model_path: Path to trained model directory
+            model_path: Path to trained model directory or HuggingFace model ID
+                       If None, uses HF_MODEL_ID env var or falls back to local path
         """
-        # Check if model exists
-        if not os.path.exists(model_path):
-            raise FileNotFoundError(
-                f"Model not found at {model_path}. "
-                f"Please train the model first using phase4_full_training.py"
+        if model_path is None:
+            model_path = os.getenv(
+                "HF_MODEL_ID", "models/codet5-sequenced/checkpoint-196"
             )
 
         print(f"Loading model from {model_path}...")
 
-        # Load tokenizer and model
-        self.tokenizer = RobertaTokenizer.from_pretrained(model_path)
-        self.model = T5ForConditionalGeneration.from_pretrained(model_path)
+        # Load tokenizer and model (supports both local paths and HuggingFace IDs)
+        try:
+            self.tokenizer = RobertaTokenizer.from_pretrained(model_path)
+            self.model = T5ForConditionalGeneration.from_pretrained(model_path)
+        except Exception as e:
+            raise FileNotFoundError(
+                f"Model not found at {model_path}. "
+                f"Ensure model exists locally or set HF_MODEL_ID environment variable."
+            ) from e
 
         # Move to GPU if available
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
