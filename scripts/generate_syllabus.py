@@ -2,11 +2,13 @@
 """
 Complete syllabus generation pipeline.
 
-Integrates: Filter → Generate → Parse → Enhance → Expand
+Integrates: Filter → Rank → Generate → Parse → Enhance → Expand
 
 This is the main entry point for the hybrid ML + rule-based system.
 """
 
+import sys
+from pathlib import Path
 from typing import Dict, List
 
 from enhance_objectives import detect_generic_objectives, enhance_objectives
@@ -16,6 +18,10 @@ from markdown_syllabus_parser import (
 )
 from model_inference import SyllabusGenerator
 from rag_filter import filter_components_by_difficulty, get_filter_stats
+from semantic_ranker import SemanticRanker
+
+sys.path.append(str(Path(__file__).parent.parent / "src" / "inference"))
+from quality_reranker import SyllabusQualityReranker
 
 
 def build_prompt(
@@ -65,10 +71,13 @@ def build_prompt(
 
 
 def generate_complete_syllabus(
-    course_requirements: Dict, rag_database: Dict, generator: SyllabusGenerator = None
+    course_requirements: Dict,
+    rag_database: Dict,
+    generator: SyllabusGenerator = None,
+    ranker: SemanticRanker = None,
 ) -> Dict:
     """
-    Complete pipeline: Filter → Generate → Parse → Enhance → Expand
+    Complete pipeline: Filter → Rank → Generate → Parse → Enhance → Expand
 
     This is the main entry point for syllabus generation.
 
@@ -76,6 +85,7 @@ def generate_complete_syllabus(
         course_requirements: dict with title, domain, level, duration
         rag_database: dict with modules, activities, assessments
         generator: Optional pre-initialized generator (for efficiency)
+        ranker: Optional pre-initialized semantic ranker (for efficiency)
 
     Returns:
         dict with:
@@ -84,29 +94,56 @@ def generate_complete_syllabus(
             - markdown_simple: model-generated markdown
             - markdown_rich: expanded markdown with details
             - warnings: list of warnings
-            - metadata: generation statistics
+            - metadata: generation statistics (includes ranking_stats)
     """
 
-    # 1. Filter by difficulty (CRITICAL STEP - Rule-based)
-    print("Step 1: Filtering components by difficulty...")
+    # 1. Filter ALL components by domain AND difficulty (CRITICAL STEP - Rule-based)
+    print("Step 1: Filtering components by domain + difficulty...")
+    course_domain = course_requirements.get("domain")
+    course_level = course_requirements.get("level", "beginner")
+
     filtered_modules = filter_components_by_difficulty(
         rag_database.get("modules", []),
-        course_requirements.get("level", "beginner"),
+        course_level,
         "modules",
+        course_domain,
     )
 
-    # No filtering for activities and assessments
-    filtered_activities = rag_database.get("activities", [])
-    filtered_assessments = rag_database.get("assessments", [])
+    filtered_activities = filter_components_by_difficulty(
+        rag_database.get("activities", []),
+        course_level,
+        "activities",
+        course_domain,
+    )
+
+    filtered_assessments = filter_components_by_difficulty(
+        rag_database.get("assessments", []),
+        course_level,
+        "assessments",
+        course_domain,
+    )
 
     # Get filter stats
     filter_stats = get_filter_stats(
         rag_database.get("modules", []),
         filtered_modules,
         course_requirements.get("level", "beginner"),
+        course_requirements.get("domain"),  # Add domain to stats
+    )
+
+    domain_info = (
+        f" ({filter_stats.get('course_domain', 'all domains')})"
+        if course_requirements.get("domain")
+        else ""
     )
     print(
-        f"   Filtered {filter_stats['total_components']} → {filter_stats['filtered_components']} modules"
+        f"   Filtered modules: {filter_stats['total_components']} → {filter_stats['filtered_components']}{domain_info}"
+    )
+    print(
+        f"   Filtered activities: {len(rag_database.get('activities', []))} → {len(filtered_activities)}{domain_info}"
+    )
+    print(
+        f"   Filtered assessments: {len(rag_database.get('assessments', []))} → {len(filtered_assessments)}{domain_info}"
     )
 
     # Check if we have any modules
@@ -117,29 +154,81 @@ def generate_complete_syllabus(
             "filter_stats": filter_stats,
         }
 
-    # 2. Build prompt
-    print("Step 2: Building prompt...")
-    prompt = build_prompt(
-        course_requirements, filtered_modules, filtered_activities, filtered_assessments
+    # 2. Rank components by semantic similarity (ML-based)
+    print("Step 2: Ranking components by semantic similarity...")
+    if ranker is None:
+        ranker = SemanticRanker()
+
+    ranking_result = ranker.rank_all_components(
+        modules=filtered_modules,
+        activities=filtered_activities,
+        assessments=filtered_assessments,
+        course_requirements=course_requirements,
+        top_k_modules=20,
+        top_k_activities=15,
+        top_k_assessments=5,
     )
 
-    # 3. Generate markdown (ML-based)
-    print("Step 3: Generating markdown with CodeT5...")
+    # Use ranked components for generation
+    ranked_modules = ranking_result["modules"]
+    ranked_activities = ranking_result["activities"]
+    ranked_assessments = ranking_result["assessments"]
+    ranking_stats = ranking_result["ranking_stats"]
+
+    print(f"   Ranked modules: {len(filtered_modules)} → {len(ranked_modules)} (top K)")
+    print(
+        f"   Ranked activities: {len(filtered_activities)} → {len(ranked_activities)} (top K)"
+    )
+    print(
+        f"   Ranked assessments: {len(filtered_assessments)} → {len(ranked_assessments)} (top K)"
+    )
+
+    # 3. Build prompt (using ranked components)
+    print("Step 3: Building prompt...")
+    prompt = build_prompt(
+        course_requirements, ranked_modules, ranked_activities, ranked_assessments
+    )
+
+    # 4. Generate markdown with quality reranking (ML-based + Pedagogical Evaluation)
+    print("Step 4: Generating markdown with CodeT5 + Quality Evaluation...")
     if generator is None:
         generator = SyllabusGenerator()
 
-    markdown_simple = generator.generate(prompt, max_length=400)
-    print(f"   Generated {len(markdown_simple)} characters")
+    # Initialize quality reranker
+    reranker = SyllabusQualityReranker()
 
-    # 4. Parse to JSON (Hybrid)
-    print("Step 4: Parsing markdown to JSON...")
+    # Extract module IDs in order they appear in prompt (for quality evaluation)
+    available_module_ids = [m["id"] for m in ranked_modules]
+
+    # Generate with quality-aware selection (3 candidates, best selected)
+    (
+        markdown_simple,
+        quality_metrics,
+        is_acceptable,
+    ) = reranker.generate_with_quality_selection(
+        model=generator.model,
+        tokenizer=generator.tokenizer,
+        input_text=prompt,
+        available_module_ids=available_module_ids,
+        num_candidates=3,
+        temperature=0.8,
+        max_length=600,
+    )
+
+    print(f"   Generated {len(markdown_simple)} characters")
+    print(
+        f"   Quality score: {quality_metrics.get('prerequisite_accuracy', 0):.0%} prerequisite coherence"
+    )
+
+    # 5. Parse to JSON (Hybrid)
+    print("Step 5: Parsing markdown to JSON...")
     parser = MarkdownSyllabusParser()
 
-    # Build RAG context (MUST use same filtered modules!)
+    # Build RAG context (MUST use same ranked modules!)
     rag_context = {
-        "available_modules": filtered_modules,
-        "available_activities": filtered_activities,
-        "available_assessments": filtered_assessments,
+        "available_modules": ranked_modules,
+        "available_activities": ranked_activities,
+        "available_assessments": ranked_assessments,
     }
 
     parse_result = parser.parse(markdown_simple, rag_context)
@@ -155,13 +244,19 @@ def generate_complete_syllabus(
 
     print(f"   ✓ Parsed successfully with {len(parse_result.warnings)} warnings")
 
-    # 5. Enhance objectives (Rule-based - Bloom's Taxonomy)
-    print("Step 5: Enhancing learning objectives...")
+    # Add description from original requirements (model doesn't generate this)
+    if "description" in course_requirements:
+        parse_result.syllabus["course_info"]["description"] = course_requirements[
+            "description"
+        ]
+
+    # 6. Enhance objectives (Rule-based - Bloom's Taxonomy)
+    print("Step 6: Enhancing learning objectives...")
     if detect_generic_objectives(parse_result.syllabus.get("learning_objectives", [])):
         # Get full module objects from IDs
         selected_module_ids = parse_result.syllabus.get("modules", [])
         selected_modules = [
-            mod for mod in filtered_modules if mod.get("id") in selected_module_ids
+            mod for mod in ranked_modules if mod.get("id") in selected_module_ids
         ]
 
         enhanced_objectives = enhance_objectives(
@@ -176,8 +271,8 @@ def generate_complete_syllabus(
     else:
         print("   ℹ️ Objectives already good, skipping enhancement")
 
-    # 6. Expand with rich details (Hybrid)
-    print("Step 6: Expanding with database details...")
+    # 7. Expand with rich details (Hybrid)
+    print("Step 7: Expanding with database details...")
     markdown_rich = expand_with_database_details(parse_result.syllabus, rag_context)
     print(f"   ✓ Expanded to {len(markdown_rich)} characters")
 
@@ -190,6 +285,7 @@ def generate_complete_syllabus(
         "warnings": parse_result.warnings,
         "metadata": {
             "filter_stats": filter_stats,
+            "ranking_stats": ranking_stats,
             "selected_modules_count": len(parse_result.syllabus.get("modules", [])),
             "selected_activities_count": len(
                 parse_result.syllabus.get("activities", [])
@@ -198,6 +294,9 @@ def generate_complete_syllabus(
                 parse_result.syllabus.get("assessments", [])
             ),
         },
+        # Add pedagogical quality metrics
+        "quality_metrics": quality_metrics,
+        "quality_acceptable": is_acceptable,
     }
 
 

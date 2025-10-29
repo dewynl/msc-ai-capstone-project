@@ -66,9 +66,13 @@ class MarkdownSyllabusParser:
                 warnings.append("No learning objectives found")
 
             # Extract component indices
-            module_indices = self._extract_section_indices(
-                markdown, "## Selected Modules"
-            )
+            # Try new format first (## Module Sequence), fallback to old format
+            module_indices = self._extract_module_sequence(markdown)
+            if not module_indices:
+                module_indices = self._extract_section_indices(
+                    markdown, "## Selected Modules"
+                )
+
             activity_indices = self._extract_section_indices(
                 markdown, "## Selected Activities"
             )
@@ -166,6 +170,47 @@ class MarkdownSyllabusParser:
             objectives.extend(bullets)
 
         return objectives
+
+    def _extract_module_sequence(self, markdown: str) -> List[int]:
+        """
+        Extract module indices from new sequenced format.
+
+        Expected format:
+            ## Module Sequence
+
+            ### Weeks 1-2: Python Basics (8 hours)
+            [0] This module explores...
+
+            ### Weeks 3-4: Control Structures (8 hours)
+            [1] Building program logic...
+
+        Returns:
+            List of module indices in sequence order
+        """
+        # Find ## Module Sequence section
+        # Note: Lookahead (?=\n## |\Z) includes space after ## to match section headers like "## Selected Activities"
+        section_match = re.search(
+            r"## Module Sequence\n+(.*?)(?=\n## |\Z)", markdown, re.DOTALL
+        )
+
+        if not section_match:
+            return []
+
+        section_text = section_match.group(1)
+
+        # Extract indices from subsections
+        # Pattern matches: ### Weeks X-Y: Title (hours)\n[index] description
+        # or: ### Week X: Title (hours)\n[index] description
+        indices = []
+
+        # Find all ### subsections with indices
+        subsection_pattern = r"###\s+Week[^\n]+\n\s*\[(\d+)\]"
+        matches = re.findall(subsection_pattern, section_text)
+
+        for idx_str in matches:
+            indices.append(int(idx_str))
+
+        return indices
 
     def _extract_section_indices(self, markdown: str, section_header: str) -> List[int]:
         """
