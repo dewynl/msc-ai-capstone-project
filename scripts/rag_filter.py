@@ -2,8 +2,7 @@
 """
 Difficulty-aware RAG filtering for course syllabus generation.
 
-This is a CRITICAL component that ensures model only sees pedagogically
-appropriate components, matching the training data distribution.
+Ensures model only sees pedagogically appropriate components.
 """
 
 from typing import Dict, List
@@ -16,10 +15,7 @@ def filter_components_by_difficulty(
     course_domain: str = None,
 ) -> List[Dict]:
     """
-    Filter RAG components by BOTH domain AND difficulty to match course requirements.
-
-    CRITICAL: This ensures model only sees appropriate components,
-    matching the training data distribution and pedagogical appropriateness.
+    Filter RAG components by domain and difficulty to match course requirements.
 
     Filtering rules:
     - Domain: Only components matching course domain (e.g., CS course → CS components only)
@@ -38,7 +34,6 @@ def filter_components_by_difficulty(
         Filtered list of components appropriate for the course level and domain
     """
 
-    # Step 1: Filter by domain if specified (applies to all component types)
     if course_domain:
         domain_normalized = course_domain.lower().strip()
         components = [
@@ -47,22 +42,14 @@ def filter_components_by_difficulty(
             if c.get("domain", "").lower().strip() == domain_normalized
         ]
 
-    # Step 2: Filter by difficulty (applies to ALL component types)
-    # Normalize level
     level = course_level.lower().strip()
 
-    # Filter by difficulty based on pedagogical appropriateness
     if level == "beginner":
-        # Beginner courses: only beginner components
         return [c for c in components if c.get("difficulty", "").lower() == "beginner"]
-
     elif level == "intermediate":
-        # Intermediate courses: beginner + intermediate components
         allowed = {"beginner", "intermediate"}
         return [c for c in components if c.get("difficulty", "").lower() in allowed]
-
-    else:  # advanced
-        # Advanced courses: intermediate + advanced components
+    else:
         allowed = {"intermediate", "advanced"}
         return [c for c in components if c.get("difficulty", "").lower() in allowed]
 
@@ -73,14 +60,7 @@ def get_filter_stats(
     course_level: str,
     course_domain: str = None,
 ) -> Dict:
-    """
-    Get statistics about filtering operation.
-
-    Useful for debugging and monitoring.
-
-    Returns:
-        Dict with filter statistics
-    """
+    """Get statistics about filtering operation."""
     stats = {
         "total_components": len(all_components),
         "filtered_components": len(filtered_components),
@@ -96,7 +76,6 @@ def get_filter_stats(
         },
     }
 
-    # Add domain info if filtering by domain
     if course_domain:
         stats["course_domain"] = course_domain
         stats["domain_distribution"] = {

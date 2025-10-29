@@ -3,14 +3,7 @@
 Markdown Syllabus Parser
 
 Converts model-generated markdown (with indices) to structured JSON (with UUIDs).
-
-KEY PRINCIPLE: Parser receives the SAME rag_context that model saw.
-This ensures indices map correctly to components.
-
-Architecture:
-- Model outputs: [0], [1], [2] (indices)
-- Parser uses: rag_context['available_modules'][0] (same array model saw)
-- Parser extracts: UUID from component at that index
+Parser receives the same rag_context that model saw to ensure indices map correctly.
 """
 
 import json
@@ -173,7 +166,7 @@ class MarkdownSyllabusParser:
 
     def _extract_module_sequence(self, markdown: str) -> List[int]:
         """
-        Extract module indices from new sequenced format.
+        Extract module indices from sequenced format.
 
         Expected format:
             ## Module Sequence
@@ -181,14 +174,9 @@ class MarkdownSyllabusParser:
             ### Weeks 1-2: Python Basics (8 hours)
             [0] This module explores...
 
-            ### Weeks 3-4: Control Structures (8 hours)
-            [1] Building program logic...
-
         Returns:
             List of module indices in sequence order
         """
-        # Find ## Module Sequence section
-        # Note: Lookahead (?=\n## |\Z) includes space after ## to match section headers like "## Selected Activities"
         section_match = re.search(
             r"## Module Sequence\n+(.*?)(?=\n## |\Z)", markdown, re.DOTALL
         )
@@ -196,16 +184,9 @@ class MarkdownSyllabusParser:
         if section_match:
             section_text = section_match.group(1)
         else:
-            # Fallback: Look for ### Week patterns anywhere in the document
-            # (Model sometimes skips the "## Module Sequence" header)
             section_text = markdown
 
-        # Extract indices from subsections
-        # Pattern matches: ### Weeks X-Y: Title (hours)\n[index] description
-        # or: ### Week X: Title (hours)\n[index] description
         indices = []
-
-        # Find all ### subsections with indices
         subsection_pattern = r"###\s+Week[^\n]+\n\s*\[(\d+)\]"
         matches = re.findall(subsection_pattern, section_text)
 

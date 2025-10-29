@@ -374,12 +374,8 @@ class SemanticRanker:
             modules, course_requirements, "modules", top_k=None  # Get all ranked first
         )
 
-        # Apply pedagogical boost for beginner courses
         course_level = course_requirements.get("level", "intermediate")
-        print(
-            f"   DEBUG: Course level = '{course_level}' (checking for beginner boost)"
-        )
-        if course_level.lower() == "beginner":  # Case-insensitive comparison
+        if course_level.lower() == "beginner":
             ranked_modules = self._boost_intro_modules(
                 ranked_modules, course_requirements
             )
@@ -387,22 +383,17 @@ class SemanticRanker:
         # Now take top K after boosting
         ranked_modules = ranked_modules[:top_k_modules]
 
-        # Rank activities
         ranked_activities = self.rank_components(
             activities, course_requirements, "activities", top_k=top_k_activities
         )
 
-        # Rank assessments
         ranked_assessments = self.rank_components(
             assessments, course_requirements, "assessments", top_k=top_k_assessments
         )
 
-        # Extract components (drop scores)
         top_modules = [comp for comp, score in ranked_modules]
         top_activities = [comp for comp, score in ranked_activities]
         top_assessments = [comp for comp, score in ranked_assessments]
-
-        # Compute statistics
         boost_applied = (
             course_requirements.get("level", "intermediate").lower() == "beginner"
         )

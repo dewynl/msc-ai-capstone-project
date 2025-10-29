@@ -57,16 +57,7 @@ st.markdown(
 # ============================================================================
 @st.cache_resource(show_spinner=False)
 def load_generator():
-    """Load CodeT5 model for syllabus generation (cached to avoid reloading).
-
-    This loads the TRAINED CodeT5 MODEL for generating markdown syllabi.
-
-    On first load after deployment, this:
-    1. Loads the fine-tuned CodeT5-small model (60M parameters)
-    2. Initializes tokenizer and sets up inference pipeline
-
-    Subsequent loads use the cached version (instant).
-    """
+    """Load CodeT5 model for syllabus generation (cached)."""
     sys.path.insert(0, str(Path(__file__).parent / "scripts"))
     from model_inference import SyllabusGenerator
 
@@ -75,16 +66,7 @@ def load_generator():
 
 @st.cache_resource(show_spinner=False)
 def load_ranker():
-    """Load semantic ranker for component ranking (cached to avoid reloading).
-
-    This loads the SENTENCE TRANSFORMER MODEL for semantic similarity ranking.
-
-    On first load after deployment, this:
-    1. Loads the all-MiniLM-L6-v2 model (22M parameters)
-    2. Initializes embedding pipeline
-
-    Subsequent loads use the cached version (instant).
-    """
+    """Load semantic ranker for component ranking (cached)."""
     sys.path.insert(0, str(Path(__file__).parent / "scripts"))
     from semantic_ranker import SemanticRanker
 
@@ -93,34 +75,27 @@ def load_ranker():
 
 @st.cache_resource
 def get_db_manager():
-    """Get Supabase manager (cached singleton)."""
+    """Get Supabase manager (cached)."""
     return get_supabase_manager()
 
 
-@st.cache_data(ttl=60)  # Cache for 1 minute (dev mode)
+@st.cache_data(ttl=60)
 def load_rag_database():
-    """Load all educational components from local JSON files for RAG context.
-
-    Returns dict with modules, activities, assessments.
-    Cached to avoid repeated file I/O.
-    """
+    """Load educational components from JSON files (cached)."""
     import json
     from pathlib import Path
 
     base_dir = Path(__file__).parent
     components_dir = base_dir / "data" / "components"
 
-    # Load modules
     modules_file = components_dir / "modules.json"
     with open(modules_file) as f:
         modules = json.load(f)
 
-    # Normalize field names (module_id -> id, activity_id -> id, etc.)
     for module in modules:
         if "module_id" in module:
             module["id"] = module.pop("module_id")
 
-    # Load activities
     activities_file = components_dir / "activities.json"
     with open(activities_file) as f:
         activities = json.load(f)
@@ -129,7 +104,6 @@ def load_rag_database():
         if "activity_id" in activity:
             activity["id"] = activity.pop("activity_id")
 
-    # Load assessments
     assessments_file = components_dir / "assessments.json"
     with open(assessments_file) as f:
         assessments = json.load(f)

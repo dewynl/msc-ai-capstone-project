@@ -64,24 +64,20 @@ class SyllabusQualityReranker:
         print(f"\n🎲 Generating {num_candidates} syllabus candidates...")
 
         for i in range(num_candidates):
-            # Generate candidate with sampling for diversity
             syllabus = self._generate_single(
                 model,
                 tokenizer,
                 input_text,
-                temperature=temperature if i > 0 else 0.0,  # First one greedy
+                temperature=temperature if i > 0 else 0.0,
                 max_length=max_length,
             )
 
-            # Debug: Show snippet of generated output (first 800 chars)
             print(f"  Generated {len(syllabus)} chars, preview:\n{syllabus[:800]}\n...")
 
-            # Extract module sequence from generated syllabus
             module_sequence = self._extract_module_sequence(
                 syllabus, available_module_ids
             )
 
-            # Extract activities and assessments (for completeness scoring)
             activity_sequence = self._extract_component_indices(
                 syllabus, "## Selected Activities"
             )
@@ -89,26 +85,21 @@ class SyllabusQualityReranker:
                 syllabus, "## Selected Assessments"
             )
 
-            # Debug: Check if sections exist in output
             has_activities_section = "## Selected Activities" in syllabus
             has_assessments_section = "## Selected Assessments" in syllabus
             if not has_activities_section:
                 print("    ⚠️ No '## Selected Activities' section found in output")
             if not has_assessments_section:
                 print("    ⚠️ No '## Selected Assessments' section found in output")
-
-            # Evaluate pedagogical quality
             if len(module_sequence) > 0:
                 metrics = self.pedagogical_loss.evaluate_sequence_quality(
                     module_sequence
                 )
 
-                # Add component counts for completeness scoring
                 metrics["module_count"] = len(module_sequence)
                 metrics["activity_count"] = len(activity_sequence)
                 metrics["assessment_count"] = len(assessment_sequence)
 
-                # Calculate overall quality score (0-1, higher is better)
                 quality_score = self._calculate_quality_score(metrics)
 
                 candidates.append(
@@ -132,7 +123,6 @@ class SyllabusQualityReranker:
                 print(f"  Candidate {i+1}: Failed to parse module sequence")
                 print(f"    Generated text (last 500 chars): ...{syllabus[-500:]}")
 
-        # Handle case where no valid candidates were generated
         if not candidates:
             return (
                 "ERROR: Failed to generate valid syllabus",
@@ -140,7 +130,6 @@ class SyllabusQualityReranker:
                 False,
             )
 
-        # Select best candidate
         best = max(candidates, key=lambda x: x["quality_score"])
         is_acceptable = best["quality_score"] >= self.quality_threshold
 
@@ -162,18 +151,15 @@ class SyllabusQualityReranker:
             input_text, return_tensors="pt", max_length=512, truncation=True
         )
 
-        # Generate with SIMPLE parameters (match successful test)
-        # IMPORTANT: repetition_penalty and no_repeat_ngram_size break generation!
         outputs = model.generate(
             **inputs,
             max_length=max_length,
             num_beams=1,
-            do_sample=(temperature > 0),  # First candidate greedy, others sampled
+            do_sample=(temperature > 0),
             temperature=temperature if temperature > 0 else None,
             top_p=0.9 if temperature > 0 else None,
         )
 
-        # Decode
         syllabus = tokenizer.decode(outputs[0], skip_special_tokens=True)
         return syllabus
 
@@ -210,7 +196,6 @@ class SyllabusQualityReranker:
     ) -> List[int]:
         """
         Extract component indices from sections like '## Selected Activities'.
-        Deduplicates indices to match parser behavior.
 
         Args:
             syllabus_text: Generated syllabus markdown

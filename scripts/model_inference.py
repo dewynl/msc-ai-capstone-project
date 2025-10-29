@@ -33,7 +33,6 @@ class SyllabusGenerator:
 
         print(f"Loading model from {model_path}...")
 
-        # Load tokenizer and model (supports both local paths and HuggingFace IDs)
         try:
             self.tokenizer = RobertaTokenizer.from_pretrained(model_path)
             self.model = T5ForConditionalGeneration.from_pretrained(model_path)
@@ -43,10 +42,9 @@ class SyllabusGenerator:
                 f"Ensure model exists locally or set HF_MODEL_ID environment variable."
             ) from e
 
-        # Move to GPU if available
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.model = self.model.to(self.device)
-        self.model.eval()  # Set to evaluation mode
+        self.model.eval()
 
         print(f"Model loaded successfully on {self.device}")
 
