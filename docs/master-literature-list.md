@@ -299,11 +299,48 @@
 - **Publisher/Venue:** Elsevier
 - **Publication Year:** 2023
 
+### Retrieval-Augmented Generation and Semantic Ranking
+
+**44. Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (Lewis et al., 2020)** ✅ *Used in Dissertation*
+- **Harvard Citation:** Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W., Rocktäschel, T., Riedel, S. and Kiela, D. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. In Advances in Neural Information Processing Systems 33 (NeurIPS 2020), pp. 9459-9474.
+- **DOI/URL:** https://arxiv.org/abs/2005.11401
+- **Publisher/Venue:** Neural Information Processing Systems (NeurIPS)
+- **Publication Year:** 2020
+- **Key Contribution:** Introduced RAG models combining pre-trained parametric and non-parametric memory; demonstrated T5 and BART compatibility with retrieval augmentation; proved RAG generates more specific, diverse, and factual language than seq2seq baselines
+
+**45. Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks (Reimers & Gurevych, 2019)** ✅ *Used in Dissertation*
+- **Harvard Citation:** Reimers, N. and Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP), pp. 3982-3992.
+- **DOI/URL:** https://arxiv.org/abs/1908.10084
+- **Publisher/Venue:** Association for Computational Linguistics (EMNLP-IJCNLP)
+- **Publication Year:** 2019
+- **Key Contribution:** Modified BERT using siamese/triplet networks for semantically meaningful sentence embeddings; reduced semantic similarity computation from 65 hours (BERT) to 5 seconds (SBERT) while maintaining accuracy; enables practical semantic ranking at scale
+
+**46. Retrieval-Augmented Generation: A Comprehensive Survey (Sharma, 2024)** ✅ *Used in Dissertation*
+- **Harvard Citation:** Sharma, C. (2024). Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers. arXiv preprint arXiv:2506.00054 (Under review at ACM TOIS).
+- **DOI/URL:** https://arxiv.org/abs/2506.00054
+- **Publisher/Venue:** arXiv (Under review at ACM Transactions on Information Systems)
+- **Publication Year:** 2024
+- **Key Contribution:** Comprehensive survey of 91 RAG systems; identified semantic ranking as universal enhancement; documented hybrid approaches (iterative retrieval, utility-driven optimization, dynamic triggering); confirmed semantic embeddings are standard in modern RAG architectures
+
+**47. Retrieval-augmented generation for educational application: A systematic survey (2025)** ✅ *Used in Dissertation*
+- **Harvard Citation:** (2025). Retrieval-augmented generation for educational application: A systematic survey. ScienceDirect, DOI: S2666920X25000578.
+- **DOI/URL:** https://www.sciencedirect.com/science/article/pii/S2666920X25000578
+- **Publisher/Venue:** ScienceDirect
+- **Publication Year:** 2025
+- **Key Contribution:** Systematic review of RAG applications in education covering interactive learning systems, educational content generation and assessment, large-scale deployment in educational ecosystems; validated RAG for improving factual accuracy and dynamic knowledge updates in educational contexts
+
+**48. Leveraging In-Context Learning and Retrieval-Augmented Generation for Automatic Question Generation in Educational Domains (2025)** ✅ *Used in Dissertation*
+- **Harvard Citation:** (2025). Leveraging In-Context Learning and Retrieval-Augmented Generation for Automatic Question Generation in Educational Domains. arXiv preprint arXiv:2501.17397.
+- **DOI/URL:** https://arxiv.org/abs/2501.17397
+- **Publisher/Venue:** arXiv
+- **Publication Year:** 2025
+- **Key Contribution:** Demonstrated RAG with T5-large and BART-large outperforms pure fine-tuning for educational content generation; validated hybrid model (RAG + in-context learning) for question generation; confirmed T5 benefits from retrieval augmentation in educational domain
+
 ---
 
 ## Usage Statistics
 
-- **Total References in Master List:** 43
+- **Total References in Master List:** 48
 - **Currently Used in Dissertation:** 24 (56%)
 - **Pre-Approved References:** 38 (88%)
 - **Additional References Used:** 5 (12%)

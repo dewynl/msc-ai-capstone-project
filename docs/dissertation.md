@@ -21,6 +21,7 @@ This question encompasses several critical sub-questions:
 - How can existing neural language architectures be adapted to incorporate educational domain knowledge?
 - What custom architectural components are required to maintain pedagogical coherence in generated content?
 - How can curriculum learning principles be applied to train models for educational content generation?
+- How can pedagogical principles (prerequisite coherence, difficulty progression, topic diversity) be formalized as quantifiable evaluation metrics?
 - What evaluation frameworks can effectively measure both technical performance and educational quality?
 
 ## 1.3 Aims and Objectives
@@ -48,6 +49,11 @@ To adapt and evaluate existing neural language architectures with custom educati
 - Develop domain classification capability across different subject areas
 - Conduct extensive validation using cross-domain evaluation protocols
 
+**Pedagogical Quality Evaluation Framework**
+- Design and implement three-component pedagogical evaluation function encoding curriculum design principles (prerequisite coherence, difficulty progression, topic diversity)
+- Develop generate-and-rerank inference pipeline using pedagogical quality metrics
+- Validate framework effectiveness through comparative quality analysis against baseline approaches
+
 **Evaluation and Demonstration**
 - Create comprehensive evaluation framework measuring both technical performance and educational quality
 - Conduct case studies demonstrating practical application across multiple educational domains
@@ -58,7 +64,9 @@ To adapt and evaluate existing neural language architectures with custom educati
 
 ### 1.4.1 Technical Innovation
 
-This research contributes to the field of artificial intelligence through the development of domain-specific neural network adaptations. By incorporating curriculum learning mechanisms and pedagogical structure encoders, the work extends current transformer architectures beyond general-purpose language generation to specialised educational content creation. The integration of educational taxonomies directly into neural network architecture represents a novel approach to domain adaptation that could inform future AI applications in education.
+This research contributes to the field of artificial intelligence through the development of domain-specific neural network adaptations and a novel pedagogical quality evaluation framework. By incorporating curriculum learning mechanisms through prerequisite-aware training data sequencing and developing a three-component pedagogical evaluation function, the work extends current transformer architectures beyond general-purpose language generation to specialised educational content creation.
+
+The key technical innovation lies in formalizing curriculum design principles as measurable evaluation metrics that assess generated content quality without requiring differentiable backpropagation. This approach addresses the fundamental challenge of incorporating pedagogical domain knowledge into neural systems where traditional loss-based training is computationally infeasible due to discrete operations (module sequencing, topological sorting) and symbolic reasoning (prerequisite graph traversal). The integration of educational taxonomies directly into both training data organization and evaluation frameworks represents a novel approach to domain adaptation that could inform future AI applications where domain constraints cannot be expressed as differentiable losses.
 
 ### 1.4.2 Practical Application
 
@@ -461,7 +469,7 @@ Social impact evaluation extends beyond immediate educational stakeholders to co
 
 # 4. Methodology
 
-This chapter establishes the systematic approach used to design and evaluate the custom neural network architecture for automated course syllabus generation. The methodology integrates Design Science Research principles with educational AI development practices, ensuring both technical rigour and pedagogical validity throughout the research process.
+This chapter establishes the systematic approach used to design and evaluate the custom neural network architecture and pedagogical quality evaluation framework for automated course syllabus generation. The methodology integrates Design Science Research principles with educational AI development practices and curriculum learning theory, ensuring both technical rigour and pedagogical validity throughout the research process.
 
 ## 4.1 Research Design and Philosophical Framework
 
@@ -496,6 +504,8 @@ The research methodology follows a systematic four-phase iterative cycle aligned
 The methodology directly addresses the primary research question by providing systematic approaches to each component challenge. The iterative DSR framework ensures that technical architectural decisions remain grounded in educational requirements whilst maintaining scientific rigour throughout the development process.
 
 The design methodology specifically addresses the technical challenge of adapting existing neural architectures for educational applications through systematic component design and validation. The mixed-methods evaluation approach tackles the educational quality assessment challenge by combining computational metrics with expert pedagogical review, ensuring comprehensive evaluation of both technical performance and educational effectiveness.
+
+The pedagogical quality evaluation framework specifically addresses the challenge of incorporating curriculum design principles into neural content generation systems. By formalizing prerequisite coherence, difficulty progression, and topic diversity as measurable evaluation metrics, the methodology enables systematic educational quality assessment. This approach recognizes that pedagogical constraints are best validated through explicit measurement of curriculum design principles rather than relying solely on learned patterns from training data.
 
 ## 4.2 Function Calling Architecture Design Methodology
 
@@ -673,11 +683,11 @@ This research progressed through three distinct architectural phases, each addre
 
 **Phase 3: Function Calling Architecture** synthesised insights from both prior phases, achieving 100% structural validity whilst maintaining 85% T5-originated content. This approach treats the language model as an intelligent function dispatcher that decomposes syllabus generation into structured subtasks, delegates content generation to T5 within constrained boundaries, and assembles outputs using programmatic validation. The architecture preserves T5's educational content generation strengths whilst adding structural scaffolding through executable domain-specific language (DSL) and format-agnostic intelligent parsing. The function calling methodology transforms structured generation from a syntax precision challenge into a semantic reasoning task, enabling smaller models to achieve reliable structured output through task decomposition rather than parameter scaling. Comprehensive implementation details, DSL design rationale, execution engine architecture, training procedures, and comparative evaluation against all prior phases are presented in Sections 5.2-5.4 and Appendices A.4.
 
-The progression from 0% validity (Phase 1) through 100% validity with minimal neural contribution (Phase 2) to 100% validity with 85% neural contribution (Phase 3) demonstrates how architectural design choices fundamentally impact both structural correctness and meaningful model utilisation in structured generation tasks. This methodological evolution provides a systematic template for addressing similar challenges in domain-specific AI systems requiring reliable structured output generation.
+These architectural iterations demonstrate how design choices fundamentally impact both structural correctness and meaningful model utilisation in structured generation tasks. Following successful structural generation, the research extended to address pedagogical quality through a three-component evaluation framework measuring prerequisite coherence, difficulty progression, and topic diversity. This extension introduced prerequisite relationship metadata across 960 educational modules, prerequisite-aware training data sequencing, and generate-and-rerank inference enabling quantifiable educational quality assessment.
 
 ### 5.1.2 Synthetic Educational Data Generation Methodology
 
-To address the absence of structured, machine-readable syllabus datasets, this research developed a component-based synthetic data generation methodology that produces educationally valid training examples whilst maintaining domain diversity and structural consistency. The generation system employs 16 predefined STEM subjects, 12 common learning outcomes (aligned with Bloom's taxonomy cognitive levels), and 8 assessment types to construct pedagogically coherent training materials. Each synthetic syllabus combines random domain selection, structured component assembly with prerequisite relationships, T5-generated content enhancement for descriptions and detailed specifications, and automated validation for JSON structural validity and educational framework compliance (Anderson et al., 2001). This methodology generated 180+ training examples with guaranteed structural validity across Computer Science, Mathematics, Physics, and Engineering domains, providing controlled experimentation foundations without real-world dataset confounding variables whilst enabling systematic quality assurance and privacy protection.
+To address the absence of structured, machine-readable syllabus datasets, this research developed a component-based synthetic data generation methodology that produces educationally valid training examples whilst maintaining domain diversity and structural consistency. The generation system employs 16 predefined STEM subjects, 12 common learning outcomes (aligned with Bloom's taxonomy cognitive levels), and 8 assessment types to construct pedagogically coherent training materials. Each synthetic syllabus combines random domain selection, structured component assembly with prerequisite relationships, T5-generated content enhancement for descriptions and detailed specifications, and automated validation for JSON structural validity and educational framework compliance (Anderson et al., 2001). This methodology generated 180+ training examples with guaranteed structural validity across Computer Science, Mathematics, Physics, and Engineering domains, providing controlled experimentation foundations without real-world dataset confounding variables whilst enabling systematic quality assurance and privacy protection. The dataset was subsequently enhanced with prerequisite relationship metadata and regenerated with prerequisite-aware topological sequencing, producing 1,300 training examples where module ordering respects prerequisite dependencies.
 
 ## 5.2 Function Calling Architecture Development
 
