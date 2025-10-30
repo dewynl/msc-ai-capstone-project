@@ -106,26 +106,26 @@ A novel function calling architecture that combines neural language generation w
 
 ## Implementation Highlights
 
-**Function Calling Architecture Components:**
-- `T5FunctionCallGenerator`: Neural function call generation
-- `FunctionCallParser`: Format-agnostic intelligent parsing with information extraction
-- `SyllabusBuilder`: Execution engine with educational validation
-- `RAGIntegratedSyllabusBuilder`: Component-aware syllabus construction
-- `ComponentRetrievalPipeline`: Vector database query and component retrieval
+**Markdown Generation Architecture Components:**
+- `SyllabusGenerator` (CodeT5-small): Direct markdown generation from course requirements
+- `SemanticRanker`: BERT-based component ranking by semantic similarity
+- `MarkdownSyllabusParser`: Structured JSON extraction from generated markdown
+- `ObjectiveEnhancer`: Bloom's Taxonomy-based learning objective enhancement
+- `SyllabusQualityReranker`: Prerequisite coherence validation
 
 **Key Files:**
-- `src/models/function_call_engine.py`: Core parser and generator
-- `src/models/rag_integrated_generator.py`: RAG integration
-- `src/training/t5_function_call_trainer.py`: T5 fine-tuning pipeline
-- `scripts/custom_input_demo.py`: Interactive demo
+- `scripts/generate_syllabus.py`: Complete generation pipeline (filter → rank → generate → parse → enhance)
+- `scripts/model_inference.py`: CodeT5 inference wrapper
+- `scripts/semantic_ranker.py`: Component ranking with pedagogical boosting
+- `src/inference/quality_reranker.py`: Quality-based candidate selection
 
 ## Progress Summary
 
-**Technical Achievement**: Successfully developed and implemented novel function calling architecture that achieves reliable structured generation while preserving T5 semantic intelligence.
+**Technical Achievement**: Successfully developed hybrid ML + rule-based system combining CodeT5-small fine-tuned model with semantic ranking and quality validation for reliable syllabus generation.
 
 **Academic Progress**: Dissertation writing substantially complete (115% of word count target), with core technical chapters finished and evaluation/conclusion chapters remaining.
 
-**Research Contribution**: Demonstrated that architectural innovation enables smaller models to achieve reliable structured generation without requiring parameter scaling.
+**Research Contribution**: Demonstrated that combining small fine-tuned models with intelligent filtering, semantic ranking, and quality validation achieves reliable educational content generation.
 
 **Next Priority**: Complete evaluation chapter documenting technical performance and educational quality assessment.
 
