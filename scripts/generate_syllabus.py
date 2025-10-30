@@ -23,6 +23,12 @@ from semantic_ranker import SemanticRanker
 sys.path.append(str(Path(__file__).parent.parent / "src" / "inference"))
 from quality_reranker import SyllabusQualityReranker
 
+# Model training distribution constraints - DO NOT CHANGE without retraining
+# These limits match the component counts the model was trained on
+PROMPT_MAX_MODULES = 3  # Training avg: 3.5, range: 2-5
+PROMPT_MAX_ACTIVITIES = 3  # Training avg: 3.1, range: 2-4
+PROMPT_MAX_ASSESSMENTS = 2  # Training avg: 2.0, range: 1-3
+
 
 def build_prompt(
     course_requirements: Dict,
@@ -47,19 +53,19 @@ def build_prompt(
     prompt += f"{course_requirements.get('level', 'beginner')}\n\n"
 
     prompt += "Available modules:\n"
-    for i, mod in enumerate(modules[:3]):
+    for i, mod in enumerate(modules[:PROMPT_MAX_MODULES]):
         title = mod.get("title", "Unknown")
         hours = mod.get("estimated_hours", 8)
         difficulty = mod.get("difficulty", "beginner")
         prompt += f"[{i}] {title} ({hours}h, {difficulty})\n"
 
     prompt += "\nAvailable activities:\n"
-    for i, act in enumerate(activities[:3]):
+    for i, act in enumerate(activities[:PROMPT_MAX_ACTIVITIES]):
         title = act.get("title", "Unknown")
         prompt += f"[{i}] {title}\n"
 
     prompt += "\nAvailable assessments:\n"
-    for i, ass in enumerate(assessments[:2]):
+    for i, ass in enumerate(assessments[:PROMPT_MAX_ASSESSMENTS]):
         title = ass.get("title", "Unknown")
         prompt += f"[{i}] {title}\n"
 
