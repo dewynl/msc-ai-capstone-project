@@ -1,0 +1,89 @@
+{
+  "model": "models/codet5-sequenced/checkpoint-196",
+  "num_tests": 20,
+  "num_successful": 20,
+  "evaluation_results": {
+    "error": "No successful evaluations"
+  },
+  "generated_samples": [
+    {
+      "title": "Advanced Deep Learning",
+      "domain": "computer_science",
+      "level": "postgraduate",
+      "prompt": "Generate syllabus for: Advanced Deep Learning | computer_science | postgraduate\\n\\nAvailable modules:\\n[0] Module_0 (8h, postgraduate)\\n[1] Module_15 (8h, postgraduate)\\n[2] Module_23 (8h, postgraduate)\\n[3] Module_45 (8h, postgraduate)\\n[4] Module_67 (8h, postgraduate)\\n[5] Module_89 (8h, postgraduate)\\n[6] Module_102 (8h, postgraduate)\\n",
+      "output": "# Course: Advanced Learning | computer_science\\n\\n**Domain:** postgraduate\\** summer\\n\\n** summer\\n\\n## Learning Objectives: Advanced Deep Learning | computer_science\\n** quarter\\n\\n## Learning Module Sequence\\n\\n### Weeks 1-2: Module_0 (8 hours)\n[0] This module provides a comprehensive exploration of module...\n\n### Weeks 3-4: Module_15 (8 hours)n[1] This module provides a comprehensive exploration of module...\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\",
+      "module_ids": [
+        0,
+        15,
+        23,
+        45,
+        67,
+        89,
+        102
+      ],
+      "success": true
+    },
+    {
+      "title": "Introduction to Programming",
+      "domain": "computer_science",
+      "level": "undergraduate",
+      "prompt": "Generate syllabus for: Introduction to Programming | computer_science | undergraduate\\n\\nAvailable modules:\\n[0] Module_5 (8h, undergraduate)\\n[1] Module_12 (8h, undergraduate)\\n[2] Module_34 (8h, undergraduate)\\n[3] Module_56 (8h, undergraduate)\\n[4] Module_78 (8h, undergraduate)\\n[5] Module_90 (8h, undergraduate)\\n",
+      "output": "# Course: Introduction to Programming\n\n**Domain:** computer_science\n**Level:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter: undergraduate\\n\\n** quarter: undergraduate\\** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergra",
+      "module_ids": [
+        5,
+        12,
+        34,
+        56,
+        78,
+        90
+      ],
+      "success": true
+    },
+    {
+      "title": "Data Structures and Algorithms",
+      "domain": "computer_science",
+      "level": "undergraduate",
+      "prompt": "Generate syllabus for: Data Structures and Algorithms | computer_science | undergraduate\\n\\nAvailable modules:\\n[0] Module_10 (8h, undergraduate)\\n[1] Module_25 (8h, undergraduate)\\n[2] Module_40 (8h, undergraduate)\\n[3] Module_55 (8h, undergraduate)\\n[4] Module_70 (8h, undergraduate)\\n",
+      "output": "# Course: Data Structures and Algorithms\n\n**Domain:** computer_science\n**Level:** undergraduate\\n** summer:** undergraduate\\n** summer: undergraduate\\n\\n** summer: undergraduate\\n\\n** summer: undergraduate\\n\\n## Learning Objectives and Algorithms\n\n**Duration:** quarter: undergraduate\\n\\n## Learning Objectives and Algorithms\n\n**Domain:** computer_science\n**Level:** undergraduate\\n\\n### Weeks 1-2: Module_10 (8 hours)\n[0] This module provides a comprehensive exploration of data science...\n\n### Weeks 3-4: Module_10 (8 hours)n[1] This module provides a comprehensive exploration of module...\n\n### Weeks 5-6: Module_10 (8 hours)n[2] This module provides a comprehensive exploration of module...\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n",
+      "module_ids": [
+        10,
+        25,
+        40,
+        55,
+        70
+      ],
+      "success": true
+    },
+    {
+      "title": "Machine Learning Fundamentals",
+      "domain": "computer_science",
+      "level": "postgraduate",
+      "prompt": "Generate syllabus for: Machine Learning Fundamentals | computer_science | postgraduate\\n\\nAvailable modules:\\n[0] Module_8 (8h, postgraduate)\\n[1] Module_20 (8h, postgraduate)\\n[2] Module_35 (8h, postgraduate)\\n[3] Module_50 (8h, postgraduate)\\n[4] Module_65 (8h, postgraduate)\\n[5] Module_80 (8h, postgraduate)\\n",
+      "output": "# Course: Machine Learning Fundamentals\n\n**Domain:** computer_science\n**Level:** postgraduate\\n** summer:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter: quarter:",
+      "module_ids": [
+        8,
+        20,
+        35,
+        50,
+        65,
+        80
+      ],
+      "success": true
+    },
+    {
+      "title": "Web Development",
+      "domain": "computer_science",
+      "level": "undergraduate",
+      "prompt": "Generate syllabus for: Web Development | computer_science | undergraduate\\n\\nAvailable modules:\\n[0] Module_2 (8h, undergraduate)\\n[1] Module_18 (8h, undergraduate)\\n[2] Module_32 (8h, undergraduate)\\n[3] Module_48 (8h, undergraduate)\\n[4] Module_62 (8h, undergraduate)\\n",
+      "output": "# Course: Web Development\n\n**Domain:** computer_science\n**Level:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter:** undergraduate\\** quarter: undergraduate\\n\\n** quarter: undergraduate\\** quarter:** undergraduate\\** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter:** quarter: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate: undergraduate:",
+      "module_ids": [
+        2,
+        18,
+        32,
+        48,
+        62
+      ],
+      "success": true
+    }
+  ]
+}

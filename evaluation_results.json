@@ -1,0 +1,93 @@
+{
+  "summary": {
+    "total_tests": 8,
+    "tier_counts": {
+      "1": 8,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "tier_percentages": {
+      "tier1": 100.0,
+      "tier2": 0.0,
+      "tier3": 0.0,
+      "tier4": 0.0,
+      "success": 100.0
+    },
+    "decision": "PROCEED"
+  },
+  "results": [
+    {
+      "test_case": "Intro Programming (Beginner, CS)",
+      "tier": 1,
+      "tier_name": "Perfect (Parseable + Structure)",
+      "length": 378,
+      "parseable": true,
+      "issues": [],
+      "generated": "# Course: Introduction to Programming\n\n**Domain:** computer_science\n**Level:** beginner\n**Duration:** semester\n\n## Learning Objectives\n- Master Introduction to Programming fundamentals and concepts\n- Apply Introduction to Programming knowledge to practical problems\n\n## Selected Modules\n[0], [1], [2], [3]\n\n## Selected Activities\n[0], [1], [2]\n\n## Selected Assessments\n[0], [1]\n"
+    },
+    {
+      "test_case": "Advanced ML (Advanced, CS)",
+      "tier": 1,
+      "tier_name": "Perfect (Parseable + Structure)",
+      "length": 372,
+      "parseable": true,
+      "issues": [],
+      "generated": "# Course: Advanced Machine Learning\n\n**Domain:** computer_science\n**Level:** advanced\n**Duration:** semester\n\n## Learning Objectives\n- Master Advanced Machine Learning fundamentals and concepts\n- Apply Advanced Machine Learning knowledge to practical problems\n\n## Selected Modules\n[0], [1], [2], [3]\n\n## Selected Activities\n[0], [1], [2]\n\n## Selected Assessments\n[0], [1]\n"
+    },
+    {
+      "test_case": "Database Systems (Intermediate, CS)",
+      "tier": 1,
+      "tier_name": "Perfect (Parseable + Structure)",
+      "length": 349,
+      "parseable": true,
+      "issues": [],
+      "generated": "# Course: Database Systems\n\n**Domain:** computer_science\n**Level:** intermediate\n**Duration:** semester\n\n## Learning Objectives\n- Master Database Systems fundamentals and concepts\n- Apply Database Systems knowledge to practical problems\n\n## Selected Modules\n[0], [1], [2], [3]\n\n## Selected Activities\n[0], [1], [2]\n\n## Selected Assessments\n[0], [1]\n"
+    },
+    {
+      "test_case": "Calculus I (Beginner, Math)",
+      "tier": 1,
+      "tier_name": "Perfect (Parseable + Structure)",
+      "length": 317,
+      "parseable": true,
+      "issues": [],
+      "generated": "# Course: Calculus I\n\n**Domain:** mathematics\n**Level:** beginner\n**Duration:** semester\n\n## Learning Objectives\n- Master Calculus I fundamentals and concepts\n- Apply Calculus I knowledge to practical problems\n\n## Selected Modules\n[0], [1], [2]\n\n## Selected Activities\n[0], [1], [2]\n\n## Selected Assessments\n[0], [1]\n"
+    },
+    {
+      "test_case": "Business Strategy (Intermediate, Business)",
+      "tier": 1,
+      "tier_name": "Perfect (Parseable + Structure)",
+      "length": 339,
+      "parseable": true,
+      "issues": [],
+      "generated": "# Course: Business Strategy\n\n**Domain:** business\n**Level:** intermediate\n**Duration:** semester\n\n## Learning Objectives\n- Master Business Strategy fundamentals and concepts\n- Apply Business Strategy knowledge to practical problems\n\n## Selected Modules\n[0], [1], [2]\n\n## Selected Activities\n[0], [1], [2]\n\n## Selected Assessments\n[0], [1]\n"
+    },
+    {
+      "test_case": "Short Workshop (Beginner, CS)",
+      "tier": 1,
+      "tier_name": "Perfect (Parseable + Structure)",
+      "length": 339,
+      "parseable": true,
+      "issues": [],
+      "generated": "# Course: Python Crash Course\n\n**Domain:** computer_science\n**Level:** beginner\n**Duration:** semester\n\n## Learning Objectives\n- Master Python Crash Course fundamentals and concepts\n- Apply Python Crash Course knowledge to practical problems\n\n## Selected Modules\n[0], [1]\n\n## Selected Activities\n[0], [1], [2]\n\n## Selected Assessments\n[0]\n"
+    },
+    {
+      "test_case": "Full Stack Development (Advanced, CS)",
+      "tier": 1,
+      "tier_name": "Perfect (Parseable + Structure)",
+      "length": 379,
+      "parseable": true,
+      "issues": [],
+      "generated": "# Course: Full Stack Web Development\n\n**Domain:** computer_science\n**Level:** intermediate\n**Duration:** semester\n\n## Learning Objectives\n- Master Full Stack Web Development fundamentals and concepts\n- Apply Full Stack Web Development knowledge to practical problems\n\n## Selected Modules\n[0], [1], [2], [3]\n\n## Selected Activities\n[0], [1], [2]\n\n## Selected Assessments\n[0], [1]\n"
+    },
+    {
+      "test_case": "Biology 101 (Beginner, Science)",
+      "tier": 1,
+      "tier_name": "Perfect (Parseable + Structure)",
+      "length": 352,
+      "parseable": true,
+      "issues": [],
+      "generated": "# Course: Introduction to Biology\n\n**Domain:** science\n**Level:** beginner\n**Duration:** semester\n\n## Learning Objectives\n- Master Introduction to Biology fundamentals and concepts\n- Apply Introduction to Biology knowledge to practical problems\n\n## Selected Modules\n[0], [1], [2]\n\n## Selected Activities\n[0], [1], [2]\n\n## Selected Assessments\n[0], [1]\n"
+    }
+  ]
+}
