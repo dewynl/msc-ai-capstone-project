@@ -8,56 +8,77 @@ This repository contains the complete work for my MSc Artificial Intelligence ca
 Current large language models can generate text that looks like a syllabus, but they lack the specific educational structure and pedagogical understanding needed to create truly coherent, educationally sound course content.
 
 ### The Solution
-A novel function calling architecture that combines neural language generation with programmatic construction:
+A hybrid ML + rule-based system that combines fine-tuned CodeT5-small with semantic ranking and quality validation:
 - Takes course requirements as input (title, domain, level, description)
-- Generates executable function calls that construct valid syllabi
-- Integrates RAG (Retrieval-Augmented Generation) for component reusability
-- Achieves reliable structural validity while preserving T5 semantic intelligence
+- Generates complete syllabi in structured markdown format
+- Uses BERT-based semantic ranking to select pedagogically appropriate components
+- Validates output quality through prerequisite coherence checking
+- Achieves reliable structured generation with educational soundness
 
 ### Technical Approach
-**Core Innovation: Function Calling Architecture**
-- Fine-tuned T5-small (60M parameters) generates educational function calls
-- Format-agnostic intelligent parser extracts semantic content from any T5 output
-- SyllabusBuilder execution engine ensures pedagogical validation and structural correctness
-- RAG integration retrieves educational components from ChromaDB vector store
-- Programmatic JSON construction guarantees valid output
+**Core Innovation: Hybrid Generation Pipeline**
+- Fine-tuned CodeT5-small (60M parameters) generates complete markdown syllabi
+- Domain/difficulty filtering ensures appropriate component selection
+- BERT-based semantic ranking with pedagogical boosting (intro modules prioritized)
+- Markdown-to-JSON parser extracts structured data with component expansion
+- Bloom's Taxonomy-based objective enhancement
+- Quality reranker validates prerequisite coherence
 
 **Training Data:**
-- 4,403 synthetic educational components (modules, activities, assessments)
+- 1,300 sequenced training examples (markdown format)
+- 4,403 educational components (modules, activities, assessments)
 - Covers Computer Science, Mathematics, Physics, and Engineering domains
-- Generated using Anthropic Claude API with educational framework validation
+- Component database enables RAG-style retrieval without vector stores
 
 ### Key Innovation
-**Separating Semantics from Syntax:**
-- Traditional approach: T5 → JSON (fails due to syntax precision requirements)
-- Our approach: T5 → Function Calls → Programmatic JSON
-- Preserves T5's educational intelligence while ensuring structural validity
-- Enables smaller models (60M parameters) to achieve reliable structured generation through architectural innovation rather than parameter scaling
+**Simplicity Through Integration:**
+- Traditional approach: Complex RAG pipelines with vector databases
+- Our approach: Filter → Semantic Rank → Generate → Parse → Enhance
+- Combines small fine-tuned model with intelligent rule-based components
+- Achieves reliable structured generation through architectural simplicity
+- Demonstrates that hybrid approaches can match complex systems with less overhead
 
 ## Project Structure
 
 ```
 ├── README.md                          # This file
-├── pyproject.toml                     # Python packaging and tool configuration
+├── streamlit_app.py                   # Web interface for syllabus generation
+├── pyproject.toml                     # Python packaging configuration
 ├── Makefile                          # Development automation commands
 ├── requirements.txt                  # Python dependencies
-├── environment.yml                   # Conda environment specification
-├── .pre-commit-config.yaml          # Code quality hooks
-├── .env.example                      # Environment variables template
-├── docs/                            # Documentation and project planning
-│   ├── course-materials/            # Course units and project proposals
-│   ├── literature-review/           # Research papers and analysis
-│   └── progress/                    # Progress tracking and reports
-├── src/                             # Source code implementation
-│   ├── data/                        # Data processing modules
-│   ├── models/                      # AI model architectures
-│   ├── training/                    # Training scripts and utilities
-│   ├── evaluation/                  # Evaluation metrics and testing
-│   └── utils/                       # Utility functions
-└── data/                           # Raw and processed datasets
-    ├── raw/                        # Original data sources
-    ├── processed/                  # Cleaned and preprocessed data
-    └── synthetic/                  # Generated or augmented data
+├── docs/                            # Dissertation and documentation
+│   ├── dissertation.md              # Main dissertation document
+│   ├── chapter-6-evaluation.md      # Evaluation chapter
+│   ├── chapter-7-learning-reflection.md
+│   ├── chapter-8-conclusion.md
+│   ├── master-literature-list.md    # References (43 sources)
+│   └── expert-review-form-design.md
+├── scripts/                         # Generation pipeline and utilities
+│   ├── generate_syllabus.py         # Main generation pipeline
+│   ├── model_inference.py           # CodeT5 wrapper
+│   ├── semantic_ranker.py           # Component ranking
+│   ├── markdown_syllabus_parser.py  # Parser
+│   ├── enhance_objectives.py        # Bloom's Taxonomy enhancement
+│   ├── rag_filter.py                # Filtering logic
+│   ├── train_sequenced_codet5.py    # Model training
+│   └── test_trained_model.py        # Testing utilities
+├── src/                             # Supporting modules
+│   ├── inference/                   # Inference utilities
+│   │   └── quality_reranker.py      # Quality validation
+│   └── utils/                       # Shared utilities
+│       └── supabase_client.py       # Database client
+├── data/                           # Educational components and training data
+│   ├── components/                  # RAG component database (10MB)
+│   │   ├── modules.json             # 4,403 educational modules
+│   │   ├── activities.json          # Learning activities
+│   │   └── assessments.json         # Assessment types
+│   ├── training/                    # Model training data (5.5MB)
+│   │   ├── sequenced_t5_training.json
+│   │   └── markdown_training_1300.json
+│   └── evaluation/                  # Test suites
+└── models/                         # Trained models
+    └── codet5-sequenced/            # Production model (3.4GB)
+        └── checkpoint-196/          # Final checkpoint
 ```
 
 ## Current Status
@@ -70,38 +91,39 @@ A novel function calling architecture that combines neural language generation w
 
 ### Phase 2: Data Collection and Preprocessing (Weeks 9-14) - ✅ Complete
 - ✅ Synthetic educational data generation (4,403 components)
-- ✅ ChromaDB vector store implementation
+- ✅ Component database implementation (simple JSON-based storage)
 - ✅ Educational framework validation pipeline
 - ✅ Domain coverage: CS, Mathematics, Physics, Engineering
 
 ### Phase 3: Model Development (Weeks 15-22) - ✅ Complete
-- ✅ Three-phase iterative development:
-  - Phase 1: Direct T5 JSON generation (systematic failure analysis)
-  - Phase 2: RAG-enhanced compositional architecture
-  - Phase 3: Function calling breakthrough
-- ✅ T5-small fine-tuning on function call generation
-- ✅ Format-agnostic intelligent parser implementation
-- ✅ SyllabusBuilder execution engine with pedagogical validation
-- ✅ RAG integration with component retrieval pipeline
+- ✅ Iterative architectural exploration:
+  - Approach 1: Direct T5 JSON generation (systematic failure analysis)
+  - Approach 2: Function calling architecture
+  - Approach 3: RAG-enhanced systems
+  - **Final approach**: Markdown generation with hybrid pipeline
+- ✅ CodeT5-small fine-tuning on 1,300 markdown examples
+- ✅ Semantic ranking with BERT embeddings
+- ✅ Quality validation and prerequisite coherence checking
+- ✅ Streamlit web application deployment
 
-### Phase 4: Evaluation and Refinement (Weeks 23-26) - 🚧 In Progress
-- ✅ Performance metrics: Reliable structural validity with high T5 utilization
-- ✅ Comparative analysis across three architectural phases
-- 🚧 Technical evaluation documentation
-- 📋 Educational quality expert review
+### Phase 4: Evaluation and Refinement (Weeks 23-26) - ✅ Complete
+- ✅ Performance metrics collection and analysis
+- ✅ Comparative analysis across architectural approaches
+- ✅ Technical evaluation completed
+- 🚧 Educational quality expert review (in planning)
 
 ### Phase 5: Documentation and Finalization (Weeks 27-30) - 🚧 In Progress
-- ✅ Dissertation: 14,952 words (115% of 13,000-word target)
-  - ✅ Introduction (1,210 words)
-  - ✅ Literature Review (5,156 words)
-  - ✅ Ethical Considerations (1,213 words)
-  - ✅ Methodology (2,933 words)
-  - ✅ Implementation (2,358 words)
-  - ✅ Annex A: Research Evolution (1,911 words)
+- ✅ Dissertation: ~15,000 words (115% of 13,000-word target)
+  - ✅ Introduction
+  - ✅ Literature Review
+  - ✅ Ethical Considerations
+  - ✅ Methodology
+  - ✅ Implementation
+  - ✅ Annex A: Architectural Evolution
   - 🚧 Evaluation chapter (in progress)
   - 📋 Learning & Reflection chapter
   - 📋 Conclusion chapter
-- ✅ All Mermaid diagrams created and converted to PNG
+- ✅ All technical diagrams created
 - 📋 Final presentation preparation
 
 ## Implementation Highlights
@@ -129,12 +151,52 @@ A novel function calling architecture that combines neural language generation w
 
 **Next Priority**: Complete evaluation chapter documenting technical performance and educational quality assessment.
 
-## Getting Started
+## Quick Start
+
+### Running the Web Application
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run Streamlit app
+streamlit run streamlit_app.py
+```
+
+The application provides an interactive web interface for:
+- Entering course requirements (title, domain, level, description)
+- Selecting target duration and audience
+- Real-time syllabus generation with progress tracking
+- Viewing structured JSON output
+- Downloading generated syllabi
+
+### Generating Syllabi via CLI
+
+```bash
+# Generate a complete syllabus
+python scripts/generate_syllabus.py \
+  --title "Deep Learning with PyTorch" \
+  --domain "computer_science" \
+  --level "advanced" \
+  --description "Advanced neural networks using PyTorch"
+```
+
+### Training the Model
+
+```bash
+# Generate training data
+python scripts/generate_sequenced_training_data.py
+
+# Train CodeT5 model (requires GPU)
+python scripts/train_sequenced_codet5.py
+```
+
+## Development Setup
 
 ### Prerequisites
 - Python 3.10+
-- CUDA-capable GPU (recommended)
-- Access to Open Syllabus Project API
+- CUDA-capable GPU (recommended for training)
+- 10GB+ disk space for model checkpoints
 
 ### Installation
 
@@ -216,6 +278,21 @@ make lint
 make test
 ```
 
+## Model Performance
+
+**Production Model**: CodeT5-small fine-tuned (codet5-sequenced/checkpoint-196)
+- **Training**: 1,300 examples, 15 epochs, early stopping at epoch 14
+- **Parameters**: 60M (CodeT5-small)
+- **Architecture**: Markdown generation with semantic ranking pipeline
+- **Output**: Structured JSON syllabi with educational component expansion
+- **Validation**: Prerequisite coherence checking and Bloom's Taxonomy enhancement
+
+**Key Metrics**:
+- Structural validity: High (validated through markdown parsing)
+- Component selection: Pedagogically appropriate (semantic ranking)
+- Generation time: ~2-3 seconds per syllabus
+- Model size: 3.4GB (5 checkpoints preserved)
+
 ## Contact
 
 Dewyn Liriano
@@ -224,4 +301,4 @@ University of Essex Online
 
 ---
 
-*This project represents original research contributing to the field of AI in education, specifically addressing the challenge of generating pedagogically sound educational content through domain-specific AI architectures.*
+*This project represents original research contributing to the field of AI in education, specifically addressing the challenge of generating pedagogically sound educational content through hybrid ML + rule-based architectures.*
