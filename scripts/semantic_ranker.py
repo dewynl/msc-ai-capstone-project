@@ -4,24 +4,57 @@ Semantic Ranking for RAG Components
 
 Uses sentence embeddings (BERT-based) to rank educational components
 by semantic similarity to course requirements.
-
-This is the second ML component in the hybrid architecture:
-1. RAG Filter (rule-based) → filters by domain + difficulty
-2. Semantic Ranker (ML-based) → ranks by relevance  ← THIS MODULE
-3. CodeT5 Generator (ML-based) → generates structured markdown
-4. Bloom's Enhancer (rule-based) → enhances objectives
-5. Template Expander (hybrid) → expands to rich markdown
-
-Purpose:
-- Fixes the model selection problem (was always picking [0], [1], [2], [3])
-- Ensures model sees most relevant components first
-- Maintains ML approach (embeddings for semantic understanding)
 """
 
 from typing import Dict, List, Tuple
 
 import numpy as np
 from sentence_transformers import SentenceTransformer
+
+# Keywords for identifying introductory/foundational modules
+INTRO_KEYWORDS = [
+    "variable",
+    "syntax",
+    "basic",
+    "fundamental",
+    "loop",
+    "iteration",
+    "conditional",
+    "if statement",
+    "function",
+    "parameter",
+    "return",
+    "data type",
+    "assignment",
+    "operator",
+    "control flow",
+    "list",
+    "string manipulation",
+    "dictionary",
+    "dict",
+    "file i/o",
+    "file input",
+    "file output",
+    "error handling",
+    "exception",
+]
+
+ADVANCED_KEYWORDS = [
+    "advanced",
+    "optimization",
+    "analysis",
+    "eda",
+    "exploratory",
+    "data analysis",
+    "machine learning",
+    "deep learning",
+    "algorithm",
+    "data structure",
+    "hash table",
+    "tree",
+    "graph",
+    "network",
+]
 
 
 class SemanticRanker:
@@ -190,52 +223,9 @@ class SemanticRanker:
 
     def _is_intro_module(self, module: Dict) -> bool:
         """Check if a module is an introductory/foundational module."""
-        intro_keywords = [
-            "variable",
-            "syntax",
-            "basic",
-            "fundamental",
-            "loop",
-            "iteration",
-            "conditional",
-            "if statement",
-            "function",
-            "parameter",
-            "return",
-            "data type",
-            "assignment",
-            "operator",
-            "control flow",
-            "list",
-            "string manipulation",
-            "dictionary",
-            "dict",
-            "file i/o",
-            "file input",
-            "file output",
-            "error handling",
-            "exception",
-        ]
-        advanced_keywords = [
-            "advanced",
-            "optimization",
-            "analysis",
-            "eda",
-            "exploratory",
-            "data analysis",
-            "machine learning",
-            "deep learning",
-            "algorithm",
-            "data structure",
-            "hash table",
-            "tree",
-            "graph",
-            "network",
-        ]
-
         title_lower = module.get("title", "").lower()
-        has_intro = any(kw in title_lower for kw in intro_keywords)
-        has_advanced = any(kw in title_lower for kw in advanced_keywords)
+        has_intro = any(kw in title_lower for kw in INTRO_KEYWORDS)
+        has_advanced = any(kw in title_lower for kw in ADVANCED_KEYWORDS)
         return has_intro and not has_advanced
 
     def _boost_intro_modules(
@@ -246,88 +236,22 @@ class SemanticRanker:
         """
         Boost ranking of introductory modules for beginner courses.
 
-        This is a pedagogical heuristic to fix the semantic ranking limitation
-        where general sentence transformers prioritize keyword matches over
-        pedagogical appropriateness for absolute beginner courses.
-
-        Example problem:
-        - Course: "Introduction to Python Programming"
-        - "Exploratory Data Analysis with Python" ranks higher than "Variables"
-        - Reason: Both mention "Python", but EDA requires variables as prerequisite
-
-        Args:
-            ranked_modules: List of (module, score) tuples from semantic ranking
-            course_requirements: Course requirements dict
-
-        Returns:
-            Reordered list with intro modules boosted to top
+        Ensures foundational topics appear before advanced topics when
+        semantic similarity alone would prioritize keyword matches.
         """
-        # Keywords that identify foundational introductory modules
-        intro_keywords = [
-            "variable",
-            "syntax",
-            "basic",
-            "fundamental",
-            "loop",
-            "iteration",
-            "conditional",
-            "if statement",
-            "function",  # Matches "Defining and Using Functions"
-            "parameter",
-            "return",
-            "data type",
-            "assignment",
-            "operator",
-            "control flow",
-            "list",  # Matches "Lists and List Operations"
-            "string manipulation",  # Matches "String Manipulation"
-            "dictionary",  # Matches "Dictionaries"
-            "dict",  # Alternative for dictionaries
-            "file i/o",  # Matches "File Input/Output"
-            "file input",
-            "file output",
-            "error handling",  # Matches "Error Handling"
-            "exception",  # Alternative for error handling
-        ]
-
-        # Keywords that indicate advanced topics (avoid false positives)
-        advanced_keywords = [
-            "advanced",
-            "optimization",
-            "analysis",
-            "eda",
-            "exploratory",
-            "data analysis",
-            "machine learning",
-            "deep learning",
-            "algorithm",
-            "data structure",
-            "hash table",
-            "tree",
-            "graph",
-            "network",
-        ]
-
         intro_modules = []
         other_modules = []
 
         for module, score in ranked_modules:
             title_lower = module.get("title", "").lower()
-            description_lower = module.get("description", "").lower()
+            has_intro_keyword = any(kw in title_lower for kw in INTRO_KEYWORDS)
+            has_advanced_keyword = any(kw in title_lower for kw in ADVANCED_KEYWORDS)
 
-            # Check if module matches intro keywords
-            has_intro_keyword = any(kw in title_lower for kw in intro_keywords)
-
-            # Check if module contains advanced keywords (avoid false positives)
-            has_advanced_keyword = any(kw in title_lower for kw in advanced_keywords)
-
-            # Classify module
             if has_intro_keyword and not has_advanced_keyword:
                 intro_modules.append((module, score))
             else:
                 other_modules.append((module, score))
 
-        # Return intro modules first, then others
         boosted = intro_modules + other_modules
 
         print(

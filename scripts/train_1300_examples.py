@@ -2,18 +2,7 @@
 """
 Training Script for 1,300-Example Dataset
 
-Key Insight: 5× more data needs FEWER epochs (15 vs 41) for safe training intensity
-- 260 examples × 41 epochs = 10,660 example exposures
-- 1,300 examples × 15 epochs = 19,500 example exposures (~2× baseline)
-- Gives model more time to learn from diverse data
-- Expected time: ~6-7 hours (1.5× baseline)
-
-Optimizations:
-- Larger effective batch size (80 vs 64) for better gradient estimates
-- More frequent evaluation (every 0.5 epoch) for better monitoring
-- Scaled warmup steps
-- Enhanced checkpointing
-- Progress tracking with ETA
+Trains CodeT5 model with optimized hyperparameters for larger dataset.
 """
 
 import json
