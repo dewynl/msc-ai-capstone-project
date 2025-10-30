@@ -22,6 +22,28 @@
 - **Publisher/Venue:** Journal of Machine Learning Research
 - **Publication Year:** 2020
 
+**3a. CodeT5: Identifier-aware Unified Pre-trained Encoder-Decoder Models (Wang et al., 2021)** ✅ *Used in Dissertation*
+- **Harvard Citation:** Wang, Y., Wang, W., Joty, S. and Hoi, S.C.H. (2021). CodeT5: Identifier-aware unified pre-trained encoder-decoder models for code understanding and generation. In Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP), pp. 8696-8708.
+- **DOI/URL:** https://doi.org/10.18653/v1/2021.emnlp-main.685
+- **arXiv:** https://arxiv.org/abs/2109.00859
+- **Publisher/Venue:** Association for Computational Linguistics (EMNLP 2021)
+- **Publication Year:** 2021
+- **Key Contribution:** Code-specific T5 variant pre-trained on 8.35M code functions; identifier-aware tokenization (RobertaTokenizer); achieves SOTA on code generation, summarization, and translation tasks
+
+**3b. RoBERTa: A Robustly Optimized BERT Pretraining Approach (Liu et al., 2019)** ✅ *Used in Dissertation*
+- **Harvard Citation:** Liu, Y., Ott, M., Goyal, N., Du, J., Joshi, M., Chen, D., Levy, O., Lewis, M., Zettlemoyer, L. and Stoyanov, V. (2019). RoBERTa: A robustly optimized BERT pretraining approach. arXiv preprint arXiv:1907.11692.
+- **DOI/URL:** https://arxiv.org/abs/1907.11692
+- **Publisher/Venue:** arXiv (presented at various conferences)
+- **Publication Year:** 2019
+- **Key Contribution:** Byte-level BPE tokenizer preserving code identifiers; used in CodeT5 for identifier-aware tokenization
+
+**3c. CodeSearchNet Challenge: Evaluating Semantic Code Search (Husain et al., 2019)** ✅ *Used in Dissertation*
+- **Harvard Citation:** Husain, H., Wu, H.H., Gazit, T., Allamanis, M. and Brockschmidt, M. (2019). CodeSearchNet Challenge: Evaluating the state of semantic code search. arXiv preprint arXiv:1909.09436.
+- **DOI/URL:** https://arxiv.org/abs/1909.09436
+- **Publisher/Venue:** arXiv
+- **Publication Year:** 2019
+- **Key Contribution:** 8.35M code function dataset (Python, Java, Go, PHP, JavaScript, Ruby) used for CodeT5 pre-training; 2M code-docstring pairs for training and evaluation
+
 **4. GPT-3: Language Models are Few-Shot Learners (Brown et al., 2020)** ✅ *Used in Dissertation*
 - **Harvard Citation:** Brown, T., Mann, B., Ryder, N., Subbiah, M., Kaplan, J.D., Dhariwal, P., Neelakantan, A., Shyam, P., Sastry, G., Askell, A. and Agarwal, S. (2020). Language models are few-shot learners. In Advances in Neural Information Processing Systems 33 (NeurIPS 2020), pp. 1877-1901.
 - **DOI/URL:** https://arxiv.org/abs/2005.14165
@@ -277,11 +299,48 @@
 - **Publisher/Venue:** Elsevier
 - **Publication Year:** 2023
 
+### Retrieval-Augmented Generation and Semantic Ranking
+
+**44. Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (Lewis et al., 2020)** ✅ *Used in Dissertation*
+- **Harvard Citation:** Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W., Rocktäschel, T., Riedel, S. and Kiela, D. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. In Advances in Neural Information Processing Systems 33 (NeurIPS 2020), pp. 9459-9474.
+- **DOI/URL:** https://arxiv.org/abs/2005.11401
+- **Publisher/Venue:** Neural Information Processing Systems (NeurIPS)
+- **Publication Year:** 2020
+- **Key Contribution:** Introduced RAG models combining pre-trained parametric and non-parametric memory; demonstrated T5 and BART compatibility with retrieval augmentation; proved RAG generates more specific, diverse, and factual language than seq2seq baselines
+
+**45. Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks (Reimers & Gurevych, 2019)** ✅ *Used in Dissertation*
+- **Harvard Citation:** Reimers, N. and Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP), pp. 3982-3992.
+- **DOI/URL:** https://arxiv.org/abs/1908.10084
+- **Publisher/Venue:** Association for Computational Linguistics (EMNLP-IJCNLP)
+- **Publication Year:** 2019
+- **Key Contribution:** Modified BERT using siamese/triplet networks for semantically meaningful sentence embeddings; reduced semantic similarity computation from 65 hours (BERT) to 5 seconds (SBERT) while maintaining accuracy; enables practical semantic ranking at scale
+
+**46. Retrieval-Augmented Generation: A Comprehensive Survey (Sharma, 2024)** ✅ *Used in Dissertation*
+- **Harvard Citation:** Sharma, C. (2024). Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers. arXiv preprint arXiv:2506.00054 (Under review at ACM TOIS).
+- **DOI/URL:** https://arxiv.org/abs/2506.00054
+- **Publisher/Venue:** arXiv (Under review at ACM Transactions on Information Systems)
+- **Publication Year:** 2024
+- **Key Contribution:** Comprehensive survey of 91 RAG systems; identified semantic ranking as universal enhancement; documented hybrid approaches (iterative retrieval, utility-driven optimization, dynamic triggering); confirmed semantic embeddings are standard in modern RAG architectures
+
+**47. Retrieval-augmented generation for educational application: A systematic survey (2025)** ✅ *Used in Dissertation*
+- **Harvard Citation:** (2025). Retrieval-augmented generation for educational application: A systematic survey. ScienceDirect, DOI: S2666920X25000578.
+- **DOI/URL:** https://www.sciencedirect.com/science/article/pii/S2666920X25000578
+- **Publisher/Venue:** ScienceDirect
+- **Publication Year:** 2025
+- **Key Contribution:** Systematic review of RAG applications in education covering interactive learning systems, educational content generation and assessment, large-scale deployment in educational ecosystems; validated RAG for improving factual accuracy and dynamic knowledge updates in educational contexts
+
+**48. Leveraging In-Context Learning and Retrieval-Augmented Generation for Automatic Question Generation in Educational Domains (2025)** ✅ *Used in Dissertation*
+- **Harvard Citation:** (2025). Leveraging In-Context Learning and Retrieval-Augmented Generation for Automatic Question Generation in Educational Domains. arXiv preprint arXiv:2501.17397.
+- **DOI/URL:** https://arxiv.org/abs/2501.17397
+- **Publisher/Venue:** arXiv
+- **Publication Year:** 2025
+- **Key Contribution:** Demonstrated RAG with T5-large and BART-large outperforms pure fine-tuning for educational content generation; validated hybrid model (RAG + in-context learning) for question generation; confirmed T5 benefits from retrieval augmentation in educational domain
+
 ---
 
 ## Usage Statistics
 
-- **Total References in Master List:** 43
+- **Total References in Master List:** 48
 - **Currently Used in Dissertation:** 24 (56%)
 - **Pre-Approved References:** 38 (88%)
 - **Additional References Used:** 5 (12%)
