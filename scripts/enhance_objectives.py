@@ -169,7 +169,7 @@ def extract_concepts_from_modules(selected_modules: List[Dict]) -> List[str]:
     for module in selected_modules[:5]:  # Use first 5 modules
         title = module.get("title", "")
 
-        # Extract meaningful words (capitalize first letter)
+        # Extract title-cased phrases (e.g., "Machine Learning", "Python Programming")
         words = re.findall(r"\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b", title)
 
         # Also extract from descriptions if available
