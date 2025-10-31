@@ -163,6 +163,47 @@ def render_email_gate():
     )
 
 
+def render_evaluation_results_sidebar():
+    """Render evaluation results from dissertation in sidebar."""
+    with st.sidebar:
+        st.markdown("### 📊 System Evaluation Results")
+        st.caption("*From MSc Dissertation Study (35 test cases)*")
+
+        st.metric(
+            "Pipeline Success Rate",
+            "77.1%",
+            help="27/35 test cases completed successfully",
+        )
+        st.metric(
+            "Prerequisite Accuracy",
+            "27.8%",
+            delta="-72.2%",
+            delta_color="inverse",
+            help="Percentage of prerequisite dependencies correctly ordered",
+        )
+        st.metric(
+            "Difficulty Progression",
+            "90.0%",
+            help="Module difficulty increases appropriately",
+        )
+        st.metric(
+            "Topic Diversity", "80.0%", help="Coverage of diverse educational topics"
+        )
+
+        st.markdown("---")
+        st.caption("**Domain Coverage:**")
+        st.caption("✅ Computer Science: 100%")
+        st.caption("✅ Mathematics: 100%")
+        st.caption("✅ Physics: 100%")
+        st.caption("⚠️ Engineering: 0%")
+        st.caption("⚠️ Interdisciplinary: 0%")
+
+        st.markdown("---")
+        st.caption(
+            "**Key Insight:** System excels at structural generation but struggles with semantic prerequisite chains. See dissertation Chapter 6 for full analysis."
+        )
+
+
 def render_user_welcome(user):
     """Render welcome message and previous syllabi."""
     name = user.get("first_name") or user["username"]
@@ -525,6 +566,9 @@ def main():
     # Welcome message
     render_user_welcome(user)
 
+    # Evaluation results sidebar
+    render_evaluation_results_sidebar()
+
     # Example presets
     render_example_presets()
 
@@ -681,101 +725,39 @@ def main():
                         )
                         generation_time = time.time() - start_time
 
-                        # Debug: Show RAG pipeline details
-                        with st.expander("🔍 Debug: RAG Pipeline Trace"):
+                        # Pipeline overview (simplified)
+                        with st.expander("🔍 Pipeline Details"):
                             metadata = result.get("metadata", {})
                             filter_stats = metadata.get("filter_stats", {})
-
-                            st.markdown(
-                                "### Step 1: Domain + Difficulty Filtering (ALL Components)"
-                            )
-                            st.write(
-                                f"- **Course domain:** {filter_stats.get('course_domain', 'all').replace('_', ' ').title()}"
-                            )
-                            st.write(
-                                f"- **Course level:** {filter_stats.get('course_level', 'N/A').title()}"
-                            )
-                            st.write("")
-                            st.write(
-                                f"- **Modules:** {filter_stats.get('total_components', 0)} total → {filter_stats.get('filtered_components', 0)} filtered ({filter_stats.get('filter_rate', 0)*100:.1f}%)"
-                            )
-                            st.write(
-                                "- **Activities:** Filtered by same rules (domain + difficulty)"
-                            )
-                            st.write(
-                                "- **Assessments:** Filtered by same rules (domain + difficulty)"
-                            )
-
-                            # Show domain distribution
-                            if "domain_distribution" in filter_stats:
-                                domain_dist = filter_stats["domain_distribution"]
-                                st.write(
-                                    f"- **Verification:** CS: {domain_dist.get('computer_science', 0)}, Math: {domain_dist.get('mathematics', 0)}, Physics: {domain_dist.get('physics', 0)}"
-                                )
-
-                            st.markdown("### Step 2: Semantic Ranking (ML-based)")
                             ranking_stats = metadata.get("ranking_stats", {})
-                            if ranking_stats:
-                                st.write("**Modules:**")
+
+                            col_a, col_b, col_c = st.columns(3)
+                            with col_a:
+                                st.metric(
+                                    "Filtered Modules",
+                                    f"{filter_stats.get('filtered_components', 0)}",
+                                )
+                            with col_b:
                                 mod_stats = ranking_stats.get("modules", {})
-                                st.write(
-                                    f"- **Input:** {mod_stats.get('input_count', 0)} filtered modules"
+                                st.metric(
+                                    "Top Ranked", f"{mod_stats.get('output_count', 0)}"
                                 )
-                                st.write(
-                                    f"- **Output:** {mod_stats.get('output_count', 0)} top-ranked (most relevant)"
-                                )
-                                st.write(
-                                    f"- **Avg similarity score:** {mod_stats.get('avg_score', 0):.4f}"
-                                )
-                                st.write(
-                                    f"- **Score range:** {mod_stats.get('min_score', 0):.4f} - {mod_stats.get('max_score', 0):.4f}"
+                            with col_c:
+                                st.metric(
+                                    "Selected",
+                                    f"{metadata.get('selected_modules_count', 0)}",
                                 )
 
-                                # Show pedagogical boost status
-                                if mod_stats.get("pedagogical_boost", False):
-                                    boost_count = mod_stats.get("boost_count", 0)
-                                    st.write(
-                                        f"- **✅ Pedagogical boost applied:** {boost_count} intro modules moved to top"
-                                    )
-
-                                st.write("\n**Activities:**")
-                                act_stats = ranking_stats.get("activities", {})
-                                st.write(
-                                    f"- **Input:** {act_stats.get('input_count', 0)} → **Output:** {act_stats.get('output_count', 0)} (avg score: {act_stats.get('avg_score', 0):.4f})"
+                            if mod_stats.get("pedagogical_boost", False):
+                                st.info(
+                                    f"✅ {mod_stats.get('boost_count', 0)} intro modules boosted for beginner course"
                                 )
 
-                                st.write("\n**Assessments:**")
-                                asm_stats = ranking_stats.get("assessments", {})
-                                st.write(
-                                    f"- **Input:** {asm_stats.get('input_count', 0)} → **Output:** {asm_stats.get('output_count', 0)} (avg score: {asm_stats.get('avg_score', 0):.4f})"
-                                )
-
-                            st.markdown(
-                                "### Step 3: Model Selection (from ranked components)"
-                            )
-                            st.write(
-                                f"- **Selected modules:** {metadata.get('selected_modules_count', 0)}"
-                            )
-                            st.write(
-                                f"- **Selected activities:** {metadata.get('selected_activities_count', 0)}"
-                            )
-                            st.write(
-                                f"- **Selected assessments:** {metadata.get('selected_assessments_count', 0)}"
-                            )
-
-                            st.markdown("### Step 4: Model Output")
-                            if "markdown_simple" in result:
-                                st.code(
-                                    result["markdown_simple"][:600], language="markdown"
-                                )
-
-                            st.markdown("### Step 5: Warnings")
                             warnings = result.get("warnings", [])
                             if warnings:
-                                for w in warnings:
-                                    st.warning(w)
-                            else:
-                                st.success("No warnings")
+                                st.warning(
+                                    f"⚠️ {len(warnings)} warning(s) - see Technical Details tab"
+                                )
 
                         # Check if generation succeeded
                         if not result.get("success", False):
@@ -791,48 +773,6 @@ def main():
 
                         # Extract syllabus from result
                         syllabus = result["json"]
-
-                        # Debug: Show what modules were available vs selected
-                        with st.expander("🔍 Debug: RAG Context & Selection Details"):
-                            st.markdown("### What the Model Saw (First 10 Modules)")
-
-                            # Get RANKED modules (what model actually saw after semantic ranking + boost)
-                            ranked_mods = metadata.get("ranked_modules", [])[:10]
-
-                            for i, mod in enumerate(ranked_mods):
-                                selected = (
-                                    "✅"
-                                    if mod["id"] in syllabus.get("modules", [])
-                                    else "⬜"
-                                )
-                                st.write(
-                                    f"{selected} `[{i}]` **{mod['title'][:60]}...** ({mod.get('estimated_hours')}h, {mod.get('difficulty')})"
-                                )
-
-                            st.markdown("### What the Model Selected")
-                            selected_module_ids = syllabus.get("modules", [])
-                            for i, mod_id in enumerate(selected_module_ids):
-                                mod = next(
-                                    (
-                                        m
-                                        for m in rag_database["modules"]
-                                        if m["id"] == mod_id
-                                    ),
-                                    None,
-                                )
-                                if mod:
-                                    st.success(f"**Module {i+1}:** {mod['title']}")
-
-                            st.markdown("### RAG Retrieval Summary")
-                            st.write(
-                                f"- Model had access to **{min(len(ranked_mods), 3)} modules** (training avg: 3.6, using 3 for capacity)"
-                            )
-                            st.write(
-                                f"- Model selected **{len(selected_module_ids)}** from those options"
-                            )
-                            st.write(
-                                f"- Selection indices: {list(range(len(selected_module_ids)))}"
-                            )
 
                         st.success(
                             f"✅ Generated syllabus with {len(syllabus.get('modules', []))} modules, "
