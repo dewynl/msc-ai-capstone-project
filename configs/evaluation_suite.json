@@ -1,0 +1,403 @@
+{
+  "model_checkpoint": "models/codet5-sequenced/checkpoint-196",
+  "output_dir": "data/evaluation",
+  "component_database_dir": "data/components",
+  "random_seed": 42,
+  "enable_quality_reranking": true,
+  "num_quality_candidates": 3,
+  "max_generation_time_sec": 30.0,
+  "save_intermediate_outputs": false,
+  "log_level": "INFO",
+
+  "test_cases": [
+    {
+      "test_id": "test_001_cs_beginner_intro_programming",
+      "domain": "computer_science",
+      "level": "beginner",
+      "test_type": "standard",
+      "course_title": "Introduction to Programming",
+      "description": "Foundational programming concepts including variables, control flow, functions, and basic data structures. Emphasis on problem-solving and algorithmic thinking.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["foundational", "programming"]
+    },
+    {
+      "test_id": "test_002_cs_beginner_web_fundamentals",
+      "domain": "computer_science",
+      "level": "beginner",
+      "test_type": "standard",
+      "course_title": "Web Development Fundamentals",
+      "description": "Introduction to web technologies: HTML, CSS, JavaScript. Building responsive websites and understanding client-server architecture.",
+      "duration": "quarter",
+      "expected_modules": 3,
+      "tags": ["web", "frontend"]
+    },
+    {
+      "test_id": "test_003_cs_beginner_databases",
+      "domain": "computer_science",
+      "level": "beginner",
+      "test_type": "standard",
+      "course_title": "Database Systems Fundamentals",
+      "description": "Introduction to relational databases, SQL, data modeling, normalization, and basic database design principles.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["databases", "sql"]
+    },
+    {
+      "test_id": "test_004_cs_intermediate_data_structures",
+      "domain": "computer_science",
+      "level": "intermediate",
+      "test_type": "standard",
+      "course_title": "Data Structures and Algorithms",
+      "description": "Comprehensive study of fundamental data structures (arrays, linked lists, trees, graphs, hash tables) and algorithmic analysis. Emphasis on time/space complexity.",
+      "duration": "semester",
+      "expected_modules": 5,
+      "tags": ["algorithms", "data_structures"]
+    },
+    {
+      "test_id": "test_005_cs_intermediate_oop",
+      "domain": "computer_science",
+      "level": "intermediate",
+      "test_type": "standard",
+      "course_title": "Object-Oriented Programming",
+      "description": "Advanced programming using OOP principles: encapsulation, inheritance, polymorphism, design patterns, and software architecture.",
+      "duration": "quarter",
+      "expected_modules": 4,
+      "tags": ["oop", "design_patterns"]
+    },
+    {
+      "test_id": "test_006_cs_intermediate_web_backend",
+      "domain": "computer_science",
+      "level": "intermediate",
+      "test_type": "standard",
+      "course_title": "Backend Web Development",
+      "description": "Server-side web development with RESTful APIs, authentication, database integration, and deployment. Covers Node.js, Express, and modern backend practices.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["web", "backend", "api"]
+    },
+    {
+      "test_id": "test_007_cs_advanced_machine_learning",
+      "domain": "computer_science",
+      "level": "advanced",
+      "test_type": "standard",
+      "course_title": "Machine Learning",
+      "description": "Comprehensive machine learning course covering supervised/unsupervised learning, neural networks, deep learning, model evaluation, and practical applications.",
+      "duration": "semester",
+      "expected_modules": 5,
+      "tags": ["ml", "ai", "deep_learning"]
+    },
+    {
+      "test_id": "test_008_cs_advanced_distributed_systems",
+      "domain": "computer_science",
+      "level": "advanced",
+      "test_type": "standard",
+      "course_title": "Distributed Systems",
+      "description": "Advanced topics in distributed computing: consensus algorithms, fault tolerance, distributed databases, microservices, and scalability patterns.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["distributed", "systems", "scalability"]
+    },
+    {
+      "test_id": "test_009_cs_advanced_compilers",
+      "domain": "computer_science",
+      "level": "advanced",
+      "test_type": "standard",
+      "course_title": "Compiler Design",
+      "description": "Theory and practice of compiler construction: lexical analysis, parsing, semantic analysis, code generation, and optimization techniques.",
+      "duration": "semester",
+      "expected_modules": 5,
+      "tags": ["compilers", "theory"]
+    },
+
+    {
+      "test_id": "test_010_math_beginner_calculus",
+      "domain": "mathematics",
+      "level": "beginner",
+      "test_type": "standard",
+      "course_title": "Calculus I",
+      "description": "Differential and integral calculus of functions of one variable. Limits, derivatives, applications, integration techniques, and fundamental theorem of calculus.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["calculus", "analysis"]
+    },
+    {
+      "test_id": "test_011_math_beginner_linear_algebra",
+      "domain": "mathematics",
+      "level": "beginner",
+      "test_type": "standard",
+      "course_title": "Linear Algebra",
+      "description": "Vector spaces, matrices, linear transformations, eigenvalues, and eigenvectors. Applications to systems of linear equations and geometric transformations.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["linear_algebra", "vectors", "matrices"]
+    },
+    {
+      "test_id": "test_012_math_beginner_statistics",
+      "domain": "mathematics",
+      "level": "beginner",
+      "test_type": "standard",
+      "course_title": "Introduction to Statistics",
+      "description": "Descriptive statistics, probability distributions, hypothesis testing, confidence intervals, and regression analysis. Emphasis on practical applications.",
+      "duration": "quarter",
+      "expected_modules": 3,
+      "tags": ["statistics", "probability"]
+    },
+    {
+      "test_id": "test_013_math_intermediate_real_analysis",
+      "domain": "mathematics",
+      "level": "intermediate",
+      "test_type": "standard",
+      "course_title": "Real Analysis",
+      "description": "Rigorous treatment of real numbers, sequences, series, continuity, differentiation, and integration. Emphasis on proofs and theoretical foundations.",
+      "duration": "semester",
+      "expected_modules": 5,
+      "tags": ["analysis", "theory", "proofs"]
+    },
+    {
+      "test_id": "test_014_math_intermediate_abstract_algebra",
+      "domain": "mathematics",
+      "level": "intermediate",
+      "test_type": "standard",
+      "course_title": "Abstract Algebra",
+      "description": "Group theory, ring theory, field theory. Study of algebraic structures and their properties with applications to number theory and cryptography.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["algebra", "theory", "groups"]
+    },
+    {
+      "test_id": "test_015_math_advanced_topology",
+      "domain": "mathematics",
+      "level": "advanced",
+      "test_type": "standard",
+      "course_title": "Topology",
+      "description": "Point-set topology, topological spaces, continuity, compactness, connectedness, and fundamental group. Introduction to algebraic topology.",
+      "duration": "semester",
+      "expected_modules": 5,
+      "tags": ["topology", "theory", "advanced"]
+    },
+    {
+      "test_id": "test_016_math_advanced_differential_equations",
+      "domain": "mathematics",
+      "level": "advanced",
+      "test_type": "standard",
+      "course_title": "Partial Differential Equations",
+      "description": "Theory and applications of PDEs: wave equation, heat equation, Laplace equation. Solution methods including separation of variables and Fourier series.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["pde", "applied_math"]
+    },
+
+    {
+      "test_id": "test_017_physics_beginner_mechanics",
+      "domain": "physics",
+      "level": "beginner",
+      "test_type": "standard",
+      "course_title": "Classical Mechanics",
+      "description": "Newtonian mechanics: kinematics, dynamics, work and energy, momentum, rotational motion, and gravitation. Laboratory component included.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["mechanics", "classical"]
+    },
+    {
+      "test_id": "test_018_physics_beginner_electricity",
+      "domain": "physics",
+      "level": "beginner",
+      "test_type": "standard",
+      "course_title": "Electricity and Magnetism",
+      "description": "Electric fields, magnetic fields, circuits, electromagnetic induction, and Maxwell's equations. Laboratory experiments with circuits and electromagnetic phenomena.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["electricity", "magnetism"]
+    },
+    {
+      "test_id": "test_019_physics_intermediate_quantum",
+      "domain": "physics",
+      "level": "intermediate",
+      "test_type": "standard",
+      "course_title": "Quantum Mechanics I",
+      "description": "Introduction to quantum theory: wave-particle duality, Schrödinger equation, quantum operators, harmonic oscillator, and hydrogen atom.",
+      "duration": "semester",
+      "expected_modules": 5,
+      "tags": ["quantum", "modern_physics"]
+    },
+    {
+      "test_id": "test_020_physics_intermediate_thermodynamics",
+      "domain": "physics",
+      "level": "intermediate",
+      "test_type": "standard",
+      "course_title": "Thermodynamics and Statistical Mechanics",
+      "description": "Laws of thermodynamics, entropy, heat engines, phase transitions, and introduction to statistical mechanics. Connections to microscopic theory.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["thermo", "stat_mech"]
+    },
+    {
+      "test_id": "test_021_physics_advanced_particle_physics",
+      "domain": "physics",
+      "level": "advanced",
+      "test_type": "standard",
+      "course_title": "Particle Physics",
+      "description": "Standard model of particle physics, quarks, leptons, gauge bosons, symmetries, and fundamental interactions. Current research in high-energy physics.",
+      "duration": "semester",
+      "expected_modules": 5,
+      "tags": ["particle", "high_energy"]
+    },
+
+    {
+      "test_id": "test_022_eng_beginner_intro_engineering",
+      "domain": "engineering",
+      "level": "beginner",
+      "test_type": "standard",
+      "course_title": "Introduction to Engineering",
+      "description": "Survey of engineering disciplines, problem-solving methods, engineering design process, and professional ethics. Hands-on projects and teamwork.",
+      "duration": "quarter",
+      "expected_modules": 3,
+      "tags": ["intro", "design"]
+    },
+    {
+      "test_id": "test_023_eng_beginner_circuits",
+      "domain": "engineering",
+      "level": "beginner",
+      "test_type": "standard",
+      "course_title": "Circuit Analysis",
+      "description": "DC and AC circuit analysis, Kirchhoff's laws, Thévenin and Norton equivalents, phasors, and frequency response. Laboratory component with circuit simulation.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["circuits", "electrical"]
+    },
+    {
+      "test_id": "test_024_eng_intermediate_signals",
+      "domain": "engineering",
+      "level": "intermediate",
+      "test_type": "standard",
+      "course_title": "Signals and Systems",
+      "description": "Continuous and discrete signals, Fourier analysis, Laplace transforms, Z-transforms, filtering, and system stability analysis.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["signals", "systems", "dsp"]
+    },
+    {
+      "test_id": "test_025_eng_advanced_control_systems",
+      "domain": "engineering",
+      "level": "advanced",
+      "test_type": "standard",
+      "course_title": "Advanced Control Systems",
+      "description": "Modern control theory: state-space methods, optimal control, robust control, adaptive control, and nonlinear systems. Applications to robotics and aerospace.",
+      "duration": "semester",
+      "expected_modules": 5,
+      "tags": ["control", "robotics"]
+    },
+
+    {
+      "test_id": "test_026_edge_minimal_input",
+      "domain": "computer_science",
+      "level": "beginner",
+      "test_type": "edge_case",
+      "course_title": "Artificial Intelligence",
+      "description": "",
+      "duration": "semester",
+      "expected_modules": 3,
+      "tags": ["edge_case", "minimal_input"]
+    },
+    {
+      "test_id": "test_027_edge_very_long_description",
+      "domain": "computer_science",
+      "level": "intermediate",
+      "test_type": "edge_case",
+      "course_title": "Software Engineering",
+      "description": "Comprehensive software engineering course covering all phases of software development lifecycle including requirements gathering and analysis, system design using UML and design patterns, implementation best practices including coding standards and version control, comprehensive testing strategies covering unit testing, integration testing, system testing and acceptance testing, software maintenance and evolution, project management using both traditional waterfall and agile methodologies including Scrum and Kanban, software quality assurance, risk management, cost estimation, team dynamics and communication, software architecture patterns including microservices and event-driven architecture, DevOps practices including continuous integration and continuous deployment, containerization using Docker, orchestration with Kubernetes, monitoring and logging, security best practices, performance optimization, scalability considerations, database design and optimization, API design, documentation practices, code review processes, technical debt management, and emerging trends in software engineering. The course includes extensive hands-on projects simulating real-world software development scenarios, team-based assignments requiring collaboration and communication, individual coding challenges, comprehensive case studies of successful and failed software projects, guest lectures from industry professionals, and a capstone project involving designing and implementing a complete software system from requirements through deployment.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["edge_case", "long_description"]
+    },
+    {
+      "test_id": "test_028_edge_cross_domain_computational_physics",
+      "domain": "interdisciplinary",
+      "level": "advanced",
+      "test_type": "edge_case",
+      "course_title": "Computational Physics",
+      "description": "Computational methods for solving physics problems: numerical integration, Monte Carlo methods, molecular dynamics, and partial differential equation solvers. Programming in Python and C++.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["edge_case", "interdisciplinary", "physics", "computer_science"]
+    },
+    {
+      "test_id": "test_029_edge_intensive_bootcamp",
+      "domain": "computer_science",
+      "level": "beginner",
+      "test_type": "edge_case",
+      "course_title": "Full-Stack Web Development Bootcamp",
+      "description": "Intensive 8-week bootcamp covering frontend (React, HTML, CSS) and backend (Node.js, databases) web development. Project-based learning with daily coding challenges.",
+      "duration": "8 weeks",
+      "expected_modules": 8,
+      "tags": ["edge_case", "bootcamp", "intensive"]
+    },
+    {
+      "test_id": "test_030_edge_contradictory_beginner_quantum",
+      "domain": "physics",
+      "level": "beginner",
+      "test_type": "edge_case",
+      "course_title": "Quantum Computing for Beginners",
+      "description": "Introduction to quantum computing principles, qubits, quantum gates, and simple quantum algorithms. Designed for students without advanced physics background.",
+      "duration": "quarter",
+      "expected_modules": 3,
+      "tags": ["edge_case", "contradictory", "quantum"]
+    },
+    {
+      "test_id": "test_031_edge_ambiguous_statistics",
+      "domain": "interdisciplinary",
+      "level": "intermediate",
+      "test_type": "edge_case",
+      "course_title": "Applied Statistics and Data Science",
+      "description": "Statistical methods applied to data analysis: regression, classification, hypothesis testing, visualization, and machine learning basics. Uses R and Python.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["edge_case", "statistics", "data_science"]
+    },
+    {
+      "test_id": "test_032_edge_niche_bioinformatics",
+      "domain": "interdisciplinary",
+      "level": "advanced",
+      "test_type": "edge_case",
+      "course_title": "Bioinformatics Algorithms",
+      "description": "Computational approaches to biological problems: sequence alignment, phylogenetic trees, genome assembly, RNA structure prediction, and systems biology.",
+      "duration": "semester",
+      "expected_modules": 5,
+      "tags": ["edge_case", "bioinformatics", "niche"]
+    },
+    {
+      "test_id": "test_033_edge_interdisciplinary_data_science",
+      "domain": "interdisciplinary",
+      "level": "intermediate",
+      "test_type": "edge_case",
+      "course_title": "Data Science Foundations",
+      "description": "Interdisciplinary data science combining statistics, machine learning, and programming. Real-world case studies from business, science, and social sciences.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["edge_case", "data_science", "interdisciplinary"]
+    },
+    {
+      "test_id": "test_034_edge_postgraduate_advanced_nlp",
+      "domain": "computer_science",
+      "level": "postgraduate",
+      "test_type": "edge_case",
+      "course_title": "Advanced Natural Language Processing",
+      "description": "State-of-the-art NLP: transformers, BERT, GPT, attention mechanisms, transfer learning, and modern language model architectures. Research-oriented course.",
+      "duration": "semester",
+      "expected_modules": 5,
+      "tags": ["edge_case", "nlp", "transformers", "research"]
+    },
+    {
+      "test_id": "test_035_edge_minimal_metadata",
+      "domain": "mathematics",
+      "level": "intermediate",
+      "test_type": "edge_case",
+      "course_title": "Cryptography",
+      "description": "Mathematical foundations of cryptography including number theory and security protocols.",
+      "duration": "semester",
+      "expected_modules": 3,
+      "tags": ["edge_case", "minimal"]
+    }
+  ]
+}
