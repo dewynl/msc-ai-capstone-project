@@ -197,16 +197,14 @@ class MetricsCollector:
         """
         # Extract pipeline data
         success = pipeline_output.get("success", False)
-        syllabus = pipeline_output.get(
-            "json", {}
-        )  # Fixed: was "syllabus", should be "json"
+        syllabus = pipeline_output.get("json", {})
         quality_metrics = pipeline_output.get("quality_metrics", {})
 
-        # FIXED: Extract metadata (not pipeline_metrics!)
+        # Extract metadata
         metadata = pipeline_output.get("metadata", {})
         filter_stats = metadata.get("filter_stats", {})
         ranking_stats = metadata.get("ranking_stats", {})
-        ranked_modules = metadata.get("ranked_modules", [])  # Full module objects!
+        ranked_modules = metadata.get("ranked_modules", [])
 
         error_info = pipeline_output.get("error", None)
         warnings = pipeline_output.get("warnings", [])
@@ -225,7 +223,7 @@ class MetricsCollector:
         num_activities = len(activity_uuids)
         num_assessments = len(assessment_uuids)
 
-        # FIXED: Calculate avg_module_hours from ranked_modules
+        # Calculate avg_module_hours from ranked_modules
         selected_modules = [m for m in ranked_modules if m.get("id") in module_uuids]
         if selected_modules:
             total_hours = sum(m.get("estimated_hours", 0) for m in selected_modules)
@@ -245,11 +243,11 @@ class MetricsCollector:
         topic_diversity = quality_metrics.get("coverage_loss", 1.0)
         topic_diversity = max(0.0, 1.0 - topic_diversity)  # Invert loss to score
 
-        # FIXED: Calculate blooms_coverage from selected_modules
+        # Calculate blooms_coverage from selected_modules
         blooms_coverage = self._calculate_blooms_coverage(selected_modules)
         overall_quality_score = quality_metrics.get("overall_quality_score", 0.0)
 
-        # FIXED: Pipeline component metrics from metadata
+        # Pipeline component metrics from metadata
         num_modules_available = filter_stats.get("total_components", 0)
         num_modules_filtered = filter_stats.get("filtered_components", 0)
         num_modules_ranked = ranking_stats.get("modules", {}).get("output_count", 0)

@@ -369,7 +369,6 @@ class SyllabusEvaluator:
 
             # Optionally save full output
             if self.config.save_intermediate_outputs:
-                # TODO: Capture full output from pipeline
                 pass
 
         except Exception as e:
