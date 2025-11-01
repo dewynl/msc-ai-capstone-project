@@ -109,9 +109,20 @@
       "expected_modules": 5,
       "tags": ["compilers", "theory"]
     },
+    {
+      "test_id": "test_010_cs_beginner_python_basics",
+      "domain": "computer_science",
+      "level": "beginner",
+      "test_type": "standard",
+      "course_title": "Python Programming",
+      "description": "Introduction to Python programming: syntax, data types, control structures, functions, modules, and file I/O. Practical coding exercises throughout.",
+      "duration": "quarter",
+      "expected_modules": 3,
+      "tags": ["python", "programming"]
+    },
 
     {
-      "test_id": "test_010_math_beginner_calculus",
+      "test_id": "test_011_math_beginner_calculus",
       "domain": "mathematics",
       "level": "beginner",
       "test_type": "standard",
@@ -122,7 +133,7 @@
       "tags": ["calculus", "analysis"]
     },
     {
-      "test_id": "test_011_math_beginner_linear_algebra",
+      "test_id": "test_012_math_beginner_linear_algebra",
       "domain": "mathematics",
       "level": "beginner",
       "test_type": "standard",
@@ -133,7 +144,7 @@
       "tags": ["linear_algebra", "vectors", "matrices"]
     },
     {
-      "test_id": "test_012_math_beginner_statistics",
+      "test_id": "test_013_math_beginner_statistics",
       "domain": "mathematics",
       "level": "beginner",
       "test_type": "standard",
@@ -144,7 +155,7 @@
       "tags": ["statistics", "probability"]
     },
     {
-      "test_id": "test_013_math_intermediate_real_analysis",
+      "test_id": "test_014_math_intermediate_real_analysis",
       "domain": "mathematics",
       "level": "intermediate",
       "test_type": "standard",
@@ -155,7 +166,7 @@
       "tags": ["analysis", "theory", "proofs"]
     },
     {
-      "test_id": "test_014_math_intermediate_abstract_algebra",
+      "test_id": "test_015_math_intermediate_abstract_algebra",
       "domain": "mathematics",
       "level": "intermediate",
       "test_type": "standard",
@@ -166,7 +177,7 @@
       "tags": ["algebra", "theory", "groups"]
     },
     {
-      "test_id": "test_015_math_advanced_topology",
+      "test_id": "test_016_math_advanced_topology",
       "domain": "mathematics",
       "level": "advanced",
       "test_type": "standard",
@@ -177,7 +188,7 @@
       "tags": ["topology", "theory", "advanced"]
     },
     {
-      "test_id": "test_016_math_advanced_differential_equations",
+      "test_id": "test_017_math_advanced_differential_equations",
       "domain": "mathematics",
       "level": "advanced",
       "test_type": "standard",
@@ -187,9 +198,20 @@
       "expected_modules": 4,
       "tags": ["pde", "applied_math"]
     },
+    {
+      "test_id": "test_018_math_beginner_discrete_math",
+      "domain": "mathematics",
+      "level": "beginner",
+      "test_type": "standard",
+      "course_title": "Discrete Mathematics",
+      "description": "Logic, sets, combinatorics, graph theory, and mathematical induction. Essential foundations for computer science.",
+      "duration": "semester",
+      "expected_modules": 4,
+      "tags": ["discrete", "logic", "combinatorics"]
+    },
 
     {
-      "test_id": "test_017_physics_beginner_mechanics",
+      "test_id": "test_019_physics_beginner_mechanics",
       "domain": "physics",
       "level": "beginner",
       "test_type": "standard",
@@ -200,7 +222,7 @@
       "tags": ["mechanics", "classical"]
     },
     {
-      "test_id": "test_018_physics_beginner_electricity",
+      "test_id": "test_020_physics_beginner_electricity",
       "domain": "physics",
       "level": "beginner",
       "test_type": "standard",
@@ -211,7 +233,7 @@
       "tags": ["electricity", "magnetism"]
     },
     {
-      "test_id": "test_019_physics_intermediate_quantum",
+      "test_id": "test_021_physics_intermediate_quantum",
       "domain": "physics",
       "level": "intermediate",
       "test_type": "standard",
@@ -222,7 +244,7 @@
       "tags": ["quantum", "modern_physics"]
     },
     {
-      "test_id": "test_020_physics_intermediate_thermodynamics",
+      "test_id": "test_022_physics_intermediate_thermodynamics",
       "domain": "physics",
       "level": "intermediate",
       "test_type": "standard",
@@ -233,7 +255,7 @@
       "tags": ["thermo", "stat_mech"]
     },
     {
-      "test_id": "test_021_physics_advanced_particle_physics",
+      "test_id": "test_023_physics_advanced_particle_physics",
       "domain": "physics",
       "level": "advanced",
       "test_type": "standard",
@@ -243,65 +265,20 @@
       "expected_modules": 5,
       "tags": ["particle", "high_energy"]
     },
-
     {
-      "test_id": "test_022_eng_beginner_intro_engineering",
-      "domain": "engineering",
+      "test_id": "test_024_physics_beginner_waves_optics",
+      "domain": "physics",
       "level": "beginner",
       "test_type": "standard",
-      "course_title": "Introduction to Engineering",
-      "description": "Survey of engineering disciplines, problem-solving methods, engineering design process, and professional ethics. Hands-on projects and teamwork.",
-      "duration": "quarter",
-      "expected_modules": 3,
-      "tags": ["intro", "design"]
-    },
-    {
-      "test_id": "test_023_eng_beginner_circuits",
-      "domain": "engineering",
-      "level": "beginner",
-      "test_type": "standard",
-      "course_title": "Circuit Analysis",
-      "description": "DC and AC circuit analysis, Kirchhoff's laws, Thévenin and Norton equivalents, phasors, and frequency response. Laboratory component with circuit simulation.",
+      "course_title": "Waves and Optics",
+      "description": "Wave phenomena, oscillations, interference, diffraction, geometric optics, and modern optics applications. Laboratory experiments included.",
       "duration": "semester",
       "expected_modules": 4,
-      "tags": ["circuits", "electrical"]
-    },
-    {
-      "test_id": "test_024_eng_intermediate_signals",
-      "domain": "engineering",
-      "level": "intermediate",
-      "test_type": "standard",
-      "course_title": "Signals and Systems",
-      "description": "Continuous and discrete signals, Fourier analysis, Laplace transforms, Z-transforms, filtering, and system stability analysis.",
-      "duration": "semester",
-      "expected_modules": 4,
-      "tags": ["signals", "systems", "dsp"]
-    },
-    {
-      "test_id": "test_025_eng_advanced_control_systems",
-      "domain": "engineering",
-      "level": "advanced",
-      "test_type": "standard",
-      "course_title": "Advanced Control Systems",
-      "description": "Modern control theory: state-space methods, optimal control, robust control, adaptive control, and nonlinear systems. Applications to robotics and aerospace.",
-      "duration": "semester",
-      "expected_modules": 5,
-      "tags": ["control", "robotics"]
+      "tags": ["waves", "optics"]
     },
 
     {
-      "test_id": "test_026_edge_minimal_input",
-      "domain": "computer_science",
-      "level": "beginner",
-      "test_type": "edge_case",
-      "course_title": "Artificial Intelligence",
-      "description": "",
-      "duration": "semester",
-      "expected_modules": 3,
-      "tags": ["edge_case", "minimal_input"]
-    },
-    {
-      "test_id": "test_027_edge_very_long_description",
+      "test_id": "test_025_edge_very_long_description",
       "domain": "computer_science",
       "level": "intermediate",
       "test_type": "edge_case",
@@ -312,18 +289,7 @@
       "tags": ["edge_case", "long_description"]
     },
     {
-      "test_id": "test_028_edge_cross_domain_computational_physics",
-      "domain": "interdisciplinary",
-      "level": "advanced",
-      "test_type": "edge_case",
-      "course_title": "Computational Physics",
-      "description": "Computational methods for solving physics problems: numerical integration, Monte Carlo methods, molecular dynamics, and partial differential equation solvers. Programming in Python and C++.",
-      "duration": "semester",
-      "expected_modules": 4,
-      "tags": ["edge_case", "interdisciplinary", "physics", "computer_science"]
-    },
-    {
-      "test_id": "test_029_edge_intensive_bootcamp",
+      "test_id": "test_026_edge_intensive_bootcamp",
       "domain": "computer_science",
       "level": "beginner",
       "test_type": "edge_case",
@@ -334,7 +300,7 @@
       "tags": ["edge_case", "bootcamp", "intensive"]
     },
     {
-      "test_id": "test_030_edge_contradictory_beginner_quantum",
+      "test_id": "test_027_edge_contradictory_beginner_quantum",
       "domain": "physics",
       "level": "beginner",
       "test_type": "edge_case",
@@ -345,40 +311,18 @@
       "tags": ["edge_case", "contradictory", "quantum"]
     },
     {
-      "test_id": "test_031_edge_ambiguous_statistics",
-      "domain": "interdisciplinary",
+      "test_id": "test_028_edge_minimal_metadata",
+      "domain": "mathematics",
       "level": "intermediate",
       "test_type": "edge_case",
-      "course_title": "Applied Statistics and Data Science",
-      "description": "Statistical methods applied to data analysis: regression, classification, hypothesis testing, visualization, and machine learning basics. Uses R and Python.",
+      "course_title": "Cryptography",
+      "description": "Mathematical foundations of cryptography including number theory and security protocols.",
       "duration": "semester",
-      "expected_modules": 4,
-      "tags": ["edge_case", "statistics", "data_science"]
+      "expected_modules": 3,
+      "tags": ["edge_case", "minimal"]
     },
     {
-      "test_id": "test_032_edge_niche_bioinformatics",
-      "domain": "interdisciplinary",
-      "level": "advanced",
-      "test_type": "edge_case",
-      "course_title": "Bioinformatics Algorithms",
-      "description": "Computational approaches to biological problems: sequence alignment, phylogenetic trees, genome assembly, RNA structure prediction, and systems biology.",
-      "duration": "semester",
-      "expected_modules": 5,
-      "tags": ["edge_case", "bioinformatics", "niche"]
-    },
-    {
-      "test_id": "test_033_edge_interdisciplinary_data_science",
-      "domain": "interdisciplinary",
-      "level": "intermediate",
-      "test_type": "edge_case",
-      "course_title": "Data Science Foundations",
-      "description": "Interdisciplinary data science combining statistics, machine learning, and programming. Real-world case studies from business, science, and social sciences.",
-      "duration": "semester",
-      "expected_modules": 4,
-      "tags": ["edge_case", "data_science", "interdisciplinary"]
-    },
-    {
-      "test_id": "test_034_edge_postgraduate_advanced_nlp",
+      "test_id": "test_029_edge_postgraduate_advanced_nlp",
       "domain": "computer_science",
       "level": "postgraduate",
       "test_type": "edge_case",
@@ -389,15 +333,37 @@
       "tags": ["edge_case", "nlp", "transformers", "research"]
     },
     {
-      "test_id": "test_035_edge_minimal_metadata",
+      "test_id": "test_030_cs_intermediate_operating_systems",
+      "domain": "computer_science",
+      "level": "intermediate",
+      "test_type": "standard",
+      "course_title": "Operating Systems",
+      "description": "Process management, memory management, file systems, concurrency, synchronization, and system calls. Hands-on kernel programming projects.",
+      "duration": "semester",
+      "expected_modules": 5,
+      "tags": ["os", "systems"]
+    },
+    {
+      "test_id": "test_031_math_intermediate_probability",
       "domain": "mathematics",
       "level": "intermediate",
-      "test_type": "edge_case",
-      "course_title": "Cryptography",
-      "description": "Mathematical foundations of cryptography including number theory and security protocols.",
+      "test_type": "standard",
+      "course_title": "Probability Theory",
+      "description": "Rigorous probability theory: random variables, probability distributions, expectation, conditional probability, law of large numbers, and central limit theorem.",
       "duration": "semester",
-      "expected_modules": 3,
-      "tags": ["edge_case", "minimal"]
+      "expected_modules": 4,
+      "tags": ["probability", "theory"]
+    },
+    {
+      "test_id": "test_032_cs_advanced_computer_vision",
+      "domain": "computer_science",
+      "level": "advanced",
+      "test_type": "standard",
+      "course_title": "Computer Vision",
+      "description": "Image processing, feature detection, object recognition, deep learning for vision, convolutional neural networks, and vision transformers.",
+      "duration": "semester",
+      "expected_modules": 5,
+      "tags": ["cv", "deep_learning", "vision"]
     }
   ]
 }

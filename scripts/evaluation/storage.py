@@ -18,32 +18,15 @@ logger = logging.getLogger(__name__)
 
 
 class ResultsStorage:
-    """
-    Manages persistence of evaluation results.
+    """Manages persistence of evaluation results to CSV/JSON/JSONL formats."""
 
-    Architecture:
-    - CSV: Main metrics for statistical analysis
-    - JSON: Full outputs for case studies
-    - JSONL: Error logs (streaming format)
-    - Summary JSON: Aggregated statistics
-
-    Features:
-    - Atomic writes (tmp file → rename)
-    - Automatic directory creation
-    - Append mode for crash recovery
-    - Structured logging
-    """
-
-    # CSV column order (34 columns)
     CSV_FIELDNAMES = [
-        # Metadata (6)
         "test_id",
         "timestamp",
         "domain",
         "level",
         "course_title",
         "description_length",
-        # Technical Performance (7)
         "generation_time_sec",
         "model_inference_time_sec",
         "parsing_time_sec",
@@ -51,27 +34,26 @@ class ResultsStorage:
         "pipeline_success",
         "total_tokens_generated",
         "model_checkpoint",
-        # Structural Metrics (6)
         "num_modules",
         "num_activities",
         "num_assessments",
         "total_components",
         "avg_module_hours",
         "has_learning_objectives",
-        # Pedagogical Quality (5)
         "prerequisite_accuracy",
         "difficulty_progression",
         "topic_diversity",
         "blooms_taxonomy_coverage",
         "overall_quality_score",
-        # Pipeline Components (6)
         "num_modules_available",
         "num_modules_filtered",
         "num_modules_ranked",
         "semantic_ranking_time_sec",
+        "semantic_avg_score",
+        "semantic_min_score",
+        "semantic_max_score",
         "quality_reranking_used",
         "reranking_improved_quality",
-        # Error Tracking (4)
         "error_occurred",
         "error_type",
         "warning_count",
@@ -79,20 +61,6 @@ class ResultsStorage:
     ]
 
     def __init__(self, output_dir: Path):
-        """
-        Initialize results storage.
-
-        Args:
-            output_dir: Base directory for all evaluation outputs
-
-        Creates directory structure:
-            output_dir/
-            ├── evaluation_results.csv
-            ├── evaluation_summary.json
-            ├── full_outputs/
-            │   └── test_*.json
-            └── errors.jsonl
-        """
         self.output_dir = Path(output_dir)
         self.csv_path = self.output_dir / "evaluation_results.csv"
         self.summary_path = self.output_dir / "evaluation_summary.json"
@@ -122,16 +90,7 @@ class ResultsStorage:
     def save_result(
         self, result: EvaluationResult, full_output: Optional[Dict[str, Any]] = None
     ) -> None:
-        """
-        Save evaluation result to CSV and optionally save full output to JSON.
-
-        Args:
-            result: Evaluation result to save
-            full_output: Complete pipeline output (optional, for case studies)
-
-        Raises:
-            IOError: If write fails
-        """
+        """Save evaluation result to CSV and optionally save full output to JSON."""
         try:
             # Save to CSV (append mode)
             self._append_to_csv(result)
@@ -155,40 +114,26 @@ class ResultsStorage:
             raise
 
     def _append_to_csv(self, result: EvaluationResult) -> None:
-        """
-        Append result to CSV using atomic write.
-
-        Args:
-            result: Evaluation result
-
-        Raises:
-            IOError: If write fails
-        """
-        # Write to temporary file first
+        """Append result to CSV using atomic write."""
         tmp_path = self.csv_path.with_suffix(".csv.tmp")
 
         try:
-            # Read existing data
             existing_rows = []
             if self.csv_path.exists():
                 with open(self.csv_path, "r", newline="") as f:
                     reader = csv.DictReader(f)
                     existing_rows = list(reader)
 
-            # Append new result
             existing_rows.append(result.to_csv_row())
 
-            # Write all data to temp file
             with open(tmp_path, "w", newline="") as f:
                 writer = csv.DictWriter(f, fieldnames=self.CSV_FIELDNAMES)
                 writer.writeheader()
                 writer.writerows(existing_rows)
 
-            # Atomic rename
             tmp_path.replace(self.csv_path)
 
         except Exception as e:
-            # Clean up temp file on error
             if tmp_path.exists():
                 tmp_path.unlink()
             raise IOError(f"Failed to write CSV: {e}")
@@ -213,14 +158,7 @@ class ResultsStorage:
             logger.warning(f"Failed to save full output for {test_id}: {e}")
 
     def _log_error(self, result: EvaluationResult) -> None:
-        """
-        Log error to JSONL file.
-
-        JSONL format allows streaming and easy grep analysis.
-
-        Args:
-            result: Evaluation result with error
-        """
+        """Log error to JSONL file."""
         error_entry = {
             "timestamp": result.timestamp,
             "test_id": result.test_id,
@@ -240,13 +178,7 @@ class ResultsStorage:
     def save_summary(
         self, results: List[EvaluationResult], metadata: Optional[Dict[str, Any]] = None
     ) -> None:
-        """
-        Save aggregated summary statistics.
-
-        Args:
-            results: All evaluation results
-            metadata: Additional metadata (config, runtime info, etc.)
-        """
+        """Save aggregated summary statistics."""
         if not results:
             logger.warning("No results to summarize")
             return
@@ -268,23 +200,13 @@ class ResultsStorage:
     def _calculate_summary_stats(
         self, results: List[EvaluationResult]
     ) -> Dict[str, Any]:
-        """
-        Calculate aggregate statistics from results.
-
-        Args:
-            results: List of evaluation results
-
-        Returns:
-            Dictionary with summary statistics
-        """
+        """Calculate aggregate statistics from results."""
         total = len(results)
         successful = sum(1 for r in results if r.is_successful)
 
-        # Aggregate technical metrics
         avg_gen_time = sum(r.generation_time_sec for r in results) / total
         avg_components = sum(r.total_components for r in results) / total
 
-        # Aggregate quality metrics (only from successful tests)
         successful_results = [r for r in results if r.is_successful]
         if successful_results:
             avg_quality = sum(
@@ -297,17 +219,14 @@ class ResultsStorage:
             avg_quality = 0.0
             avg_prereq = 0.0
 
-        # Count by domain
         domain_counts = {}
         for r in results:
             domain_counts[r.domain] = domain_counts.get(r.domain, 0) + 1
 
-        # Count by level
         level_counts = {}
         for r in results:
             level_counts[r.level] = level_counts.get(r.level, 0) + 1
 
-        # Error analysis
         error_count = sum(1 for r in results if r.error_occurred)
         error_types = {}
         for r in results:
@@ -339,15 +258,7 @@ class ResultsStorage:
         }
 
     def load_results(self) -> List[EvaluationResult]:
-        """
-        Load all results from CSV.
-
-        Returns:
-            List of evaluation results
-
-        Raises:
-            FileNotFoundError: If CSV doesn't exist
-        """
+        """Load all results from CSV."""
         if not self.csv_path.exists():
             raise FileNotFoundError(f"No results file found: {self.csv_path}")
 
@@ -357,7 +268,6 @@ class ResultsStorage:
             reader = csv.DictReader(f)
 
             for row in reader:
-                # Convert string values back to appropriate types
                 result = EvaluationResult(
                     test_id=row["test_id"],
                     timestamp=row["timestamp"],
@@ -387,6 +297,9 @@ class ResultsStorage:
                     num_modules_filtered=int(row["num_modules_filtered"]),
                     num_modules_ranked=int(row["num_modules_ranked"]),
                     semantic_ranking_time_sec=float(row["semantic_ranking_time_sec"]),
+                    semantic_avg_score=float(row["semantic_avg_score"]),
+                    semantic_min_score=float(row["semantic_min_score"]),
+                    semantic_max_score=float(row["semantic_max_score"]),
                     quality_reranking_used=bool(int(row["quality_reranking_used"])),
                     reranking_improved_quality=bool(
                         int(row["reranking_improved_quality"])
@@ -405,15 +318,7 @@ class ResultsStorage:
         return results
 
     def get_result(self, test_id: str) -> Optional[EvaluationResult]:
-        """
-        Retrieve a specific test result by ID.
-
-        Args:
-            test_id: Test case identifier
-
-        Returns:
-            Evaluation result or None if not found
-        """
+        """Retrieve a specific test result by ID."""
         results = self.load_results()
         for result in results:
             if result.test_id == test_id:
@@ -421,15 +326,7 @@ class ResultsStorage:
         return None
 
     def load_full_output(self, test_id: str) -> Optional[Dict[str, Any]]:
-        """
-        Load complete pipeline output for a test case.
-
-        Args:
-            test_id: Test case identifier
-
-        Returns:
-            Full output dictionary or None if not found
-        """
+        """Load complete pipeline output for a test case."""
         output_path = self.full_outputs_dir / f"{test_id}.json"
 
         if not output_path.exists():

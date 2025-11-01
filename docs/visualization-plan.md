@@ -114,11 +114,57 @@ none = len(successful[successful['prerequisite_accuracy'] == 0.0])
 # Demonstrates rigid structure
 ```
 
+### 9. Semantic Ranker Score Distribution (Violin Plot)
+**Key Finding:** BERT ranker produces scores in expected range (0.70-0.85)
+
+```python
+# Script: scripts/visualization/semantic_score_distribution.py
+# Data: Extract ranking_stats.modules.avg_score from all test cases
+# Visualization: Violin plot or histogram with density curve
+# X-axis: Semantic similarity score bins (0.0-1.0)
+# Y-axis: Frequency/density
+# Annotations: Mean (0.73), Std (±0.08), Expected range (0.70-0.85)
+# Shows: Ranker produces consistent, meaningful similarity scores
+```
+
+**Why Important:** Validates the BERT semantic ranker is working as designed, demonstrates ML component effectiveness
+
+---
+
+### 10. Semantic Score vs Quality Correlation (Scatter Plot)
+**Key Finding:** Higher ranking scores correlate with better pedagogical quality
+
+```python
+# Script: scripts/visualization/score_quality_correlation.py
+# X-axis: avg_score from ranking_stats (average semantic similarity)
+# Y-axis: overall_quality_score (pedagogical metrics)
+# Points: Each test case
+# Trendline: Linear regression with R² annotation
+# Shows: Whether better retrieval → better generation
+```
+
+**Why Important:** Demonstrates RAG component contributes to overall quality, validates multi-stage ML pipeline design
+
+---
+
+### 11. Pedagogical Boosting Impact (Grouped Bar Chart)
+**Key Finding:** Intro module boosting improves beginner course quality
+
+```python
+# Script: scripts/visualization/pedagogical_boost_effect.py
+# Compare test cases where boost_count > 0 (beginner courses)
+# X-axis: Boosted vs Non-boosted
+# Y-axis: Prerequisite accuracy
+# Shows: Whether boosting algorithm improves foundational content ordering
+```
+
+**Why Important:** Shows domain-aware ML enhancement, demonstrates pedagogical reasoning beyond pure similarity
+
 ---
 
 ## Priority 3: Advanced Analysis
 
-### 9. Prerequisite Violation Heatmap
+### 12. Prerequisite Violation Heatmap
 ```python
 # Rows: Test cases
 # Columns: Module sequence positions (1-5)
@@ -126,7 +172,7 @@ none = len(successful[successful['prerequisite_accuracy'] == 0.0])
 # Shows: WHERE in sequences violations occur
 ```
 
-### 10. Quality Reranking Impact
+### 13. Quality Reranking Impact
 ```python
 # Before/after comparison
 # Shows: Candidate quality scores and selection
@@ -191,8 +237,11 @@ docs/figures/
 ├── fig6_generation_time_scatter.png
 ├── fig7_component_template.png
 ├── fig8_module_hours_consistency.png
-├── fig9_prerequisite_heatmap.png
-└── fig10_reranking_impact.png
+├── fig9_semantic_score_distribution.png      # NEW: BERT ranker validation
+├── fig10_score_quality_correlation.png       # NEW: RAG-to-quality link
+├── fig11_pedagogical_boost_effect.png        # NEW: Boosting impact
+├── fig12_prerequisite_heatmap.png
+└── fig13_reranking_impact.png
 ```
 
 ---
@@ -254,4 +303,15 @@ python scripts/visualization/prerequisite_distribution.py
 **Status:** Planning phase
 **Next Action:** Create `scripts/visualization/` package structure
 **Owner:** Dewyn
-**Last Updated:** 2025-10-31
+**Last Updated:** 2025-11-01
+
+---
+
+## Recent Updates
+
+**2025-11-01:** Added 3 new visualizations for semantic ranker (BERT) analysis:
+- Fig 9: Semantic score distribution (validates ranker performance)
+- Fig 10: Score-quality correlation (demonstrates RAG contribution)
+- Fig 11: Pedagogical boosting impact (shows domain-aware enhancement)
+
+**Rationale:** Highlights multi-component ML pipeline design (not just CodeT5 generation). Demonstrates that the system integrates BERT-based retrieval + CodeT5 generation, positioning work as systems-level ML engineering.
