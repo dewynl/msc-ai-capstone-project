@@ -1,6 +1,0 @@
-1. Feature to download the syllabus as a pdf. 
-2. Focus on Lessons learned - Functionalities to be added to make it better. 
-3. Opportunities not problems
-4. Idea, once generate a syllabus, user puts a score and then the model learns and regenerate.
-5. Checklist of what I wanna show so I dont forget.
-    - Mention that the models tries multiple times.
