@@ -521,7 +521,7 @@ Social impact evaluation extends beyond immediate educational stakeholders to co
 
 This chapter establishes the systematic approach used to design and evaluate the custom neural network architecture and pedagogical quality evaluation framework for automated course syllabus generation. The methodology integrates Design Science Research principles with educational AI development practices and curriculum learning theory, ensuring both technical rigour and pedagogical validity throughout the research process.
 
-The chapter is organised as follows: Section 4.1 establishes the Design Science Research framework and philosophical foundations guiding the research approach. Section 4.2 details the function calling architecture design for reliable structured generation. Section 4.3 presents the data architecture and template-based input processing methodology. Section 4.4 describes the implementation framework and development environment. Subsequent sections document the pedagogical quality evaluation methodology (4.5), quality-aware inference pipeline (4.6), and validation procedures (4.7).
+The chapter is organised as follows: Section 4.1 establishes the Design Science Research framework and philosophical foundations guiding the research approach. Section 4.2 details the iterative research process that evolved from function calling exploration to the final index-based markdown generation approach. Section 4.3 presents the data architecture and template-based input processing methodology. Section 4.4 describes the implementation framework and development environment. Subsequent sections document the pedagogical quality evaluation methodology (4.5), quality-aware inference pipeline (4.6), and validation procedures (4.7).
 
 ## 4.1 Research Design and Philosophical Framework
 
@@ -1425,7 +1425,7 @@ Accessibility validation ensures generated content meets WCAG 2.1 Level AA stand
 
 ### 5.8.3 Comparative Evaluation Design
 
-The research employed a three-phase iterative development process (documented in Annex A); therefore, comparative evaluation measures improvements across architectural iterations to demonstrate the function calling innovation's effectiveness.
+The research employed an iterative development process exploring multiple approaches (documented in Annex A); therefore, comparative evaluation measures performance across architectural iterations to demonstrate the task simplification breakthrough's effectiveness.
 
 **Baseline Comparisons:**
 Three system variants provide comparison points:
@@ -2042,7 +2042,7 @@ This research opens multiple avenues for future investigation across short-term 
 
 ## 8.5 Practical Implications
 
-For educational technologists, instructional designers, and curriculum developers, this research demonstrates that **AI-assisted content generation need not sacrifice structural reliability for semantic intelligence**. The function calling architecture provides a template for building production-ready educational tools that:
+For educational technologists, instructional designers, and curriculum developers, this research demonstrates that **AI-assisted content generation need not sacrifice structural reliability for semantic intelligence**. The markdown generation with index-based selection approach provides a template for building production-ready educational tools that:
 
 - Generate valid, standards-compliant artifacts (100% JSON validity, Section 6.2.1)
 - Operate at interactive speeds (~2 seconds per syllabus for sub-second user experience)
@@ -2071,12 +2071,13 @@ This dissertation represents one step toward that future: demonstrating that neu
 This appendix provides a comprehensive record of the methodological evolution undertaken during this research project, documenting the systematic progression from initial approaches through to the final successful implementation. The iterative development process reflects the empirical nature of AI research and demonstrates how systematic evaluation of failures can inform architectural innovations that ultimately lead to breakthrough results.
 
 **Research Timeline:**
-- **Phase 1** (Weeks 1-2): Direct T5 JSON Generation Approach
-- **Phase 2** (Weeks 3-4): RAG-Enhanced Compositional Architecture Development
-- **Phase 3** (Weeks 5-6): Function Calling Architecture Innovation
-- **Phase 4** (Weeks 7-8): System Integration and Evaluation
+- **Initial Exploration** (Weeks 1-2): Function Calling Architecture Attempt (0% pass rate due to UUID generation complexity)
+- **Systematic Analysis** (Week 3): Comprehensive decision analysis evaluating 11 solution pathways (documented in Section A.8)
+- **Architecture Pivot** (Weeks 3-4): Transition to index-based component selection approach
+- **Final Implementation** (Weeks 5-6): Markdown generation with index-based selection (100% structural validity achieved)
+- **Evaluation & Documentation** (Weeks 7-8): Comprehensive testing and dissertation writing
 
-Figure 5.1 provides a visual overview of the three-phase research evolution, illustrating the systematic progression from complete failure through partial success to the breakthrough function calling architecture that achieved both structural reliability and neural intelligence preservation.
+The research evolution demonstrates how systematic failure analysis and evidence-based decision making led from an initial approach that failed due to task complexity (UUID generation from 960 components) to a successful solution through task simplification (index-based selection [0], [1], [2]).
 
 ![Figure 5.1: Research Approach Evolution - Three Phase Journey](assets/figure-5-1-phase-evolution.png)
 
@@ -2183,13 +2184,15 @@ The RAG approach drew from contemporary research in retrieval-augmented generati
 **Strategic Implications:**
 This limitation prompted recognition that the fundamental challenge was not T5's generation capability, but rather the structural requirements imposed by JSON formatting. This insight became the foundation for the Function Calling approach developed in Phase 3.
 
-## A.4 Phase 3: Function Calling Architecture Innovation
+## A.4 Initial Exploration: Function Calling Architecture Attempt
 
-### A.4.1 Breakthrough Insight and Architectural Innovation
+### A.4.1 Architectural Hypothesis and Implementation
 
-**Core Insight:** The problem was not T5's inability to generate educational content, but rather the requirement for perfect JSON syntax precision. This realisation suggested that separating semantic generation from structural construction could enable T5's educational intelligence while ensuring structural validity.
+**Initial Hypothesis:** The problem was not the model's inability to generate educational content, but rather the requirement for perfect JSON syntax precision. Separating semantic generation from structural construction could enable the model's educational intelligence while ensuring structural validity.
 
-**Innovation Hypothesis:** Transform the generation task from `T5 → JSON` to `T5 → Function Calls → JSON`, where function calls serve as an intermediate representation that preserves semantic content while enabling programmatic construction of valid structures.
+**Approach:** Transform the generation task from `Model → JSON` to `Model → Function Calls → JSON`, where function calls serve as an intermediate representation that preserves semantic content while enabling programmatic construction of valid structures.
+
+**Critical Limitation:** This approach, while architecturally sound, failed in practice (0% evaluation pass rate) due to unforeseen task complexity—requiring the model to generate exact UUIDs from a database of 960 components exceeded small model capacity. The architectural sophistication could not overcome the fundamental cognitive bottleneck of identifier memorization.
 
 ### A.4.2 Domain-Specific Language Design
 
@@ -2239,27 +2242,28 @@ add_assessment(title: str, type: str, hours: int, description: str = "")
 - **Semantic Preservation:** Maintains T5's educational intelligence through information extraction
 - **Fallback Reliability:** 100% execution success through template-based fallback when extraction fails
 
-### A.4.5 Breakthrough Performance Results
+### A.4.5 Evaluation Results and Critical Failure
 
-**Structural Validity:** 100% valid JSON generation (compared to 0% in Phase 1)
-**Educational Intelligence:** Preserved T5's semantic content generation capability
-**Component Integration:** Seamless RAG integration with database component IDs
-**Error Resilience:** Graceful degradation maintains system reliability under edge conditions
+**Evaluation Outcome:** 0% pass rate across comprehensive test suite (documented in Section A.7)
 
-## A.5 Comparative Analysis of Initial Architectural Phases
+**Root Cause:** The model could not reliably generate correct UUIDs to reference database components. While the execution engine and DSL were architecturally sound, the task of memorizing 960 unique identifiers exceeded CodeT5-small's capacity.
 
-**Note:** This section compares the first three architectural phases as initially implemented. Subsequent systematic evaluation and refinement (documented in Sections A.7-A.9) revealed additional challenges requiring further architectural evolution to achieve production-ready reliability.
+**Key Learning:** Architectural sophistication cannot overcome fundamental task complexity. This failure prompted the systematic decision analysis documented in Section A.8, ultimately leading to task simplification through index-based selection as the viable solution.
 
-### A.5.1 Quantitative Performance Comparison (Initial Testing)
+## A.5 Comparative Analysis Across Research Evolution
 
-| Metric | Phase 1 (Direct T5) | Phase 2 (RAG-Enhanced) | Phase 3 (Function Calling - Initial) |
-|--------|---------------------|-------------------------|----------------------------|
-| **JSON Validity Rate** | 0% | 100% | 100% (limited testing) |
-| **T5 Utilisation** | 100% (failed) | 20% (enhancement only) | 85% (semantic generation) |
-| **Educational Intelligence** | High (unusable) | Medium (template-based) | High (preserved) |
-| **Component Integration** | Impossible | Excellent | Excellent + IDs |
-| **Error Recovery** | None | Limited | Sophisticated |
-| **Generation Speed** | 2-3s | 5.2s | 5-8s |
+**Note:** This section compares the explored approaches, documenting both failures and the eventual successful solution. The function calling approach (Section A.4) failed in comprehensive evaluation despite architectural soundness, leading to the systematic decision analysis (Section A.8) that identified index-based selection as the viable path forward.
+
+### A.5.1 Quantitative Performance Comparison
+
+| Metric | Phase 1 (Direct JSON) | Phase 2 (RAG Templates) | Function Calling (Failed) | Final (Markdown + Index) |
+|--------|---------------------|-------------------------|----------------------------|--------------------------|
+| **Evaluation Pass Rate** | 0% | N/A (not evaluated) | 0% | 100% |
+| **Task Complexity** | High (JSON syntax) | Low (templates) | Extreme (UUID generation) | Low (index selection) |
+| **Model Utilization** | 100% (failed) | 20% (minimal neural) | 85% (failed UUID task) | 60% (successful generation) |
+| **Component Selection** | Impossible | Fixed retrieval | UUID memorization (failed) | Index-based (successful) |
+| **Structural Validity** | 0% | 100% (templates) | 100% (execution engine) | 100% (markdown parsing) |
+| **Generation Speed** | 2-3s | 5.2s | N/A (failed) | 2.1s |
 
 ### A.5.2 Research Contribution Evolution
 
@@ -2267,15 +2271,17 @@ add_assessment(title: str, type: str, hours: int, description: str = "")
 
 **Phase 2 Contribution:** Proved the effectiveness of RAG-based component assembly for educational content, whilst revealing the challenge of neural model integration.
 
-**Phase 3 Contribution:** Made significant progress in integrating neural intelligence with structural reliability through function calling architecture, demonstrating potential for smaller models to achieve structured generation through task decomposition. However, systematic evaluation (Section A.7) subsequently revealed task complexity challenges that motivated further architectural refinement.
+**Function Calling Exploration Contribution:** Revealed the fundamental limitation that architectural sophistication cannot overcome task complexity bottlenecks. Despite sound DSL design and robust execution engine implementation, the function calling approach achieved 0% evaluation pass rate (Section A.7) because the task of generating exact UUIDs to reference 960 database components exceeded small model capacity. This failure provided the critical insight that task formulation—simplifying from UUID generation to index-based selection—matters more than architectural innovation.
+
+**Final Solution Contribution:** Achieved 100% structural validity and 96% pedagogical quality through markdown generation with index-based component selection (documented in Section A.9). By reducing the task from UUID memorisation (960 unique 32-character identifiers) to index selection ([0], [1], [2]), the approach enabled a 60M parameter model to succeed where more complex architectures had failed.
 
 ### A.5.3 Methodological Insights
 
 **Key Research Insights:**
-1. **Failure Analysis Value:** Systematic analysis of failure modes proved more valuable than immediate success, leading to fundamental insights about task decomposition
-2. **Architectural Innovation Over Scaling:** The breakthrough came from architectural innovation rather than model scaling or data augmentation
-3. **Domain-Specific Solutions:** Educational domain requirements informed architectural decisions that proved generalizable to other structured generation tasks
-4. **Intermediate Representations:** Function calls provided an effective intermediate representation that preserved semantics while enabling structural reliability
+1. **Failure Analysis Value:** Systematic analysis of failure modes proved more valuable than immediate success. The function calling exploration's 0% pass rate led to the critical insight about task complexity bottlenecks
+2. **Task Formulation Over Architectural Sophistication:** The breakthrough came from task simplification (UUID → index) rather than architectural innovation or model scaling. A 60M parameter model with a simplified task outperformed more complex architectures with unfeasible tasks
+3. **Cognitive Complexity Reduction:** Reducing task complexity from UUID generation (960 unique identifiers) to index-based selection ([0], [1], [2]) enabled reliable generation. This demonstrates the importance of aligning task formulation with model capacity
+4. **Evidence-Based Decision Making:** The comprehensive decision analysis (Section A.8) evaluating 11 solution pathways ensured systematic exploration rather than reactive pivoting, leading to optimal solution selection
 
 ## A.6 Implementation Lessons and Future Research Directions
 
@@ -2283,47 +2289,47 @@ add_assessment(title: str, type: str, hours: int, description: str = "")
 
 **Initial Broad Domain Approach:** The research initially aimed to support content generation across diverse academic disciplines including humanities, social sciences, business studies, and STEM fields. Early synthetic data generation included components spanning literature, history, economics, and liberal arts subjects to ensure comprehensive educational coverage.
 
-**Scope Refinement to STEM Focus:** During Phase 2 and Phase 3 implementation, the research scope was strategically narrowed to focus primarily on STEM-related subjects (Computer Science, Mathematics, Physics, Engineering) for several critical reasons:
+**Scope Refinement to STEM Focus:** During early implementation phases, the research scope was strategically narrowed to focus primarily on STEM-related subjects (Computer Science, Mathematics, Physics, Engineering) for several critical reasons:
 
 1. **Domain Validation Complexity:** Humanities subjects require significantly different validation approaches, with subjective content evaluation criteria that conflicted with the systematic validation framework being developed.
 
-2. **Technical Complexity Management:** STEM subjects provided more objective validation criteria and clearer hierarchical knowledge structures that aligned better with the function calling architecture being developed.
+2. **Technical Complexity Management:** STEM subjects provided more objective validation criteria and clearer hierarchical knowledge structures that aligned better with the structured generation approach being developed.
 
-3. **Resource Allocation:** Focusing on STEM domains enabled deeper validation rule development and more sophisticated error recovery mechanisms within the available research timeframe.
+3. **Resource Allocation:** Focusing on STEM domains enabled deeper validation rule development and more sophisticated pedagogical quality metrics within the available research timeframe.
 
 4. **Industry Relevance:** STEM education represents a critical area for AI assistance due to rapid technological evolution and standardised knowledge structures.
 
-**Implementation Impact:** The domain restriction enabled sophisticated validation rules specific to STEM education, including mathematical prerequisite checking, programming concept progression validation, and technical skill assessment alignment. This focused approach proved essential for achieving the 100% structural validity demonstrated in initial Phase 3 implementation.
+**Implementation Impact:** The domain restriction enabled sophisticated validation rules specific to STEM education, including mathematical prerequisite checking, programming concept progression validation, and technical skill assessment alignment. This focused approach proved essential for developing the pedagogical quality metrics that enabled the final solution's 96% quality achievement.
 
-**Future Expansion Pathway:** The architecture remains extensible to humanities domains through additional domain-specific validation modules and expanded function calling DSL definitions, providing a clear pathway for future research expansion.
+**Future Expansion Pathway:** The architecture remains extensible to humanities domains through additional domain-specific validation modules and expanded component databases, providing a clear pathway for future research expansion whilst maintaining the task simplicity that enables small model success.
 
 ### A.6.2 Technical Implementation Insights
 
-**Function Call Syntax Optimisation:** The research demonstrated that function call generation is significantly more learnable for smaller models than direct JSON generation, with implications for other structured generation tasks.
+**Task Formulation Lessons:** The research demonstrated that task complexity matters more than architectural sophistication. The function calling exploration failed (0% pass rate) despite sound DSL design because UUID generation exceeded model capacity. The breakthrough came from reformulating the task (index-based selection) rather than improving the architecture.
 
-**Format-Agnostic Parsing Architecture:** The intelligent information extraction approach with pattern-based semantic extraction proved essential for production reliability, enabling T5 to focus on educational content generation without syntactic precision requirements. This approach suggests broader applications for separating semantic generation from structural construction in domain-specific AI systems.
+**Format-Agnostic Parsing Architecture:** The markdown parsing approach with regex-based index extraction proved essential for production reliability. By generating structured markdown (a format aligned with model pre-training on GitHub/documentation) rather than executable code, the system leveraged the model's existing capabilities whilst maintaining structural reliability.
 
-**Educational Validation Integration:** Incorporating domain knowledge directly into the execution engine enabled sophisticated validation that improved both reliability and educational appropriateness.
+**Pedagogical Quality Metrics:** The generate-and-rerank pipeline with multi-dimensional quality evaluation (prerequisite coherence, difficulty progression, topic diversity, Bloom's taxonomy coverage) enabled systematic quality assessment. This approach suggests broader applications for domain-specific quality metrics in AI-generated content.
 
-### A.6.2 Broader Implications for AI Research
+### A.6.3 Broader Implications for AI Research
 
-**Resource-Constrained AI:** The function calling approach demonstrates that architectural innovation can enable smaller, more efficient models to achieve reliability previously requiring larger parameter scales.
+**Resource-Constrained AI:** The index-based selection approach demonstrates that task simplification can enable smaller, more efficient models to achieve reliability that more complex architectures cannot. A 60M parameter model succeeded by reducing cognitive load (UUID → index) rather than increasing model scale.
 
-**Domain-Specific Architectures:** The research validates the effectiveness of domain-specific architectural adaptations for specialised generation tasks.
+**Task Formulation Research:** The research validates the importance of task formulation in structured generation. When tasks exceed model capacity (UUID generation from 960 components), architectural innovation cannot compensate—task redesign is required.
 
-**Structured Generation Research:** The iterative evolution from direct generation through RAG enhancement to function calling provides a methodological template for similar structured generation challenges.
+**Structured Generation Methodology:** The iterative evolution from direct generation through function calling exploration to index-based markdown provides a methodological template: systematic failure analysis → comprehensive decision evaluation → evidence-based solution selection.
 
-### A.6.3 Future Research Directions
+### A.6.4 Future Research Directions
 
-**Cross-Domain Function Calling:** Extension of the function calling approach to other domains requiring structured generation (configuration files, report templates, data pipeline definitions).
+**Cross-Domain Task Simplification:** Extension of the index-based selection approach to other domains requiring structured generation (configuration files, report templates, data pipeline definitions). Research question: Can task simplification through indexed selection generalize beyond educational content?
 
-**Interactive Function Generation:** Development of human-in-the-loop systems for real-time function call generation and validation.
+**Interactive Content Generation:** Development of human-in-the-loop systems for real-time syllabus generation with expert feedback loops, enabling iterative refinement whilst maintaining automation efficiency.
 
-**Automated DSL Discovery:** Research into automated discovery of optimal domain-specific languages for different structured generation tasks.
+**Adaptive Quality Metrics:** Research into domain-specific quality metric discovery that adapts to different educational contexts (e.g., vocational training vs. theoretical courses, different cultural pedagogical norms).
 
-**Educational Effectiveness Evaluation:** Longitudinal studies of educational outcomes from AI-generated versus human-authored syllabi to validate pedagogical effectiveness.
+**Educational Effectiveness Evaluation:** Longitudinal studies of educational outcomes from AI-generated versus human-authored syllabi to validate pedagogical effectiveness and identify areas for quality improvement.
 
-### A.6.4 Transition to Systematic Refinement
+### A.6.5 Transition to Systematic Refinement
 
 The insights documented in Sections A.1-A.6 reflect lessons learned through the initial three-phase evolution. Following Phase 3 implementation, comprehensive systematic evaluation was conducted to assess production readiness and identify remaining limitations. This evaluation, combined with rigorous decision analysis, led to further architectural refinement documented in the following sections:
 
