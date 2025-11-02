@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """EduCraft - AI-Powered Course Syllabus Generator"""
 
+import json
 import sys
 import time
+from datetime import datetime
 from pathlib import Path
 
 import streamlit as st
@@ -71,9 +73,6 @@ def get_db_manager():
 @st.cache_data(ttl=60)
 def load_rag_database():
     """Load educational components from JSON files (cached)."""
-    import json
-    from pathlib import Path
-
     base_dir = Path(__file__).parent
     components_dir = base_dir / "data" / "components"
 
@@ -749,9 +748,6 @@ def main():
                                 result.get("markdown_simple", ""), language="markdown"
                             )
 
-                            import json
-                            from datetime import datetime
-
                             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
                             supervisor_output = {
@@ -877,28 +873,6 @@ def main():
             with metrics_cols[3]:
                 st.metric("Time", f"{gen_time:.2f}s")
 
-            if not is_saved:
-                if st.button(
-                    "💾 Save This Syllabus to Database",
-                    use_container_width=True,
-                    type="primary",
-                ):
-                    db = get_db_manager()
-                    db.save_syllabus(
-                        user_id=user["id"],
-                        title=requirements["title"],
-                        domain=requirements["domain"],
-                        level=requirements["level"],
-                        description=requirements["description"],
-                        syllabus_json=syllabus,
-                        generation_time_seconds=gen_time,
-                    )
-                    st.session_state.syllabus_saved = True
-                    st.success("✅ Syllabus saved successfully!")
-                    st.rerun()
-            else:
-                st.success("✅ Syllabus saved")
-
             st.markdown("---")
 
             tab1, tab2, tab3 = st.tabs(
@@ -913,6 +887,137 @@ def main():
 
             with tab3:
                 render_technical_details(syllabus, gen_time)
+
+            st.markdown("---")
+
+            st.subheader("📊 Help Improve the System")
+            st.write(
+                "Your feedback helps the model learn and improve over time. "
+                "Rate this syllabus and see similar expert examples."
+            )
+
+            with st.expander("🎓 View Similar Expert Syllabi", expanded=False):
+                try:
+                    sys.path.insert(
+                        0, str(Path(__file__).parent / "scripts" / "feedback")
+                    )
+                    from expert_retrieval import get_expert_retriever
+
+                    retriever = get_expert_retriever()
+                    expert_recommendations = retriever.get_expert_recommendations(
+                        requirements, top_k=2
+                    )
+
+                    if expert_recommendations:
+                        st.write(
+                            "**Similar high-quality syllabi from our evaluation:**"
+                        )
+                        for i, expert in enumerate(expert_recommendations, 1):
+                            with st.container():
+                                col1, col2 = st.columns([3, 1])
+                                with col1:
+                                    st.markdown(f"**{i}. {expert['title']}**")
+                                    st.caption(
+                                        f"Domain: {expert['domain'].replace('_', ' ').title()} | "
+                                        f"Level: {expert['level'].title()}"
+                                    )
+                                with col2:
+                                    st.metric("Quality", expert["quality_score"])
+                                    st.metric("Similarity", expert["similarity"])
+
+                                st.markdown(
+                                    f"- Structure: {expert['structure']}\n"
+                                    f"- Prerequisite Accuracy: {expert['prerequisite_accuracy']}\n"
+                                    f"- Semantic Match: {expert['semantic_match']}"
+                                )
+                                if i < len(expert_recommendations):
+                                    st.markdown("---")
+                    else:
+                        st.info("No similar expert syllabi found for this course.")
+
+                except Exception as e:
+                    st.warning(f"Could not load expert examples: {str(e)}")
+
+            with st.form("feedback_form"):
+                st.write("**Rate this syllabus:**")
+
+                quality_score = st.slider(
+                    "Overall Quality",
+                    min_value=1,
+                    max_value=10,
+                    value=5,
+                    help="1 = Poor, 10 = Excellent",
+                )
+
+                comments = st.text_area(
+                    "Comments (optional)",
+                    placeholder="What did you like or dislike about this syllabus?",
+                    help="Your feedback helps improve the system",
+                )
+
+                submitted = st.form_submit_button(
+                    "💾 Save & Submit Feedback", use_container_width=True, type="primary"
+                )
+
+                if submitted:
+                    try:
+                        db = get_db_manager()
+
+                        # Save syllabus first if not already saved
+                        if (
+                            not is_saved
+                            or "current_syllabus_id" not in st.session_state
+                        ):
+                            saved_syllabus = db.save_syllabus(
+                                user_id=user["id"],
+                                title=requirements["title"],
+                                domain=requirements["domain"],
+                                level=requirements["level"],
+                                description=requirements["description"],
+                                syllabus_json=syllabus,
+                                generation_time_seconds=gen_time,
+                            )
+                            st.session_state.syllabus_saved = True
+                            st.session_state.current_syllabus_id = saved_syllabus["id"]
+                            syllabus_id = saved_syllabus["id"]
+                        else:
+                            syllabus_id = st.session_state.current_syllabus_id
+
+                        # Now save feedback
+                        feedback_result = db.save_feedback(
+                            syllabus_id=syllabus_id,
+                            user_id=user["id"],
+                            quality_score=quality_score,
+                            comments=comments if comments else None,
+                        )
+
+                        st.success(
+                            f"✅ Syllabus saved and rated! Your score: {quality_score}/10"
+                        )
+
+                        feedback_stats = db.get_feedback_stats()
+                        st.info(
+                            f"📊 **System Stats:** {feedback_stats['total_feedback']} total ratings | "
+                            f"Avg: {feedback_stats['avg_score']}/10 | "
+                            f"{feedback_stats['high_quality_count']} high-quality syllabi (≥7/10)"
+                        )
+
+                        if feedback_stats["total_feedback"] >= 50:
+                            st.warning(
+                                "🔧 **50+ feedback samples collected!** "
+                                "The system is ready for fine-tuning to improve generation quality."
+                            )
+
+                    except Exception as e:
+                        if "Missing Supabase credentials" in str(e):
+                            st.info(
+                                "ℹ️ Feedback system requires Supabase configuration. "
+                                "See docs/supabase-feedback-schema.sql to set up the database."
+                            )
+                        else:
+                            st.error(f"❌ Error saving feedback: {str(e)}")
+
+            st.markdown("---")
 
             safe_title = requirements["title"].replace(" ", "_").lower()[:30]
             filename = f"syllabus_{safe_title}.json"
