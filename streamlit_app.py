@@ -1019,15 +1019,39 @@ def main():
 
             st.markdown("---")
 
+            # Download buttons (JSON and PDF)
             safe_title = requirements["title"].replace(" ", "_").lower()[:30]
-            filename = f"syllabus_{safe_title}.json"
-            st.download_button(
-                label="📥 Download JSON",
-                data=json.dumps(syllabus, indent=2),
-                file_name=filename,
-                mime="application/json",
-                use_container_width=True,
-            )
+
+            col_json, col_pdf = st.columns(2)
+
+            with col_json:
+                filename_json = f"syllabus_{safe_title}.json"
+                st.download_button(
+                    label="📥 Download JSON",
+                    data=json.dumps(syllabus, indent=2),
+                    file_name=filename_json,
+                    mime="application/json",
+                    use_container_width=True,
+                )
+
+            with col_pdf:
+                # Generate PDF
+                try:
+                    sys.path.insert(0, str(Path(__file__).parent / "scripts"))
+                    from pdf_generator import generate_syllabus_pdf
+
+                    pdf_buffer = generate_syllabus_pdf(syllabus, rag_db)
+                    filename_pdf = f"syllabus_{safe_title}.pdf"
+
+                    st.download_button(
+                        label="📄 Download PDF",
+                        data=pdf_buffer.getvalue(),
+                        file_name=filename_pdf,
+                        mime="application/pdf",
+                        use_container_width=True,
+                    )
+                except Exception as e:
+                    st.error(f"PDF generation failed: {str(e)}")
 
     st.markdown("---")
     st.caption(
