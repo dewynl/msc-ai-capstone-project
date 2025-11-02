@@ -60,15 +60,15 @@ ADVANCED_KEYWORDS = [
 class SemanticRanker:
     """Ranks educational components by semantic similarity to course requirements."""
 
-    def __init__(self, model_name: str = "all-MiniLM-L6-v2"):
+    def __init__(self, model_name: str = "all-mpnet-base-v2"):
         """
         Initialize semantic ranker with pre-trained sentence transformer.
 
         Args:
-            model_name: HuggingFace model name (default: all-MiniLM-L6-v2)
-                       - Fast and lightweight (22M parameters)
-                       - Good for semantic similarity
-                       - 384-dimensional embeddings
+            model_name: HuggingFace model name (default: all-mpnet-base-v2)
+                       - High-quality semantic matching (420M parameters)
+                       - Better performance than MiniLM
+                       - 768-dimensional embeddings
         """
         print(f"Loading sentence transformer: {model_name}...")
         self.model = SentenceTransformer(model_name)

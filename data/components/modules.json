@@ -28018,7 +28018,8 @@
       "boolean_values",
       "type_conversion"
     ],
-    "prerequisites": []
+    "prerequisites": [],
+    "module_id": "b030dcfc-7911-4d5b-ae40-9c1dfc862cc9"
   },
   {
     "id": "ba302d37-d6f9-4464-a9b1-98c11bfa0890",
@@ -28034,7 +28035,8 @@
       "arithmetic_operators",
       "comparison_operators"
     ],
-    "prerequisites": []
+    "prerequisites": [],
+    "module_id": "ba302d37-d6f9-4464-a9b1-98c11bfa0890"
   },
   {
     "id": "5c81302a-9ecc-401f-89a4-80c86fc6a705",
@@ -28050,7 +28052,8 @@
       "nested_conditionals",
       "logical_operators"
     ],
-    "prerequisites": []
+    "prerequisites": [],
+    "module_id": "5c81302a-9ecc-401f-89a4-80c86fc6a705"
   },
   {
     "id": "d25c9692-1a42-4f6c-8fd1-713741f1fe49",
@@ -28066,7 +28069,8 @@
       "break_and_continue",
       "loop_iteration_patterns"
     ],
-    "prerequisites": []
+    "prerequisites": [],
+    "module_id": "d25c9692-1a42-4f6c-8fd1-713741f1fe49"
   },
   {
     "id": "aa666292-d729-4eee-b11d-4fb386271240",
@@ -28082,7 +28086,8 @@
       "variable_scope",
       "function_reusability"
     ],
-    "prerequisites": []
+    "prerequisites": [],
+    "module_id": "aa666292-d729-4eee-b11d-4fb386271240"
   },
   {
     "id": "6870fdff-65b7-4801-a461-ae42c2592182",
@@ -28101,7 +28106,8 @@
     "prerequisites": [
       "python-basics",
       "python-loops"
-    ]
+    ],
+    "module_id": "6870fdff-65b7-4801-a461-ae42c2592182"
   },
   {
     "id": "b76b5eb7-346c-41a8-a5fd-364c8e0cf1af",
@@ -28120,7 +28126,8 @@
     "prerequisites": [
       "python-basics",
       "python-lists-operations"
-    ]
+    ],
+    "module_id": "b76b5eb7-346c-41a8-a5fd-364c8e0cf1af"
   },
   {
     "id": "5446ed40-c602-4b87-b51b-3599820398bb",
@@ -28139,7 +28146,8 @@
     "prerequisites": [
       "python-basics",
       "python-lists-operations"
-    ]
+    ],
+    "module_id": "5446ed40-c602-4b87-b51b-3599820398bb"
   },
   {
     "id": "a337550a-eb85-4232-a5b6-6ce8d4065eb3",
@@ -28159,7 +28167,8 @@
     "prerequisites": [
       "python-basics",
       "python-string-manipulation"
-    ]
+    ],
+    "module_id": "a337550a-eb85-4232-a5b6-6ce8d4065eb3"
   },
   {
     "id": "a9304597-7d8a-43d5-972b-2ba83ba6606e",
@@ -28179,6 +28188,7 @@
     "prerequisites": [
       "python-basics",
       "python-functions"
-    ]
+    ],
+    "module_id": "a9304597-7d8a-43d5-972b-2ba83ba6606e"
   }
 ]

@@ -1,0 +1,41 @@
+{
+  "generated_at": "2025-11-01T01:37:40.202749",
+  "total_tests": 32,
+  "successful_tests": 32,
+  "success_rate": 1.0,
+  "performance": {
+    "avg_generation_time_sec": 55.938,
+    "avg_components_per_syllabus": 7.5
+  },
+  "quality": {
+    "avg_overall_quality_score": 0.0,
+    "avg_prerequisite_accuracy": 0.479
+  },
+  "distribution": {
+    "by_domain": {
+      "computer_science": 15,
+      "mathematics": 10,
+      "physics": 7
+    },
+    "by_level": {
+      "beginner": 13,
+      "intermediate": 11,
+      "advanced": 7,
+      "postgraduate": 1
+    }
+  },
+  "errors": {
+    "total_errors": 0,
+    "error_rate": 0.0,
+    "error_types": {}
+  },
+  "metadata": {
+    "config": {
+      "model_checkpoint": "models/codet5-sequenced/checkpoint-196",
+      "random_seed": 42,
+      "num_test_cases": 32,
+      "quality_reranking_enabled": true
+    },
+    "timestamp": "2025-11-01 01:37:40"
+  }
+}
