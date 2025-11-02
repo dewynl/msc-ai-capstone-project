@@ -201,6 +201,134 @@ class SupabaseManager:
         return result.data
 
     # ========================================================================
+    # FEEDBACK MANAGEMENT
+    # ========================================================================
+
+    def save_feedback(
+        self,
+        syllabus_id: str,
+        user_id: str,
+        quality_score: int,
+        comments: Optional[str] = None,
+    ) -> Dict:
+        """
+        Save user feedback for a generated syllabus.
+
+        Args:
+            syllabus_id: UUID of the syllabus being rated
+            user_id: UUID of the user providing feedback
+            quality_score: Rating from 1-10
+            comments: Optional text feedback
+
+        Returns:
+            Saved feedback record with ID
+        """
+        feedback_data = {
+            "syllabus_id": syllabus_id,
+            "user_id": user_id,
+            "quality_score": quality_score,
+            "comments": comments,
+        }
+
+        result = self.client.table("syllabus_feedback").insert(feedback_data).execute()
+        return result.data[0]
+
+    def get_feedback_by_syllabus(self, syllabus_id: str) -> List[Dict]:
+        """Get all feedback for a specific syllabus."""
+        result = (
+            self.client.table("syllabus_feedback")
+            .select("*")
+            .eq("syllabus_id", syllabus_id)
+            .order("created_at", desc=True)
+            .execute()
+        )
+        return result.data
+
+    def get_feedback_by_user(self, user_id: str, limit: int = 50) -> List[Dict]:
+        """Get all feedback submitted by a user."""
+        result = (
+            self.client.table("syllabus_feedback")
+            .select("*")
+            .eq("user_id", user_id)
+            .order("created_at", desc=True)
+            .limit(limit)
+            .execute()
+        )
+        return result.data
+
+    def get_high_quality_syllabi(
+        self, min_score: int = 7, limit: int = 100
+    ) -> List[Dict]:
+        """
+        Get syllabi with high user ratings for fine-tuning.
+
+        Args:
+            min_score: Minimum quality score (1-10 scale)
+            limit: Maximum number of syllabi to return
+
+        Returns:
+            List of high-quality syllabi with their feedback scores
+        """
+        # Query feedback table for high scores
+        result = (
+            self.client.table("syllabus_feedback")
+            .select("syllabus_id, quality_score, created_at")
+            .gte("quality_score", min_score)
+            .order("quality_score", desc=True)
+            .limit(limit)
+            .execute()
+        )
+
+        if not result.data:
+            return []
+
+        # Get unique syllabus IDs
+        syllabus_ids = list(set(f["syllabus_id"] for f in result.data))
+
+        # Fetch full syllabi
+        syllabi = []
+        for syllabus_id in syllabus_ids[:limit]:
+            syllabus = self.get_syllabus_by_id(syllabus_id)
+            if syllabus:
+                # Add feedback score
+                feedback_for_syllabus = [
+                    f for f in result.data if f["syllabus_id"] == syllabus_id
+                ]
+                syllabus["user_feedback"] = {
+                    "avg_score": sum(f["quality_score"] for f in feedback_for_syllabus)
+                    / len(feedback_for_syllabus),
+                    "count": len(feedback_for_syllabus),
+                }
+                syllabi.append(syllabus)
+
+        return syllabi
+
+    def get_feedback_stats(self) -> Dict:
+        """Get overall feedback statistics."""
+        result = self.client.table("syllabus_feedback").select("*").execute()
+
+        if not result.data:
+            return {
+                "total_feedback": 0,
+                "avg_score": 0,
+                "score_distribution": {},
+                "high_quality_count": 0,
+            }
+
+        scores = [f["quality_score"] for f in result.data]
+        from collections import Counter
+
+        score_dist = Counter(scores)
+
+        return {
+            "total_feedback": len(result.data),
+            "avg_score": round(sum(scores) / len(scores), 2),
+            "score_distribution": dict(score_dist),
+            "high_quality_count": len([s for s in scores if s >= 7]),
+            "unique_syllabi_rated": len(set(f["syllabus_id"] for f in result.data)),
+        }
+
+    # ========================================================================
     # ANALYTICS QUERIES
     # ========================================================================
 

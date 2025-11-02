@@ -1,24 +1,18 @@
 #!/usr/bin/env python3
-"""
-EduCraft - AI-Powered Course Syllabus Generator
-MSc AI Capstone Project - Streamlit Web Interface
-"""
+"""EduCraft - AI-Powered Course Syllabus Generator"""
 
 import json
 import sys
 import time
+from datetime import datetime
 from pathlib import Path
 
 import streamlit as st
 
-# Add project root to path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from src.utils.supabase_client import get_supabase_manager
 
-# ============================================================================
-# PAGE CONFIG
-# ============================================================================
 st.set_page_config(
     page_title="EduCraft - AI Syllabus Generator",
     page_icon="📚",
@@ -26,10 +20,6 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-
-# ============================================================================
-# STYLING
-# ============================================================================
 st.markdown(
     """
     <style>
@@ -52,9 +42,6 @@ st.markdown(
 )
 
 
-# ============================================================================
-# CACHED RESOURCES
-# ============================================================================
 @st.cache_resource(show_spinner=False)
 def load_generator():
     """Load CodeT5 model for syllabus generation (cached)."""
@@ -75,16 +62,17 @@ def load_ranker():
 
 @st.cache_resource
 def get_db_manager():
-    """Get Supabase manager (cached)."""
-    return get_supabase_manager()
+    """Get Supabase manager (cached). Returns None if not configured."""
+    try:
+        return get_supabase_manager()
+    except ValueError:
+        # Supabase not configured - return None for demo mode
+        return None
 
 
 @st.cache_data(ttl=60)
 def load_rag_database():
     """Load educational components from JSON files (cached)."""
-    import json
-    from pathlib import Path
-
     base_dir = Path(__file__).parent
     components_dir = base_dir / "data" / "components"
 
@@ -92,32 +80,36 @@ def load_rag_database():
     with open(modules_file) as f:
         modules = json.load(f)
 
+    # Ensure both 'id' and 'module_id' fields exist (parser needs module_id, metrics uses id)
     for module in modules:
-        if "module_id" in module:
-            module["id"] = module.pop("module_id")
+        if "module_id" in module and "id" not in module:
+            module["id"] = module["module_id"]
+        elif "id" in module and "module_id" not in module:
+            module["module_id"] = module["id"]
 
     activities_file = components_dir / "activities.json"
     with open(activities_file) as f:
         activities = json.load(f)
 
     for activity in activities:
-        if "activity_id" in activity:
-            activity["id"] = activity.pop("activity_id")
+        if "activity_id" in activity and "id" not in activity:
+            activity["id"] = activity["activity_id"]
+        elif "id" in activity and "activity_id" not in activity:
+            activity["activity_id"] = activity["id"]
 
     assessments_file = components_dir / "assessments.json"
     with open(assessments_file) as f:
         assessments = json.load(f)
 
     for assessment in assessments:
-        if "assessment_id" in assessment:
-            assessment["id"] = assessment.pop("assessment_id")
+        if "assessment_id" in assessment and "id" not in assessment:
+            assessment["id"] = assessment["assessment_id"]
+        elif "id" in assessment and "assessment_id" not in assessment:
+            assessment["assessment_id"] = assessment["id"]
 
     return {"modules": modules, "activities": activities, "assessments": assessments}
 
 
-# ============================================================================
-# HELPER FUNCTIONS
-# ============================================================================
 def render_email_gate():
     """Render the email entry gate for user identification."""
     st.markdown('<p class="main-header">📚 EduCraft</p>', unsafe_allow_html=True)
@@ -125,6 +117,22 @@ def render_email_gate():
         '<p class="sub-header">AI-Powered Course Syllabus Generation</p>',
         unsafe_allow_html=True,
     )
+
+    db = get_db_manager()
+
+    # If no database, skip login
+    if db is None:
+        st.info("**Welcome!** Running in demo mode (user tracking disabled)")
+        if st.button(
+            "Continue to Generator →", use_container_width=True, type="primary"
+        ):
+            st.session_state.user = {
+                "id": "demo",
+                "username": "demo_user",
+                "first_name": "Demo",
+            }
+            st.rerun()
+        return
 
     st.info(
         "**Welcome!** Please enter a username to continue. "
@@ -150,7 +158,6 @@ def render_email_gate():
                 return
 
             # Get or create user
-            db = get_db_manager()
             user = db.get_or_create_user(username.strip())
             st.session_state.user = user
             st.rerun()
@@ -163,22 +170,68 @@ def render_email_gate():
     )
 
 
+def render_evaluation_results_sidebar():
+    """Render evaluation results from dissertation in sidebar."""
+    with st.sidebar:
+        st.markdown("### 📊 System Evaluation Results")
+        st.caption("*From MSc Dissertation Study (35 test cases)*")
+
+        st.metric(
+            "Pipeline Success Rate",
+            "77.1%",
+            help="27/35 test cases completed successfully",
+        )
+        st.metric(
+            "Prerequisite Accuracy",
+            "27.8%",
+            delta="-72.2%",
+            delta_color="inverse",
+            help="Percentage of prerequisite dependencies correctly ordered",
+        )
+        st.metric(
+            "Difficulty Progression",
+            "90.0%",
+            help="Module difficulty increases appropriately",
+        )
+        st.metric(
+            "Topic Diversity", "80.0%", help="Coverage of diverse educational topics"
+        )
+
+        st.markdown("---")
+        st.caption("**Domain Coverage:**")
+        st.caption("✅ Computer Science: 100%")
+        st.caption("✅ Mathematics: 100%")
+        st.caption("✅ Physics: 100%")
+        st.caption("⚠️ Engineering: 0%")
+        st.caption("⚠️ Interdisciplinary: 0%")
+
+        st.markdown("---")
+        st.caption(
+            "**Key Insight:** System excels at structural generation but struggles with semantic prerequisite chains. See dissertation Chapter 6 for full analysis."
+        )
+
+
 def render_user_welcome(user):
     """Render welcome message and previous syllabi."""
     name = user.get("first_name") or user["username"]
 
     # Get user's previous syllabi
     db = get_db_manager()
-    previous = db.get_user_syllabi(user["id"], limit=10)
+    previous = []
+    if db:
+        previous = db.get_user_syllabi(user["id"], limit=10)
 
     # Welcome message (using Streamlit native component for dark mode support)
-    st.info(
-        f"👋 **Welcome back, {name}!**  \n"
-        f"You've generated **{len(previous)}** syllabus(es) so far"
-    )
+    if db:
+        st.info(
+            f"👋 **Welcome back, {name}!**  \n"
+            f"You've generated **{len(previous)}** syllabus(es) so far"
+        )
+    else:
+        st.info(f"👋 **Welcome, {name}!** Demo mode - syllabi won't be saved")
 
     # Show previous syllabi if any
-    if previous:
+    if previous and db:
         with st.expander(f"📚 Your Previous Syllabi ({len(previous)})"):
             for i, syl in enumerate(previous, 1):
                 domain_display = syl["domain"].replace("_", " ").title()
@@ -251,13 +304,7 @@ def render_example_presets():
 
 
 def render_formatted_syllabus(syllabus, rag_database=None):
-    """Render formatted syllabus view with RAG component highlighting.
-
-    Args:
-        syllabus: Syllabus JSON (modules/activities/assessments are UUIDs)
-        rag_database: RAG database with full component objects (optional)
-    """
-    # Course information
+    """Render formatted syllabus view with RAG component highlighting."""
     st.markdown("### 📖 Course Information")
     course_info = syllabus.get("course_info", {})
 
@@ -273,7 +320,6 @@ def render_formatted_syllabus(syllabus, rag_database=None):
 
     st.write(f"**Description:** {course_info.get('description', 'N/A')}")
 
-    # Learning objectives
     st.markdown("### 🎯 Learning Objectives")
     objectives = syllabus.get("learning_objectives", [])
     if objectives:
@@ -282,22 +328,18 @@ def render_formatted_syllabus(syllabus, rag_database=None):
     else:
         st.write("_No objectives specified_")
 
-    # Modules (UUIDs - need to expand if database available)
     st.markdown("### 📚 Modules")
     module_uuids = syllabus.get("modules", [])
 
     if module_uuids:
-        # Build lookup if database available
         uuid_to_module = {}
         if rag_database:
             uuid_to_module = {m["id"]: m for m in rag_database.get("modules", [])}
 
         for i, module_uuid in enumerate(module_uuids, 1):
-            # Try to get full module object
             module = uuid_to_module.get(module_uuid)
 
             if module:
-                # Full module data available
                 with st.expander(
                     f"**Module {i}: {module.get('title', 'Untitled')}** "
                     f"({module.get('estimated_hours', 0)} hours) - 🗄️ RAG"
@@ -310,12 +352,10 @@ def render_formatted_syllabus(syllabus, rag_database=None):
                     if key_concepts:
                         st.write(f"**Key Concepts:** {', '.join(key_concepts)}")
             else:
-                # Only UUID available (no database)
                 st.write(f"{i}. Module `{module_uuid}` (details not available)")
     else:
         st.write("_No modules selected_")
 
-    # Activities (UUIDs)
     st.markdown("### 🎨 Learning Activities")
     activity_uuids = syllabus.get("activities", [])
 
@@ -339,7 +379,6 @@ def render_formatted_syllabus(syllabus, rag_database=None):
     else:
         st.write("_No activities selected_")
 
-    # Assessments (UUIDs)
     st.markdown("### 📝 Assessments")
     assessment_uuids = syllabus.get("assessments", [])
 
@@ -367,10 +406,9 @@ def render_formatted_syllabus(syllabus, rag_database=None):
 
 
 def render_technical_details(syllabus, generation_time):
-    """Render technical details tab for supervisor demo."""
+    """Render technical details tab."""
     st.markdown("### ⚙️ CodeT5 Hybrid ML + Rule-Based Architecture")
 
-    # Visual pipeline
     st.markdown(
         """
         ```
@@ -413,7 +451,6 @@ def render_technical_details(syllabus, generation_time):
 
     st.markdown("### 📊 RAG Retrieval Process")
 
-    # Explain what happened
     st.markdown(
         """
     **How RAG worked for this syllabus:**
@@ -465,8 +502,6 @@ def render_technical_details(syllabus, generation_time):
         st.metric("Objectives", len(objectives))
 
     st.markdown("---")
-
-    # Component IDs
     st.markdown("### 🔗 Selected Component UUIDs")
 
     with st.expander("Module UUIDs"):
@@ -491,22 +526,14 @@ def render_technical_details(syllabus, generation_time):
             st.write("_No assessments selected_")
 
 
-# ============================================================================
-# MAIN APP
-# ============================================================================
 def main():
     """Main application logic."""
-
-    # Check if user is logged in
     if "user" not in st.session_state:
         render_email_gate()
         return
 
-    # User is logged in - show main interface
     user = st.session_state.user
 
-    # Load generator FIRST (before any UI) to ensure CodeT5 model is ready
-    # Show blocking full-page spinner on first load, instant on subsequent loads (cached)
     with st.spinner(
         "🤖 Loading AI System...\n\n"
         "Loading CodeT5 model (60M parameters) + Initializing hybrid pipeline\n\n"
@@ -515,31 +542,25 @@ def main():
     ):
         generator = load_generator()
 
-    # Header
     st.markdown('<p class="main-header">📚 EduCraft</p>', unsafe_allow_html=True)
     st.markdown(
         '<p class="sub-header">AI-Powered Course Syllabus Generation</p>',
         unsafe_allow_html=True,
     )
 
-    # Welcome message
     render_user_welcome(user)
-
-    # Example presets
+    render_evaluation_results_sidebar()
     render_example_presets()
 
     st.markdown("---")
 
-    # Main generation interface
     col1, col2 = st.columns([1, 1])
 
     with col1:
         st.subheader("📝 Course Requirements")
 
-        # Apply preset if available
         preset = st.session_state.get("preset", {})
 
-        # Input form
         with st.form("syllabus_form"):
             title = st.text_input(
                 "Course Title *",
@@ -583,7 +604,6 @@ def main():
             if not title.strip() or not description.strip():
                 st.error("⚠️ Please provide both title and description")
             else:
-                # Generate syllabus
                 with st.spinner(
                     "🔄 Generating syllabus using Semantic Ranking + CodeT5 hybrid system...\n\n"
                     "Step 1: Filtering by domain + difficulty...\n"
@@ -592,28 +612,23 @@ def main():
                     "Step 4: Parsing and enhancing..."
                 ):
                     try:
-                        # Import generation pipeline
                         sys.path.insert(0, str(Path(__file__).parent / "scripts"))
                         from generate_syllabus import generate_complete_syllabus
 
-                        # Build requirements
                         requirements = {
                             "title": title,
                             "domain": domain,
                             "level": level,
                             "description": description,
-                            "duration": "semester",  # Default duration
+                            "duration": "semester",
                         }
 
-                        # Load RAG database from local files
                         rag_database = load_rag_database()
 
-                        # Show what's being filtered
                         total_mods = len(rag_database["modules"])
                         total_acts = len(rag_database["activities"])
                         total_asms = len(rag_database["assessments"])
 
-                        # Count domain matches
                         domain_mods = len(
                             [
                                 m
@@ -636,7 +651,6 @@ def main():
                             ]
                         )
 
-                        # Count domain + difficulty matches
                         level_domain_mods = len(
                             [
                                 m
@@ -670,114 +684,46 @@ def main():
                             f"  - Assessments: {level_domain_asms}"
                         )
 
-                        # Load models (cached)
                         generator = load_generator()
                         ranker = load_ranker()
 
-                        # Generate with timing (using CodeT5 + Semantic Ranking pipeline)
                         start_time = time.time()
                         result = generate_complete_syllabus(
                             requirements, rag_database, generator, ranker
                         )
                         generation_time = time.time() - start_time
 
-                        # Debug: Show RAG pipeline details
-                        with st.expander("🔍 Debug: RAG Pipeline Trace"):
+                        with st.expander("🔍 Pipeline Details"):
                             metadata = result.get("metadata", {})
                             filter_stats = metadata.get("filter_stats", {})
-
-                            st.markdown(
-                                "### Step 1: Domain + Difficulty Filtering (ALL Components)"
-                            )
-                            st.write(
-                                f"- **Course domain:** {filter_stats.get('course_domain', 'all').replace('_', ' ').title()}"
-                            )
-                            st.write(
-                                f"- **Course level:** {filter_stats.get('course_level', 'N/A').title()}"
-                            )
-                            st.write("")
-                            st.write(
-                                f"- **Modules:** {filter_stats.get('total_components', 0)} total → {filter_stats.get('filtered_components', 0)} filtered ({filter_stats.get('filter_rate', 0)*100:.1f}%)"
-                            )
-                            st.write(
-                                "- **Activities:** Filtered by same rules (domain + difficulty)"
-                            )
-                            st.write(
-                                "- **Assessments:** Filtered by same rules (domain + difficulty)"
-                            )
-
-                            # Show domain distribution
-                            if "domain_distribution" in filter_stats:
-                                domain_dist = filter_stats["domain_distribution"]
-                                st.write(
-                                    f"- **Verification:** CS: {domain_dist.get('computer_science', 0)}, Math: {domain_dist.get('mathematics', 0)}, Physics: {domain_dist.get('physics', 0)}"
-                                )
-
-                            st.markdown("### Step 2: Semantic Ranking (ML-based)")
                             ranking_stats = metadata.get("ranking_stats", {})
-                            if ranking_stats:
-                                st.write("**Modules:**")
+
+                            col_a, col_b, col_c = st.columns(3)
+                            with col_a:
+                                st.metric(
+                                    "Filtered Modules",
+                                    f"{filter_stats.get('filtered_components', 0)}",
+                                )
+                            with col_b:
                                 mod_stats = ranking_stats.get("modules", {})
-                                st.write(
-                                    f"- **Input:** {mod_stats.get('input_count', 0)} filtered modules"
+                                st.metric(
+                                    "Top Ranked", f"{mod_stats.get('output_count', 0)}"
                                 )
-                                st.write(
-                                    f"- **Output:** {mod_stats.get('output_count', 0)} top-ranked (most relevant)"
-                                )
-                                st.write(
-                                    f"- **Avg similarity score:** {mod_stats.get('avg_score', 0):.4f}"
-                                )
-                                st.write(
-                                    f"- **Score range:** {mod_stats.get('min_score', 0):.4f} - {mod_stats.get('max_score', 0):.4f}"
+                            with col_c:
+                                st.metric(
+                                    "Selected",
+                                    f"{metadata.get('selected_modules_count', 0)}",
                                 )
 
-                                # Show pedagogical boost status
-                                if mod_stats.get("pedagogical_boost", False):
-                                    boost_count = mod_stats.get("boost_count", 0)
-                                    st.write(
-                                        f"- **✅ Pedagogical boost applied:** {boost_count} intro modules moved to top"
-                                    )
-
-                                st.write("\n**Activities:**")
-                                act_stats = ranking_stats.get("activities", {})
-                                st.write(
-                                    f"- **Input:** {act_stats.get('input_count', 0)} → **Output:** {act_stats.get('output_count', 0)} (avg score: {act_stats.get('avg_score', 0):.4f})"
+                            if mod_stats.get("pedagogical_boost", False):
+                                st.info(
+                                    f"✅ {mod_stats.get('boost_count', 0)} intro modules boosted for beginner course"
                                 )
 
-                                st.write("\n**Assessments:**")
-                                asm_stats = ranking_stats.get("assessments", {})
-                                st.write(
-                                    f"- **Input:** {asm_stats.get('input_count', 0)} → **Output:** {asm_stats.get('output_count', 0)} (avg score: {asm_stats.get('avg_score', 0):.4f})"
-                                )
-
-                            st.markdown(
-                                "### Step 3: Model Selection (from ranked components)"
-                            )
-                            st.write(
-                                f"- **Selected modules:** {metadata.get('selected_modules_count', 0)}"
-                            )
-                            st.write(
-                                f"- **Selected activities:** {metadata.get('selected_activities_count', 0)}"
-                            )
-                            st.write(
-                                f"- **Selected assessments:** {metadata.get('selected_assessments_count', 0)}"
-                            )
-
-                            st.markdown("### Step 4: Model Output")
-                            if "markdown_simple" in result:
-                                st.code(
-                                    result["markdown_simple"][:600], language="markdown"
-                                )
-
-                            st.markdown("### Step 5: Warnings")
                             warnings = result.get("warnings", [])
                             if warnings:
-                                for w in warnings:
-                                    st.warning(w)
-                            else:
-                                st.success("No warnings")
+                                st.warning(f"⚠️ {len(warnings)} warning(s)")
 
-                        # Check if generation succeeded
                         if not result.get("success", False):
                             st.error(
                                 f"❌ Generation failed: {result.get('error', 'Unknown error')}"
@@ -789,50 +735,7 @@ def main():
                                     )
                             return
 
-                        # Extract syllabus from result
                         syllabus = result["json"]
-
-                        # Debug: Show what modules were available vs selected
-                        with st.expander("🔍 Debug: RAG Context & Selection Details"):
-                            st.markdown("### What the Model Saw (First 10 Modules)")
-
-                            # Get RANKED modules (what model actually saw after semantic ranking + boost)
-                            ranked_mods = metadata.get("ranked_modules", [])[:10]
-
-                            for i, mod in enumerate(ranked_mods):
-                                selected = (
-                                    "✅"
-                                    if mod["id"] in syllabus.get("modules", [])
-                                    else "⬜"
-                                )
-                                st.write(
-                                    f"{selected} `[{i}]` **{mod['title'][:60]}...** ({mod.get('estimated_hours')}h, {mod.get('difficulty')})"
-                                )
-
-                            st.markdown("### What the Model Selected")
-                            selected_module_ids = syllabus.get("modules", [])
-                            for i, mod_id in enumerate(selected_module_ids):
-                                mod = next(
-                                    (
-                                        m
-                                        for m in rag_database["modules"]
-                                        if m["id"] == mod_id
-                                    ),
-                                    None,
-                                )
-                                if mod:
-                                    st.success(f"**Module {i+1}:** {mod['title']}")
-
-                            st.markdown("### RAG Retrieval Summary")
-                            st.write(
-                                f"- Model had access to **{min(len(ranked_mods), 3)} modules** (training avg: 3.6, using 3 for capacity)"
-                            )
-                            st.write(
-                                f"- Model selected **{len(selected_module_ids)}** from those options"
-                            )
-                            st.write(
-                                f"- Selection indices: {list(range(len(selected_module_ids)))}"
-                            )
 
                         st.success(
                             f"✅ Generated syllabus with {len(syllabus.get('modules', []))} modules, "
@@ -840,13 +743,44 @@ def main():
                             f"{len(syllabus.get('learning_objectives', []))} objectives"
                         )
 
-                        # Display pedagogical quality metrics
+                        with st.expander("🤖 View Raw Model Output"):
+                            st.code(
+                                result.get("markdown_simple", ""), language="markdown"
+                            )
+
+                            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+                            supervisor_output = {
+                                "timestamp": timestamp,
+                                "course_requirements": requirements,
+                                "raw_model_output": result.get("markdown_simple", ""),
+                                "parsed_json": syllabus,
+                                "quality_metrics": result.get("quality_metrics", {}),
+                                "metadata": result.get("metadata", {}),
+                                "generation_time_sec": generation_time,
+                            }
+
+                            col_a, col_b = st.columns(2)
+                            with col_a:
+                                st.download_button(
+                                    label="📥 Download Raw Markdown",
+                                    data=result.get("markdown_simple", ""),
+                                    file_name=f"model_output_{timestamp}.md",
+                                    mime="text/markdown",
+                                )
+                            with col_b:
+                                st.download_button(
+                                    label="📥 Download Full Result (JSON)",
+                                    data=json.dumps(supervisor_output, indent=2),
+                                    file_name=f"full_result_{timestamp}.json",
+                                    mime="application/json",
+                                )
+
                         if "quality_metrics" in result:
                             st.subheader("📊 Pedagogical Quality Assessment")
 
                             metrics = result["quality_metrics"]
 
-                            # Three-column metric display
                             col1, col2, col3 = st.columns(3)
 
                             with col1:
@@ -876,7 +810,6 @@ def main():
                                     help="Variety of topics covered vs repetitiveness",
                                 )
 
-                            # Quality warning banner
                             if not result.get("quality_acceptable", True):
                                 st.warning(
                                     "⚠️ **Quality Notice**\n\n"
@@ -885,11 +818,8 @@ def main():
                                     "progression may not be optimal. Consider regenerating or manually reviewing."
                                 )
                             else:
-                                st.success(
-                                    "✅ This syllabus meets our quality standards!"
-                                )
+                                st.success("✅ Meets quality standards")
 
-                            # Expandable details
                             with st.expander("📋 Quality Details"):
                                 st.write(
                                     "**Prerequisite Violations:**",
@@ -899,11 +829,8 @@ def main():
                                     "**Prerequisite Correct:**",
                                     metrics.get("prerequisite_correct", 0),
                                 )
-                                st.write(
-                                    "**Note:** Syllabus selected from 3 generated candidates based on quality score."
-                                )
+                                st.write("Syllabus selected from 3 candidates")
 
-                        # Store in session for display (not saved yet)
                         st.session_state.current_syllabus = syllabus
                         st.session_state.current_generation_time = generation_time
                         st.session_state.current_rag_database = rag_database
@@ -915,7 +842,6 @@ def main():
                         }
                         st.session_state.syllabus_saved = False
 
-                        # Clear preset after successful generation
                         if "preset" in st.session_state:
                             st.session_state.preset = {}
 
@@ -924,10 +850,9 @@ def main():
                         )
 
                     except Exception as e:
-                        st.error(f"❌ Generation Error: {str(e)}")
+                        st.error(f"❌ Error: {str(e)}")
                         st.exception(e)
 
-        # Display current syllabus if available
         if (
             "current_syllabus" in st.session_state
             and "current_requirements" in st.session_state
@@ -938,7 +863,6 @@ def main():
             requirements = st.session_state.current_requirements
             is_saved = st.session_state.get("syllabus_saved", False)
 
-            # Metrics
             metrics_cols = st.columns(4)
             with metrics_cols[0]:
                 st.metric("Modules", len(syllabus.get("modules", [])))
@@ -949,32 +873,8 @@ def main():
             with metrics_cols[3]:
                 st.metric("Time", f"{gen_time:.2f}s")
 
-            # Save button
-            if not is_saved:
-                if st.button(
-                    "💾 Save This Syllabus to Database",
-                    use_container_width=True,
-                    type="primary",
-                ):
-                    db = get_db_manager()
-                    db.save_syllabus(
-                        user_id=user["id"],
-                        title=requirements["title"],
-                        domain=requirements["domain"],
-                        level=requirements["level"],
-                        description=requirements["description"],
-                        syllabus_json=syllabus,
-                        generation_time_seconds=gen_time,
-                    )
-                    st.session_state.syllabus_saved = True
-                    st.success("✅ Syllabus saved successfully!")
-                    st.rerun()
-            else:
-                st.success("✅ This syllabus has been saved to your database")
-
             st.markdown("---")
 
-            # Tabs
             tab1, tab2, tab3 = st.tabs(
                 ["📋 Formatted View", "🔧 Raw JSON", "⚙️ Technical Details"]
             )
@@ -988,7 +888,137 @@ def main():
             with tab3:
                 render_technical_details(syllabus, gen_time)
 
-            # Download button
+            st.markdown("---")
+
+            st.subheader("📊 Help Improve the System")
+            st.write(
+                "Your feedback helps the model learn and improve over time. "
+                "Rate this syllabus and see similar expert examples."
+            )
+
+            with st.expander("🎓 View Similar Expert Syllabi", expanded=False):
+                try:
+                    sys.path.insert(
+                        0, str(Path(__file__).parent / "scripts" / "feedback")
+                    )
+                    from expert_retrieval import get_expert_retriever
+
+                    retriever = get_expert_retriever()
+                    expert_recommendations = retriever.get_expert_recommendations(
+                        requirements, top_k=2
+                    )
+
+                    if expert_recommendations:
+                        st.write(
+                            "**Similar high-quality syllabi from our evaluation:**"
+                        )
+                        for i, expert in enumerate(expert_recommendations, 1):
+                            with st.container():
+                                col1, col2 = st.columns([3, 1])
+                                with col1:
+                                    st.markdown(f"**{i}. {expert['title']}**")
+                                    st.caption(
+                                        f"Domain: {expert['domain'].replace('_', ' ').title()} | "
+                                        f"Level: {expert['level'].title()}"
+                                    )
+                                with col2:
+                                    st.metric("Quality", expert["quality_score"])
+                                    st.metric("Similarity", expert["similarity"])
+
+                                st.markdown(
+                                    f"- Structure: {expert['structure']}\n"
+                                    f"- Prerequisite Accuracy: {expert['prerequisite_accuracy']}\n"
+                                    f"- Semantic Match: {expert['semantic_match']}"
+                                )
+                                if i < len(expert_recommendations):
+                                    st.markdown("---")
+                    else:
+                        st.info("No similar expert syllabi found for this course.")
+
+                except Exception as e:
+                    st.warning(f"Could not load expert examples: {str(e)}")
+
+            with st.form("feedback_form"):
+                st.write("**Rate this syllabus:**")
+
+                quality_score = st.slider(
+                    "Overall Quality",
+                    min_value=1,
+                    max_value=10,
+                    value=5,
+                    help="1 = Poor, 10 = Excellent",
+                )
+
+                comments = st.text_area(
+                    "Comments (optional)",
+                    placeholder="What did you like or dislike about this syllabus?",
+                    help="Your feedback helps improve the system",
+                )
+
+                submitted = st.form_submit_button(
+                    "💾 Save & Submit Feedback", use_container_width=True, type="primary"
+                )
+
+                if submitted:
+                    try:
+                        db = get_db_manager()
+
+                        # Save syllabus first if not already saved
+                        if (
+                            not is_saved
+                            or "current_syllabus_id" not in st.session_state
+                        ):
+                            saved_syllabus = db.save_syllabus(
+                                user_id=user["id"],
+                                title=requirements["title"],
+                                domain=requirements["domain"],
+                                level=requirements["level"],
+                                description=requirements["description"],
+                                syllabus_json=syllabus,
+                                generation_time_seconds=gen_time,
+                            )
+                            st.session_state.syllabus_saved = True
+                            st.session_state.current_syllabus_id = saved_syllabus["id"]
+                            syllabus_id = saved_syllabus["id"]
+                        else:
+                            syllabus_id = st.session_state.current_syllabus_id
+
+                        # Now save feedback
+                        feedback_result = db.save_feedback(
+                            syllabus_id=syllabus_id,
+                            user_id=user["id"],
+                            quality_score=quality_score,
+                            comments=comments if comments else None,
+                        )
+
+                        st.success(
+                            f"✅ Syllabus saved and rated! Your score: {quality_score}/10"
+                        )
+
+                        feedback_stats = db.get_feedback_stats()
+                        st.info(
+                            f"📊 **System Stats:** {feedback_stats['total_feedback']} total ratings | "
+                            f"Avg: {feedback_stats['avg_score']}/10 | "
+                            f"{feedback_stats['high_quality_count']} high-quality syllabi (≥7/10)"
+                        )
+
+                        if feedback_stats["total_feedback"] >= 50:
+                            st.warning(
+                                "🔧 **50+ feedback samples collected!** "
+                                "The system is ready for fine-tuning to improve generation quality."
+                            )
+
+                    except Exception as e:
+                        if "Missing Supabase credentials" in str(e):
+                            st.info(
+                                "ℹ️ Feedback system requires Supabase configuration. "
+                                "See docs/supabase-feedback-schema.sql to set up the database."
+                            )
+                        else:
+                            st.error(f"❌ Error saving feedback: {str(e)}")
+
+            st.markdown("---")
+
             safe_title = requirements["title"].replace(" ", "_").lower()[:30]
             filename = f"syllabus_{safe_title}.json"
             st.download_button(
@@ -999,7 +1029,6 @@ def main():
                 use_container_width=True,
             )
 
-    # Footer
     st.markdown("---")
     st.caption(
         "📚 **EduCraft** - MSc AI Capstone Project | "

@@ -1,0 +1,308 @@
+{
+  "version": "1.0",
+  "created_at": "2025-11-02T09:03:52.009222",
+  "source": "evaluation_results.csv",
+  "selection_criteria": {
+    "min_quality_threshold": 7.0,
+    "top_n": 10,
+    "quality_weights": {
+      "prerequisite_accuracy": 0.3,
+      "semantic_avg_score": 0.25,
+      "difficulty_progression": 0.2,
+      "topic_diversity": 0.15,
+      "blooms_taxonomy_coverage": 0.1
+    }
+  },
+  "expert_syllabi": [
+    {
+      "expert_id": "expert_01",
+      "test_id": "test_004_cs_intermediate_data_structures",
+      "requirements": {
+        "title": "Data Structures and Algorithms",
+        "domain": "computer_science",
+        "level": "intermediate",
+        "description": "",
+        "duration": "semester"
+      },
+      "quality_metrics": {
+        "composite_quality": 8.002,
+        "prerequisite_accuracy": 1.0,
+        "semantic_avg_score": 0.734,
+        "difficulty_progression": 0.9,
+        "topic_diversity": 0.8,
+        "blooms_taxonomy_coverage": 0.167
+      },
+      "structure": {
+        "num_modules": 2,
+        "num_activities": 3,
+        "num_assessments": 2,
+        "total_components": 7
+      },
+      "metadata": {
+        "timestamp": "2025-11-01T01:12:07.274796",
+        "generation_time_sec": 98.146
+      }
+    },
+    {
+      "expert_id": "expert_02",
+      "test_id": "test_013_math_beginner_statistics",
+      "requirements": {
+        "title": "Introduction to Statistics",
+        "domain": "mathematics",
+        "level": "beginner",
+        "description": "",
+        "duration": "semester"
+      },
+      "quality_metrics": {
+        "composite_quality": 7.747,
+        "prerequisite_accuracy": 1.0,
+        "semantic_avg_score": 0.432,
+        "difficulty_progression": 0.9,
+        "topic_diversity": 0.8,
+        "blooms_taxonomy_coverage": 0.667
+      },
+      "structure": {
+        "num_modules": 3,
+        "num_activities": 3,
+        "num_assessments": 2,
+        "total_components": 8
+      },
+      "metadata": {
+        "timestamp": "2025-11-01T01:22:31.958009",
+        "generation_time_sec": 35.326
+      }
+    },
+    {
+      "expert_id": "expert_03",
+      "test_id": "test_006_cs_intermediate_web_backend",
+      "requirements": {
+        "title": "Backend Web Development",
+        "domain": "computer_science",
+        "level": "intermediate",
+        "description": "",
+        "duration": "semester"
+      },
+      "quality_metrics": {
+        "composite_quality": 7.640000000000001,
+        "prerequisite_accuracy": 1.0,
+        "semantic_avg_score": 0.456,
+        "difficulty_progression": 0.9,
+        "topic_diversity": 0.8,
+        "blooms_taxonomy_coverage": 0.5
+      },
+      "structure": {
+        "num_modules": 2,
+        "num_activities": 3,
+        "num_assessments": 2,
+        "total_components": 7
+      },
+      "metadata": {
+        "timestamp": "2025-11-01T01:15:19.267368",
+        "generation_time_sec": 96.464
+      }
+    },
+    {
+      "expert_id": "expert_04",
+      "test_id": "test_024_physics_beginner_waves_optics",
+      "requirements": {
+        "title": "Waves and Optics",
+        "domain": "physics",
+        "level": "beginner",
+        "description": "",
+        "duration": "semester"
+      },
+      "quality_metrics": {
+        "composite_quality": 7.617500000000001,
+        "prerequisite_accuracy": 1.0,
+        "semantic_avg_score": 0.447,
+        "difficulty_progression": 0.9,
+        "topic_diversity": 0.8,
+        "blooms_taxonomy_coverage": 0.5
+      },
+      "structure": {
+        "num_modules": 2,
+        "num_activities": 3,
+        "num_assessments": 3,
+        "total_components": 8
+      },
+      "metadata": {
+        "timestamp": "2025-11-01T01:28:16.585015",
+        "generation_time_sec": 10.214
+      }
+    },
+    {
+      "expert_id": "expert_05",
+      "test_id": "test_005_cs_intermediate_oop",
+      "requirements": {
+        "title": "Object-Oriented Programming",
+        "domain": "computer_science",
+        "level": "intermediate",
+        "description": "",
+        "duration": "semester"
+      },
+      "quality_metrics": {
+        "composite_quality": 7.598000000000001,
+        "prerequisite_accuracy": 1.0,
+        "semantic_avg_score": 0.506,
+        "difficulty_progression": 0.9,
+        "topic_diversity": 0.8,
+        "blooms_taxonomy_coverage": 0.333
+      },
+      "structure": {
+        "num_modules": 3,
+        "num_activities": 3,
+        "num_assessments": 2,
+        "total_components": 8
+      },
+      "metadata": {
+        "timestamp": "2025-11-01T01:13:42.802349",
+        "generation_time_sec": 95.527
+      }
+    },
+    {
+      "expert_id": "expert_06",
+      "test_id": "test_009_cs_advanced_compilers",
+      "requirements": {
+        "title": "Compiler Design",
+        "domain": "computer_science",
+        "level": "advanced",
+        "description": "",
+        "duration": "semester"
+      },
+      "quality_metrics": {
+        "composite_quality": 7.5105,
+        "prerequisite_accuracy": 1.0,
+        "semantic_avg_score": 0.471,
+        "difficulty_progression": 0.9,
+        "topic_diversity": 0.8,
+        "blooms_taxonomy_coverage": 0.333
+      },
+      "structure": {
+        "num_modules": 3,
+        "num_activities": 3,
+        "num_assessments": 2,
+        "total_components": 8
+      },
+      "metadata": {
+        "timestamp": "2025-11-01T01:19:59.100112",
+        "generation_time_sec": 93.591
+      }
+    },
+    {
+      "expert_id": "expert_07",
+      "test_id": "test_029_edge_postgraduate_advanced_nlp",
+      "requirements": {
+        "title": "Advanced Natural Language Processing",
+        "domain": "computer_science",
+        "level": "postgraduate",
+        "description": "",
+        "duration": "semester"
+      },
+      "quality_metrics": {
+        "composite_quality": 7.462999999999999,
+        "prerequisite_accuracy": 1.0,
+        "semantic_avg_score": 0.452,
+        "difficulty_progression": 0.9,
+        "topic_diversity": 0.8,
+        "blooms_taxonomy_coverage": 0.333
+      },
+      "structure": {
+        "num_modules": 2,
+        "num_activities": 3,
+        "num_assessments": 2,
+        "total_components": 7
+      },
+      "metadata": {
+        "timestamp": "2025-11-01T01:33:30.597283",
+        "generation_time_sec": 94.361
+      }
+    },
+    {
+      "expert_id": "expert_08",
+      "test_id": "test_030_cs_intermediate_operating_systems",
+      "requirements": {
+        "title": "Operating Systems",
+        "domain": "computer_science",
+        "level": "intermediate",
+        "description": "",
+        "duration": "semester"
+      },
+      "quality_metrics": {
+        "composite_quality": 7.4505,
+        "prerequisite_accuracy": 1.0,
+        "semantic_avg_score": 0.447,
+        "difficulty_progression": 0.9,
+        "topic_diversity": 0.8,
+        "blooms_taxonomy_coverage": 0.333
+      },
+      "structure": {
+        "num_modules": 3,
+        "num_activities": 3,
+        "num_assessments": 2,
+        "total_components": 8
+      },
+      "metadata": {
+        "timestamp": "2025-11-01T01:35:08.990616",
+        "generation_time_sec": 98.392
+      }
+    },
+    {
+      "expert_id": "expert_09",
+      "test_id": "test_019_physics_beginner_mechanics",
+      "requirements": {
+        "title": "Classical Mechanics",
+        "domain": "physics",
+        "level": "beginner",
+        "description": "",
+        "duration": "semester"
+      },
+      "quality_metrics": {
+        "composite_quality": 7.4475,
+        "prerequisite_accuracy": 1.0,
+        "semantic_avg_score": 0.379,
+        "difficulty_progression": 0.9,
+        "topic_diversity": 0.8,
+        "blooms_taxonomy_coverage": 0.5
+      },
+      "structure": {
+        "num_modules": 2,
+        "num_activities": 3,
+        "num_assessments": 2,
+        "total_components": 7
+      },
+      "metadata": {
+        "timestamp": "2025-11-01T01:26:53.885336",
+        "generation_time_sec": 13.438
+      }
+    },
+    {
+      "expert_id": "expert_10",
+      "test_id": "test_025_edge_very_long_description",
+      "requirements": {
+        "title": "Software Engineering",
+        "domain": "computer_science",
+        "level": "intermediate",
+        "description": "",
+        "duration": "semester"
+      },
+      "quality_metrics": {
+        "composite_quality": 7.419500000000001,
+        "prerequisite_accuracy": 1.0,
+        "semantic_avg_score": 0.501,
+        "difficulty_progression": 0.9,
+        "topic_diversity": 0.8,
+        "blooms_taxonomy_coverage": 0.167
+      },
+      "structure": {
+        "num_modules": 1,
+        "num_activities": 3,
+        "num_assessments": 2,
+        "total_components": 6
+      },
+      "metadata": {
+        "timestamp": "2025-11-01T01:29:54.487373",
+        "generation_time_sec": 97.901
+      }
+    }
+  ]
+}

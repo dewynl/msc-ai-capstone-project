@@ -225,10 +225,10 @@ def generate_complete_syllabus(
     parse_result = parser.parse(markdown_simple, rag_context)
 
     if not parse_result.success:
-        print(f"   ⚠️ Parsing failed: {parse_result.error}")
+        print(f"   ⚠️ Parsing failed: {'; '.join(parse_result.errors)}")
         return {
             "success": False,
-            "error": f"Parsing failed: {parse_result.error}",
+            "error": f"Parsing failed: {'; '.join(parse_result.errors)}",
             "markdown_simple": markdown_simple,
             "warnings": parse_result.warnings,
         }

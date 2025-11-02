@@ -248,9 +248,18 @@ class MarkdownSyllabusParser:
 
         for idx in indices:
             if 0 <= idx < len(available_components):
-                # Valid index - get UUID
+                # Valid index - get UUID using type-specific field
                 component = available_components[idx]
-                uuid = component["id"]
+
+                # Use deterministic type-specific field
+                if component_type == "modules":
+                    uuid = component["module_id"]
+                elif component_type == "activities":
+                    uuid = component["activity_id"]
+                elif component_type == "assessments":
+                    uuid = component["assessment_id"]
+                else:
+                    raise ValueError(f"Unknown component_type: {component_type}")
 
                 # Skip if we've already seen this UUID
                 if uuid in seen_uuids:
@@ -306,8 +315,10 @@ def expand_with_database_details(syllabus: Dict, rag_context: Dict) -> str:
         lines.append("## Modules")
         lines.append("")
 
-        # Build lookup: UUID → component
-        uuid_to_module = {m["id"]: m for m in rag_context.get("available_modules", [])}
+        # Build lookup: UUID → component (using type-specific field)
+        uuid_to_module = {
+            m["module_id"]: m for m in rag_context.get("available_modules", [])
+        }
 
         for module_uuid in syllabus["modules"]:
             module = uuid_to_module.get(module_uuid)
@@ -332,7 +343,7 @@ def expand_with_database_details(syllabus: Dict, rag_context: Dict) -> str:
         lines.append("")
 
         uuid_to_activity = {
-            a["id"]: a for a in rag_context.get("available_activities", [])
+            a["activity_id"]: a for a in rag_context.get("available_activities", [])
         }
 
         for activity_uuid in syllabus["activities"]:
@@ -355,7 +366,7 @@ def expand_with_database_details(syllabus: Dict, rag_context: Dict) -> str:
         lines.append("")
 
         uuid_to_assessment = {
-            a["id"]: a for a in rag_context.get("available_assessments", [])
+            a["assessment_id"]: a for a in rag_context.get("available_assessments", [])
         }
 
         for assessment_uuid in syllabus["assessments"]:
@@ -398,11 +409,11 @@ if __name__ == "__main__":
 [0]
 """
 
-    # Mock RAG context
+    # Mock RAG context (using deterministic type-specific fields)
     mock_context = {
         "available_modules": [
             {
-                "id": "uuid-mod-0",
+                "module_id": "uuid-mod-0",
                 "title": "Python Basics",
                 "description": "Learn Python",
                 "estimated_hours": 40,
@@ -410,7 +421,7 @@ if __name__ == "__main__":
                 "key_concepts": ["variables", "functions"],
             },
             {
-                "id": "uuid-mod-1",
+                "module_id": "uuid-mod-1",
                 "title": "Data Structures",
                 "description": "Master data structures",
                 "estimated_hours": 50,
@@ -420,7 +431,7 @@ if __name__ == "__main__":
         ],
         "available_activities": [
             {
-                "id": "uuid-act-0",
+                "activity_id": "uuid-act-0",
                 "title": "Coding Exercise 1",
                 "description": "Practice basics",
                 "estimated_hours": 5,
@@ -429,7 +440,7 @@ if __name__ == "__main__":
         ],
         "available_assessments": [
             {
-                "id": "uuid-ass-0",
+                "assessment_id": "uuid-ass-0",
                 "title": "Midterm Exam",
                 "description": "Test knowledge",
                 "estimated_hours": 2,
