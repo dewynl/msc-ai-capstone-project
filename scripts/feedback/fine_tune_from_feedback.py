@@ -42,7 +42,6 @@ def export_feedback_training_data(
         print("   Please configure Supabase credentials in .env file")
         return None
 
-    # Get feedback stats
     stats = db.get_feedback_stats()
     print("\n📊 Feedback Statistics:")
     print(f"   Total feedback: {stats['total_feedback']}")
@@ -285,13 +284,11 @@ def fine_tune_model(
         data_collator=data_collator,
     )
 
-    # Train
     print("\n🚀 Starting fine-tuning...")
     print("   This may take 10-30 minutes depending on data size")
 
     trainer.train()
 
-    # Save model
     print(f"\n💾 Saving fine-tuned model to: {output_model_path}")
     trainer.save_model(output_model_path)
     tokenizer.save_pretrained(output_model_path)

@@ -154,7 +154,6 @@ def extract_expert_syllabi(
 
         expert_syllabi.append(expert)
 
-    # Save to JSON
     output_path = Path(output_json_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
