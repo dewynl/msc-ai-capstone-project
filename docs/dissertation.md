@@ -1750,55 +1750,66 @@ The radar chart reveals a mixed performance profile:
 
 This balanced profile demonstrates that the system excels at structural coherence and logical sequencing while requiring enhancement in pedagogical constraints enforcement and advanced learning objective generation.
 
-## 6.4 Domain Generalization Analysis
+## 6.4 Quality Metrics Performance by Domain
 
-Figure 3 analyzes success rates across educational domains, validating cross-domain architectural generalization.
+Figure 3 presents quality metrics breakdown across the three supported STEM domains, revealing domain-specific performance patterns.
 
-![Figure 3: Domain Success Rate](figures/fig3_domain_success_rate.png)
+![Figure 3: Quality Metrics by Domain](figures/fig3_quality_by_domain.png)
 
-**Figure 3: Syllabus Generation Success Rate by Domain**
+**Figure 3: Quality Metrics Performance by Domain**
 
-All three supported domains achieved **100% technical success** (32/32 test cases):
-- Computer Science: 15/15 successful generations
-- Mathematics: 10/10 successful generations
-- Physics: 7/7 successful generations
+The grouped bar chart reveals significant performance variation across domains and metrics:
 
-This perfect success rate across domains validates a key architectural decision: by abstracting syllabus structure into universal function calls (create_module, create_activity, create_assessment), the system decouples structural generation from domain-specific content. The fine-tuned CodeT5-small model learned domain-agnostic generation patterns applicable across STEM disciplines.
+**Prerequisite Accuracy (Primary Weakness):**
+- Computer Science: 66.7% (strongest performance)
+- Mathematics: 30.0% (critical weakness)
+- Physics: 33.3% (critical weakness)
 
-**Domain-Specific Performance Variation:**
+Computer Science syllabi demonstrate substantially better prerequisite sequencing, likely due to clearer hierarchical structure in CS curricula (data structures → algorithms → advanced topics) compared to Mathematics and Physics where cross-cutting dependencies create more complex prerequisite graphs.
 
-While technical success remained constant, pedagogical quality showed modest domain variation:
-- Computer Science: Mean quality 5.8/10 (prerequisite accuracy 45.2%)
-- Mathematics: Mean quality 6.1/10 (prerequisite accuracy 52.1%)
-- Physics: Mean quality 5.9/10 (prerequisite accuracy 48.6%)
+**Semantic Relevance (Universal Challenge):**
+- Computer Science: 44.0%
+- Mathematics: 36.5%
+- Physics: 36.4%
 
-The Mathematics domain's slightly higher prerequisite accuracy (52.1% vs 45-49% for CS/Physics) likely reflects stronger prerequisite graph structure in mathematical curricula, where sequential dependencies (Calculus I → II → III) are more explicit than in Computer Science topics with flexible ordering options.
+All domains show moderate semantic alignment between course requirements and selected components, indicating the RAG retrieval system achieves acceptable topical relevance but has room for improvement in precision matching.
 
-## 6.5 Difficulty Level vs Performance Analysis
+**Structural Quality (Universal Strength):**
+- Difficulty Progression: 90.0% across all domains (excellent)
+- Topic Diversity: 80.0% across all domains (good)
 
-Figure 4 examines the relationship between course difficulty level and pedagogical quality through box plot distribution analysis.
+All domains excel at logical difficulty progression and diverse content coverage, validating the core markdown generation approach's ability to maintain structural coherence regardless of subject matter.
 
-![Figure 4: Difficulty vs Performance](figures/fig4_difficulty_performance.png)
+**Bloom's Taxonomy Coverage (Domain Differences):**
+- Computer Science: 30.0%
+- Mathematics: 43.3%
+- Physics: 45.2%
 
-**Figure 4: Model Performance vs Course Difficulty Level**
+Mathematics and Physics show stronger higher-order thinking skills representation (Analyze, Evaluate, Create levels), possibly reflecting the analytical nature of these disciplines compared to Computer Science's skill-focused learning objectives.
 
-The box plot reveals an inverse relationship between difficulty level and mean quality scores:
+## 6.5 Prerequisite Accuracy by Difficulty Level
 
-- **Beginner**: Mean 5.69/10, Median 4.73/10 (13 tests)
-- **Intermediate**: Mean 6.07/10, Median 7.39/10 (11 tests)
-- **Advanced**: Mean 5.40/10, Median 4.67/10 (7 tests)
-- **Postgraduate**: Mean 7.46/10, Median 7.46/10 (1 test)
+Figure 4 analyzes prerequisite accuracy performance across the three supported difficulty levels, revealing how prerequisite sequencing challenges vary with course complexity.
 
-Contrary to initial expectations, Intermediate-level courses achieved the highest median quality (7.39/10), while Beginner and Advanced levels showed lower performance (medians ~4.7/10). The single Postgraduate test case showed strong performance (7.46/10) but represents insufficient data for generalizable conclusions.
+![Figure 4: Prerequisite Accuracy by Difficulty Level](figures/fig4_prerequisites_by_level.png)
 
-**Hypothesis for Intermediate Peak Performance:**
+**Figure 4: Prerequisite Accuracy by Course Difficulty Level**
 
-Intermediate-level courses may represent an optimal "sweet spot" where:
-1. **Prerequisite chains are moderate** (2-3 dependencies vs 4-5 for Advanced courses)
-2. **Training data density is highest** (Intermediate courses most common in synthetic dataset)
-3. **Topic specificity balances breadth** (not too general like Beginner, not too specialized like Advanced)
+The bar chart reveals non-linear performance across difficulty levels:
 
-The Advanced course performance decline (mean 5.40/10) aligns with the inverse difficulty scaling observed in prerequisite accuracy: advanced courses with longer prerequisite chains (e.g., "Compiler Design" requiring 5 prerequisites) have exponentially lower probability of valid ordering through semantic similarity ranking alone.
+- **Beginner**: 46.2% accuracy (N=13) - 6 perfect, 0 partial, 7 none
+- **Intermediate**: 54.5% accuracy (N=11) - 6 perfect, 0 partial, 5 none (best performance)
+- **Advanced**: 33.3% accuracy (N=7) - 2 perfect, 1 partial, 4 none (worst performance)
+
+**Key Observations:**
+
+**Intermediate Courses Perform Best:** Intermediate-level syllabi achieve the highest prerequisite accuracy (54.5%), suggesting optimal balance between prerequisite chain complexity and model capacity. These courses typically have 3-4 module dependencies, within the model's reliable sequencing range.
+
+**Advanced Courses Struggle Most:** Advanced syllabi show the lowest accuracy (33.3%) with 4 out of 7 having zero prerequisite coherence. Advanced courses often require complex prerequisite graphs with 5+ dependencies and cross-cutting requirements that exceed the model's topological ordering capability.
+
+**Beginner Courses Show Mixed Results:** Despite simpler prerequisite structures, beginner courses achieve only 46.2% accuracy. This counterintuitive result stems from the RAG retrieval challenge: introductory modules often have few or no prerequisites, leading to ambiguous orderings where multiple valid sequences exist but the model lacks constraints to select pedagogically optimal arrangements.
+
+**Implications for Architecture Enhancement:** The prerequisite accuracy challenge requires constraint-based enhancement rather than model scaling. Future work should explore integrating prerequisite graph traversal directly into the component selection pipeline, ensuring only topologically valid module sequences are presented to the generation model. The intermediate-level peak performance (54.5%) suggests that with moderate prerequisite complexity (3-4 dependencies), the current semantic retrieval approach can achieve acceptable accuracy—extension to advanced courses requires explicit constraint enforcement.
 
 ## 6.6 Statistical Significance and Reliability
 
@@ -1806,7 +1817,7 @@ To assess whether observed performance patterns represent meaningful differences
 
 **Domain Independence Test**: One-way ANOVA across three domains (Computer Science, Mathematics, Physics) shows no significant difference in mean quality scores (F = 0.34, p = 0.71), confirming domain-agnostic architectural performance at α = 0.05 significance level.
 
-**Difficulty Level Correlation**: Spearman rank correlation between difficulty level (1=Beginner, 4=Postgraduate) and quality score yields ρ = 0.12 (p = 0.51), indicating no significant linear relationship. The Intermediate peak represents a non-linear effect requiring further investigation.
+**Difficulty Level Correlation**: Spearman rank correlation between difficulty level (1=Beginner, 2=Intermediate, 3=Advanced) and prerequisite accuracy yields ρ = 0.15 (p = 0.43), indicating no significant linear relationship. The intermediate-level peak (54.5%) represents a non-linear effect where moderate prerequisite complexity enables better model performance.
 
 **Generation Time Consistency**: Coefficient of variation for generation time is 38% (σ = 0.8s, μ = 2.1s), indicating moderate consistency with occasional outliers (maximum 4.2s) likely due to RAG database query latency spikes.
 
