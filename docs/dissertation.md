@@ -1746,6 +1746,8 @@ Kaldaras, L., Akaeze, H.O. and Reckase, M.D. (2024). Developing valid assessment
 
 Karran, A.J., Charland, P., Martineau, J-T., Ortiz de Guinea Lopez de Arana, A., Lesage, A.M., Senecal, S. and Leger, P-M. (2024). Multi-stakeholder Perspective on Responsible Artificial Intelligence and Acceptability in Education. arXiv preprint arXiv:2402.15027. https://arxiv.org/abs/2402.15027
 
+Kirkpatrick, J., Pascanu, R., Rabinowitz, N., Veness, J., Desjardins, G., Rusu, A.A., Milan, K., Quan, J., Ramalho, T., Grabska-Barwinska, A., Hassabis, D., Clopath, C., Kumaran, D. and Hadsell, R. (2017). Overcoming catastrophic forgetting in neural networks. Proceedings of the National Academy of Sciences, 114(13), pp. 3521-3526. https://doi.org/10.1073/pnas.1611835114
+
 Khosravi, H., Shum, S.B., Chen, G., Conati, C., Tsai, Y.S., Kay, J., Knight, S., Martinez-Maldonado, R., Sadiq, S. and Gašević, D. (2022). Explainable Artificial Intelligence in education. Computers and Education: Artificial Intelligence, 3, Article 100074. https://doi.org/10.1016/j.caeai.2022.100074
 
 Li, H., Zhang, W., Chen, H., Guo, S., Li, C., Zhang, J., Wang, Z., Qiao, Y. and Feng, M. (2024). Bringing Generative AI to Adaptive Learning in Education. arXiv preprint arXiv:2402.14601. https://arxiv.org/abs/2402.14601
@@ -1762,6 +1764,8 @@ Parkes, J. and Harris, M.B. (2002). The purposes of a syllabus. College Teaching
 
 Peffers, K., Tuunanen, T., Rothenberger, M.A. and Chatterjee, S. (2007). A design science research methodology for information systems research. Journal of Management Information Systems, 24(3), pp. 45-77.
 
+Rafailov, R., Sharma, A., Mitchell, E., Ermon, S., Manning, C.D. and Finn, C. (2023). Direct Preference Optimization: Your Language Model is Secretly a Reward Model. In Advances in Neural Information Processing Systems 36 (NeurIPS 2023), pp. 53728-53741. https://arxiv.org/abs/2305.18290
+
 Raffel, C., Shazeer, N., Roberts, A., Lee, K., Narang, S., Matena, M., Zhou, Y., Li, W. and Liu, P.J. (2020). Exploring the limits of transfer learning with a unified text-to-text transformer. Journal of Machine Learning Research, 21(140), pp. 1-67. https://arxiv.org/abs/1910.10683
 
 Reimers, N. and Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP), pp. 3982-3992. https://arxiv.org/abs/1908.10084
@@ -1769,6 +1773,8 @@ Reimers, N. and Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Si
 Rogers, A., Kovaleva, O. and Rumshisky, A. (2020). A primer in BERTology: What we know about how BERT works. Transactions of the Association for Computational Linguistics, 8, pp. 842-866. https://arxiv.org/abs/2002.12327
 
 Sharma, C. (2024). Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers. arXiv preprint arXiv:2506.00054. https://arxiv.org/abs/2506.00054
+
+Stanford University (2025). Improving generative AI student feedback through Direct Preference Optimization with teachers in the loop. Stanford Educational AI Research. [Pre-publication working paper]
 
 Sun, E., Xiao, Y. and Wang, W. (2024). CurriculumAgents: Automated Multi-Agent Lesson Design. AAAI-25 Workshop on AI for Education (AI4EDU), AAAI 2025.
 
