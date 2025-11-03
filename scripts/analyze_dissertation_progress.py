@@ -80,8 +80,8 @@ def analyze_dissertation():
         "5. Implementation": (r"# 5\. Implementation", r"# 6\. Evaluation"),
         "6. Evaluation": (r"# 6\. Evaluation", r"# 7\. Learning"),
         "7. Learning and Reflection": (r"# 7\. Learning", r"# 8\. Conclusion"),
-        "8. Conclusion": (r"# 8\. Conclusion", r"# Annex A"),
-        "Annex A: Research Approach Evolution": (r"# Annex A:", r"## References"),
+        "8. Conclusion": (r"# 8\. Conclusion", r"# Appendices A:"),
+        "Annex A: Research Approach Evolution": (r"# Appendices A:", r"## References"),
         "References": (r"## References", r"## Appendices"),
         "Appendices": (r"## Appendices", None),
     }
