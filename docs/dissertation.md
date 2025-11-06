@@ -1117,6 +1117,78 @@ The evolution from function calling failure (0%) to markdown generation success 
 
 ---
 
+# References
+
+Anderson, L.W., Krathwohl, D.R., Airasian, P.W., Cruikshank, K.A., Mayer, R.E., Pintrich, P.R., Raths, J. and Wittrock, M.C. (2001). A taxonomy for learning, teaching, and assessing: A revision of Bloom's taxonomy of educational objectives. Longman.
+
+Bengio, Y., Louradour, J., Collobert, R. and Weston, J. (2009). Curriculum learning. In Proceedings of the 26th Annual International Conference on Machine Learning, pp. 41-48. https://doi.org/10.1145/1553374.1553380
+
+Cheng, D., Huang, S. and Wei, F. (2024). Adapting Large Language Models via Reading Comprehension. In The Twelfth International Conference on Learning Representations (ICLR 2024). https://openreview.net/forum?id=y886UXPEZ0
+
+Clark, K., Khandelwal, U., Levy, O. and Manning, C.D. (2019). What does BERT look at? An analysis of BERT's attention. In Proceedings of the 2019 ACL Workshop BlackboxNLP: Analyzing and Interpreting Neural Networks for NLP, pp. 276-286. https://arxiv.org/abs/1906.04341
+
+Denny, P., Khosravi, H., Hellas, A., Leinonen, J. and Sarsa, S. (2023). Can We Trust AI-Generated Educational Content? Comparative Analysis of Human and AI-Generated Learning Resources. arXiv preprint arXiv:2306.10509. https://arxiv.org/abs/2306.10509
+
+Devlin, J., Chang, M.W., Lee, K. and Toutanova, K. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers), pp. 4171-4186. https://doi.org/10.18653/v1/N19-1423
+
+Gagné, R.M. (1985). The conditions of learning and theory of instruction. 4th ed. New York: Holt, Rinehart and Winston.
+
+Hevner, A.R., March, S.T., Park, J. and Ram, S. (2004). Design science in information systems research. MIS Quarterly, 28(1), pp. 75-105.
+
+Husain, H., Wu, H.H., Gazit, T., Allamanis, M. and Brockschmidt, M. (2019). CodeSearchNet Challenge: Evaluating the state of semantic code search. arXiv preprint arXiv:1909.09436. https://arxiv.org/abs/1909.09436
+
+Kaldaras, L., Akaeze, H.O. and Reckase, M.D. (2024). Developing valid assessments in the era of generative artificial intelligence. Frontiers in Education, 9, 1399377. https://doi.org/10.3389/feduc.2024.1399377
+
+Karran, A.J., Charland, P., Martineau, J-T., Ortiz de Guinea Lopez de Arana, A., Lesage, A.M., Senecal, S. and Leger, P-M. (2024). Multi-stakeholder Perspective on Responsible Artificial Intelligence and Acceptability in Education. arXiv preprint arXiv:2402.15027. https://arxiv.org/abs/2402.15027
+
+Kirkpatrick, J., Pascanu, R., Rabinowitz, N., Veness, J., Desjardins, G., Rusu, A.A., Milan, K., Quan, J., Ramalho, T., Grabska-Barwinska, A., Hassabis, D., Clopath, C., Kumaran, D. and Hadsell, R. (2017). Overcoming catastrophic forgetting in neural networks. Proceedings of the National Academy of Sciences, 114(13), pp. 3521-3526. https://doi.org/10.1073/pnas.1611835114
+
+Khosravi, H., Shum, S.B., Chen, G., Conati, C., Tsai, Y.S., Kay, J., Knight, S., Martinez-Maldonado, R., Sadiq, S. and Gašević, D. (2022). Explainable Artificial Intelligence in education. Computers and Education: Artificial Intelligence, 3, Article 100074. https://doi.org/10.1016/j.caeai.2022.100074
+
+Li, H., Zhang, W., Chen, H., Guo, S., Li, C., Zhang, J., Wang, Z., Qiao, Y. and Feng, M. (2024). Bringing Generative AI to Adaptive Learning in Education. arXiv preprint arXiv:2402.14601. https://arxiv.org/abs/2402.14601
+
+Lin, T., Wang, Y., Liu, X. and Qiu, X. (2022). A Survey of Transformers. AI Open, 3, pp. 111-132. https://doi.org/10.1016/j.aiopen.2022.10.001
+
+Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W., Rocktäschel, T., Riedel, S. and Kiela, D. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. In Advances in Neural Information Processing Systems 33 (NeurIPS 2020), pp. 9459-9474. https://arxiv.org/abs/2005.11401
+
+Martinez, R., Johnson, K. and Thompson, L. (2023). Automated curriculum document generation: Maintaining structural coherence in educational content. Educational Technology Research and Development, 71(3), pp. 445-462.
+
+Papineni, K., Roukos, S., Ward, T. and Zhu, W.J. (2002). BLEU: a method for automatic evaluation of machine translation. In Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics, pp. 311-318. https://doi.org/10.3115/1073083.1073135
+
+Parkes, J. and Harris, M.B. (2002). The purposes of a syllabus. College Teaching, 50(2), pp. 55-61. https://doi.org/10.1080/87567550209595875
+
+Peffers, K., Tuunanen, T., Rothenberger, M.A. and Chatterjee, S. (2007). A design science research methodology for information systems research. Journal of Management Information Systems, 24(3), pp. 45-77.
+
+Rafailov, R., Sharma, A., Mitchell, E., Ermon, S., Manning, C.D. and Finn, C. (2023). Direct Preference Optimization: Your Language Model is Secretly a Reward Model. In Advances in Neural Information Processing Systems 36 (NeurIPS 2023), pp. 53728-53741. https://arxiv.org/abs/2305.18290
+
+Raffel, C., Shazeer, N., Roberts, A., Lee, K., Narang, S., Matena, M., Zhou, Y., Li, W. and Liu, P.J. (2020). Exploring the limits of transfer learning with a unified text-to-text transformer. Journal of Machine Learning Research, 21(140), pp. 1-67. https://arxiv.org/abs/1910.10683
+
+Reimers, N. and Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP), pp. 3982-3992. https://arxiv.org/abs/1908.10084
+
+Rogers, A., Kovaleva, O. and Rumshisky, A. (2020). A primer in BERTology: What we know about how BERT works. Transactions of the Association for Computational Linguistics, 8, pp. 842-866. https://arxiv.org/abs/2002.12327
+
+Sharma, C. (2024). Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers. arXiv preprint arXiv:2506.00054. https://arxiv.org/abs/2506.00054
+
+Stanford University (2025). Improving generative AI student feedback through Direct Preference Optimization with teachers in the loop. Stanford Educational AI Research. [Pre-publication working paper]
+
+Sun, E., Xiao, Y. and Wang, W. (2024). CurriculumAgents: Automated Multi-Agent Lesson Design. AAAI-25 Workshop on AI for Education (AI4EDU), AAAI 2025.
+
+Thompson, A., Wilson, M. and Davis, S. (2023). Current limitations and challenges in educational content generation systems. Journal of Educational Technology and Society, 26(2), pp. 78-94.
+
+U.S. Department of Education (2023). Artificial Intelligence and the Future of Teaching and Learning: Insights and Recommendations. Office of Educational Technology, U.S. Department of Education. https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report.pdf
+
+Wang, Y., Wang, W., Joty, S. and Hoi, S.C.H. (2021). CodeT5: Identifier-aware unified pre-trained encoder-decoder models for code understanding and generation. In Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP), pp. 8696-8708. https://doi.org/10.18653/v1/2021.emnlp-main.685
+
+Wang, S., Christensen, C., Cui, W., Tong, R., Yarnall, L., Shear, L. and Feng, M. (2024). Artificial intelligence in education: A systematic literature review. Expert Systems with Applications, 252, Article 124167. https://doi.org/10.1016/j.eswa.2024.124167
+
+Weller, O., Seppi, K. and Gardner, M. (2022). When to Use Multi-Task Learning vs Intermediate Fine-Tuning for Pre-Trained Encoder Transfer Learning. In Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers), pp. 272-282. https://doi.org/10.18653/v1/2022.acl-short.30
+
+Yang, Z., He, X., Gao, J., Deng, L. and Smola, A. (2016). Stacked attention networks for image question answering. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 21-29. https://arxiv.org/abs/1511.02274
+
+Zou, L., Chen, X. and Wang, Y. (2023). Natural language processing applications in educational content analysis: Challenges and opportunities. Computers & Education, 195, Article 104726. https://doi.org/10.1016/j.compedu.2023.104726
+
+---
+
 # Appendix A: Research Approach Evolution
 
 This appendix documents the iterative research journey from initial failures to the final successful architecture. Unlike traditional technical appendices that merely list implementation details, this section tells the story of systematic discovery—how each failed approach revealed fundamental insights about neural generation, task complexity, and the delicate balance between architectural sophistication and practical effectiveness. The journey demonstrates that research value lies not just in final solutions, but in understanding *why* certain approaches fail and *how* those failures inform better designs.
@@ -1586,83 +1658,3 @@ The three failed approaches were not wasted effort—they revealed fundamental i
 - **Function Calling** identified task complexity as the core bottleneck, revealing that architectural sophistication cannot compensate for task-model misalignment
 
 Each failure answered a specific question that guided the research toward a viable solution. This validates that systematic failure analysis is more valuable than premature optimization of the first working approach. The research contribution lies not just in the final architecture, but in the principled journey that led there.
-
-
-
----
-
-## References
-
-Anderson, L.W., Krathwohl, D.R., Airasian, P.W., Cruikshank, K.A., Mayer, R.E., Pintrich, P.R., Raths, J. and Wittrock, M.C. (2001). A taxonomy for learning, teaching, and assessing: A revision of Bloom's taxonomy of educational objectives. Longman.
-
-Bengio, Y., Louradour, J., Collobert, R. and Weston, J. (2009). Curriculum learning. In Proceedings of the 26th Annual International Conference on Machine Learning, pp. 41-48. https://doi.org/10.1145/1553374.1553380
-
-Cheng, D., Huang, S. and Wei, F. (2024). Adapting Large Language Models via Reading Comprehension. In The Twelfth International Conference on Learning Representations (ICLR 2024). https://openreview.net/forum?id=y886UXPEZ0
-
-Clark, K., Khandelwal, U., Levy, O. and Manning, C.D. (2019). What does BERT look at? An analysis of BERT's attention. In Proceedings of the 2019 ACL Workshop BlackboxNLP: Analyzing and Interpreting Neural Networks for NLP, pp. 276-286. https://arxiv.org/abs/1906.04341
-
-Denny, P., Khosravi, H., Hellas, A., Leinonen, J. and Sarsa, S. (2023). Can We Trust AI-Generated Educational Content? Comparative Analysis of Human and AI-Generated Learning Resources. arXiv preprint arXiv:2306.10509. https://arxiv.org/abs/2306.10509
-
-Devlin, J., Chang, M.W., Lee, K. and Toutanova, K. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers), pp. 4171-4186. https://doi.org/10.18653/v1/N19-1423
-
-Gagné, R.M. (1985). The conditions of learning and theory of instruction. 4th ed. New York: Holt, Rinehart and Winston.
-
-Hevner, A.R., March, S.T., Park, J. and Ram, S. (2004). Design science in information systems research. MIS Quarterly, 28(1), pp. 75-105.
-
-Husain, H., Wu, H.H., Gazit, T., Allamanis, M. and Brockschmidt, M. (2019). CodeSearchNet Challenge: Evaluating the state of semantic code search. arXiv preprint arXiv:1909.09436. https://arxiv.org/abs/1909.09436
-
-Kaldaras, L., Akaeze, H.O. and Reckase, M.D. (2024). Developing valid assessments in the era of generative artificial intelligence. Frontiers in Education, 9, 1399377. https://doi.org/10.3389/feduc.2024.1399377
-
-Karran, A.J., Charland, P., Martineau, J-T., Ortiz de Guinea Lopez de Arana, A., Lesage, A.M., Senecal, S. and Leger, P-M. (2024). Multi-stakeholder Perspective on Responsible Artificial Intelligence and Acceptability in Education. arXiv preprint arXiv:2402.15027. https://arxiv.org/abs/2402.15027
-
-Kirkpatrick, J., Pascanu, R., Rabinowitz, N., Veness, J., Desjardins, G., Rusu, A.A., Milan, K., Quan, J., Ramalho, T., Grabska-Barwinska, A., Hassabis, D., Clopath, C., Kumaran, D. and Hadsell, R. (2017). Overcoming catastrophic forgetting in neural networks. Proceedings of the National Academy of Sciences, 114(13), pp. 3521-3526. https://doi.org/10.1073/pnas.1611835114
-
-Khosravi, H., Shum, S.B., Chen, G., Conati, C., Tsai, Y.S., Kay, J., Knight, S., Martinez-Maldonado, R., Sadiq, S. and Gašević, D. (2022). Explainable Artificial Intelligence in education. Computers and Education: Artificial Intelligence, 3, Article 100074. https://doi.org/10.1016/j.caeai.2022.100074
-
-Li, H., Zhang, W., Chen, H., Guo, S., Li, C., Zhang, J., Wang, Z., Qiao, Y. and Feng, M. (2024). Bringing Generative AI to Adaptive Learning in Education. arXiv preprint arXiv:2402.14601. https://arxiv.org/abs/2402.14601
-
-Lin, T., Wang, Y., Liu, X. and Qiu, X. (2022). A Survey of Transformers. AI Open, 3, pp. 111-132. https://doi.org/10.1016/j.aiopen.2022.10.001
-
-Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., Küttler, H., Lewis, M., Yih, W., Rocktäschel, T., Riedel, S. and Kiela, D. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. In Advances in Neural Information Processing Systems 33 (NeurIPS 2020), pp. 9459-9474. https://arxiv.org/abs/2005.11401
-
-Martinez, R., Johnson, K. and Thompson, L. (2023). Automated curriculum document generation: Maintaining structural coherence in educational content. Educational Technology Research and Development, 71(3), pp. 445-462.
-
-Papineni, K., Roukos, S., Ward, T. and Zhu, W.J. (2002). BLEU: a method for automatic evaluation of machine translation. In Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics, pp. 311-318. https://doi.org/10.3115/1073083.1073135
-
-Parkes, J. and Harris, M.B. (2002). The purposes of a syllabus. College Teaching, 50(2), pp. 55-61. https://doi.org/10.1080/87567550209595875
-
-Peffers, K., Tuunanen, T., Rothenberger, M.A. and Chatterjee, S. (2007). A design science research methodology for information systems research. Journal of Management Information Systems, 24(3), pp. 45-77.
-
-Rafailov, R., Sharma, A., Mitchell, E., Ermon, S., Manning, C.D. and Finn, C. (2023). Direct Preference Optimization: Your Language Model is Secretly a Reward Model. In Advances in Neural Information Processing Systems 36 (NeurIPS 2023), pp. 53728-53741. https://arxiv.org/abs/2305.18290
-
-Raffel, C., Shazeer, N., Roberts, A., Lee, K., Narang, S., Matena, M., Zhou, Y., Li, W. and Liu, P.J. (2020). Exploring the limits of transfer learning with a unified text-to-text transformer. Journal of Machine Learning Research, 21(140), pp. 1-67. https://arxiv.org/abs/1910.10683
-
-Reimers, N. and Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP), pp. 3982-3992. https://arxiv.org/abs/1908.10084
-
-Rogers, A., Kovaleva, O. and Rumshisky, A. (2020). A primer in BERTology: What we know about how BERT works. Transactions of the Association for Computational Linguistics, 8, pp. 842-866. https://arxiv.org/abs/2002.12327
-
-Sharma, C. (2024). Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers. arXiv preprint arXiv:2506.00054. https://arxiv.org/abs/2506.00054
-
-Stanford University (2025). Improving generative AI student feedback through Direct Preference Optimization with teachers in the loop. Stanford Educational AI Research. [Pre-publication working paper]
-
-Sun, E., Xiao, Y. and Wang, W. (2024). CurriculumAgents: Automated Multi-Agent Lesson Design. AAAI-25 Workshop on AI for Education (AI4EDU), AAAI 2025.
-
-Thompson, A., Wilson, M. and Davis, S. (2023). Current limitations and challenges in educational content generation systems. Journal of Educational Technology and Society, 26(2), pp. 78-94.
-
-U.S. Department of Education (2023). Artificial Intelligence and the Future of Teaching and Learning: Insights and Recommendations. Office of Educational Technology, U.S. Department of Education. https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report.pdf
-
-Wang, Y., Wang, W., Joty, S. and Hoi, S.C.H. (2021). CodeT5: Identifier-aware unified pre-trained encoder-decoder models for code understanding and generation. In Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP), pp. 8696-8708. https://doi.org/10.18653/v1/2021.emnlp-main.685
-
-Wang, S., Christensen, C., Cui, W., Tong, R., Yarnall, L., Shear, L. and Feng, M. (2024). Artificial intelligence in education: A systematic literature review. Expert Systems with Applications, 252, Article 124167. https://doi.org/10.1016/j.eswa.2024.124167
-
-Weller, O., Seppi, K. and Gardner, M. (2022). When to Use Multi-Task Learning vs Intermediate Fine-Tuning for Pre-Trained Encoder Transfer Learning. In Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers), pp. 272-282. https://doi.org/10.18653/v1/2022.acl-short.30
-
-Yang, Z., He, X., Gao, J., Deng, L. and Smola, A. (2016). Stacked attention networks for image question answering. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 21-29. https://arxiv.org/abs/1511.02274
-
-Zou, L., Chen, X. and Wang, Y. (2023). Natural language processing applications in educational content analysis: Challenges and opportunities. Computers & Education, 195, Article 104726. https://doi.org/10.1016/j.compedu.2023.104726
-
----
-
-## Appendices
-
-*[Supporting materials including technical documentation, evaluation instruments, supplementary data analysis, and additional case study materials]*
