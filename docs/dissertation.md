@@ -813,7 +813,9 @@ These limitations represent known constraints in small model deployment rather t
 
 # 6. Evaluation
 
-This chapter presents comprehensive evaluation of the markdown generation with index-based component selection system across 32 diverse test cases spanning three educational domains (Computer Science, Mathematics, Physics) and four difficulty levels (Beginner, Intermediate, Advanced, Postgraduate). The evaluation employs a custom pedagogical quality framework measuring five critical dimensions: prerequisite coherence, semantic relevance, difficulty progression, topic diversity, and Bloom's taxonomy coverage. Results reveal strong structural generation capabilities (100% validity), excellent difficulty progression (90.6%), and strong topic diversity (87.3%), balanced against pedagogical constraint challenges in prerequisite sequencing (44.8%)—the primary area requiring architectural enhancement through constraint-based generation approaches.
+This chapter presents evaluation results across 32 test cases spanning Computer Science, Mathematics, and Physics domains at four difficulty levels (Beginner, Intermediate, Advanced, Postgraduate). The evaluation measures five pedagogical dimensions: prerequisite coherence, semantic relevance, difficulty progression, topic diversity, and Bloom's taxonomy coverage.
+
+**Summary of Results:** The system achieves 100% structural reliability (all outputs parse successfully), excellent difficulty progression (90.6%), and strong topic diversity (87.3%). However, prerequisite sequencing shows critical weakness (44.8% accuracy, with 50% of syllabi having zero prerequisite coherence)—identifying this as the primary area requiring architectural enhancement.
 
 ## 6.1 Evaluation Framework and Methodology
 
