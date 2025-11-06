@@ -4,112 +4,149 @@
 
 ## 1.1 Research Problem Statement
 
-Course syllabus creation is a labour-intensive process requiring domain expertise and pedagogical knowledge (Parkes and Harris, 2002). Educational institutions worldwide face increasing pressure to develop high-quality curricula while managing resource constraints and maintaining educational standards. Current approaches typically rely on manual template-based systems requiring extensive human intervention, limiting scalability and consistency across educational programmes.
+Creating course syllabi is time-consuming work. It requires both domain expertise and pedagogical knowledge (Parkes and Harris, 2002), and most educational institutions still rely on manual processes—templates that require extensive customization, content that needs careful sequencing, and learning objectives that must align with educational standards. This manual approach works, but it doesn't scale well. As institutions face pressure to develop quality curricula with limited resources, there's growing interest in whether AI could assist without compromising educational standards.
 
-While recent advances in large language models have demonstrated impressive text generation capabilities, they often lack the structured pedagogical coherence required for quality educational content. Generic language models fail to incorporate domain-specific educational frameworks such as Bloom's taxonomy or maintain the hierarchical learning progressions essential for effective course design (Anderson et al., 2001), representing a significant gap in the application of artificial intelligence to educational content creation.
+Recent advances in large language models have shown impressive capabilities for text generation. But generic LLMs face a specific challenge with educational content: they lack the structured pedagogical coherence that makes curricula effective. They don't naturally incorporate frameworks like Bloom's taxonomy, and they struggle to maintain the prerequisite relationships and difficulty progressions essential for effective course design (Anderson et al., 2001). This represents a significant gap between what LLMs can do well—generate fluent text—and what educational content actually requires—coherent structure and pedagogical soundness.
+
+This dissertation explores whether neural language models can be adapted to generate pedagogically sound course syllabi. More importantly, it documents what happens when they fail, why those failures matter, and how task formulation can matter more than model sophistication.
 
 ## 1.2 Research Question
 
-This research addresses the following primary research question:
+This research addresses a specific question:
 
-**"How can a custom machine learning model effectively generate structured, coherent course syllabi from specific educational inputs including course descriptions, learning objectives, and problem statements?"**
+**"How can neural language models effectively generate structured, coherent course syllabi from educational inputs like course descriptions, learning objectives, and difficulty levels?"**
 
-This question encompasses several critical sub-questions:
+This breaks down into several sub-questions that emerged during the research:
 
-- How can existing neural language architectures be adapted to incorporate educational domain knowledge?
-- What custom architectural components are required to maintain pedagogical coherence in generated content?
-- How can curriculum learning principles be applied to train models for educational content generation?
-- How can pedagogical principles (prerequisite coherence, difficulty progression, topic diversity) be formalised as quantifiable evaluation metrics?
-- What evaluation frameworks can effectively measure both technical performance and educational quality?
+- Can existing neural architectures be adapted to incorporate educational domain knowledge?
+- What happens when we ask small models to generate structured content with strict formatting requirements?
+- How can we formalize pedagogical principles—prerequisite coherence, difficulty progression, topic diversity—as measurable evaluation metrics?
+- What's the right balance between neural generation (semantic intelligence) and programmatic validation (structural guarantees)?
+
+The research evolved significantly from initial proposal to final implementation. What started as "adapt transformer architectures for syllabus generation" became "understand why structured generation fails and redesign the task accordingly." This evolution is documented thoroughly in Appendix A.
 
 ## 1.3 Aims and Objectives
 
 ### 1.3.1 Primary Aim
 
-To adapt and evaluate existing neural language architectures with custom educational components to generate educationally sound, structurally coherent course syllabi from well-defined input context.
+Adapt existing neural language architectures to generate educationally sound, structurally reliable course syllabi, and develop evaluation frameworks to measure both technical performance and pedagogical quality.
 
 ### 1.3.2 Specific Objectives
 
 **Data Collection and Preprocessing**
-- Generate 1,300 high-quality synthetic course syllabi across STEM educational domains using component-based generation methodology with prerequisite-aware sequencing
-- Implement systematic quality assurance through automated coherence checking and educational framework compliance validation
-- Create standardised dataset with consistent metadata formatting, pedagogical annotations, and educational taxonomy alignment
+- Generate 1,300 synthetic training examples across STEM domains using component-based methodology with prerequisite-aware sequencing
+- Implement automated quality assurance to ensure educational framework compliance
+- Create a standardized dataset with consistent metadata and pedagogical annotations
 
-**Educational Architecture Adaptation**
-- Adapt existing transformer architectures with custom educational layers and pedagogical constraints
-- Develop domain-specific fine-tuning strategies demonstrating measurable improvement over generic embeddings on educational terminology
-- Implement curriculum learning mechanisms and pedagogical structure encoders for hierarchical content organisation
-- Complete initial model validation with baseline performance metrics across multiple educational domains
+**Architecture Development**
+- Adapt transformer architectures (specifically CodeT5) for structured educational content generation
+- Develop domain-specific fine-tuning strategies for educational terminology
+- Implement curriculum learning mechanisms through prerequisite-aware training data sequencing
+- Validate initial model performance across multiple educational domains
 
-**Model Training and Optimisation**
-- Train the adapted model to achieve strong performance on standard NLP metrics for text generation quality (ROUGE, BERTScore)
-- Implement iterative refinement process through systematic hyperparameter optimisation
-- Develop domain classification capability across different subject areas
-- Conduct extensive validation using cross-domain evaluation protocols
+**Training and Optimization**
+- Train the model to achieve strong performance on standard NLP metrics (ROUGE, BERTScore)
+- Iterate on approach based on systematic evaluation of failures
+- Develop domain classification capability across Computer Science, Mathematics, and Physics
+- Conduct cross-domain validation
 
-**Pedagogical Quality Evaluation Framework**
-- Design and implement three-component pedagogical evaluation function encoding curriculum design principles (prerequisite coherence, difficulty progression, topic diversity)
-- Develop generate-and-rerank inference pipeline using pedagogical quality metrics
-- Validate framework effectiveness through comparative quality analysis against baseline approaches
+**Pedagogical Quality Framework**
+- Design and implement a five-component evaluation framework: prerequisite coherence, semantic relevance, difficulty progression, topic diversity, and Bloom's taxonomy coverage
+- Develop a generate-and-rerank pipeline that produces multiple candidates and selects based on pedagogical quality
+- Validate framework effectiveness through measured evaluation on 32 test cases
 
-**Evaluation and Demonstration**
-- Create comprehensive evaluation framework measuring both technical performance and educational quality
-- Conduct case studies demonstrating practical application across multiple educational domains
-- Evaluate generated content for educational coherence and pedagogical appropriateness through automated rule-based validation against established educational frameworks
-- Perform comparative analysis with existing educational content generation approaches and baseline models
+**Evaluation and Analysis**
+- Measure both technical reliability (parsing success, generation time) and educational quality
+- Document what worked, what failed, and why
+- Conduct evaluation across domains and difficulty levels
+- Perform honest comparative analysis identifying strengths and limitations
 
 ## 1.4 Project Significance
 
 ### 1.4.1 Technical Innovation
 
-This research contributes to the field of artificial intelligence through the development of domain-specific neural network adaptations and a novel pedagogical quality evaluation framework. By incorporating curriculum learning mechanisms through prerequisite-aware training data sequencing and developing a three-component pedagogical evaluation function, the work extends current transformer architectures beyond general-purpose language generation to specialised educational content creation.
+This research makes two main technical contributions:
 
-The key technical innovation develops a prerequisite-focused evaluation framework with extensible architecture for curriculum design principles, implemented as measurable metrics without requiring differentiable backpropagation. Curriculum design principles often involve discrete operations (topological sorting of module sequences) and symbolic reasoning (prerequisite graph traversal) that cannot be directly incorporated into gradient-based optimisation. The framework prioritises prerequisite coherence—the most critical pedagogical constraint—while supporting future enhancements for difficulty progression and topic diversity analysis. This approach could inform future AI applications where domain constraints cannot be expressed as differentiable losses.
+**1. Task Formulation Insight:** The research demonstrates that task simplification can be more effective than model scaling. By reformulating component selection from UUID generation (requiring memorization of 960 unique identifiers) to index-based selection (referencing numbered lists: [0], [1], [2]), the system achieved 100% structural reliability with a 60M parameter model where previous approaches with identical architecture failed completely. This insight applies beyond syllabus generation to any structured generation task requiring component assembly from large databases.
+
+**2. Pedagogical Quality Framework:** The research develops a five-dimensional evaluation framework that formalizes curriculum design principles as measurable metrics without requiring differentiable backpropagation. Curriculum design involves discrete operations—topological sorting of prerequisite graphs, symbolic reasoning about learning progressions—that can't be directly incorporated into gradient-based training. The framework measures prerequisite coherence, difficulty progression, topic diversity, semantic relevance, and Bloom's taxonomy coverage, enabling systematic quality assessment of AI-generated educational content.
+
+The evaluation framework revealed an important pattern: some pedagogical constraints emerge naturally from training (90.6% difficulty progression, 87.3% topic diversity), whilst others require explicit enforcement (44.8% prerequisite accuracy). This distinction between soft constraints (learnable through examples) and hard constraints (requiring algorithmic enforcement) could inform future educational AI systems.
 
 ### 1.4.2 Practical Application
 
-The research addresses a real-world challenge faced by educational institutions globally. By reducing educator workload while maintaining pedagogical quality, the developed system could enable more responsive curriculum development and support educational scalability. This has particular relevance for emerging educational models such as massive open online courses (MOOCs) and adaptive learning platforms.
+The research addresses a real-world challenge: syllabus creation is time-intensive, especially when updating curricula to reflect rapidly evolving fields like AI and data science. An automated system that generates pedagogically sound initial drafts could reduce educator workload whilst maintaining quality standards.
 
-### 1.4.3 Domain Advancement
+However, the current implementation has significant practical limitations. CodeT5-small can only generate syllabi with 3 modules (~24 hours of content), whilst real courses typically require 8-10 modules (~64-80 hours). This makes the system a proof-of-concept rather than production-ready tool. Chapter 8 discusses the path from demonstration to deployment, including model scaling requirements and human-in-the-loop refinement strategies.
 
-This work contributes to the growing field of AI in education by demonstrating how established machine learning techniques can be systematically adapted for educational applications. The research provides both theoretical insights into domain-specific neural network design and practical methodologies for educational content automation.
+### 1.4.3 Research Contribution
+
+This work contributes to AI in education by demonstrating that successful educational AI requires balancing neural generation capabilities with domain-specific constraints. The research shows:
+
+- Neural models excel at semantic tasks (content relevance, topical coherence) but struggle with hard logical constraints (prerequisite ordering)
+- Hybrid architectures combining retrieval-augmented generation (RAG) with neural selection can leverage both structured knowledge and learned patterns
+- Honest documentation of failures provides as much research value as successful approaches—the three failed approaches (direct JSON generation, RAG templates, function calling) revealed fundamental insights that informed the final solution
+
+The dissertation prioritizes transparency about what worked, what didn't, and why. This reflects the reality that research is iterative discovery, not linear progress toward predetermined solutions.
 
 ## 1.5 Scope and Limitations
 
 ### 1.5.1 Research Scope
 
-This research focuses specifically on course syllabus generation within higher education contexts. The work encompasses:
+This research focuses on course syllabus generation for higher education, specifically:
 
-- Custom neural network architecture development using transformer-based models
-- Educational content generation for undergraduate and postgraduate level courses
-- Evaluation across STEM academic disciplines (Computer Science, Mathematics, Physics, Engineering) with architecture designed for future extension to humanities domains (see Appendices A.6.1 for scope rationale)
-- Integration of established educational frameworks (Bloom's taxonomy, constructive alignment)
+- **Architecture:** CodeT5-small (60M parameters) with custom training for structured markdown generation
+- **Educational Context:** Undergraduate and postgraduate courses in STEM domains
+- **Domains Covered:** Computer Science, Mathematics, Physics (with extensible architecture for additional domains)
+- **Educational Frameworks:** Bloom's taxonomy for learning objectives, prerequisite graphs for module sequencing
+
+The focused STEM scope enabled deeper validation rule development for technical domains. Appendix A.6.1 discusses why this scope was chosen and how the architecture could extend to humanities domains with appropriate component databases.
 
 ### 1.5.2 Limitations
 
-**Technical Limitations**
-- The research utilises existing pre-trained transformer models as base architectures, limiting the scope of fundamental architectural innovation while leveraging proven language capabilities
-- Computational resources constrain the scale of model training and evaluation, preventing extensive hyperparameter exploration and limiting model size to configurations manageable within academic computing environments
-- The focus on English-language educational content limits international applicability across diverse linguistic and cultural educational contexts
+I'll be direct about three categories of limitations:
+
+**Technical Constraints**
+- **Model capacity:** CodeT5-small can handle only 3-module syllabi (~30% of typical course scope). This fundamental limitation affects practical utility—the system demonstrates feasibility but requires model scaling (CodeT5-base 220M or T5-large 770M) for production use.
+- **Computational resources:** Training and evaluation were conducted on a single NVIDIA RTX 3060 (12GB VRAM), constraining hyperparameter exploration and architectural experimentation. More extensive grid search might improve performance, but time and resource limitations prevented exhaustive optimization.
+- **English-only content:** The system generates English educational content exclusively, limiting international applicability.
 
 **Data Limitations**
-- The research employs synthetic generation producing 1,300 training examples across STEM domains (Computer Science, Mathematics, Physics, Engineering). This approach addressed institutional data access restrictions and GDPR compliance requirements whilst enabling systematic educational framework compliance. The focused STEM scope enabled deeper domain-specific validation rule development, though it limits immediate applicability to humanities domains (see Appendices A.6.1).
-- Synthetic data generation, whilst ensuring privacy protection and quality consistency, may not fully capture institutional diversity and unconventional pedagogical approaches present in authentic educational materials
+- **Synthetic training data:** All 1,300 training examples are synthetically generated using GPT-4. This approach addressed institutional data access restrictions and GDPR requirements, but synthetic data may not capture the full diversity of real syllabi—unconventional pedagogical approaches, institutional variations, or edge cases that exist in authentic educational materials.
+- **STEM focus:** Training data covers Computer Science (42%), Mathematics (31%), Physics (18%), and Engineering (9%), with no humanities, social sciences, or business content. Cross-disciplinary generalization remains unvalidated.
 
 **Evaluation Limitations**
-- Educational quality assessment employs automated rule-based validation rather than human expert review, which prioritises transparency and reproducibility but limits qualitative pedagogical insights
-- The research timeframe limits the scope of longitudinal evaluation of generated content effectiveness in actual educational settings
-- Real-world deployment testing with educational practitioners is beyond the scope of this academic project
+- **No human evaluation:** Assessment uses automated rule-based metrics rather than expert educator review. Whilst prerequisite violations are objectively measurable, subtler quality dimensions—clarity, engagement, appropriateness—require human judgment.
+- **Limited scale:** 32 test cases provide sufficient coverage for architectural validation but don't stress-test production scenarios (concurrent requests, database contention, edge cases).
+- **Short timeframe:** The research couldn't include longitudinal evaluation of generated content in actual classroom settings.
+
+The most significant limitation is prerequisite sequencing accuracy (44.8%, with 50% of syllabi having zero prerequisite coherence). Section 6.2.2 analyzes this failure in detail, and Chapter 8 proposes solutions including topological sorting and graph neural networks.
 
 ### 1.5.3 Ethical Considerations
 
-This research adheres to principles of responsible AI development and educational ethics, following the BCS Code of Conduct and IEEE standards for AI systems. All educational content is properly attributed with appropriate permissions sought for data usage. The research complies with GDPR requirements through implementation of data minimisation principles, anonymisation procedures, and secure storage protocols. Particular attention is given to avoiding bias in generated educational content through systematic assessment and implementation of inclusive design principles. The research prioritises human agency in educational decision-making, positioning AI as a tool to enhance rather than replace educator expertise.
+This research follows the BCS Code of Conduct and IEEE standards for AI systems. All synthetic data generation ensures privacy by design—no real student or institutional data was used. The research complies with GDPR through data minimization and secure storage protocols.
+
+The system is designed to assist educators, not replace them. AI-generated syllabi require human review and approval, maintaining educator agency in pedagogical decisions. The evaluation framework's transparency (rule-based validation with explicit criteria) enables educators to understand and critique the system's recommendations rather than treating them as black-box outputs.
 
 ## 1.6 Dissertation Structure Overview
 
-This dissertation is organised into eight main sections, progressing from theoretical foundation through practical implementation to evaluation and conclusion.
+This dissertation is organized into eight chapters:
 
-**Chapter 2** reviews current research in neural language generation, educational content development, and domain adaptation, establishing the theoretical foundation and identifying research gaps. **Chapter 3** examines ethical implications of AI in education, data protection requirements, and professional standards. **Chapter 4** describes the design science research framework employed. **Chapter 5** documents the custom neural network architecture, including educational adaptations, training procedures, and technical implementation decisions. **Chapter 6** presents technical performance assessment and educational quality evaluation results. **Chapter 7** offers reflection on the research process, challenges encountered, and insights gained. **Chapter 8** summarises key findings, discusses implications, acknowledges limitations, and suggests future research directions.
+**Chapter 2 (Literature Review)** surveys neural language architectures, educational content generation, and domain adaptation techniques, identifying specific research gaps that motivated this work—particularly the absence of pedagogical quality metrics for AI-generated curricula.
+
+**Chapter 3 (Ethics)** addresses ethical considerations for AI in education, including data protection, bias mitigation, and maintaining human agency in educational decision-making.
+
+**Chapter 4 (Methodology)** describes the Design Science Research framework, explaining how iterative cycles of design, implementation, and evaluation shaped the research trajectory.
+
+**Chapter 5 (Implementation)** documents the technical architecture: CodeT5-small training for markdown generation, RAG-enhanced component selection, pedagogical quality evaluation, and the evolution from failed approaches to the final system.
+
+**Chapter 6 (Evaluation)** presents measured results from 32 test cases across three domains and four difficulty levels, analyzing both successes (100% structural reliability, 90.6% difficulty progression) and limitations (44.8% prerequisite accuracy).
+
+**Chapter 7 (Reflection)** offers personal perspective on the research process—what I learned from systematic failures, how the project evolved from initial plans, and what I'd do differently.
+
+**Chapter 8 (Conclusion)** summarizes key findings, discusses implications, and proposes future directions including constraint-based generation for prerequisite ordering and model scaling for practical deployment.
+
+**Appendix A** documents the complete research journey, including three failed approaches (direct JSON generation, RAG templates, function calling) with quantitative failure analysis and the systematic decision process that led to index-based markdown generation. This appendix demonstrates that understanding *why* approaches fail is as valuable as documenting successful solutions.
 
 ---
 
@@ -303,7 +340,7 @@ Mixed-methods evaluation combines quantitative assessment (computational metrics
 
 This research employed iterative Design Science Research cycles progressing through seven major architectural iterations from initial exploration to final implementation. Each iteration followed systematic problem identification, solution design, implementation, and evaluation phases, with quantitative performance metrics informing subsequent design decisions.
 
-**Iteration 1-3: Function Calling Exploration (Weeks 1-4)**
+**Iteration 1-3: Function Calling Exploration**
 
 Initial exploration investigated function calling approaches enabling models to directly invoke component selection functions (e.g., `add_module(uuid="abc-123...")`, `set_difficulty("intermediate")`). UUID-based selection required exact 36-character string reproduction matching database entries from 960 available components. Evaluation across 50 test cases achieved 0% success rate—no generated syllabi passed structural validation due to incompatibility between exact string matching requirements and LLM probability distributions that optimize for semantic plausibility rather than syntactic precision.
 
@@ -311,7 +348,7 @@ Natural language component description generation (e.g., "Introduction to Data S
 
 **Critical Insight from Failures:** Task complexity analysis identified UUID generation cognitive load as the primary bottleneck. Systematic evaluation (documented in Annex A.7) demonstrated that reducing discrete choice complexity from 960 unique identifiers to simpler representations could address the root cause more effectively than parameter scaling or architectural sophistication.
 
-**Iteration 4-5: Task Simplification and Index-Based Selection (Weeks 5-7)**
+**Iteration 4-5: Task Simplification and Index-Based Selection**
 
 Following systematic decision analysis evaluating 11 solution pathways (Annex A.8), the research pivoted to index-based component selection where components are referenced by position numbers ([0], [1], [2]) rather than UUIDs. This architectural shift reduced cognitive complexity: instead of memorizing 960 unique 36-character strings, the model only needs to select from numbered lists presented in the prompt context.
 
@@ -319,7 +356,7 @@ Implementation employed CodeT5-small generating structured markdown with index r
 
 **Quantitative Improvement:** Index-based approach achieved 100% JSON validity across 32 test cases (vs. 0% for UUID generation), demonstrating that appropriate task formulation enables smaller models (60M parameters) to excel through task-model alignment rather than requiring parameter scaling.
 
-**Iteration 6-7: Pedagogical Quality Integration (Weeks 8-10)**
+**Iteration 6-7: Pedagogical Quality Integration**
 
 Final iterations integrated prerequisite checking and multi-dimensional quality evaluation frameworks, developing generate-and-rerank pipeline producing multiple candidates with pedagogical quality-based selection. The system generates three syllabi (one greedy, two sampled with temperature 0.7), evaluates each against five pedagogical dimensions (prerequisite coherence, difficulty progression, topic diversity, semantic relevance, Bloom's coverage), and selects highest-scoring output.
 
