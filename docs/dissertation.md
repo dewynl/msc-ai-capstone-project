@@ -112,7 +112,7 @@ I'll be direct about three categories of limitations:
 - **English-only content:** The system generates English educational content exclusively, limiting international applicability.
 
 **Data Limitations**
-- **Synthetic training data:** All 1,300 training examples are synthetically generated using GPT-4. This approach addressed institutional data access restrictions and GDPR requirements, but synthetic data may not capture the full diversity of real syllabi—unconventional pedagogical approaches, institutional variations, or edge cases that exist in authentic educational materials.
+- **Synthetic training data:** All 1,300 training examples are synthetically generated using Claude (Anthropic's large language model). This approach addressed institutional data access restrictions and GDPR requirements, but synthetic data may not capture the full diversity of real syllabi—unconventional pedagogical approaches, institutional variations, or edge cases that exist in authentic educational materials.
 - **STEM focus:** Training data covers Computer Science (42%), Mathematics (31%), Physics (18%), and Engineering (9%), with no humanities, social sciences, or business content. Cross-disciplinary generalization remains unvalidated.
 
 **Evaluation Limitations**
@@ -301,7 +301,7 @@ The IEEE Standards for AI Systems (IEEE 2857 for Privacy Engineering, IEEE 2859 
 
 ## 3.2 Data Protection and Privacy
 
-The most straightforward privacy decision in this research: **use no real student or institutional data whatsoever**. All 1,300 training examples and 4,403 educational components are synthetically generated using GPT-4. This approach completely eliminates privacy risks—there's no real student information to protect, no institutional data to anonymize, and no GDPR concerns about processing personal data.
+The most straightforward privacy decision in this research: **use no real student or institutional data whatsoever**. All 1,300 training examples and 4,403 educational components are synthetically generated using Claude (Anthropic's large language model). This approach completely eliminates privacy risks—there's no real student information to protect, no institutional data to anonymize, and no GDPR concerns about processing personal data.
 
 This wasn't just convenient; it was necessary. Institutional access to real syllabi proved difficult due to GDPR concerns and administrative barriers. Rather than spending months negotiating data access agreements, synthetic generation enabled rapid iteration whilst guaranteeing privacy by design.
 
@@ -361,13 +361,23 @@ Building trust requires transparency about both capabilities and limitations. De
 
 # 4. Methodology
 
-This research employs Design Science Research (DSR) methodology (Hevner et al., 2004), emphasising iterative design, rigorous evaluation, and practical utility for educational AI system development. The approach integrates neural architecture design with pedagogical quality frameworks through four iterative phases: (1) literature review and requirements analysis, (2) architecture design and validation, (3) implementation and technical testing, and (4) educational evaluation and refinement.
+This research employs Design Science Research (DSR) methodology (Hevner et al., 2004), emphasizing iterative design, rigorous evaluation, and practical utility. The approach progressed through seven major architectural iterations, each informed by systematic evaluation of failures and successes. This wasn't linear progress—it involved dead ends, pivots, and fundamental rethinking of the task formulation.
 
-## 4.1 Research Design Framework
+## 4.1 Research Design Framework and Practical Constraints
 
-DSR provides appropriate foundation for creating innovative technological artefacts addressing real-world educational problems whilst contributing scientific knowledge (Peffers et al., 2007; Khosravi et al., 2022). The research adopts constructivist educational AI design, recognising effective technology emerges through iterative integration of technical capabilities with pedagogical requirements.
+DSR provides appropriate foundation for creating technological artifacts addressing real-world problems whilst contributing scientific knowledge (Peffers et al., 2007; Khosravi et al., 2022). The research adopts constructivist educational AI design, recognizing that effective technology emerges through iterative integration of technical capabilities with pedagogical requirements.
 
-Mixed-methods evaluation combines quantitative assessment (computational metrics, generation quality scores) with qualitative educational evaluation (pedagogical coherence, framework compliance), ensuring technical innovations translate into meaningful educational improvements whilst maintaining rigour (U.S. Department of Education, 2023).
+**Practical Constraints Shaping the Research:**
+
+This research was conducted within typical MSc project constraints that significantly influenced design decisions:
+
+- **Single researcher, four-month timeline**: Architectural choices prioritized rapid iteration over extensive hyperparameter tuning. When function calling failed (0% success), I had weeks—not months—to pivot.
+
+- **Academic computing resources**: NVIDIA RTX 3060 (12GB VRAM) limited model size to ~100M parameters. CodeT5-small (60M) trained in 1.3 hours; CodeT5-base (220M) would have required 8-12 hours per training run, drastically slowing iteration speed. This constraint forced creative task formulation rather than model scaling.
+
+- **Data access barriers**: Institutional syllabi access proved difficult due to GDPR concerns and administrative bureaucracy. Rather than spending months negotiating data sharing agreements, I pivoted to synthetic generation using Claude, completing database construction in two weeks.
+
+These weren't ideal research conditions, but they're realistic for independent research. The dissertation documents both what worked within these constraints and what future work with greater resources might achieve.
 
 ## 4.2 Systematic Approach Development
 
@@ -381,9 +391,13 @@ Natural language component description generation (e.g., "Introduction to Data S
 
 **Critical Insight from Failures:** Task complexity analysis identified UUID generation cognitive load as the primary bottleneck. Systematic evaluation (documented in Annex A.7) demonstrated that reducing discrete choice complexity from 960 unique identifiers to simpler representations could address the root cause more effectively than parameter scaling or architectural sophistication.
 
+At this point, I faced a choice: scale up to CodeT5-base (220M parameters) or rethink the task formulation. The standard ML approach would be scaling—throw more parameters at the problem. But something bothered me: even if CodeT5-base could memorize 960 UUIDs, what happens when the database grows? Scale to T5-large? Claude or GPT-4? This felt like treating symptoms rather than addressing the root cause.
+
 **Iteration 4-5: Task Simplification and Index-Based Selection**
 
 Following systematic decision analysis evaluating 11 solution pathways (Annex A.8), the research pivoted to index-based component selection where components are referenced by position numbers ([0], [1], [2]) rather than UUIDs. This architectural shift reduced cognitive complexity: instead of memorizing 960 unique 36-character strings, the model only needs to select from numbered lists presented in the prompt context.
+
+The key insight: **the model doesn't actually need to know component identifiers**. It just needs to select appropriate content based on semantic relevance. By presenting filtered components as indexed lists in the prompt, selection becomes a simpler task: generate integers from context-visible options.
 
 Implementation employed CodeT5-small generating structured markdown with index references: "**Modules:** [0] Introduction to Programming, [1] Data Structures, [2] Algorithms". The RAG pipeline presents filtered components as numbered lists, the model generates indices, and post-processing maps indices to database UUIDs. This task simplification enabled 100% parseable outputs by constraining generation to continuous numerical outputs (integers 0-N) mappable to discrete database entries, validating the principle that constrained output spaces enable reliable structured generation whilst maintaining neural advantages for context-aware selection.
 
@@ -403,7 +417,7 @@ The research required comprehensive educational component databases covering mul
 
 **Component Database Generation Process:**
 
-Synthetic component generation employed GPT-4 with carefully designed prompts specifying required metadata fields: component title, domain, difficulty level, estimated learning hours, key concepts, learning objectives (with Bloom's levels), prerequisites (with database links), and descriptive content. Generation followed systematic domain-specific schemas ensuring pedagogically appropriate relationships and realistic educational content structure.
+Synthetic component generation employed Claude with carefully designed prompts specifying required metadata fields: component title, domain, difficulty level, estimated learning hours, key concepts, learning objectives (with Bloom's levels), prerequisites (with database links), and descriptive content. Generation followed systematic domain-specific schemas ensuring pedagogically appropriate relationships and realistic educational content structure.
 
 Quality assurance procedures validated component coherence, prerequisite relationship validity, and metadata completeness. Each generated component underwent automated validation checking: (1) prerequisite links reference existing components, (2) difficulty levels align with prerequisite complexity, (3) learning objectives specify appropriate Bloom's taxonomy levels, and (4) key concepts reflect domain-appropriate terminology.
 
@@ -421,13 +435,19 @@ Template-based input design provides four educational contexts (University, Corp
 
 **Training Configuration:**
 
-CodeT5-small (60M parameters) was fine-tuned on 1,300 synthetic syllabi using AdamW optimiser with learning rate 5e-5, batch size 8, and 10 training epochs. Training employed standard sequence-to-sequence loss (cross-entropy) on target markdown sequences, with gradient clipping (maximum norm 1.0) for training stability. The PyTorch framework enabled iterative architectural experimentation with comprehensive testing protocols addressing computational constraints within academic computing environments.
+CodeT5-small (60M parameters) was fine-tuned on 1,300 synthetic syllabi using AdamW optimizer with learning rate 5e-5, batch size 8, and 10 training epochs. Training employed standard sequence-to-sequence loss (cross-entropy) on target markdown sequences, with gradient clipping (maximum norm 1.0) for training stability.
+
+These hyperparameters weren't extensively tuned—time constraints limited experimentation to ~6 training runs testing learning rates (1e-5, 5e-5, 1e-4) and batch sizes (4, 8, 16). Learning rate 5e-5 with batch size 8 provided the best balance of convergence speed and stability. More extensive grid search might improve performance, but the 1.3-hour training time per run meant each exploration cycle consumed half a day when accounting for evaluation.
 
 **Evaluation Protocol Design:**
 
-The 32-case evaluation suite systematically samples supported domains (Computer Science, Mathematics, Physics) across difficulty levels (Beginner, Intermediate, Advanced, Postgraduate). Test cases include diverse course topics from introductory programming to quantum field theory, with variable requirement complexity (50-500+ word descriptions). Each test case undergoes comprehensive evaluation: (1) JSON output parseability through parser execution, (2) pedagogical quality assessment via prerequisite checking and component validation, (3) generation time measurement for practical viability assessment, and (4) manual review of pedagogical appropriateness. Synthetic data generation addresses privacy constraints whilst maintaining educational validity across STEM domains.
+The 32-case evaluation suite systematically samples supported domains (Computer Science, Mathematics, Physics) across difficulty levels (Beginner, Intermediate, Advanced, Postgraduate). Test cases include diverse course topics from introductory programming to quantum field theory, with variable requirement complexity (50-500+ word descriptions).
 
-Evaluation combines NLP metrics (ROUGE, BERTScore) with automated rule-based pedagogical validation (Bloom's taxonomy compliance, IEEE LOM standards) rather than expert review, ensuring transparency and educational defensibility (U.S. Department of Education, 2023). Comparative analysis across development phases quantifies architectural improvements through output reliability rates, neural utilisation percentages, and coherence scores.
+Why 32 cases rather than hundreds? Practical constraints. Each generated syllabus requires careful manual inspection of prerequisite relationships—automated metrics catch structural issues, but prerequisite coherence requires understanding whether "Data Structures" logically precedes "Advanced Algorithms". With 3 modules per syllabus and ~15 minutes per careful review, 32 cases represented ~16 hours of manual validation work. More cases would strengthen statistical confidence, but wouldn't fundamentally change the architectural insights about what works and what doesn't.
+
+Each test case undergoes comprehensive evaluation: (1) structural parseability, (2) pedagogical quality assessment (prerequisite checking, difficulty progression, topic diversity), (3) generation time measurement, and (4) manual review of pedagogical appropriateness.
+
+Evaluation combines NLP metrics (ROUGE, BERTScore) with automated rule-based pedagogical validation (Bloom's taxonomy compliance, IEEE LOM standards) rather than expert educator review. This isn't ideal—educator judgment would catch subtler quality issues—but expert time was unavailable within project scope. The rule-based approach ensures transparency and reproducibility whilst acknowledging this limitation.
 
 ## 4.5 Continuous Improvement Methodology
 
@@ -435,9 +455,19 @@ Hybrid dual-layer architecture combines RAG immediate enhancement (Lewis et al.,
 
 Supabase PostgreSQL database with Row Level Security manages feedback collection (1-10 ratings, optional comments). Statistical validation through paired t-tests and Cohen's d effect sizes quantify improvement significance. Ablation studies evaluate individual component contributions.
 
-## 4.6 Ethical Considerations
+## 4.6 Methodological Limitations
 
-Bias prevention through diverse domain coverage and automated validation. WCAG 2.1 accessibility integration ensures universal design. Synthetic data methodology ensures complete privacy protection whilst maintaining research validity. Transparent rule-based validation enables educator verification and professional responsibility maintenance, aligning with federal educational AI guidance (U.S. Department of Education, 2023).
+This methodology has several acknowledged limitations:
+
+**Scale Constraints:** Testing on 32 cases rather than hundreds limits statistical confidence. The patterns observed (100% structural reliability, 44.8% prerequisite accuracy) are clear, but finer-grained performance differences might require larger evaluation sets.
+
+**Synthetic Data Validity:** Using Claude-generated components and syllabi rather than real institutional data may not capture the full diversity of educational practices—unconventional pedagogical approaches, institutional idiosyncrasies, or edge cases in real curricula.
+
+**No Human Evaluation:** Relying on automated metrics rather than expert educator review means subtler quality dimensions—clarity, engagement, appropriateness—remain unassessed. This is a practical limitation, not an ideal choice.
+
+**STEM-Only Scope:** Focusing exclusively on STEM domains (CS, Math, Physics, Engineering) limits generalizability claims. The architectural principles may transfer to humanities, but this remains unvalidated.
+
+These limitations don't invalidate the research—they define its scope and suggest directions for future work. Chapter 8 discusses how future research with greater resources could address these constraints.
 
 ---
 
