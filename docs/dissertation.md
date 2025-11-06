@@ -1189,7 +1189,7 @@ Zou, L., Chen, X. and Wang, Y. (2023). Natural language processing applications 
 
 ---
 
-# Appendix A: Research Approach Evolution
+# Appendix: Research Approach Evolution
 
 This appendix documents the iterative research journey from initial failures to the final successful architecture. Unlike traditional technical appendices that merely list implementation details, this section tells the story of systematic discovery—how each failed approach revealed fundamental insights about neural generation, task complexity, and the delicate balance between architectural sophistication and practical effectiveness. The journey demonstrates that research value lies not just in final solutions, but in understanding *why* certain approaches fail and *how* those failures inform better designs.
 
