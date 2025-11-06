@@ -291,49 +291,71 @@ Existing prototypes demonstrate domain-specific generation but lack architecture
 
 # 3. Ethical and Professional Considerations
 
-The development and deployment of AI systems for educational content generation raises significant ethical considerations that must be carefully addressed to ensure responsible innovation and protect stakeholder interests. This research adheres to established ethical frameworks while contributing to the growing discourse on responsible AI in educational contexts.
+Developing AI systems for educational content generation raises important ethical questions. This research adheres to established ethical frameworks whilst recognizing that educational AI requires careful consideration of privacy, bias, transparency, and human agency.
 
 ## 3.1 Ethical Framework and Professional Standards
 
-This research operates within multiple overlapping ethical frameworks that provide comprehensive guidance for responsible AI development in educational contexts. The primary ethical foundation rests upon the Menlo Report's principles for Information and Communication Technology (ICT) research, which emphasises respect for persons, beneficence, justice, and respect for law and public interest. Professional standards compliance follows the British Computer Society (BCS) Code of Conduct, which mandates that computing professionals act in the public interest, demonstrate professional competence and integrity, and respect duty to relevant authority. For educational AI development, these principles ensure that generated content serves legitimate educational purposes whilst maintaining technical competence in both AI and educational domains.
+This research follows the BCS Code of Conduct and the Menlo Report's principles for ICT research: respect for persons, beneficence, justice, and respect for law and public interest. For educational AI specifically, these principles translate to concrete requirements: generated content must serve legitimate educational purposes, maintain accuracy, and support rather than replace educator expertise.
 
-The IEEE Standards for AI Systems (particularly IEEE 2857 for Privacy Engineering and IEEE 2859 for Algorithmic Bias Considerations) inform technical implementation decisions throughout this research, ensuring that privacy protection and bias mitigation are embedded into the system architecture rather than treated as post-development considerations.
+The IEEE Standards for AI Systems (IEEE 2857 for Privacy Engineering, IEEE 2859 for Algorithmic Bias) inform implementation decisions throughout. Privacy protection and bias mitigation are embedded into system architecture from the start, not added as afterthoughts.
 
-## 3.2 Data Protection and Privacy Compliance
+## 3.2 Data Protection and Privacy
 
-Data protection compliance represents a critical ethical requirement for educational AI systems that process potentially sensitive educational content and institutional information. This research implements comprehensive GDPR (General Data Protection Regulation) compliance measures through data minimisation principles, systematic anonymisation procedures, and data protection by design. Personal data protection ensures removal of potentially identifying information from syllabi and educational materials used in training datasets.
+The most straightforward privacy decision in this research: **use no real student or institutional data whatsoever**. All 1,300 training examples and 4,403 educational components are synthetically generated using GPT-4. This approach completely eliminates privacy risks—there's no real student information to protect, no institutional data to anonymize, and no GDPR concerns about processing personal data.
 
-Data retention policies follow GDPR requirements with clear protocols for data deletion and storage limitation. Consent mechanisms are established for any educational content requiring permission for research use, ensuring data subjects maintain control over their information. Cross-border data transfer considerations are addressed through appropriate safeguards ensuring consistent protection regardless of processing location, with detailed documentation of data processing activities enabling transparency and accountability.
+This wasn't just convenient; it was necessary. Institutional access to real syllabi proved difficult due to GDPR concerns and administrative barriers. Rather than spending months negotiating data access agreements, synthetic generation enabled rapid iteration whilst guaranteeing privacy by design.
 
-## 3.3 Bias Mitigation and Fairness Considerations
+The trade-off: synthetic data may not capture the full diversity of real educational materials—unconventional pedagogical approaches, institutional variations, edge cases. But for exploring whether neural models can generate structured educational content, synthetic data provides sufficient variety across STEM domains whilst maintaining complete privacy protection.
 
-Educational AI systems carry particular responsibility for ensuring fairness and avoiding bias that could perpetuate or exacerbate educational inequalities. This research implements systematic bias identification and mitigation strategies throughout the development process, beginning with careful analysis of training data sources to identify potential systematic biases in educational content representation. Karran et al. (2024) emphasise the importance of multi-stakeholder perspectives in responsible AI development, highlighting how diverse viewpoints are essential for identifying potential bias sources that may not be apparent to technical developers alone.
+## 3.3 Bias and Fairness
 
-Dataset diversity strategies ensure representation across multiple educational domains, institutional types, and pedagogical approaches to prevent the model from developing preferences for particular educational styles or institutional cultures. The research includes systematic evaluation of generated content for potential biases related to subject matter, educational level, institutional prestige, and pedagogical methodology. Quality assurance procedures incorporate explicit bias checking protocols that evaluate generated syllabi for inclusive language, diverse perspective representation, and accessibility considerations.
+Educational AI carries particular responsibility for fairness—biased content generation could perpetuate educational inequalities. This research addresses bias through several mechanisms:
 
-Demographic bias mitigation addresses potential inequalities in educational content generation that could disadvantage particular student populations or educational contexts. The research implements fairness metrics that evaluate model performance across different educational domains and contexts, ensuring that quality improvements benefit all potential users rather than privileging particular educational environments or approaches.
+**Domain Coverage:** Training data covers Computer Science (42%), Mathematics (31%), Physics (18%), and Engineering (9%). This STEM focus is deliberate but limits generalization. The system hasn't been trained on humanities, social sciences, or business content, so it shouldn't be deployed there without additional work. This is a limitation, not a hidden bias—it's explicitly stated in scope.
 
-## 3.4 Intellectual Property and Academic Integrity
+**Difficulty Distribution:** Synthetic components span beginner (38%), intermediate (35%), advanced (22%), and postgraduate (5%). This distribution roughly matches real undergraduate/postgraduate course ratios, avoiding over-representation of any single difficulty level.
 
-Educational content generation raises complex intellectual property considerations that require careful navigation to respect existing rights while enabling legitimate research and development activities. This research respects copyright protections for educational materials through proper attribution and permissions procedures that ensure all training data is obtained through legitimate channels with appropriate permissions for research use.
+**Pedagogical Approach Diversity:** Synthetic generation used varied prompts to ensure multiple pedagogical styles—lecture-based, project-based, flipped classroom, problem-based learning. This prevents the model from developing preferences for particular teaching approaches.
 
-The research addresses questions of authorship and attribution for AI-generated educational content by establishing clear protocols for distinguishing between human-authored, AI-assisted, and fully AI-generated content. Academic integrity considerations ensure that AI-generated content is clearly identified and does not misrepresent human expertise or institutional endorsement. Original content protection mechanisms prevent the system from directly reproducing copyrighted educational materials while enabling the generation of novel content inspired by legitimate educational principles and structures.
+**Bias I Can't Measure:** The system lacks human evaluation, so subtle biases in language, example choices, or pedagogical assumptions may exist but remain undetected. This is acknowledged as a limitation in Section 1.5.2. Multi-stakeholder perspectives (Karran et al., 2024) would strengthen bias detection, but weren't feasible within project scope.
 
-Institutional policy compliance ensures that generated content respects the intellectual property policies of educational institutions whose materials may be included in training datasets. The research contributes to developing best practices for intellectual property management in educational AI contexts, providing guidance for future research and development efforts that balance innovation with respect for existing rights and obligations.
+## 3.4 Intellectual Property and Authorship
 
-## 3.5 Trust and Transparency in Educational AI
+Since all training data is synthetic, there are no copyright concerns with source materials—no real syllabi were used, so no permissions were needed. The 4,403 educational components were generated specifically for this research.
 
-Building trust in educational AI systems requires comprehensive transparency about system capabilities, limitations, and decision-making processes. Denny et al. (2023) examine the trustworthiness of AI-generated educational content, demonstrating the importance of systematic evaluation and transparent communication about AI system performance and limitations.
+**Authorship Questions:** Who "authors" AI-generated syllabi? This system doesn't create standalone educational content—it generates draft structures requiring educator review and approval. Generated syllabi are tools to assist educators, not finished products claiming institutional authority. They must be reviewed, validated, and approved by qualified educators before use.
 
-This research implements explainability mechanisms enabling educators to understand how the system generates particular content recommendations and structural decisions. Transparency documentation provides clear information about training data sources, model architecture decisions, and performance limitations. Quality assurance transparency ensures users understand validation processes applied to generated content and remaining responsibilities for human review and approval, balancing automation benefits with necessary human oversight whilst maintaining human control over final content decisions.
+**Content Attribution:** All generated syllabi include a footer noting AI generation and requiring educator review. This transparency ensures users understand the content's provenance and limitations, maintaining academic integrity.
 
-## 3.6 Stakeholder Impact Assessment
+## 3.5 Transparency and Human Agency
 
-Educational AI development affects multiple stakeholder groups whose interests must be carefully considered and balanced throughout the research process. Educator impact assessment examines how automated content generation affects teaching professional roles, ensuring that the technology enhances rather than threatens legitimate professional interests. Student welfare considerations evaluate potential impacts on learning quality and educational outcomes, prioritizing student benefit in all system design decisions.
+Building trust requires transparency about both capabilities and limitations. Denny et al. (2023) demonstrate that systematic evaluation and transparent communication about performance limitations are essential for educational AI trustworthiness.
 
-Institutional stakeholder analysis addresses the interests of educational institutions, accrediting bodies, and policy makers who may be affected by widespread adoption of educational AI systems. The research includes systematic consideration of power dynamics and potential unintended consequences that could arise from educational AI deployment, particularly focusing on effects that might disproportionately impact marginalised or vulnerable populations within educational contexts.
+**What the System Can Do:**
+- Generate structured syllabi for STEM courses (CS, Math, Physics) at undergraduate/postgraduate levels
+- Select pedagogically appropriate components based on difficulty and domain
+- Achieve 100% structural reliability (parseable outputs)
+- Maintain 90.6% difficulty progression and 87.3% topic diversity
 
-Social impact evaluation extends beyond immediate educational stakeholders to consider broader societal implications of automated educational content generation. The research contributes to understanding how educational AI can support rather than undermine educational equity, access, and quality in diverse social and economic contexts.
+**What It Can't Do:**
+- Ensure prerequisite coherence (only 44.8% accuracy, with 50% having zero coherence)
+- Generate syllabi longer than 3 modules (~24 hours of content)
+- Work reliably outside STEM domains
+- Replace educator judgment
+
+**Transparency Mechanisms:** The system uses rule-based validation with explicit criteria, enabling educators to understand *why* particular content was selected or rejected. This isn't a black box—the prerequisite checking, difficulty filtering, and quality scoring are all inspectable. Educators can review the logic, critique the assumptions, and override decisions.
+
+**Human Agency:** The system assists educators; it doesn't replace them. Generated syllabi require human review and approval. The 44.8% prerequisite accuracy alone makes this clear—automated generation cannot currently produce production-ready syllabi without educator validation.
+
+## 3.6 Stakeholder Considerations
+
+**Educators:** The primary concern is whether automated syllabus generation threatens teaching roles. This system is positioned as a tool to reduce administrative burden, not replace pedagogical expertise. Educators maintain control over content approval, pedagogical decisions, and course delivery. The 44.8% prerequisite accuracy makes educator review essential, not optional.
+
+**Students:** AI-generated content must serve student learning, not institutional convenience. This research prioritizes pedagogical quality metrics—prerequisite coherence, difficulty progression, topic diversity—that directly affect learning outcomes. The limitations (3-module cap, prerequisite weaknesses) are explicitly documented to prevent deployment in contexts where they'd harm learning.
+
+**Institutions:** Educational AI affects accreditation, quality assurance, and institutional reputation. This system doesn't claim to produce accreditation-ready content—it generates drafts requiring institutional review processes. Standards compliance (IEEE LOM, Bloom's taxonomy, WCAG 2.1 accessibility) is embedded through rule-based validation, not learned from data, ensuring educational defensibility.
+
+**Broader Impact:** Automated educational content generation could democratize access to quality curricula or perpetuate existing inequalities. This research can't resolve that tension but acknowledges it. The STEM-only focus limits immediate accessibility benefits, whilst the synthetic data approach ensures privacy isn't compromised in pursuit of automation.
 
 ---
 
