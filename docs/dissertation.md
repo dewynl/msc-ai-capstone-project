@@ -1032,11 +1032,11 @@ This research journey evolved from function calling exploration (0% success due 
 
 ### 7.1.1 Embracing Failure as Research Tool
 
-The most significant learning came from **embracing failure as a research tool**. Initial direct JSON generation failed completely (0% validity, Annex A.2.2), initially frustrating but ultimately invaluable. This failure forced a fundamental question: *Why does neural generation struggle with structured formats when it excels at natural language?*
+The most significant learning came from **embracing failure as a research tool**—though I didn't embrace it initially. Initial direct JSON generation failed completely (0% validity, Annex A.2.2). My first reaction wasn't curiosity; it was frustration bordering on panic. Three weeks into the project, facing systematic failures across multiple approaches, I seriously considered whether the entire research question was fundamentally flawed.
 
-The answer revealed a core insight that became the foundation of the entire dissertation: **syntactic precision and semantic creativity are fundamentally incompatible requirements for neural models**. Language models are optimized for semantic understanding and creative text generation, not for maintaining rigid syntax rules. Asking them to do both simultaneously is asking them to optimize for contradictory objectives.
+What shifted my perspective was asking *why* the failures were so consistent. Every approach that required exact string matching failed. Every approach that mixed structured formats with free-form generation produced unparseable output. The pattern was too clear to ignore: **syntactic precision and semantic creativity are fundamentally incompatible requirements for neural models**. Language models are optimized for semantic understanding and creative text generation, not for maintaining rigid syntax rules. Asking them to do both simultaneously is asking them to optimize for contradictory objectives.
 
-This realization shifted the research direction from "how can we make models better at generating JSON?" to "how can we separate these concerns architecturally?" This shift represents a key learning: **the right question is often more important than the clever answer**.
+This realization transformed the research from "how can we make models better at generating JSON?" to "how can we separate these concerns architecturally?" Looking back, this shift was the most important moment in the entire project. The right question turned out to be more valuable than any clever answer.
 
 ### 7.1.2 Templates vs Intelligence: The Trade-off Revelation
 
@@ -1067,11 +1067,13 @@ The lesson here is about **research storytelling**: technical artifacts should b
 
 ### 7.2.2 What Would Be Done Differently
 
-With hindsight, several aspects of the research process could have been more efficient:
+With hindsight, several aspects could have been more efficient—though it's unclear whether I'd have listened to this advice at the start:
 
-1. **Earlier Literature Depth**: The Chapter 2 literature review could have been conducted earlier in the process. Understanding the full landscape of AI-assisted education before implementation would have better positioned the contribution within existing research and potentially avoided exploratory dead-ends.
+1. **Earlier Literature Depth**: The Chapter 2 literature review could have been conducted earlier. I started coding almost immediately after the initial proposal, eager to see if the approach would work. Spending more time understanding existing research might have helped me avoid some dead ends (direct JSON generation, for instance, had been tried and documented as problematic). But there's also value in discovering limitations firsthand rather than just reading about them.
 
-2. **Prerequisite Graph Modeling from Start**: The 45% prerequisite accuracy limitation (Section 6.2.2) could have been avoided by incorporating topological sorting into the initial architecture. The lesson: pedagogical constraints should be architectural primitives, not post-processing additions. Hard constraints (prerequisite sequencing) cannot be reliably learned—they require explicit enforcement.
+2. **Prerequisite Graph Modeling from Start**: The 45% prerequisite accuracy limitation (Section 6.2.2) is the result I'm least satisfied with. Looking back, I should have recognized earlier that prerequisite sequencing is a hard constraint requiring algorithmic enforcement, not a soft constraint the model could learn from examples. The lesson: pedagogical constraints should be architectural primitives, not post-processing additions. Hard constraints (prerequisite sequencing) cannot be reliably learned—they require explicit enforcement.
+
+This limitation represents the biggest gap between what the system demonstrates (feasibility) and what it would need for production use (reliability). If I had another month, topological sorting would be the first thing I'd implement.
 
 3. **Ablation Studies**: The evaluation could have included ablation studies testing individual architectural components (e.g., markdown generation without RAG retrieval, index selection without pedagogical boosting). This would have more precisely attributed performance improvements to specific design decisions rather than evaluating the complete system holistically.
 
