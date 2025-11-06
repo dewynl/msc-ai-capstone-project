@@ -483,9 +483,9 @@ This research followed Design Science Research (DSR) methodology (Hevner et al.,
 
 The initial approach explored function calling architecture treating syllabus generation as program synthesis. The model generated sequences of function calls (e.g., `set_info()`, `add_module()`) interpreted by a `SyllabusBuilder` execution engine to construct valid educational content.
 
-**Empirical Findings:** The approach achieved 0% evaluation pass rate. Task complexity—requiring exact UUID generation from 960 modules—exceeded small model capacity (< 100M parameters). Despite theoretically sound design, the model could not reliably select components by identifier. Full architectural specifications and evaluation results are in Appendix A.1.
+**Empirical Findings:** Complete failure. 0% evaluation pass rate across 50 test cases. The model couldn't reliably generate exact UUID strings matching database entries—not even close. Despite theoretically sound design, the task complexity (selecting from 960 unique identifiers) exceeded CodeT5-small's capacity. Full architectural specifications and evaluation results are in Appendix A.1.
 
-**Key Insight:** Task formulation fundamentally impacts model success independently of architectural sophistication. Component selection by exact identifier generation proved insurmountable, suggesting index-based selection might be more tractable.
+**Key Insight:** Task formulation fundamentally impacts model success independently of architectural sophistication. When the model can't do what you're asking, the problem might be the ask, not the model.
 
 ### 5.1.3 Systematic Decision Analysis
 
@@ -499,11 +499,11 @@ The final architecture generates structured markdown with index-based component 
 
 Training comprised 1,300 synthetic examples with prerequisite-aware module sequencing. Evaluation achieved 100% parseable outputs (vs. 0% for function calling), 96% pedagogical quality score, and consistent generation of complete syllabi averaging 781-825 characters. This improvement validates that task simplification through index-based selection addresses the root cause more effectively than architectural sophistication or parameter scaling.
 
-### 5.1.5 Synthetic Educational Data Generation Methodology
+### 5.1.5 Synthetic Educational Data Generation
 
-This research developed component-based synthetic data generation producing 1,300 training examples across Computer Science, Mathematics, Physics, and Engineering domains. The generation system employs 16 STEM subjects, 12 learning outcomes aligned with Bloom's taxonomy (Anderson et al., 2001), and 8 assessment types.
+Generating 1,300 training examples with Claude required systematic prompting across Computer Science, Mathematics, Physics, and Engineering domains. The generation system employed 16 STEM subjects, 12 learning outcomes aligned with Bloom's taxonomy (Anderson et al., 2001), and 8 assessment types.
 
-The dataset incorporates prerequisite relationship metadata across 960 modules, with training examples demonstrating valid topological sequencing. This prerequisite-aware generation teaches pedagogically appropriate module ordering, enabling complete privacy protection whilst maintaining educational coherence.
+The critical challenge was prerequisite relationships—components needed to reference other components by UUID, forming a valid prerequisite graph. This required multi-pass generation: first create modules, then generate activities/assessments referencing valid module UUIDs, ensuring no circular dependencies. Training examples demonstrate valid topological sequencing, teaching the model pedagogically appropriate ordering whilst maintaining complete privacy protection.
 
 ## 5.2 CodeT5-Small Training for Structured Markdown Generation
 
@@ -528,11 +528,13 @@ Cross-domain validation (20% data split, 260 examples) with stratified sampling 
 Training dynamics revealed three distinct phases: rapid structural learning (epochs 1-5), pedagogical refinement (epochs 6-10), and fine-tuning convergence (epochs 11-15). Validation loss decreased from 4.23 (epoch 1) to 1.47 (epoch 13), with minimal improvement thereafter (1.47 → 1.46, epochs 13-15), indicating convergence.
 
 **Key Observations:**
-- Structural markdown validity achieved 100% by epoch 3, demonstrating CodeT5's pre-training effectiveness for formatted text generation
+- Structural markdown validity achieved 100% by epoch 3, demonstrating CodeT5's pre-training effectiveness for formatted text generation—this happened faster than expected
 - Prerequisite-aware module sequencing improved gradually (45% → 91% over 15 epochs), indicating this pedagogical constraint required more training exposure than structural syntax
 - Topic diversity remained consistently high (85-90%) across all training stages, emerging naturally from semantic ranking rather than learned behavior
 
-Checkpoint selection (checkpoint-196, epoch 13) balanced validation loss minimization with overfitting prevention. Later checkpoints (epochs 14-15) showed marginal validation improvement (0.01 reduction) but increased training loss divergence, suggesting memorization risk.
+Interestingly, the model learned structural formatting almost immediately but took much longer to internalize pedagogical constraints like prerequisite ordering. This suggests that pre-training bias (CodeT5 saw millions of markdown documents) transfers easily, whilst domain-specific knowledge (what prerequisites make pedagogical sense) requires explicit training.
+
+Checkpoint selection (checkpoint-196, epoch 13) balanced validation loss minimization with overfitting prevention. Later checkpoints (epochs 14-15) showed marginal validation improvement (0.01 reduction) but increased training loss divergence—a classic sign the model was starting to memorize training examples rather than learning general patterns.
 
 ## 5.3 RAG-Enhanced Component Selection Implementation
 
@@ -616,9 +618,11 @@ activity_indices = [int(x) for x in re.findall(r'\[(\d+)\]', activity_match)]
 
 **Robustness Features:**
 - Handles whitespace variations and formatting inconsistencies
-- Deduplicates repeated component indices (model sometimes repeats [0], [0])
-- Graceful fallback when sections missing (returns empty lists rather than errors)
+- Deduplicates repeated component indices (the model sometimes repeats [0], [0]—unclear why, but the parser handles it)
+- Graceful fallback when sections missing (returns empty lists rather than crashing)
 - Validates indices against available components list (warns if out-of-range)
+
+The parser needed to be forgiving because neural generation isn't perfectly consistent. Early versions crashed on minor formatting variations—an extra space here, a missing newline there. Making the regex patterns more flexible and adding fallback handling took an afternoon but was essential for 100% reliability.
 
 ### 5.5.2 Index-to-UUID Mapping
 
