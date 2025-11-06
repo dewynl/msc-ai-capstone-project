@@ -1,15 +1,15 @@
 {
-  "generated_at": "2025-11-01T01:37:40.202749",
+  "generated_at": "2025-11-05T21:29:33.183092",
   "total_tests": 32,
   "successful_tests": 32,
   "success_rate": 1.0,
   "performance": {
-    "avg_generation_time_sec": 55.938,
+    "avg_generation_time_sec": 56.371,
     "avg_components_per_syllabus": 7.5
   },
   "quality": {
     "avg_overall_quality_score": 0.0,
-    "avg_prerequisite_accuracy": 0.479
+    "avg_prerequisite_accuracy": 0.448
   },
   "distribution": {
     "by_domain": {
@@ -36,6 +36,6 @@
       "num_test_cases": 32,
       "quality_reranking_enabled": true
     },
-    "timestamp": "2025-11-01 01:37:40"
+    "timestamp": "2025-11-05 21:29:33"
   }
 }

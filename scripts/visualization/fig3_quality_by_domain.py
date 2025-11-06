@@ -10,6 +10,9 @@ Shows how different domains perform across quality dimensions:
 Grouped bar chart comparing 5 quality metrics across 3 domains.
 """
 
+import matplotlib
+
+matplotlib.use("Agg")  # Use non-interactive backend for headless environment
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd

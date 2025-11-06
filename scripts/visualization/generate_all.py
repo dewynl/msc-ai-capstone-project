@@ -16,8 +16,8 @@ from pathlib import Path
 
 from fig1_prerequisite_distribution import create_prerequisite_distribution
 from fig2_quality_radar import create_quality_radar
-from fig3_domain_success_rate import create_domain_success_rate
-from fig4_difficulty_performance import create_difficulty_performance
+from fig3_quality_by_domain import create_quality_by_domain
+from fig4_prerequisites_by_level import create_prerequisites_by_level
 
 
 def main():
@@ -31,8 +31,8 @@ def main():
     figures = [
         ("Figure 1: Prerequisite Distribution", create_prerequisite_distribution),
         ("Figure 2: Quality Radar", create_quality_radar),
-        ("Figure 3: Domain Success Rate", create_domain_success_rate),
-        ("Figure 4: Difficulty vs Performance", create_difficulty_performance),
+        ("Figure 3: Quality by Domain", create_quality_by_domain),
+        ("Figure 4: Prerequisites by Level", create_prerequisites_by_level),
     ]
 
     output_paths = []

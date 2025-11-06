@@ -11,6 +11,9 @@ Bar chart with sample sizes and percentage breakdown (perfect/partial/none).
 Note: System supports only beginner/intermediate/advanced levels.
 """
 
+import matplotlib
+
+matplotlib.use("Agg")  # Use non-interactive backend for headless environment
 import matplotlib.pyplot as plt
 import pandas as pd
 from config import COLORS, DATA_PATH, OUTPUT_DIR, STYLE

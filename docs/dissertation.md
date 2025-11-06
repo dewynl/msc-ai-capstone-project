@@ -323,7 +323,7 @@ Implementation employed CodeT5-small generating structured markdown with index r
 
 Final iterations integrated prerequisite checking and multi-dimensional quality evaluation frameworks, developing generate-and-rerank pipeline producing multiple candidates with pedagogical quality-based selection. The system generates three syllabi (one greedy, two sampled with temperature 0.7), evaluates each against five pedagogical dimensions (prerequisite coherence, difficulty progression, topic diversity, semantic relevance, Bloom's coverage), and selects highest-scoring output.
 
-This quality-aware generation improved pedagogical scores from 82% (greedy-only) to 96% (rerank-based) whilst maintaining 100% structural validity. Each iteration produced quantifiable improvements documented through systematic evaluation: prerequisite accuracy improved from 0% (random selection) to 48% (quality-aware reranking), difficulty progression from 45% to 60%, demonstrating that architectural decisions informed by empirical performance metrics and qualitative failure analysis enable systematic quality improvements.
+This quality-aware generation improved pedagogical scores from 82% (greedy-only) to 96% (rerank-based) whilst maintaining 100% structural validity. Each iteration produced quantifiable improvements documented through systematic evaluation: prerequisite accuracy improved from 0% (random selection) to 45% (quality-aware reranking), difficulty progression from 45% to 91%, demonstrating that architectural decisions informed by empirical performance metrics and qualitative failure analysis enable systematic quality improvements.
 
 **Final Architecture:** CodeT5-small generates structured markdown with index-based component references ([0], [1], [2]), fundamentally simpler than UUID memorisation (cognitive load reduction: 960 identifiers → sequential numbering). RAG integration provides difficulty-aware filtering (reduces search space 60-80%) and semantic ranking using sentence transformers (Reimers & Gurevych, 2019), presenting top-K components as indexed lists. Generate-and-rerank strategy with automated pedagogical quality evaluation achieves 96% quality scores versus 82% for greedy-only generation. Markdown parsing extracts indices, maps to database UUIDs, enhances learning objectives with Bloom's taxonomy alignment (Anderson et al., 2001), and expands terse markdown (781 chars) to comprehensive syllabi (3,000+ chars) through database enrichment. Complete implementation details in Chapter 5.
 
@@ -670,7 +670,7 @@ These limitations represent known constraints in small model deployment rather t
 
 # 6. Evaluation
 
-This chapter presents comprehensive evaluation of the markdown generation with index-based component selection system across 32 diverse test cases spanning three educational domains (Computer Science, Mathematics, Physics) and four difficulty levels (Beginner, Intermediate, Advanced, Postgraduate). The evaluation employs a custom pedagogical quality framework measuring five critical dimensions: prerequisite coherence, semantic relevance, difficulty progression, topic diversity, and Bloom's taxonomy coverage. Results reveal strong structural generation capabilities (100% validity) and excellent topic diversity (94.2%), balanced against pedagogical constraint challenges in prerequisite sequencing (47.9%) and difficulty progression (60.2%)—primary areas requiring architectural enhancement through constraint-based generation approaches.
+This chapter presents comprehensive evaluation of the markdown generation with index-based component selection system across 32 diverse test cases spanning three educational domains (Computer Science, Mathematics, Physics) and four difficulty levels (Beginner, Intermediate, Advanced, Postgraduate). The evaluation employs a custom pedagogical quality framework measuring five critical dimensions: prerequisite coherence, semantic relevance, difficulty progression, topic diversity, and Bloom's taxonomy coverage. Results reveal strong structural generation capabilities (100% validity), excellent difficulty progression (90.6%), and strong topic diversity (87.3%), balanced against pedagogical constraint challenges in prerequisite sequencing (44.8%)—the primary area requiring architectural enhancement through constraint-based generation approaches.
 
 ## 6.1 Evaluation Framework and Methodology
 
@@ -696,7 +696,7 @@ The evaluation excluded 8 test cases from Engineering and Interdisciplinary doma
 
 5. **Bloom's Taxonomy Coverage** (0-1 scale): Proportion of learning objectives correctly aligned to validated Bloom's cognitive levels (Remember, Understand, Apply, Analyze, Evaluate, Create).
 
-**Implementation Approach:** The evaluation framework implements fully measured metrics for prerequisite accuracy (graph-based violation detection), difficulty progression (difficulty level transition analysis), and topic diversity (concept stem uniqueness calculation). Semantic relevance employs MPNet embedding similarity, while Bloom's taxonomy coverage uses rule-based cognitive level classification. This measurement-driven approach enables systematic identification of architectural strengths (100% structural validity, 94% topic diversity) and limitations (48% prerequisite accuracy, 60% difficulty progression), demonstrating that the evaluation framework successfully distinguishes between naturally emergent quality dimensions and training-dependent constraints requiring explicit architectural enhancement.
+**Implementation Approach:** The evaluation framework implements fully measured metrics for prerequisite accuracy (graph-based violation detection), difficulty progression (difficulty level transition analysis), and topic diversity (concept stem uniqueness calculation). Semantic relevance employs MPNet embedding similarity, while Bloom's taxonomy coverage uses rule-based cognitive level classification. This measurement-driven approach enables systematic identification of architectural strengths (100% structural validity, 91% difficulty progression, 87% topic diversity) and limitations (45% prerequisite accuracy), demonstrating that the evaluation framework successfully distinguishes between naturally emergent quality dimensions and training-dependent constraints requiring explicit architectural enhancement.
 
 ## 6.2 Overall Performance Results
 
@@ -735,7 +735,7 @@ The prerequisite sequencing failure stems from three architectural factors:
 
 The evaluation framework's fully implemented difficulty progression and topic diversity metrics reveal distinct pedagogical patterns across generated syllabi, demonstrating the framework's capability to systematically identify architectural strengths and training-dependent limitations.
 
-**Difficulty Progression (60.2% ± 34.5%)**: The model demonstrates inconsistent difficulty sequencing, with 12 of 32 test cases (37.5%) exhibiting difficulty regressions where advanced modules precede beginner-level content. This limitation stems from training data that encoded prerequisite relationships but not explicit difficulty constraints. The high variance (±34.5%) indicates the model can achieve perfect difficulty progression in some cases (100% maximum) while failing entirely in others (0% minimum), suggesting semantic ranking occasionally produces appropriate orderings by chance rather than systematic optimization.
+**Difficulty Progression (90.6% ± 19.8%)**: The model demonstrates strong difficulty sequencing, with 26 of 32 test cases (81.2%) exhibiting perfect difficulty progression and only 6 test cases (18.8%) showing moderate violations. The high mean (90.6%) and moderate variance (±19.8%) indicate the model consistently maintains appropriate difficulty ordering, with violations occurring primarily in advanced-level courses where complex prerequisite graphs exceed model capacity. This strong performance validates that the training data's implicit difficulty encoding, combined with RAG filtering by difficulty level, enables reliable pedagogical sequencing without explicit constraint enforcement.
 
 **Example Difficulty Regression** (Test Case 18, Computer Science - Intermediate):
 ```
@@ -745,11 +745,11 @@ Module 3: "Data Structures and Algorithms" (intermediate level)
 ```
 **Difficulty Violation**: The sequence regresses from advanced → beginner, producing a 50% difficulty progression score (1 violation out of 2 transitions).
 
-**Topic Diversity (94.2% ± 9.3%)**: Generated syllabi demonstrate excellent conceptual coverage, with natural semantic variety emerging from the RAG-enhanced component selection process. The high mean (94%) and low variance (±9%) indicate consistent diversity across domains and difficulty levels, validating that semantic similarity ranking successfully retrieves topically distinct components. The median of 100% suggests most syllabi achieve complete concept uniqueness across selected modules.
+**Topic Diversity (87.3% ± 16.7%)**: Generated syllabi demonstrate strong conceptual coverage, with natural semantic variety emerging from the RAG-enhanced component selection process. The high mean (87.3%) indicates consistent diversity across domains and difficulty levels, with 59.4% of syllabi achieving ≥90% diversity, validating that semantic similarity ranking successfully retrieves topically distinct components. The moderate variance (±16.7%) reflects domain-specific patterns, with Physics courses showing slightly lower diversity (78.1%) due to the limited component database size (12 physics modules vs 205+ CS modules).
 
-**Conceptual Coverage Analysis**: Typical syllabi include 3-5 modules with 5 key concepts each (15-25 total concepts). The stem-based uniqueness analysis reveals 91-95% unique concept stems, indicating minimal repetition. For example, a Computer Science syllabus covering "Introduction to Machine Learning" selected modules spanning neural networks, data preprocessing, model evaluation, optimization algorithms, and deployment—demonstrating breadth rather than redundant depth in single topics.
+**Conceptual Coverage Analysis**: Typical syllabi include 3-5 modules with 5 key concepts each (15-25 total concepts). The stem-based uniqueness analysis reveals high unique concept stems across most syllabi, indicating minimal repetition. For example, a Computer Science syllabus covering "Introduction to Machine Learning" selected modules spanning neural networks, data preprocessing, model evaluation, optimization algorithms, and deployment—demonstrating breadth rather than redundant depth in single topics.
 
-**Key Insight**: The evaluation framework successfully identifies that while structural validity (100%) and topic diversity (94%) are high, pedagogical constraints (prerequisites 47.9%, difficulty 60.2%) require architectural enhancement. This demonstrates the framework's capability to distinguish between naturally emergent quality dimensions (diversity from semantic ranking) and training-dependent constraints (difficulty sequencing, prerequisite ordering) that necessitate explicit optimization approaches such as constraint-based generation, reinforcement learning with pedagogical reward functions, or graph neural networks encoding curricular dependencies.
+**Key Insight**: The evaluation framework successfully identifies that structural validity (100%), difficulty progression (90.6%), and topic diversity (87.3%) demonstrate strong performance from the hybrid RAG+neural architecture, while prerequisite sequencing (44.8%) remains the critical limitation requiring architectural enhancement through topological sorting or graph neural network integration. This demonstrates the framework's capability to distinguish between naturally emergent quality dimensions (diversity from semantic ranking) and trained strengths (difficulty progression from implicit encoding + RAG filtering) versus persistent constraints (prerequisite ordering) that necessitate explicit graph-based enforcement mechanisms.
 
 ## 6.3 Balanced Performance Across Quality Dimensions
 
@@ -759,18 +759,18 @@ Figure 2 presents a radar chart visualising model performance across five pedago
 
 **Figure 2: Model Performance Across Quality Dimensions**
 
-The radar chart reveals distinct performance patterns across naturally emergent quality dimensions versus training-dependent pedagogical constraints:
+The radar chart reveals distinct performance patterns across naturally emergent quality dimensions, trained strengths, and persistent pedagogical constraints:
 
-**Strengths (Naturally Emergent from Semantic Ranking):**
-- **Topic Diversity (94.2%)**: Excellent—natural semantic variety from RAG-enhanced component selection produces syllabi with 91-95% unique concept stems, demonstrating minimal redundancy and strong conceptual breadth across domains.
+**Strengths (Naturally Emergent from Semantic Ranking + Training):**
+- **Difficulty Progression (90.6%)**: Excellent—81% of syllabi achieve perfect difficulty progression, with violations occurring primarily in advanced courses, validating that implicit difficulty encoding in training data combined with RAG difficulty filtering enables reliable pedagogical sequencing.
+- **Topic Diversity (87.3%)**: Strong—natural semantic variety from RAG-enhanced component selection produces syllabi with high conceptual breadth, with 59% achieving ≥90% diversity across domains.
 - **Semantic Relevance (40.0%)**: Moderate—MPNet similarity scores show acceptable topical alignment between course requirements and selected components, validating semantic ranking effectiveness.
 
 **Weaknesses (Training-Dependent Pedagogical Constraints):**
-- **Difficulty Progression (60.2%)**: Moderate—inconsistent difficulty sequencing with 37.5% of test cases exhibiting regressions (e.g., advanced → beginner), revealing training limitation requiring constraint-based enhancement.
-- **Prerequisite Accuracy (47.9%)**: Critical weakness—50% of syllabi have zero prerequisite coherence, identified as primary architectural limitation requiring graph neural network integration or topological sorting.
+- **Prerequisite Accuracy (44.8%)**: Critical weakness—53% of syllabi have zero prerequisite coherence, identified as primary architectural limitation requiring graph neural network integration or topological sorting.
 - **Bloom's Taxonomy Coverage (37.5%)**: Moderate—learning objectives partially aligned to validated cognitive levels, with underrepresentation of higher-order thinking skills.
 
-**Key Pattern**: The performance profile demonstrates that semantic ranking naturally produces high-quality topic coverage (94%) while pedagogical constraints (prerequisites 48%, difficulty 60%) require explicit optimization beyond similarity-based selection. This validates the architectural hypothesis that educational content generation requires hybrid approaches combining neural semantic understanding with structured constraint enforcement.
+**Key Pattern**: The performance profile demonstrates that the hybrid RAG+neural architecture successfully addresses multiple pedagogical dimensions (difficulty 90.6%, diversity 87.3%) through semantic ranking and implicit training, while prerequisite constraints (44.8%) remain the sole area requiring explicit graph-based optimization. This validates the architectural effectiveness whilst identifying a focused enhancement target.
 
 ## 6.4 Quality Metrics Performance by Domain
 
@@ -796,11 +796,11 @@ Computer Science syllabi demonstrate substantially better prerequisite sequencin
 
 All domains show moderate semantic alignment between course requirements and selected components, indicating the RAG retrieval system achieves acceptable topical relevance but has room for improvement in precision matching.
 
-**Mixed Quality Dimensions:**
-- Topic Diversity: 94.2% across all domains (excellent) - Natural semantic variety from RAG selection
-- Difficulty Progression: 60.2% across all domains (moderate) - Inconsistent sequencing revealing training limitation
+**Consistent Strengths Across Domains:**
+- Difficulty Progression: 90.6% overall (excellent) - Physics 100.0%, Math 90.0%, CS 86.7%
+- Topic Diversity: 87.3% overall (strong) - Math 90.3%, CS 89.5%, Physics 78.1%
 
-Topic diversity remains consistently high across Computer Science, Mathematics, and Physics, validating that semantic ranking retrieves conceptually distinct components regardless of subject matter. Difficulty progression shows moderate performance with high variance, indicating the core markdown generation approach successfully maintains structural validity (100%) while pedagogical sequencing requires constraint-based enhancement.
+**Domain-Specific Variation:** Physics achieves perfect difficulty progression (100%) despite limited component database (12 modules), while showing lower diversity (78.1%) due to database size constraints. Computer Science demonstrates best prerequisite accuracy (60.0%) due to hierarchical curriculum structure. Mathematics shows highest topic diversity (90.3%) with strong difficulty progression (90.0%) but weakest prerequisite coherence (30.0%) reflecting complex cross-cutting dependencies in mathematical curricula.
 
 **Bloom's Taxonomy Coverage (Domain Differences):**
 - Computer Science: 30.0%
@@ -871,11 +871,11 @@ The evaluation yields four primary findings validating the research objectives w
 
 **2. Cross-Domain Generalization (Objective 4.2)**: Perfect technical success across Computer Science, Mathematics, and Physics (100% in all domains) confirms architectural abstraction enables domain-independent generation, supporting broader STEM applicability.
 
-**3. Pedagogical Quality Framework Validation (Objective 5.1)**: Five-dimensional evaluation framework successfully quantifies curriculum design principles through fully measured metrics, revealing distinct performance patterns: naturally emergent strengths (topic diversity 94.2%, structural validity 100%) versus training-dependent limitations (prerequisite accuracy 47.9%, difficulty progression 60.2%). This demonstrates the framework's capability to systematically distinguish quality dimensions that naturally emerge from semantic ranking from pedagogical constraints requiring explicit architectural enhancement.
+**3. Pedagogical Quality Framework Validation (Objective 5.1)**: Five-dimensional evaluation framework successfully quantifies curriculum design principles through fully measured metrics, revealing distinct performance patterns: naturally emergent and trained strengths (difficulty progression 90.6%, topic diversity 87.3%, structural validity 100%) versus training-dependent limitations (prerequisite accuracy 44.8%). This demonstrates the framework's capability to systematically distinguish quality dimensions that benefit from hybrid RAG+neural architectures from pedagogical constraints requiring explicit graph-based enforcement.
 
-**4. Pedagogical Constraint Identification (Objective 5.2)**: Comprehensive measurement reveals two critical gaps requiring enhancement: (a) Prerequisite sequencing (47.9% accuracy, 50% zero-coherence rate) necessitates topological sorting or graph neural network integration, and (b) Difficulty progression (60.2% accuracy, 37.5% with regressions) requires constraint-based generation or reinforcement learning with pedagogical reward functions. These specific, quantified limitations provide actionable targets for architectural enhancement beyond semantic similarity-based selection.
+**4. Pedagogical Constraint Identification (Objective 5.2)**: Comprehensive measurement reveals one critical gap requiring enhancement: Prerequisite sequencing (44.8% accuracy, 53% zero-coherence rate, bimodal distribution) necessitates topological sorting or graph neural network integration. Difficulty progression (90.6% accuracy) demonstrates that the hybrid architecture successfully addresses this dimension through implicit training patterns and RAG difficulty filtering, requiring enhancement only for advanced-level courses (71.4%) where complex curricula exceed 60M model capacity.
 
-These findings position the markdown generation with index-based selection approach as a viable foundation for educational content automation while precisely delineating architectural strengths (structural reliability 100%, topic coverage 94%) from training-dependent limitations (pedagogical sequencing 48-60%) that require hybrid approaches combining neural semantic understanding with structured constraint enforcement.
+These findings position the markdown generation with index-based selection approach as a viable foundation for educational content automation while precisely delineating architectural strengths (structural reliability 100%, difficulty progression 90.6%, topic diversity 87.3%) from the single persistent limitation (prerequisite sequencing 44.8%) that requires explicit graph-based constraint enforcement.
 
 ---
 
@@ -926,7 +926,7 @@ With hindsight, several aspects of the research process could have been more eff
 
 1. **Earlier Literature Depth**: The Chapter 2 literature review could have been conducted earlier in the process. Understanding the full landscape of AI-assisted education before implementation would have better positioned the contribution within existing research and potentially avoided exploratory dead-ends.
 
-2. **Prerequisite Graph Modeling from Start**: The 48% prerequisite accuracy limitation (Section 6.2.2) could have been avoided by incorporating topological sorting into the initial architecture. The lesson: pedagogical constraints should be architectural primitives, not post-processing additions. Hard constraints (prerequisite sequencing) cannot be reliably learned—they require explicit enforcement.
+2. **Prerequisite Graph Modeling from Start**: The 45% prerequisite accuracy limitation (Section 6.2.2) could have been avoided by incorporating topological sorting into the initial architecture. The lesson: pedagogical constraints should be architectural primitives, not post-processing additions. Hard constraints (prerequisite sequencing) cannot be reliably learned—they require explicit enforcement.
 
 3. **Ablation Studies**: The evaluation could have included ablation studies testing individual architectural components (e.g., markdown generation without RAG retrieval, index selection without pedagogical boosting). This would have more precisely attributed performance improvements to specific design decisions rather than evaluating the complete system holistically.
 
@@ -938,7 +938,7 @@ With hindsight, several aspects of the research process could have been more eff
 
 The primary methodological contribution demonstrates **task formulation's primacy over architectural sophistication**. Index-based selection shows how cognitive complexity reduction enables small models (60M parameters) to achieve reliable structured generation—generalizable to other component assembly tasks (scientific protocols, legal documents, configurations).
 
-**Educational AI Insights:** (1) pedagogical constraints are hard constraints—prerequisite violations represent learning failures, not quality issues, (2) educational quality is multi-dimensional requiring balanced optimization across naturally emergent dimensions (94% topic diversity) versus training-dependent constraints (60% difficulty progression, 48% prerequisite accuracy), (3) domain knowledge is partially learnable but doesn't automatically generalize (100% trained domains vs 0% untrained), and (4) structural constraints paradoxically improve generation by reducing search space.
+**Educational AI Insights:** (1) pedagogical constraints are hard constraints—prerequisite violations represent learning failures, not quality issues, (2) educational quality is multi-dimensional with hybrid approaches successfully addressing most dimensions (91% difficulty progression, 87% topic diversity) while explicit graph-based enforcement remains necessary for prerequisite sequencing (45% accuracy), (3) domain knowledge is partially learnable but doesn't automatically generalize (100% trained domains vs 0% untrained), and (4) structural constraints paradoxically improve generation by reducing search space.
 
 The research cultivated **failure-forward mindset**: systematic failure analysis, evidence-based decisions, and honest limitation acknowledgment. This approach—understanding what complexity is essential versus eliminable—unlocks capabilities beyond architectural innovation alone, applicable wherever neural models interact with large structured databases.
 
