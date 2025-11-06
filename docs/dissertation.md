@@ -305,17 +305,27 @@ This research employed iterative Design Science Research cycles progressing thro
 
 **Iteration 1-3: Function Calling Exploration (Weeks 1-4)**
 
-Initial exploration investigated function calling approaches enabling models to directly invoke component selection functions. UUID-based selection required exact 36-character string reproduction matching database entries, achieving 0% success rate due to incompatibility between exact string matching requirements and LLM probability distributions. Natural language component description generation faced similar challenges, achieving only 5-12% success rates. These failures revealed fundamental limitations in discrete identifier generation, motivating alternative task formulations (detailed analysis in Annex A.7).
+Initial exploration investigated function calling approaches enabling models to directly invoke component selection functions (e.g., `add_module(uuid="abc-123...")`, `set_difficulty("intermediate")`). UUID-based selection required exact 36-character string reproduction matching database entries from 960 available components. Evaluation across 50 test cases achieved 0% success rate—no generated syllabi passed structural validation due to incompatibility between exact string matching requirements and LLM probability distributions that optimize for semantic plausibility rather than syntactic precision.
+
+Natural language component description generation (e.g., "Introduction to Data Structures") faced similar challenges, achieving only 5-12% success rates. The model generated semantically reasonable component names that did not match database entries, requiring fuzzy matching that introduced ambiguity and pedagogical errors. These systematic failures revealed fundamental limitations: discrete identifier generation from large databases (960 items) exceeds small model capacity (<100M parameters), requiring alternative task formulations.
+
+**Critical Insight from Failures:** Task complexity analysis identified UUID generation cognitive load as the primary bottleneck. Systematic evaluation (documented in Annex A.7) demonstrated that reducing discrete choice complexity from 960 unique identifiers to simpler representations could address the root cause more effectively than parameter scaling or architectural sophistication.
 
 **Iteration 4-5: Task Simplification and Index-Based Selection (Weeks 5-7)**
 
-Critical insight emerged that discrete component selection requires fundamentally different architectural approaches than continuous text generation. Shift to index-based selection (components referenced by numerical indices 0, 1, 2...) enabled 100% structural validity by constraining generation to continuous numerical outputs mappable to discrete database entries. This architectural breakthrough validated the task simplification principle: constrained output spaces enable reliable structured generation whilst maintaining neural advantages for context-aware selection.
+Following systematic decision analysis evaluating 11 solution pathways (Annex A.8), the research pivoted to index-based component selection where components are referenced by position numbers ([0], [1], [2]) rather than UUIDs. This architectural shift reduced cognitive complexity: instead of memorizing 960 unique 36-character strings, the model only needs to select from numbered lists presented in the prompt context.
+
+Implementation employed CodeT5-small generating structured markdown with index references: "**Modules:** [0] Introduction to Programming, [1] Data Structures, [2] Algorithms". The RAG pipeline presents filtered components as numbered lists, the model generates indices, and post-processing maps indices to database UUIDs. This task simplification enabled 100% structural validity by constraining generation to continuous numerical outputs (integers 0-N) mappable to discrete database entries, validating the principle that constrained output spaces enable reliable structured generation whilst maintaining neural advantages for context-aware selection.
+
+**Quantitative Improvement:** Index-based approach achieved 100% JSON validity across 32 test cases (vs. 0% for UUID generation), demonstrating that appropriate task formulation enables smaller models (60M parameters) to excel through task-model alignment rather than requiring parameter scaling.
 
 **Iteration 6-7: Pedagogical Quality Integration (Weeks 8-10)**
 
-Final iterations integrated prerequisite checking and quality evaluation frameworks, developing generate-and-rerank pipeline producing multiple candidates with pedagogical quality-based selection. This architecture achieved 100% JSON validity whilst providing measurable pedagogical quality assessment. Each iteration produced quantifiable improvements documented through systematic evaluation, with architectural decisions informed by empirical performance metrics and qualitative failure analysis.
+Final iterations integrated prerequisite checking and multi-dimensional quality evaluation frameworks, developing generate-and-rerank pipeline producing multiple candidates with pedagogical quality-based selection. The system generates three syllabi (one greedy, two sampled with temperature 0.7), evaluates each against five pedagogical dimensions (prerequisite coherence, difficulty progression, topic diversity, semantic relevance, Bloom's coverage), and selects highest-scoring output.
 
-**Final Architecture:** CodeT5-small generates structured markdown with index-based component references ([0], [1], [2]), fundamentally simpler than UUID memorisation. RAG integration provides difficulty-aware filtering and semantic ranking (Lewis et al., 2020; Reimers & Gurevych, 2019). Generate-and-rerank strategy with automated pedagogical quality evaluation achieves 96% quality scores versus 82% for greedy-only generation. Markdown parsing extracts indices, maps to database UUIDs, enhances learning objectives with Bloom's taxonomy alignment (Anderson et al., 2001), and expands terse markdown (781 chars) to comprehensive syllabi (3,000+ chars) through database enrichment. Complete implementation details in Chapter 5.
+This quality-aware generation improved pedagogical scores from 82% (greedy-only) to 96% (rerank-based) whilst maintaining 100% structural validity. Each iteration produced quantifiable improvements documented through systematic evaluation: prerequisite accuracy improved from 0% (random selection) to 48% (quality-aware reranking), difficulty progression from 45% to 60%, demonstrating that architectural decisions informed by empirical performance metrics and qualitative failure analysis enable systematic quality improvements.
+
+**Final Architecture:** CodeT5-small generates structured markdown with index-based component references ([0], [1], [2]), fundamentally simpler than UUID memorisation (cognitive load reduction: 960 identifiers → sequential numbering). RAG integration provides difficulty-aware filtering (reduces search space 60-80%) and semantic ranking using sentence transformers (Reimers & Gurevych, 2019), presenting top-K components as indexed lists. Generate-and-rerank strategy with automated pedagogical quality evaluation achieves 96% quality scores versus 82% for greedy-only generation. Markdown parsing extracts indices, maps to database UUIDs, enhances learning objectives with Bloom's taxonomy alignment (Anderson et al., 2001), and expands terse markdown (781 chars) to comprehensive syllabi (3,000+ chars) through database enrichment. Complete implementation details in Chapter 5.
 
 ## 4.3 Synthetic Educational Component Database Construction
 
@@ -873,19 +883,56 @@ These findings position the markdown generation with index-based selection appro
 
 This research journey evolved from function calling exploration (0% success due to UUID generation complexity) to markdown generation with index-based selection (100% success through task simplification), requiring fundamental reconsideration of task formulation and model capabilities.
 
-## 7.1 Technical Learning
+## 7.1 Technical Learning: The Evolution of Understanding
 
-**Embracing Failure as Research Tool:** Initial direct JSON generation failed completely (0% validity, Annex A.2.2), revealing that **syntactic precision and semantic creativity are fundamentally incompatible requirements**. Language models excel at semantic understanding but struggle with rigid syntax enforcement. This shifted focus from "improving models at JSON generation" to "separating concerns architecturally"—demonstrating that **the right question matters more than clever answers**.
+### 7.1.1 Embracing Failure as Research Tool
 
-**Templates vs Intelligence Trade-off:** RAG-based templates achieved 100% structural validity but sacrificed semantic intelligence (20% neural utilization, Annex A.3.4). Optimizing single metrics creates new problems—real-world syllabi require both reliability AND adaptability. Function calling exploration (Section 5.1.2) failed due to UUID generation complexity (960 identifiers), validating that **task formulation matters more than architectural sophistication**.
+The most significant learning came from **embracing failure as a research tool**. Initial direct JSON generation failed completely (0% validity, Annex A.2.2), initially frustrating but ultimately invaluable. This failure forced a fundamental question: *Why does neural generation struggle with structured formats when it excels at natural language?*
 
-**Task Simplification Breakthrough:** Pivoting from UUID generation to index-based selection ([0], [1], [2]) reduced cognitive complexity whilst preserving capability. Key lessons: (1) task-model alignment trumps parameter count, (2) CodeT5's markdown pre-training enabled natural structured generation, (3) indexed component lists seamlessly integrated RAG, and (4) 15-epoch convergence to 100% validity confirmed task-capability alignment.
+The answer revealed a core insight that became the foundation of the entire dissertation: **syntactic precision and semantic creativity are fundamentally incompatible requirements for neural models**. Language models are optimized for semantic understanding and creative text generation, not for maintaining rigid syntax rules. Asking them to do both simultaneously is asking them to optimize for contradictory objectives.
 
-## 7.2 Methodological Insights
+This realization shifted the research direction from "how can we make models better at generating JSON?" to "how can we separate these concerns architecturally?" This shift represents a key learning: **the right question is often more important than the clever answer**.
 
-Comparative evaluation documenting failure progression (Section 5.1.2-5.1.3) demonstrates **why** task simplification matters, addressing root causes rather than symptoms. Research depth beats feature breadth—thoroughly validated innovations (100% validity across 32 tests) surpass partially implemented feature sets.
+### 7.1.2 Templates vs Intelligence: The Trade-off Revelation
 
-Improvements with hindsight: (1) earlier literature depth, (2) prerequisite graph modeling from start to avoid 50% accuracy failure (Section 6.2.2), (3) ablation studies isolating component contributions, (4) educator involvement surfacing usability concerns earlier, and (5) cross-domain training data enabling broader applicability beyond Computer Science, Mathematics, and Physics.
+RAG-based template approaches achieved 100% structural validity but at the cost of semantic intelligence (only 20% neural model utilization, Annex A.3.4). This taught a crucial lesson: **architectural purity has a cost**. By completely eliminating neural generation—using fixed templates filled by RAG retrieval—the problem was eliminated but so was the benefit.
+
+The reflection here is methodological: optimization for a single metric (JSON validity) created a new problem (lack of adaptability). Real-world syllabus generation requires both structural reliability AND semantic intelligence to adapt content to specific pedagogical contexts. A solution that achieves one by sacrificing the other is not a true solution.
+
+This tension drove exploration of function calling approaches (Section 5.1.2), separating semantic content from structural enforcement through executable function calls. However, this approach failed completely (0% pass rate) due to task complexity—requiring exact UUID generation from 960 components exceeded small model capacity. The key insight: **task formulation matters more than architectural sophistication**.
+
+### 7.1.3 Task Simplification: The Breakthrough of Index-Based Selection
+
+The final solution emerged not from architectural sophistication but from **fundamental task redesign**. After systematic analysis documented in Section 5.1.3, the research pivoted from UUID generation (960 unique identifiers) to index-based selection ([0], [1], [2]), reducing cognitive complexity whilst preserving generation capability.
+
+Key technical lessons learned:
+
+1. **Task formulation trumps model capacity**: A 60M parameter model with simplified task (index selection) outperformed more complex architectures with UUID generation, validating that alignment between task and model matters more than raw parameters.
+2. **Markdown as structured output format**: CodeT5's pre-training on markdown documentation enabled natural structured generation without requiring custom grammar enforcement. The model learned markdown conventions implicitly.
+3. **Index-based retrieval enables RAG integration**: Presenting components as indexed lists in the prompt allowed the model to reference retrieved components by position, seamlessly integrating RAG without requiring component database memorization.
+4. **Fast convergence validation**: Training CodeT5-small on markdown generation converged in 15 epochs, achieving 100% structural validity, confirming that the simplified task aligned with model capabilities.
+
+## 7.2 Methodological Reflections
+
+### 7.2.1 The Value of Comparative Evaluation
+
+Evaluating the final markdown generation approach in isolation would have demonstrated technical success (100% validity) but obscured the contribution's significance. By documenting the function calling exploration failure (Section 5.1.2) and systematic decision analysis (Section 5.1.3) that led to index-based selection, the evaluation shows **why** task simplification matters: it addresses the root cause (cognitive complexity) rather than treating symptoms (structural validity).
+
+The lesson here is about **research storytelling**: technical artifacts should be presented in the context of the problem space they address. The index-based selection approach's value is not self-evident from its structure—it requires understanding that UUID generation (the failed approach) created insurmountable task complexity. Research depth beats feature breadth—thoroughly validated architectural innovations (100% validity across 32 tests) surpass partially implemented feature sets.
+
+### 7.2.2 What Would Be Done Differently
+
+With hindsight, several aspects of the research process could have been more efficient:
+
+1. **Earlier Literature Depth**: The Chapter 2 literature review could have been conducted earlier in the process. Understanding the full landscape of AI-assisted education before implementation would have better positioned the contribution within existing research and potentially avoided exploratory dead-ends.
+
+2. **Prerequisite Graph Modeling from Start**: The 48% prerequisite accuracy limitation (Section 6.2.2) could have been avoided by incorporating topological sorting into the initial architecture. The lesson: pedagogical constraints should be architectural primitives, not post-processing additions. Hard constraints (prerequisite sequencing) cannot be reliably learned—they require explicit enforcement.
+
+3. **Ablation Studies**: The evaluation could have included ablation studies testing individual architectural components (e.g., markdown generation without RAG retrieval, index selection without pedagogical boosting). This would have more precisely attributed performance improvements to specific design decisions rather than evaluating the complete system holistically.
+
+4. **Expert Educator Involvement**: The evaluation focused on automated pedagogical metrics (Section 6.1) but omitted educator feedback. Incorporating formative user testing with 3-5 educators during development would have surfaced usability concerns and pedagogical quality issues earlier, potentially identifying the prerequisite accuracy limitation before comprehensive evaluation.
+
+5. **Cross-Domain Training Data**: The system's limitation to Computer Science, Mathematics, and Physics (Section 6.4) reflects training data constraints. Earlier investment in Engineering and Interdisciplinary components would have demonstrated broader applicability and validated cross-domain generalization more convincingly.
 
 ## 7.3 Contribution and Educational Insights
 
