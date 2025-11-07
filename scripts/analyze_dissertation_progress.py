@@ -80,10 +80,12 @@ def analyze_dissertation():
         "5. Implementation": (r"# 5\. Implementation", r"# 6\. Evaluation"),
         "6. Evaluation": (r"# 6\. Evaluation", r"# 7\. Learning"),
         "7. Learning and Reflection": (r"# 7\. Learning", r"# 8\. Conclusion"),
-        "8. Conclusion": (r"# 8\. Conclusion", r"# Annex A"),
-        "Annex A: Research Approach Evolution": (r"# Annex A:", r"## References"),
-        "References": (r"## References", r"## Appendices"),
-        "Appendices": (r"## Appendices", None),
+        "8. Conclusion": (r"# 8\. Conclusion", r"# References"),
+        "Appendix: Research Approach Evolution": (
+            r"# Appendix: Research Approach Evolution",
+            None,
+        ),
+        "References": (r"# References", r"# Appendix"),
     }
 
     # Target word counts (approximate)
@@ -96,9 +98,8 @@ def analyze_dissertation():
         "6. Evaluation": 1500,
         "7. Learning and Reflection": 800,
         "8. Conclusion": 500,
-        "Annex A: Research Approach Evolution": 1500,
+        "Appendix: Research Approach Evolution": 0,  # Not counted toward main target
         "References": 0,  # Not counted
-        "Appendices": 0,  # Not counted
     }
 
     print("\n" + "=" * 80)
