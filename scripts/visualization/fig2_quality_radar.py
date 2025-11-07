@@ -10,6 +10,9 @@ Shows balanced view of model performance across 5 key dimensions:
 - Bloom's taxonomy (moderate: 58.4%)
 """
 
+import matplotlib
+
+matplotlib.use("Agg")  # Use non-interactive backend for headless environment
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd

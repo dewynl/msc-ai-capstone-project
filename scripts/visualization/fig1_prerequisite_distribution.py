@@ -6,6 +6,9 @@ Shows the distribution of prerequisite accuracy across all successful syllabi.
 Key finding: 70.4% of syllabi have 0% prerequisite accuracy.
 """
 
+import matplotlib
+
+matplotlib.use("Agg")  # Use non-interactive backend for headless environment
 import matplotlib.pyplot as plt
 import pandas as pd
 from config import COLORS, DATA_PATH, OUTPUT_DIR, STYLE
