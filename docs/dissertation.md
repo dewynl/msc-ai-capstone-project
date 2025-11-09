@@ -25,7 +25,11 @@ The work acknowledges significant limitations: CodeT5-small handles only 3-modul
 
 [References](#references)
 
-[Appendix: Research Approach Evolution](#appendix-research-approach-evolution)
+[Appendix A: Research Approach Evolution](#appendix-research-approach-evolution)
+
+[Appendix B: Code Artifacts and Reproducibility](#b-code-artifacts-and-reproducibility)
+
+[List of Appendices](#list-of-appendices)
 
 ---
 
@@ -927,7 +931,7 @@ Module 3: "Data Structures and Algorithms" (intermediate level)
 
 ### 6.2.4 Application Interface and User Experience
 
-The Streamlit web application provides an accessible interface for educators to interact with the syllabus generation system, demonstrating the practical deployment of the research prototype. This section presents the application's user interface and workflow, showcasing how the technical architecture translates into usable educational technology.
+The Streamlit web application provides an accessible interface for educators to interact with the syllabus generation system, demonstrating the practical deployment of the research prototype (implementation details and deployment links in Appendix B). This section presents the application's user interface and workflow, showcasing how the technical architecture translates into usable educational technology.
 
 **Interface Overview and Input Specification**
 
@@ -1723,3 +1727,45 @@ The three failed approaches were not wasted effort—they revealed fundamental i
 - **Function Calling** identified task complexity as the core bottleneck, revealing that architectural sophistication cannot compensate for task-model misalignment
 
 Each failure answered a specific question that guided the research toward a viable solution. This validates that systematic failure analysis is more valuable than premature optimization of the first working approach. The research contribution lies not just in the final architecture, but in the principled journey that led there.
+
+---
+
+## B. Code Artifacts and Reproducibility
+
+The complete implementation—training scripts, evaluation framework, synthetic data generation, and web application—is available in the project repository (see List of Appendices below). Everything needed to reproduce the results, extend the architecture, or deploy your own instance is there.
+
+The repository structure reflects the research journey documented in this dissertation. The `/src/training/` directory contains the CodeT5-small fine-tuning implementation that evolved through seven iterations. The `/scripts/` folder includes the generation pipeline with RAG-enhanced component retrieval and the five-dimensional quality evaluation framework. The `/data/` directory holds the 4,403-component synthetic database spanning Computer Science, Mathematics, Physics, and Engineering domains. Technical documentation lives in `/docs/`, whilst `streamlit_app.py` implements the web interface showcased in Section 6.2.4.
+
+**About the Live Demo**
+
+The Streamlit application (https://educraft.streamlit.app/) was deployed via Community Cloud and accessible at dissertation submission. It demonstrates the system in action—specify a course title, domain, and difficulty level, then watch the RAG retrieval, neural generation, and quality evaluation happen in real-time. Screenshots of the interface appear in Section 6.2.4, but the live version lets you explore different course configurations and see how semantic ranking affects component selection.
+
+Fair warning: hosted demos don't live forever. If the deployment eventually goes offline, the repository includes complete local setup instructions. You'll need Python 3.9+, the dependencies in `requirements.txt`, and about 5GB for the model checkpoint and component database. Everything's documented in the README.
+
+**Reproducing the Results**
+
+The evaluation results in Chapter 6 (100% parseability, 90.6% difficulty progression, 44.8% prerequisite accuracy) come from running the 32-syllabus test set through the generation pipeline. The repository documents exactly how to reproduce these numbers: environment setup, synthetic data generation procedures, the 13-epoch training protocol, evaluation script execution, and quality metric computation. Random seeds are fixed throughout, so you should get identical results (or very close—there's occasional nondeterminism in GPU operations).
+
+The research contribution isn't just the final architecture—it's understanding why the three failed approaches didn't work and how task reformulation solved problems that architectural sophistication couldn't. The code reflects this: you can see the abandoned function calling implementation, the template-based RAG approach, and the progression toward index-based markdown generation. The commits tell the story of systematic discovery.
+
+---
+
+# List of Appendices
+
+This section provides external links to supplementary materials referenced throughout the dissertation.
+
+**Appendix A: Research Approach Evolution**
+*(Included in main dissertation text)*
+Documents the iterative development process from initial failed approaches to the final successful architecture, including technical details of Direct JSON Generation, RAG-Enhanced Template Assembly, Function Calling Architecture, and Index-Based Markdown Generation.
+
+**Appendix B: Code Artifacts and Reproducibility**
+
+- **GitHub Repository**: https://github.com/dewynl/msc-ai-capstone-project
+  - Complete source code, training scripts, evaluation framework
+  - Synthetic component database (4,403 educational components)
+  - Documentation and setup instructions
+
+- **Live Web Application**: https://educraft.streamlit.app/
+  - Interactive syllabus generation interface
+  - Available at time of dissertation submission
+  - Local deployment instructions in repository
