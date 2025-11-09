@@ -48,11 +48,9 @@ A hybrid ML + rule-based system that combines fine-tuned CodeT5-small with seman
 ├── requirements.txt                  # Python dependencies
 ├── docs/                            # Dissertation and documentation
 │   ├── dissertation.md              # Main dissertation document
-│   ├── chapter-6-evaluation.md      # Evaluation chapter
-│   ├── chapter-7-learning-reflection.md
-│   ├── chapter-8-conclusion.md
-│   ├── master-literature-list.md    # References (43 sources)
-│   └── expert-review-form-design.md
+│   ├── master-literature-list.md    # References (67 sources)
+│   ├── figures/                     # Dissertation figures and screenshots
+│   └── planning/                    # Project planning materials
 ├── scripts/                         # Generation pipeline and utilities
 │   ├── generate_syllabus.py         # Main generation pipeline
 │   ├── model_inference.py           # CodeT5 wrapper
@@ -81,79 +79,21 @@ A hybrid ML + rule-based system that combines fine-tuned CodeT5-small with seman
         └── checkpoint-196/          # Final checkpoint
 ```
 
-## Current Status
+## Research Outcomes
 
-### Phase 1: Research and Planning (Weeks 1-8) - ✅ Complete
-- ✅ Comprehensive literature review (neural architectures, educational AI, domain adaptation)
-- ✅ Project proposal and ethical approval
-- ✅ Methodology framework (design science research)
-- ✅ Master literature database with 43 references
+**Technical Achievement**: Hybrid ML + rule-based system achieving 100% parseability across 32 test cases with strong performance in difficulty progression (90.6%) and topic diversity (87.3%). Demonstrates that task simplification—not model scaling—resolves structural generation bottlenecks.
 
-### Phase 2: Data Collection and Preprocessing (Weeks 9-14) - ✅ Complete
-- ✅ Synthetic educational data generation (4,403 components)
-- ✅ Component database implementation (simple JSON-based storage)
-- ✅ Educational framework validation pipeline
-- ✅ Domain coverage: CS, Mathematics, Physics, Engineering
+**Academic Deliverables**: Complete dissertation (14,408 words, 110.8% of target) including research approach evolution documentation and reproducibility artifacts. Full bibliography of 67 sources spanning neural architectures, educational AI, and domain adaptation methods.
 
-### Phase 3: Model Development (Weeks 15-22) - ✅ Complete
-- ✅ Iterative architectural exploration:
-  - Approach 1: Direct T5 JSON generation (systematic failure analysis)
-  - Approach 2: Function calling architecture
-  - Approach 3: RAG-enhanced systems
-  - **Final approach**: Markdown generation with hybrid pipeline
-- ✅ CodeT5-small fine-tuning on 1,300 markdown examples
-- ✅ Semantic ranking with BERT embeddings
-- ✅ Quality validation and prerequisite coherence checking
-- ✅ Streamlit web application deployment
-
-### Phase 4: Evaluation and Refinement (Weeks 23-26) - ✅ Complete
-- ✅ Performance metrics collection and analysis
-- ✅ Comparative analysis across architectural approaches
-- ✅ Technical evaluation completed
-- 🚧 Educational quality expert review (in planning)
-
-### Phase 5: Documentation and Finalization (Weeks 27-30) - 🚧 In Progress
-- ✅ Dissertation: ~15,000 words (115% of 13,000-word target)
-  - ✅ Introduction
-  - ✅ Literature Review
-  - ✅ Ethical Considerations
-  - ✅ Methodology
-  - ✅ Implementation
-  - ✅ Annex A: Architectural Evolution
-  - 🚧 Evaluation chapter (in progress)
-  - 📋 Learning & Reflection chapter
-  - 📋 Conclusion chapter
-- ✅ All technical diagrams created
-- 📋 Final presentation preparation
-
-## Implementation Highlights
-
-**Markdown Generation Architecture Components:**
-- `SyllabusGenerator` (CodeT5-small): Direct markdown generation from course requirements
-- `SemanticRanker`: BERT-based component ranking by semantic similarity
-- `MarkdownSyllabusParser`: Structured JSON extraction from generated markdown
-- `ObjectiveEnhancer`: Bloom's Taxonomy-based learning objective enhancement
-- `SyllabusQualityReranker`: Prerequisite coherence validation
-
-**Key Files:**
-- `scripts/generate_syllabus.py`: Complete generation pipeline (filter → rank → generate → parse → enhance)
-- `scripts/model_inference.py`: CodeT5 inference wrapper
-- `scripts/semantic_ranker.py`: Component ranking with pedagogical boosting
-- `src/inference/quality_reranker.py`: Quality-based candidate selection
-
-## Progress Summary
-
-**Technical Achievement**: Successfully developed hybrid ML + rule-based system combining CodeT5-small fine-tuned model with semantic ranking and quality validation for reliable syllabus generation.
-
-**Academic Progress**: Dissertation writing substantially complete (115% of word count target), with core technical chapters finished and evaluation/conclusion chapters remaining.
-
-**Research Contribution**: Demonstrated that combining small fine-tuned models with intelligent filtering, semantic ranking, and quality validation achieves reliable educational content generation.
-
-**Next Priority**: Complete evaluation chapter documenting technical performance and educational quality assessment.
+**Research Contribution**: Empirical validation that constrained output spaces enable smaller models (60M parameters) to achieve reliability through appropriate task formulation rather than parameter scaling. Five-dimensional pedagogical quality framework successfully distinguishes soft constraints learnable through training from hard constraints requiring explicit algorithmic enforcement.
 
 ## Quick Start
 
-### Running the Web Application
+**Try the Live Demo**: https://educraft.streamlit.app/
+
+The system is deployed and accessible for interactive testing. Specify course requirements and watch real-time syllabus generation with quality metrics.
+
+### Running the Web Application Locally
 
 ```bash
 # Install dependencies
@@ -181,117 +121,55 @@ python scripts/generate_syllabus.py \
   --description "Advanced neural networks using PyTorch"
 ```
 
-### Training the Model
+### Reproducing Results
 
 ```bash
-# Generate training data
-python scripts/generate_sequenced_training_data.py
-
-# Train CodeT5 model (requires GPU)
-python scripts/train_sequenced_codet5.py
-```
-
-## Development Setup
-
-### Prerequisites
-- Python 3.10+
-- CUDA-capable GPU (recommended for training)
-- 10GB+ disk space for model checkpoints
-
-### Installation
-
-**Quick Development Setup:**
-```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/dewynl/msc-ai-capstone-project.git
 cd msc-ai-capstone-project
 
-# Complete development environment setup
-make setup
-```
-
-**Manual Setup:**
-```bash
-# Create virtual environment
+# Setup environment (tested on WSL2 Ubuntu)
 python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+source .venv/bin/activate
+pip install -r requirements.txt
 
-# Install in development mode with all dependencies
-pip install -e ".[dev,jupyter]"
+# Run evaluation on 32-test-set (requires trained model)
+python scripts/evaluate_trained_model.py
 
-# Install pre-commit hooks
-pre-commit install
+# Generate training data (optional - data included in repo)
+python scripts/generate_sequenced_training_data.py
+
+# Train model from scratch (GPU optional but accelerates training)
+python scripts/train_sequenced_codet5.py
 ```
 
-### Development Workflow
-
-```bash
-# Format code
-make format
-
-# Run linting checks
-make lint
-
-# Run tests with coverage
-make test
-
-# Clean cache files
-make clean
-```
-
-## Development Tools
-
-**Code Quality:**
-- Black - Code formatting
-- Ruff - Fast Python linting
-- MyPy - Static type checking
-- pre-commit - Git hooks for code quality
-
-**Testing & Development:**
-- pytest - Testing framework
-- Jupyter Lab - Interactive development and documentation
-- Make - Development automation
+**Prerequisites**: Python 3.10+, 10GB disk space
 
 ## Documentation
 
-- **Project Proposal**: [docs/course-materials/](docs/course-materials/)
-- **Literature Review**: [docs/literature-review/](docs/literature-review/)
-- **Progress Reports**: [docs/progress/](docs/progress/)
-
-## Contributing
-
-This project uses modern Python development practices:
-
-1. **Code Quality**: All code is automatically formatted with Black and linted with Ruff
-2. **Type Checking**: MyPy ensures type safety
-3. **Testing**: pytest for comprehensive testing
-4. **Pre-commit Hooks**: Automatic quality checks before commits
-
-To contribute:
-```bash
-# Setup development environment
-make setup
-
-# Make your changes, then run quality checks
-make format
-make lint
-make test
-```
+- **Dissertation**: [docs/dissertation.md](docs/dissertation.md) - Complete MSc dissertation (14,408 words)
+- **Master Literature List**: [docs/master-literature-list.md](docs/master-literature-list.md) - Full bibliography (67 sources)
+- **Live Demo**: [https://educraft.streamlit.app/](https://educraft.streamlit.app/)
+- **Source Repository**: [https://github.com/dewynl/msc-ai-capstone-project](https://github.com/dewynl/msc-ai-capstone-project)
 
 ## Model Performance
 
 **Production Model**: CodeT5-small fine-tuned (codet5-sequenced/checkpoint-196)
-- **Training**: 1,300 examples, 15 epochs, early stopping at epoch 14
+- **Training**: 1,300 examples, 13 epochs with early stopping
 - **Parameters**: 60M (CodeT5-small)
-- **Architecture**: Markdown generation with semantic ranking pipeline
+- **Architecture**: Markdown generation with RAG-enhanced semantic ranking
 - **Output**: Structured JSON syllabi with educational component expansion
-- **Validation**: Prerequisite coherence checking and Bloom's Taxonomy enhancement
+- **Validation**: Five-dimensional pedagogical quality framework
 
-**Key Metrics**:
-- Structural validity: High (validated through markdown parsing)
-- Component selection: Pedagogically appropriate (semantic ranking)
-- Generation time: ~2-3 seconds per syllabus
-- Model size: 3.4GB (5 checkpoints preserved)
+**Evaluation Results** (32-syllabus test set across CS, Math, Physics):
+- **Parseability**: 100% (32/32 syllabi structurally valid)
+- **Difficulty Progression**: 90.6% ± 20.3% (81% achieve perfect progression)
+- **Topic Diversity**: 87.3% ± 16.7% (59% achieve ≥90% diversity)
+- **Prerequisite Accuracy**: 44.8% ± 46.0% (primary architectural limitation)
+- **Bloom's Taxonomy Coverage**: 37.5% ± 17.8%
+- **Semantic Relevance**: 40.0% ± 5.3% (MPNet cosine similarity)
+- **Generation Time**: ~5 seconds per complete syllabus
+- **Model Size**: 3.4GB (final checkpoint + tokenizer)
 
 ## Contact
 
