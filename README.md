@@ -27,7 +27,7 @@ A hybrid ML + rule-based system that combines fine-tuned CodeT5-small with seman
 **Training Data:**
 - 1,300 sequenced training examples (markdown format)
 - 4,403 educational components (modules, activities, assessments)
-- Covers Computer Science, Mathematics, Physics, and Engineering domains
+- Covers Computer Science (59.5%), Mathematics (35.5%), Physics (5.1%)
 - Component database enables RAG-style retrieval without vector stores
 
 ### Key Innovation

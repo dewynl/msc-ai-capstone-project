@@ -146,7 +146,7 @@ I'll be direct about three categories of limitations:
 
 **Data Limitations**
 - **Synthetic training data:** All 1,300 training examples are synthetically generated using Claude (Anthropic's large language model). This approach addressed institutional data access restrictions and GDPR requirements, but synthetic data may not capture the full diversity of real syllabi—unconventional pedagogical approaches, institutional variations, or edge cases that exist in authentic educational materials.
-- **STEM focus:** Training data covers Computer Science (42%), Mathematics (31%), Physics (18%), and Engineering (9%), with no humanities, social sciences, or business content. Cross-disciplinary generalization remains unvalidated.
+- **STEM focus:** Training data covers Computer Science (59.5%), Mathematics (35.5%), and Physics (5.1%), with no humanities, social sciences, or business content. Cross-disciplinary generalization remains unvalidated.
 
 **Evaluation Limitations**
 - **No human evaluation:** Assessment uses automated rule-based metrics rather than expert educator review. Whilst prerequisite violations are objectively measurable, subtler quality dimensions—clarity, engagement, appropriateness—require human judgment.
@@ -344,7 +344,7 @@ The trade-off: synthetic data may not capture the full diversity of real educati
 
 Educational AI carries particular responsibility for fairness—biased content generation could perpetuate educational inequalities. This research addresses bias through several mechanisms:
 
-**Domain Coverage:** Training data covers Computer Science (42%), Mathematics (31%), Physics (18%), and Engineering (9%). This STEM focus is deliberate but limits generalization. The system hasn't been trained on humanities, social sciences, or business content, so it shouldn't be deployed there without additional work. This is a limitation, not a hidden bias—it's explicitly stated in scope.
+**Domain Coverage:** Training data covers Computer Science (59.5%), Mathematics (35.5%), and Physics (5.1%). This STEM focus is deliberate but limits generalization. The system hasn't been trained on humanities, social sciences, or business content, so it shouldn't be deployed there without additional work. This is a limitation, not a hidden bias—it's explicitly stated in scope.
 
 **Difficulty Distribution:** Synthetic components span beginner (38%), intermediate (35%), advanced (22%), and postgraduate (5%). This distribution roughly matches real undergraduate/postgraduate course ratios, avoiding over-representation of any single difficulty level.
 
@@ -454,7 +454,7 @@ Synthetic component generation employed Claude with carefully designed prompts s
 
 Quality assurance procedures validated component coherence, prerequisite relationship validity, and metadata completeness. Each generated component underwent automated validation checking: (1) prerequisite links reference existing components, (2) difficulty levels align with prerequisite complexity, (3) learning objectives specify appropriate Bloom's taxonomy levels, and (4) key concepts reflect domain-appropriate terminology.
 
-The final database comprises 4,403 educational components: 2,156 modules (learning content units), 1,418 activities (hands-on exercises), and 829 assessments (evaluation instruments). Component distribution covers Computer Science (42%), Mathematics (31%), Physics (18%), and Engineering (9%), with difficulty distribution spanning beginner (38%), intermediate (35%), advanced (22%), and postgraduate (5%) levels.
+The final database comprises 4,403 educational components: 2,156 modules (learning content units), 1,418 activities (hands-on exercises), and 829 assessments (evaluation instruments). Component distribution covers Computer Science (59.5%), Mathematics (35.5%), and Physics (5.1%), with difficulty distribution spanning beginner (38%), intermediate (35%), advanced (22%), and postgraduate (5%) levels.
 
 **Training Data Generation:**
 
@@ -498,7 +498,7 @@ This methodology has several acknowledged limitations:
 
 **No Human Evaluation:** Relying on automated metrics rather than expert educator review means subtler quality dimensions—clarity, engagement, appropriateness—remain unassessed. This is a practical limitation, not an ideal choice.
 
-**STEM-Only Scope:** Focusing exclusively on STEM domains (CS, Math, Physics, Engineering) limits generalizability claims. The architectural principles may transfer to humanities, but this remains unvalidated.
+**STEM-Only Scope:** Focusing exclusively on STEM domains (CS, Math, Physics) limits generalizability claims. The architectural principles may transfer to humanities, but this remains unvalidated.
 
 These limitations don't invalidate the research—they define its scope and suggest directions for future work. Chapter 8 discusses how future research with greater resources could address these constraints.
 
@@ -534,7 +534,7 @@ Training comprised 1,300 synthetic examples with prerequisite-aware module seque
 
 ### 5.1.5 Synthetic Educational Data Generation
 
-Generating 1,300 training examples with Claude required systematic prompting across Computer Science, Mathematics, Physics, and Engineering domains. The generation system employed 16 STEM subjects, 12 learning outcomes aligned with Bloom's taxonomy (Anderson et al., 2001), and 8 assessment types.
+Generating 1,300 training examples with Claude required systematic prompting across Computer Science, Mathematics, and Physics domains. The generation system employed 16 STEM subjects, 12 learning outcomes aligned with Bloom's taxonomy (Anderson et al., 2001), and 8 assessment types.
 
 The critical challenge was prerequisite relationships—components needed to reference other components by UUID, forming a valid prerequisite graph. This required multi-pass generation: first create modules, then generate activities/assessments referencing valid module UUIDs, ensuring no circular dependencies. Training examples demonstrate valid topological sequencing, teaching the model pedagogically appropriate ordering whilst maintaining complete privacy protection.
 
@@ -548,11 +548,11 @@ CodeT5-small (Wang et al., 2021) was selected for its specialization in structur
 
 Training data implements component-indexed format where inputs present educational components as numbered lists, outputs generate structured markdown with index-based references (e.g., [0], [1], [2]). Full input/output examples are provided in the Appendix.
 
-Training examples incorporate valid topological ordering respecting prerequisite relationships across 960 modules, teaching the model pedagogically appropriate progression. The 1,300 synthetic examples span Computer Science (40%), Mathematics (30%), Physics (20%), Engineering (10%), with balanced difficulty distribution and 2-5 modules per syllabus averaging 781 characters output length.
+Training examples incorporate valid topological ordering respecting prerequisite relationships across 960 modules, teaching the model pedagogically appropriate progression. The 1,300 synthetic examples span Computer Science (60%), Mathematics (30%), and Physics (10%), with balanced difficulty distribution and 2-5 modules per syllabus averaging 781 characters output length.
 
 ### 5.2.3 Training Procedure
 
-Standard seq2seq fine-tuning employed 15 epochs with learning rate 5e-5, batch size 8, and AdamW optimizer. Training completed in 1.3 hours on single NVIDIA RTX 3060 (12GB VRAM), achieving best performance at checkpoint-196 (validation loss 1.4677).
+Standard seq2seq fine-tuning employed 15 epochs with learning rate 5e-5, batch size 8, and AdamW optimizer. Training converged after 13 epochs, achieving best performance at checkpoint-196 (validation loss 1.4677).
 
 Cross-domain validation (20% data split, 260 examples) with stratified sampling ensured generalization. Early stopping based on validation loss prevented overfitting.
 
@@ -750,7 +750,7 @@ The end-to-end syllabus generation pipeline integrates all components in a seven
 
 The production pipeline implements defensive error handling across all stages:
 
-**RAG Filtering Failures:** When domain filtering yields <10 modules (e.g., limited Physics database with 12 total modules), the system expands retrieval to related domains (Physics courses retrieve Mathematics + Engineering modules, maintaining educational relevance whilst ensuring adequate component selection diversity).
+**RAG Filtering Failures:** When domain filtering yields <10 modules (e.g., limited Physics database with 49 total modules), the system expands retrieval to related domains (Physics courses retrieve Mathematics modules, maintaining educational relevance whilst ensuring adequate component selection diversity).
 
 **Index Out-of-Range:** Model occasionally generates invalid indices ([25] when only 20 modules available). Parser validates indices against component list length, discarding invalid references with warning logs. Fallback: if >50% indices invalid, reject candidate and select next-best from generate-and-rerank pool.
 
@@ -860,7 +860,7 @@ The evaluation framework implements a three-tier assessment approach measuring t
 - **Diverse course topics**: From "Introduction to Programming" to "Quantum Field Theory"
 - **Variable complexity**: Course descriptions ranging from 50 to 500+ words
 
-The evaluation excluded 8 test cases from Engineering and Interdisciplinary domains due to absence of training data, reporting **100% success rate on supported domains**. This design decision reflects the principle that reliable refusal is preferable to generating invalid content for out-of-scope requests.
+The evaluation focused on the three trained domains (Computer Science, Mathematics, Physics), reporting **100% success rate on supported domains**. This design decision reflects the principle that reliable refusal is preferable to generating invalid content for out-of-scope requests.
 
 **Pedagogical Quality Metrics:**
 
@@ -1142,7 +1142,7 @@ This limitation represents the biggest gap between what the system demonstrates 
 
 4. **Expert Educator Involvement**: The evaluation focused on automated pedagogical metrics (Section 6.1) but omitted educator feedback. Incorporating formative user testing with 3-5 educators during development would have surfaced usability concerns and pedagogical quality issues earlier, potentially identifying the prerequisite accuracy limitation before comprehensive evaluation.
 
-5. **Cross-Domain Training Data**: The system's limitation to Computer Science, Mathematics, and Physics (Section 6.4) reflects training data constraints. Earlier investment in Engineering and Interdisciplinary components would have demonstrated broader applicability and validated cross-domain generalization more convincingly.
+5. **Cross-Domain Training Data**: The system's limitation to Computer Science, Mathematics, and Physics (Section 6.4) reflects training data constraints. Earlier investment in additional STEM domains or humanities content would have demonstrated broader applicability and validated cross-domain generalization more convincingly.
 
 6. **Model Capacity Validation**: The most critical missing experiment is comparative evaluation with CodeT5-base (220M parameters). The dissertation's central thesis—that task formulation supersedes architectural sophistication—rests on CodeT5-small's 100% success with index-based selection after 0% success with UUID generation. However, no validation confirms whether this pattern holds with larger models. Testing CodeT5-base with the original UUID generation approach (function calling from Section 5.1.2) would definitively answer: does task simplification enable smaller models to achieve what larger models cannot, or does it optimize what larger models could accomplish less efficiently?
 
@@ -1362,7 +1362,7 @@ A comprehensive database of 4,403 pre-validated educational components (modules,
 
 **2. Domain-Aware RAG Retrieval Pipeline**
 Given user requirements (course title, domain, level, duration), the system performed multi-stage retrieval:
-- **Stage 1: Domain Filtering** - Constrain to target domain + related fields (e.g., CS courses retrieve from CS, Mathematics, Engineering)
+- **Stage 1: Domain Filtering** - Constrain to target domain + related fields (e.g., CS courses retrieve from CS and Mathematics)
 - **Stage 2: Difficulty Filtering** - Match component difficulty to course level (beginner courses → beginner components)
 - **Stage 3: Semantic Ranking** - Compute cosine similarity between course requirements and component embeddings
 - **Stage 4: Top-K Selection** - Retrieve 8-12 highest-scoring components
@@ -1734,7 +1734,7 @@ Each failure answered a specific question that guided the research toward a viab
 
 The complete implementation—training scripts, evaluation framework, synthetic data generation, and web application—is available in the project repository (see List of Appendices below). Everything needed to reproduce the results, extend the architecture, or deploy your own instance is there.
 
-The repository structure reflects the research journey documented in this dissertation. The `/src/training/` directory contains the CodeT5-small fine-tuning implementation that evolved through seven iterations. The `/scripts/` folder includes the generation pipeline with RAG-enhanced component retrieval and the five-dimensional quality evaluation framework. The `/data/` directory holds the 4,403-component synthetic database spanning Computer Science, Mathematics, Physics, and Engineering domains. Technical documentation lives in `/docs/`, whilst `streamlit_app.py` implements the web interface showcased in Section 6.2.4.
+The repository structure reflects the research journey documented in this dissertation. The `/src/training/` directory contains the CodeT5-small fine-tuning implementation that evolved through seven iterations. The `/scripts/` folder includes the generation pipeline with RAG-enhanced component retrieval and the five-dimensional quality evaluation framework. The `/data/` directory holds the 4,403-component synthetic database spanning Computer Science, Mathematics, and Physics domains. Technical documentation lives in `/docs/`, whilst `streamlit_app.py` implements the web interface showcased in Section 6.2.4.
 
 **About the Live Demo**
 
