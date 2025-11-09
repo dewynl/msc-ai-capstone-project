@@ -1,5 +1,34 @@
 # MSc AI Dissertation
 
+## Abstract
+
+Creating high-quality course syllabi requires substantial time investment—typically 15-40 hours per course—combining domain expertise with pedagogical knowledge. This research investigates whether neural language models can reliably generate structured educational content whilst maintaining pedagogical soundness, addressing the fundamental tension between semantic intelligence and syntactic precision in AI-generated curricula.
+
+Through Design Science Research methodology spanning seven architectural iterations, this work demonstrates that task simplification—not model scaling—resolves structural generation bottlenecks. The final architecture employs CodeT5-small (60M parameters) generating structured markdown with index-based component selection rather than attempting direct identifier generation from 960-component databases. This reformulation achieved 100% parseable outputs across 32 test cases spanning Computer Science, Mathematics, and Physics domains, where previous function calling approaches failed completely (0% success rate).
+
+The research develops a five-dimensional pedagogical quality evaluation framework measuring prerequisite coherence, semantic relevance, difficulty progression, topic diversity, and Bloom's taxonomy coverage. Evaluation reveals distinct performance patterns: naturally emergent strengths in topic diversity (87.3%) and difficulty progression (90.6%), contrasted with persistent challenges in prerequisite sequencing (44.8% accuracy, with 50% of syllabi exhibiting zero prerequisite coherence). This framework successfully distinguishes soft constraints learnable through training from hard constraints requiring explicit algorithmic enforcement.
+
+Key contributions include: (1) empirical validation that constrained output spaces enable smaller models to achieve reliability through appropriate task formulation rather than parameter scaling, (2) a measurable pedagogical quality framework identifying specific architectural enhancement targets, and (3) transparent documentation of systematic failures demonstrating that understanding why approaches fail provides equivalent research value to successful solutions.
+
+The work acknowledges significant limitations: CodeT5-small handles only 3-module syllabi (~30% of typical course scope), automated evaluation lacks expert educator validation, synthetic training data may not capture full pedagogical diversity, and prerequisite sequencing requires architectural enhancement through constraint-based generation or graph neural networks. Future directions include topological sorting for prerequisite enforcement, model scaling to CodeT5-base for production-length syllabi, and human evaluation protocols validating automated quality metrics.
+
+## Table of Contents
+
+1. [Introduction](#1-introduction)
+2. [Background (Critical Review of Literature)](#2-background-critical-review-of-literature)
+3. [Ethical and Professional Considerations](#3-ethical-and-professional-considerations)
+4. [Methodology](#4-methodology)
+5. [Implementation](#5-implementation)
+6. [Evaluation](#6-evaluation)
+7. [Learning and Reflection](#7-learning-and-reflection)
+8. [Conclusion](#8-conclusion)
+
+[References](#references)
+
+[Appendix: Research Approach Evolution](#appendix-research-approach-evolution)
+
+---
+
 # 1. Introduction
 
 ## 1.1 Research Problem Statement
@@ -509,17 +538,17 @@ The critical challenge was prerequisite relationships—components needed to ref
 
 ### 5.2.1 Model Architecture and Selection
 
-CodeT5-small (Wang et al., 2021) was selected for its specialization in structured text generation. The 60M-parameter model provides inherent advantages through pre-training on code and markdown documentation (8.35M functions from CodeSearchNet). This pre-training on structured formats enables direct transferability to syllabus generation requiring strict structural conventions. Empirical validation confirmed 100% parseable outputs on markdown generation (Section A.9).
+CodeT5-small (Wang et al., 2021) was selected for its specialization in structured text generation. The 60M-parameter model provides inherent advantages through pre-training on code and markdown documentation (8.35M functions from CodeSearchNet). This pre-training on structured formats enables direct transferability to syllabus generation requiring strict structural conventions. Empirical validation confirmed 100% parseable outputs on markdown generation (Section 6.2.1).
 
 ### 5.2.2 Training Data Design
 
-Training data implements component-indexed format where inputs present educational components as numbered lists, outputs generate structured markdown with index-based references (e.g., [0], [1], [2]). Full input/output examples are provided in Appendix D.
+Training data implements component-indexed format where inputs present educational components as numbered lists, outputs generate structured markdown with index-based references (e.g., [0], [1], [2]). Full input/output examples are provided in the Appendix.
 
 Training examples incorporate valid topological ordering respecting prerequisite relationships across 960 modules, teaching the model pedagogically appropriate progression. The 1,300 synthetic examples span Computer Science (40%), Mathematics (30%), Physics (20%), Engineering (10%), with balanced difficulty distribution and 2-5 modules per syllabus averaging 781 characters output length.
 
 ### 5.2.3 Training Procedure
 
-Standard seq2seq fine-tuning employed 15 epochs with learning rate 5e-5, batch size 8, and AdamW optimizer (full hyperparameters in Appendix D, Table D.1). Training completed in 1.3 hours on single NVIDIA RTX 3060 (12GB VRAM), achieving best performance at checkpoint-196 (validation loss 1.4677).
+Standard seq2seq fine-tuning employed 15 epochs with learning rate 5e-5, batch size 8, and AdamW optimizer. Training completed in 1.3 hours on single NVIDIA RTX 3060 (12GB VRAM), achieving best performance at checkpoint-196 (validation loss 1.4677).
 
 Cross-domain validation (20% data split, 260 examples) with stratified sampling ensured generalization. Early stopping based on validation loss prevented overfitting.
 
@@ -550,7 +579,7 @@ This two-stage filtering (domain + difficulty) reduces retrieval corpus by 60-80
 
 ### 5.3.3 Semantic Ranking with Sentence Transformers
 
-Filtered components undergo semantic ranking using sentence-transformers/all-MiniLM-L6-v2 (Reimers & Gurevych, 2019), a lightweight 22M-parameter embedding model. Course requirements are encoded to 384-dimensional vectors, similarity computed via cosine distance with component embeddings, and top-K components selected (20 modules, 15 activities, 5 assessments with highest scores). This constrains generation complexity for CodeT5-small capacity whilst maintaining adequate diversity.
+Filtered components undergo semantic ranking using sentence-transformers/all-mpnet-base-v2 (Reimers & Gurevych, 2019), a 420M-parameter embedding model generating 768-dimensional semantic vectors. MPNet-base was selected over the lighter all-MiniLM-L6-v2 (22M parameters, 384 dimensions) for superior contextual understanding, improving topical alignment between course requirements and component selection. Course requirements are encoded to 768-dimensional vectors, similarity computed via cosine distance with component embeddings, and top-K components selected (20 modules, 15 activities, 5 assessments with highest scores). This constrains generation complexity for CodeT5-small capacity whilst maintaining adequate diversity.
 
 ### 5.3.4 Pedagogical Boosting for Beginner Courses
 
@@ -802,7 +831,7 @@ generate(
 - **Production Constraint (Limitation):** Insufficient scope for real-world course deployment
 - **Scaling Required (Limitation):** Larger model (T5-base 220M) necessary for complete syllabi
 
-**Recommended Future Work (Section A.9.6):**
+**Recommended Future Work:**
 1. Scale to T5-base (220M parameters) → Expected support for 8-10 modules
 2. Hierarchical generation (outline first, then expand) → Sidestep context limits
 3. Training data redesign → Teach subset selection (currently selects 100% of offered components)
@@ -895,6 +924,36 @@ Module 3: "Data Structures and Algorithms" (intermediate level)
 **Conceptual Coverage Analysis**: Typical syllabi include 3-5 modules with 5 key concepts each (15-25 total concepts). The stem-based uniqueness analysis reveals high unique concept stems across most syllabi, indicating minimal repetition. For example, a Computer Science syllabus covering "Introduction to Machine Learning" selected modules spanning neural networks, data preprocessing, model evaluation, optimization algorithms, and deployment—demonstrating breadth rather than redundant depth in single topics.
 
 **Key Insight**: The evaluation framework successfully identifies that output parseability (100%), difficulty progression (90.6%), and topic diversity (87.3%) demonstrate strong performance from the hybrid RAG+neural architecture, while prerequisite sequencing (44.8%) remains the critical limitation requiring architectural enhancement through topological sorting or graph neural network integration. This demonstrates the framework's capability to distinguish between naturally emergent quality dimensions (diversity from semantic ranking) and trained strengths (difficulty progression from implicit encoding + RAG filtering) versus persistent constraints (prerequisite ordering) that necessitate explicit graph-based enforcement mechanisms.
+
+### 6.2.4 Application Interface and User Experience
+
+The Streamlit web application provides an accessible interface for educators to interact with the syllabus generation system, demonstrating the practical deployment of the research prototype. This section presents the application's user interface and workflow, showcasing how the technical architecture translates into usable educational technology.
+
+**Interface Overview and Input Specification**
+
+Figure 5 presents the main application interface, showing the course specification form where educators input their requirements. The form captures essential parameters including course title, domain classification (Computer Science, Mathematics, Physics), difficulty level (Beginner through Postgraduate), and course duration. The interface design prioritizes simplicity—educators can generate a complete syllabus with just these four fields, whilst the underlying system handles the complex RAG retrieval, neural generation, and pedagogical quality evaluation automatically.
+
+![Figure 5: Streamlit Application Interface](figures/fig5_streamlit_interface.png)
+
+**Figure 5: Streamlit Application Interface - Course Specification Form**
+
+The clean, form-based design reflects a deliberate choice to minimize cognitive load during specification. Rather than requiring educators to manually select components or define prerequisite relationships, the system infers these from domain knowledge and difficulty specifications. This represents a key usability principle: abstract away technical complexity whilst maintaining pedagogical control through high-level parameters.
+
+**Generated Output Display**
+
+Figure 6 shows the application's output interface displaying the generated syllabus in structured JSON format alongside quality metrics. The JSON output provides complete component details including learning objectives, key concepts, prerequisite relationships, and assessment specifications. This structured format enables both human review and programmatic processing, supporting integration with institutional learning management systems or database storage.
+
+![Figure 6: Generated Syllabus Output Display](figures/fig6_output_display.png)
+
+**Figure 6: Generated Syllabus JSON Output with Quality Metrics**
+
+The JSON presentation serves multiple purposes: immediate inspection of generated content structure, validation of component selection accuracy, and export capability for downstream systems. Displaying the full structured output enables educators to evaluate both content quality and technical correctness—transparency that builds trust in AI-generated educational content.
+
+**Generation Performance and Usability**
+
+The application maintains session state to support iterative refinement—educators can generate multiple syllabi with varying parameters and compare outputs side-by-side. Average generation latency remains under 5 seconds from specification submission to complete enhanced output, enabling rapid exploration of different course configurations. This performance enables realistic workflows where educators generate 3-5 variations, review quality metrics, select the best candidate, and manually refine specific components before final approval.
+
+The Streamlit deployment demonstrates that the research prototype transitions effectively from technical validation (Chapter 5) to practical usability. The interface abstracts complex neural generation and pedagogical evaluation into an accessible workflow, whilst maintaining transparency about quality assessment and system limitations. This bridges the gap between research contribution and potential educational impact—showing not just that the system works technically, but that it can support real educator workflows.
 
 ## 6.3 Balanced Performance Across Quality Dimensions
 
@@ -1081,6 +1140,12 @@ This limitation represents the biggest gap between what the system demonstrates 
 
 5. **Cross-Domain Training Data**: The system's limitation to Computer Science, Mathematics, and Physics (Section 6.4) reflects training data constraints. Earlier investment in Engineering and Interdisciplinary components would have demonstrated broader applicability and validated cross-domain generalization more convincingly.
 
+6. **Model Capacity Validation**: The most critical missing experiment is comparative evaluation with CodeT5-base (220M parameters). The dissertation's central thesis—that task formulation supersedes architectural sophistication—rests on CodeT5-small's 100% success with index-based selection after 0% success with UUID generation. However, no validation confirms whether this pattern holds with larger models. Testing CodeT5-base with the original UUID generation approach (function calling from Section 5.1.2) would definitively answer: does task simplification enable smaller models to achieve what larger models cannot, or does it optimize what larger models could accomplish less efficiently?
+
+If CodeT5-base achieves 0% success with UUIDs (matching CodeT5-small's failure), this validates task formulation as a fundamental bottleneck—confirming that the contribution represents an architectural necessity applicable regardless of model capacity. If base model succeeds at 80%+ with UUIDs, this reveals the contribution as resource optimization: enabling 60M parameter models to achieve capabilities typically requiring 220M+ parameters, valuable for deployment in resource-constrained educational settings but not architecturally essential. If base model achieves intermediate success (40-60%), this suggests task simplification reduces required model capacity by approximately 4× whilst improving reliability.
+
+A complementary experiment analyzing 10-15 human-created syllabi would contextualize the 44.8% prerequisite accuracy finding. If experienced educators achieve 95%+ prerequisite coherence, this confirms topological sorting as critical for production deployment. If educators achieve 65-75% (comparable to the system), this suggests prerequisite sequencing challenges humans and AI alike, making the current performance a reasonable foundation for iterative refinement rather than a fundamental limitation. Both experiments would require approximately 2-3 additional weeks but would transform acknowledged limitations into validated scope boundaries, clearly distinguishing proof-of-concept constraints from fundamental architectural gaps.
+
 ## 7.3 Contribution and Educational Insights
 
 The primary methodological contribution demonstrates **task formulation's primacy over architectural sophistication**. Index-based selection shows how cognitive complexity reduction enables small models (60M parameters) to achieve reliable structured generation—generalizable to other component assembly tasks (scientific protocols, legal documents, configurations).
@@ -1097,7 +1162,7 @@ This research addressed how neural language models can reliably produce structur
 
 CodeT5-small generates structured markdown with index-based references ([0], [1], [2]) to RAG-retrieved components, reducing cognitive complexity from UUID generation (960 identifiers) whilst preserving capability. Evaluation across Computer Science, Mathematics, and Physics validated this approach (100% parseable outputs, 2.1 second generation) whilst systematically identifying pedagogical constraint challenges requiring architectural enhancement (48% prerequisite accuracy, 60% difficulty progression, Section 6.2).
 
-## Primary Contributions
+## 8.1 Primary Contributions
 
 **1. Task Formulation Innovation:** Demonstrates strategic task simplification resolves bottlenecks beyond architectural sophistication. Index-based selection achieves reliability by reducing cognitive load, enabling CodeT5-small (60M parameters) to achieve 100% validity where function calling failed (0% pass rate, Section 5.1.2).
 
@@ -1105,13 +1170,13 @@ CodeT5-small generates structured markdown with index-based references ([0], [1]
 
 **3. Empirical Validation:** Quantifies cross-domain generalization (100% success: CS 15/15, Math 10/10, Physics 7/7), confirming domain-specific content (RAG database) separates from domain-agnostic patterns (CodeT5), enabling broader applicability to component assembly tasks.
 
-## Limitations and Future Work
+## 8.2 Limitations and Future Work
 
 **Key Limitations:** (1) automated assessment without educator review limits subtle quality evaluation, (2) STEM focus (CS/Math/Physics) leaves cross-disciplinary generalization unvalidated, (3) synthetic test cases may introduce idealized assumptions, (4) pedagogical constraint challenges—prerequisite sequencing (48% accuracy, 50% zero-coherence) and difficulty progression (60% accuracy, 37% with regressions)—require constraint-based generation enhancement through topological sorting or reinforcement learning approaches (Section 6.2.2, 6.2.3), and (5) single-model testing (CodeT5-small only) limits parameter scaling insights.
 
-**Future Directions:** Short-term: constraint-based generation for pedagogical sequencing (topological sorting for prerequisites, difficulty-aware ranking for progression—expected 80-90% improvement), educator review protocols validating automated metrics, cross-domain training expansion beyond STEM. Medium-term: graph neural networks encoding prerequisite dependencies, reinforcement learning with pedagogical reward functions optimizing difficulty progression, multi-modal content integration. Long-term: institutional deployment studies measuring educator workload reduction and learning outcomes, learning analytics integration, IEEE LOM/LTI standards compliance.
+**Future Directions:** Short-term: constraint-based generation for pedagogical sequencing (topological sorting for prerequisites to address the 50% zero-coherence rate identified in Section 6.2.2, difficulty-aware ranking for progression targeting the 37% regression rate in Section 6.2.3), educator review protocols validating automated metrics, cross-domain training expansion beyond STEM. Medium-term: graph neural networks encoding prerequisite dependencies, reinforcement learning with pedagogical reward functions optimizing difficulty progression, multi-modal content integration. Long-term: institutional deployment studies measuring educator workload reduction and learning outcomes, learning analytics integration, IEEE LOM/LTI standards compliance.
 
-## Final Reflection
+## 8.3 Final Reflection
 
 The evolution from function calling failure (0%) to markdown generation success (100%) demonstrates **task formulation's primacy over model sophistication**. CodeT5-small succeeded through task simplification (UUID → index selection), not parameter scaling. This principle extends beyond syllabi to any structured generation requiring database interaction—code synthesis, document generation, configuration creation. AI-assisted education's future lies in thoughtfully formulating tasks aligning with model capabilities whilst maintaining institutional reliability requirements. This research demonstrates neural models can reliably generate structured educational artifacts when task design eliminates unnecessary cognitive complexity, enabling both educational precision and neural adaptability.
 
@@ -1193,7 +1258,7 @@ Zou, L., Chen, X. and Wang, Y. (2023). Natural language processing applications 
 
 This appendix documents the iterative research journey from initial failures to the final successful architecture. Unlike traditional technical appendices that merely list implementation details, this section tells the story of systematic discovery—how each failed approach revealed fundamental insights about neural generation, task complexity, and the delicate balance between architectural sophistication and practical effectiveness. The journey demonstrates that research value lies not just in final solutions, but in understanding *why* certain approaches fail and *how* those failures inform better designs.
 
-## A.1 Approach 1: Direct JSON Generation
+## A.1 Approach 1: Direct JSON Generation (Failed)
 
 ### Initial Hypothesis and Motivation
 
@@ -1276,7 +1341,7 @@ Further analysis through attention visualizations showed the model attended stro
 
 Direct generation proved fundamentally incompatible with production reliability requirements. Even if 80% of outputs were valid (they weren't), deploying a system with 20% catastrophic failure rate is unacceptable in educational contexts where invalid output provides no value. This failure prompted investigation of alternative architectures that could separate content generation from structural enforcement—leading directly to the RAG template approach.
 
-## A.2 Approach 2: RAG-Enhanced Template Assembly
+## A.2 Approach 2: RAG-Enhanced Template Assembly (Failed - Neural Underutilization)
 
 ### Architectural Pivot and Design Rationale
 
@@ -1289,7 +1354,7 @@ This architectural decision drew from contemporary RAG research (Lewis et al., 2
 The implementation comprised three interconnected subsystems:
 
 **1. Educational Component Vector Database**
-A comprehensive database of 4,403 pre-validated educational components (modules, activities, assessments) was constructed across STEM domains. Each component included rich metadata: domain classification, difficulty level, estimated hours, prerequisite relationships, key concepts, and learning outcomes. Components were indexed using sentence-transformers (all-MiniLM-L6-v2, 384-dimensional embeddings), enabling semantic similarity search.
+A comprehensive database of 4,403 pre-validated educational components (modules, activities, assessments) was constructed across STEM domains. Each component included rich metadata: domain classification, difficulty level, estimated hours, prerequisite relationships, key concepts, and learning outcomes. Components were indexed using sentence-transformers (all-mpnet-base-v2, 768-dimensional embeddings) for high-quality semantic similarity search.
 
 **2. Domain-Aware RAG Retrieval Pipeline**
 Given user requirements (course title, domain, level, duration), the system performed multi-stage retrieval:
@@ -1359,7 +1424,7 @@ The lesson here extends beyond syllabus generation: architectural purity (100% r
 
 While templates solved the immediate problem (0% → 100% parseable outputs), they didn't achieve the research objective: neural syllabus generation. The system was a retrieval-based assembly engine, not generative AI. This limitation prompted exploration of architectures that could preserve neural generation capabilities whilst ensuring output reliability—leading to the function calling approach.
 
-## A.3 Approach 3: Function Calling Architecture
+## A.3 Approach 3: Function Calling Architecture (Failed - UUID Generation)
 
 ### Theoretical Foundation and Design Philosophy
 
@@ -1497,7 +1562,7 @@ Instead, the research pivoted to task simplification: rather than requiring UUID
 
 Function calling failed not due to architectural flaws, but due to task-model mismatch. The approach was theoretically sound but practically infeasible given model capacity constraints. This failure prompted the most important insight of the entire research: **task formulation matters more than architectural sophistication**. Simplifying the task (UUID → index) proved more effective than scaling the model (60M → 220M parameters).
 
-## A.4 Final Architecture: Index-Based Markdown Generation
+## A.4 Final Architecture: Index-Based Markdown Generation (Successful)
 
 ### The Breakthrough: Task Simplification Over Model Scaling
 
@@ -1623,7 +1688,7 @@ The architecture cleanly separates neural generation (semantic selection, markdo
 
 The final architecture achieved the dual objectives: reliability (100% parseable) and semantic intelligence (75% neural utilization, 91% difficulty progression), validating that task simplification addresses root causes more effectively than architectural complexity or parameter scaling.
 
-## A.5 Cross-Approach Synthesis: Lessons Learned
+## A.5 Cross-Approach Synthesis and Lessons Learned
 
 ### Task Formulation Primacy
 
