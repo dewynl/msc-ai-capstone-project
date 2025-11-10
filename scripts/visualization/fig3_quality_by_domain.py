@@ -114,14 +114,16 @@ def create_quality_by_domain():
         "Quality Metrics Performance by Domain",
         fontsize=STYLE["title_size"],
         fontweight="bold",
-        pad=20,
+        pad=25,  # Increased padding
     )
     ax.set_xticks(x + width)
     ax.set_xticklabels(metrics, fontsize=10)
-    ax.set_ylim(0, 1.0)
+    ax.set_ylim(0, 1.08)  # Increased to accommodate percentage labels
     ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0])
     ax.set_yticklabels(["0%", "20%", "40%", "60%", "80%", "100%"])
-    ax.legend(loc="upper right", fontsize=10, framealpha=0.9, ncol=2)
+    ax.legend(
+        loc="upper left", fontsize=10, framealpha=0.95, ncol=2
+    )  # Moved to upper left to avoid overlap
     ax.grid(axis="y", alpha=0.3)
 
     plt.tight_layout()

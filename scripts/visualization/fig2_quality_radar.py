@@ -91,9 +91,11 @@ def create_quality_radar():
         "Model Performance Across Quality Dimensions",
         fontsize=STYLE["title_size"],
         fontweight="bold",
-        pad=20,
+        pad=30,  # Increased padding to prevent title overlap
     )
-    ax.legend(loc="upper right", bbox_to_anchor=(1.3, 1.1), fontsize=10)
+    ax.legend(
+        loc="upper right", bbox_to_anchor=(1.25, 1.05), fontsize=10, framealpha=0.95
+    )
     ax.grid(True, alpha=0.3)
 
     plt.tight_layout()

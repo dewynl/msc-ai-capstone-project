@@ -97,10 +97,12 @@ def create_prerequisite_distribution():
         "Prerequisite Accuracy Distribution Across Generated Syllabi",
         fontsize=STYLE["title_size"],
         fontweight="bold",
-        pad=20,
+        pad=25,  # Increased padding
     )
     ax.set_xlim(0, 100)
-    ax.legend(loc="upper right", fontsize=10, framealpha=0.9)
+    ax.legend(
+        loc="upper right", fontsize=10, framealpha=0.95
+    )  # Increased alpha for better visibility
     ax.grid(axis="x", alpha=0.3)
 
     plt.tight_layout()
