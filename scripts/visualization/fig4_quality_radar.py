@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Figure 2: Quality Metrics Radar Chart
+Figure 4: Quality Metrics Radar Chart
 
 Shows balanced view of model performance across 5 key dimensions:
 - Prerequisite accuracy (weakest: 29.6%)
@@ -91,14 +91,17 @@ def create_quality_radar():
         "Model Performance Across Quality Dimensions",
         fontsize=STYLE["title_size"],
         fontweight="bold",
-        pad=20,
+        pad=40,  # Further increased padding to prevent title overlap
     )
-    ax.legend(loc="upper right", bbox_to_anchor=(1.3, 1.1), fontsize=10)
+    # Move legend below title to avoid overlap
+    ax.legend(
+        loc="upper right", bbox_to_anchor=(1.3, 0.95), fontsize=10, framealpha=0.95
+    )
     ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
 
-    output_path = OUTPUT_DIR / "fig2_quality_radar.png"
+    output_path = OUTPUT_DIR / "fig4_quality_radar.png"
     plt.savefig(output_path, dpi=STYLE["dpi"], bbox_inches="tight")
     print(f"\n✅ Saved: {output_path}")
 

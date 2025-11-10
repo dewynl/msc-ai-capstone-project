@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Figure 3: Quality Metrics Breakdown by Domain
+Figure 5: Quality Metrics Breakdown by Domain
 
 Shows how different domains perform across quality dimensions:
 - Computer Science: Strongest overall (66.7% prerequisite accuracy)
@@ -114,19 +114,24 @@ def create_quality_by_domain():
         "Quality Metrics Performance by Domain",
         fontsize=STYLE["title_size"],
         fontweight="bold",
-        pad=20,
+        pad=30,  # Increased padding
     )
     ax.set_xticks(x + width)
     ax.set_xticklabels(metrics, fontsize=10)
-    ax.set_ylim(0, 1.0)
+    ax.set_ylim(
+        0, 1.12
+    )  # Further increased to accommodate percentage labels above 100% bars
     ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0])
     ax.set_yticklabels(["0%", "20%", "40%", "60%", "80%", "100%"])
-    ax.legend(loc="upper right", fontsize=10, framealpha=0.9, ncol=2)
+    # Move legend outside plot area to avoid overlap with bars and labels
+    ax.legend(
+        loc="center left", bbox_to_anchor=(1.02, 0.5), fontsize=10, framealpha=0.95
+    )
     ax.grid(axis="y", alpha=0.3)
 
     plt.tight_layout()
 
-    output_path = OUTPUT_DIR / "fig3_quality_by_domain.png"
+    output_path = OUTPUT_DIR / "fig5_quality_by_domain.png"
     plt.savefig(output_path, dpi=STYLE["dpi"], bbox_inches="tight")
     print(f"\n✅ Saved: {output_path}")
 
