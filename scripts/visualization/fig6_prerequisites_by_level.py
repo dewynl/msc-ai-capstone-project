@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Figure 4: Prerequisite Accuracy by Difficulty Level
+Figure 6: Prerequisite Accuracy by Difficulty Level
 
 Shows how prerequisite accuracy varies by course difficulty:
 - Advanced: Lowest (33.3%) - struggles with complex prerequisite chains
@@ -157,19 +157,19 @@ def create_prerequisites_by_level():
         "Prerequisite Accuracy by Course Difficulty Level",
         fontsize=STYLE["title_size"],
         fontweight="bold",
-        pad=20,
+        pad=25,  # Increased padding
     )
     ax.set_xticks(range(len(levels)))
     ax.set_xticklabels(levels, fontsize=11)
-    ax.set_ylim(0, 0.7)
+    ax.set_ylim(0, 0.72)  # Increased slightly to accommodate labels above bars
     ax.set_yticks([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7])
     ax.set_yticklabels(["0%", "10%", "20%", "30%", "40%", "50%", "60%", "70%"])
-    ax.legend(loc="upper right", fontsize=10, framealpha=0.9)
+    ax.legend(loc="upper right", fontsize=10, framealpha=0.95)
     ax.grid(axis="y", alpha=0.3)
 
     plt.tight_layout()
 
-    output_path = OUTPUT_DIR / "fig4_prerequisites_by_level.png"
+    output_path = OUTPUT_DIR / "fig6_prerequisites_by_level.png"
     plt.savefig(output_path, dpi=STYLE["dpi"], bbox_inches="tight")
     print(f"\n✅ Saved: {output_path}")
 
