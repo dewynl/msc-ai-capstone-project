@@ -100,9 +100,10 @@ def create_prerequisite_distribution():
         pad=25,  # Increased padding
     )
     ax.set_xlim(0, 100)
+    # Move legend outside plot area to avoid overlap with bars
     ax.legend(
-        loc="upper right", fontsize=10, framealpha=0.95
-    )  # Increased alpha for better visibility
+        loc="center left", bbox_to_anchor=(1.02, 0.5), fontsize=10, framealpha=0.95
+    )
     ax.grid(axis="x", alpha=0.3)
 
     plt.tight_layout()

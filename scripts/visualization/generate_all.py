@@ -15,9 +15,9 @@ import time
 from pathlib import Path
 
 from fig1_prerequisite_distribution import create_prerequisite_distribution
-from fig2_quality_radar import create_quality_radar
-from fig3_quality_by_domain import create_quality_by_domain
-from fig4_prerequisites_by_level import create_prerequisites_by_level
+from fig4_quality_radar import create_quality_radar
+from fig5_quality_by_domain import create_quality_by_domain
+from fig6_prerequisites_by_level import create_prerequisites_by_level
 
 
 def main():
@@ -30,9 +30,9 @@ def main():
 
     figures = [
         ("Figure 1: Prerequisite Distribution", create_prerequisite_distribution),
-        ("Figure 2: Quality Radar", create_quality_radar),
-        ("Figure 3: Quality by Domain", create_quality_by_domain),
-        ("Figure 4: Prerequisites by Level", create_prerequisites_by_level),
+        ("Figure 4: Quality Radar", create_quality_radar),
+        ("Figure 5: Quality by Domain", create_quality_by_domain),
+        ("Figure 6: Prerequisites by Level", create_prerequisites_by_level),
     ]
 
     output_paths = []

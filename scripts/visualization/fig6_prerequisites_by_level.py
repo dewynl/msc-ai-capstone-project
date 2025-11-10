@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Figure 4: Prerequisite Accuracy by Difficulty Level
+Figure 6: Prerequisite Accuracy by Difficulty Level
 
 Shows how prerequisite accuracy varies by course difficulty:
 - Advanced: Lowest (33.3%) - struggles with complex prerequisite chains
@@ -169,7 +169,7 @@ def create_prerequisites_by_level():
 
     plt.tight_layout()
 
-    output_path = OUTPUT_DIR / "fig4_prerequisites_by_level.png"
+    output_path = OUTPUT_DIR / "fig6_prerequisites_by_level.png"
     plt.savefig(output_path, dpi=STYLE["dpi"], bbox_inches="tight")
     print(f"\n✅ Saved: {output_path}")
 
