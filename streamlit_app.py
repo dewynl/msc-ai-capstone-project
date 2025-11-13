@@ -131,7 +131,8 @@ def render_email_gate():
                 "username": "demo_user",
                 "first_name": "Demo",
             }
-            st.rerun()
+            with st.spinner("Loading..."):
+                st.rerun()
         return
 
     st.info(
@@ -158,9 +159,10 @@ def render_email_gate():
                 return
 
             # Get or create user
-            user = db.get_or_create_user(username.strip())
-            st.session_state.user = user
-            st.rerun()
+            with st.spinner("Logging in..."):
+                user = db.get_or_create_user(username.strip())
+                st.session_state.user = user
+                st.rerun()
 
     # Privacy note
     st.caption(
@@ -168,47 +170,6 @@ def render_email_gate():
         "your syllabi. No password required. Data will be deleted after the "
         "validation period concludes."
     )
-
-
-def render_evaluation_results_sidebar():
-    """Render evaluation results from dissertation in sidebar."""
-    with st.sidebar:
-        st.markdown("### 📊 System Evaluation Results")
-        st.caption("*From MSc Dissertation Study (35 test cases)*")
-
-        st.metric(
-            "Pipeline Success Rate",
-            "77.1%",
-            help="27/35 test cases completed successfully",
-        )
-        st.metric(
-            "Prerequisite Accuracy",
-            "27.8%",
-            delta="-72.2%",
-            delta_color="inverse",
-            help="Percentage of prerequisite dependencies correctly ordered",
-        )
-        st.metric(
-            "Difficulty Progression",
-            "90.0%",
-            help="Module difficulty increases appropriately",
-        )
-        st.metric(
-            "Topic Diversity", "80.0%", help="Coverage of diverse educational topics"
-        )
-
-        st.markdown("---")
-        st.caption("**Domain Coverage:**")
-        st.caption("✅ Computer Science: 100%")
-        st.caption("✅ Mathematics: 100%")
-        st.caption("✅ Physics: 100%")
-        st.caption("⚠️ Engineering: 0%")
-        st.caption("⚠️ Interdisciplinary: 0%")
-
-        st.markdown("---")
-        st.caption(
-            "**Key Insight:** System excels at structural generation but struggles with semantic prerequisite chains. See dissertation Chapter 6 for full analysis."
-        )
 
 
 def render_user_welcome(user):
@@ -406,124 +367,140 @@ def render_formatted_syllabus(syllabus, rag_database=None):
 
 
 def render_technical_details(syllabus, generation_time):
-    """Render technical details tab."""
-    st.markdown("### ⚙️ CodeT5 Hybrid ML + Rule-Based Architecture")
+    """Render technical details tab with syllabus-specific insights."""
 
-    st.markdown(
-        """
-        ```
-        📝 User Input (Course Requirements: domain, level, description)
-           ↓
-        🔍 Domain + Difficulty RAG Filter (Rule-based)
-           │  Step 1: Filter by domain (computer_science → CS modules only)
-           │  Step 2: Filter by difficulty
-           │    • Beginner → only beginner modules
-           │    • Intermediate → beginner + intermediate
-           │    • Advanced → intermediate + advanced
-           │  Result: 960 modules → ~100-200 domain+difficulty matches
-           ↓
-        🤖 CodeT5-Small Model (60M params, ML-based)
-           │  Sees filtered modules as context
-           │  Generates markdown syllabus with indices
-           │  Example: ## Selected Modules\n[0], [1], [2]
-           ↓
-        📋 Markdown Parser (Hybrid)
-           │  Converts indices → database UUIDs
-           │  [0] → uuid-mod-abc123 (from filtered context)
-           ↓
-        🎯 Bloom's Taxonomy Enhancement (Rule-based)
-           │  Replaces generic objectives with pedagogical patterns
-           │  "Master X fundamentals" → "Understand fundamental X principles"
-           ↓
-        📚 Template Expander (Hybrid)
-           │  Adds rich database details to selections
-           ↓
-        ✅ Final Output (JSON + Rich Markdown)
-        ```
-        """
-    )
-
-    st.success(
-        "**Hybrid Architecture**: Combines ML (CodeT5 generation) with Rules (difficulty filtering, "
-        "Bloom's Taxonomy) for 100% structural validity + 100% pedagogically appropriate selections. "
-        "Following established patterns in spaCy, modern NER, and information retrieval systems."
-    )
-
-    st.markdown("### 📊 RAG Retrieval Process")
-
-    st.markdown(
-        """
-    **How RAG worked for this syllabus:**
-
-    1. **Domain + Difficulty Filtering (Rule-based)**: ALL components filtered by BOTH domain AND difficulty
-       - Domain: Only components matching course domain (e.g., computer_science → CS only)
-       - Difficulty: Only appropriate difficulty levels
-         * Beginner courses → beginner components only
-         * Intermediate courses → beginner + intermediate
-         * Advanced courses → intermediate + advanced
-       - Applied to: Modules, Activities, AND Assessments
-    2. **Context Building**: Built prompt with filtered components as `[0] Component Title (hours, difficulty)`
-    3. **Model Selection (ML-based)**: CodeT5 read the context and output indices like `[0], [1], [2], [3]`
-    4. **Index Mapping (Hybrid)**: Converted indices to database UUIDs (e.g., `[0]` → `uuid-abc123`)
-    5. **Bloom's Enhancement (Rule-based)**: Replaced generic objectives with pedagogical patterns
-    6. **Database Expansion (Hybrid)**: Retrieved full details for selected UUIDs
-
-    This is a **Retrieval-Augmented Generation** approach where:
-    - RAG provides the **context** (pedagogically filtered components)
-    - Model does **selection** (which components to use)
-    - System does **expansion** (full details from database)
-
-    **Why Filter Everything?** Ensures 100% pedagogical appropriateness - no advanced assessments in beginner courses, no irrelevant domains
-    """
-    )
-
-    st.markdown("### 📊 This Syllabus - Metrics")
-
-    # Get selected components (UUIDs)
+    # Get selected components
     modules = syllabus.get("modules", [])
     activities = syllabus.get("activities", [])
     assessments = syllabus.get("assessments", [])
     objectives = syllabus.get("learning_objectives", [])
+    course_info = syllabus.get("course_info", {})
 
-    total = len(modules) + len(activities) + len(assessments)
+    st.markdown("### 📊 Syllabus Analysis")
 
+    # Generation metrics
     col1, col2, col3, col4 = st.columns(4)
-
     with col1:
         st.metric("Generation Time", f"{generation_time:.2f}s")
-
     with col2:
-        st.metric("Total Components", total)
-
+        st.metric("Total Components", len(modules) + len(activities) + len(assessments))
     with col3:
-        st.metric("Modules", len(modules))
-
+        st.metric("Modules Selected", len(modules))
     with col4:
-        st.metric("Objectives", len(objectives))
+        st.metric("Learning Objectives", len(objectives))
 
     st.markdown("---")
-    st.markdown("### 🔗 Selected Component UUIDs")
 
-    with st.expander("Module UUIDs"):
-        if modules:
-            for mid in modules:
-                st.code(mid, language=None)
-        else:
-            st.write("_No modules selected_")
+    # Component distribution insights
+    st.markdown("### 🎯 Component Distribution")
 
-    with st.expander("Activity UUIDs"):
-        if activities:
-            for aid in activities:
-                st.code(aid, language=None)
-        else:
-            st.write("_No activities selected_")
+    col_a, col_b, col_c = st.columns(3)
+    with col_a:
+        st.metric("Modules", len(modules), help="Core content units")
+    with col_b:
+        st.metric("Activities", len(activities), help="Hands-on learning exercises")
+    with col_c:
+        st.metric("Assessments", len(assessments), help="Evaluation methods")
 
-    with st.expander("Assessment UUIDs"):
-        if assessments:
-            for aid in assessments:
-                st.code(aid, language=None)
-        else:
-            st.write("_No assessments selected_")
+    # Pedagogical insights based on course level
+    level = course_info.get("level", "intermediate")
+    domain = course_info.get("domain", "computer_science").replace("_", " ").title()
+
+    st.markdown("### 💡 Pedagogical Insights")
+
+    insights = []
+
+    # Level-specific insights
+    if level == "beginner":
+        insights.append(
+            f"✅ **Beginner-friendly**: System filtered for foundational {domain} modules only"
+        )
+        if len(modules) >= 4:
+            insights.append(
+                f"✅ **Comprehensive**: {len(modules)} modules provide thorough coverage for newcomers"
+            )
+    elif level == "intermediate":
+        insights.append(
+            "✅ **Progressive learning**: Mixed beginner and intermediate modules for skill building"
+        )
+        insights.append(
+            f"✅ **Bridge content**: Designed to advance from foundational to applied {domain}"
+        )
+    else:  # advanced
+        insights.append(
+            "✅ **Advanced curriculum**: Intermediate and advanced modules for experienced learners"
+        )
+        insights.append(f"✅ **Specialized focus**: Assumes prior knowledge in {domain}")
+
+    # Activity ratio insights
+    if len(modules) > 0:
+        activity_ratio = len(activities) / len(modules)
+        if activity_ratio >= 1.5:
+            insights.append(
+                f"✅ **Highly interactive**: {len(activities)} activities for {len(modules)} modules - emphasizes hands-on practice"
+            )
+        elif activity_ratio >= 0.8:
+            insights.append(
+                f"✅ **Balanced approach**: Good mix of theory ({len(modules)} modules) and practice ({len(activities)} activities)"
+            )
+        elif activity_ratio < 0.5:
+            insights.append(
+                "ℹ️ **Theory-focused**: More modules than activities - conceptual emphasis"
+            )
+
+    # Assessment insights
+    if len(assessments) >= 3:
+        insights.append(
+            f"✅ **Well-assessed**: {len(assessments)} assessment methods provide diverse evaluation"
+        )
+    elif len(assessments) >= 1:
+        insights.append(
+            f"ℹ️ **Standard assessment**: {len(assessments)} assessment(s) included"
+        )
+
+    # Display insights
+    for insight in insights:
+        st.markdown(insight)
+
+    st.markdown("---")
+
+    # System architecture (collapsible)
+    with st.expander("⚙️ System Architecture & Pipeline"):
+        st.markdown("**7-Step Hybrid ML + Rule-Based Pipeline:**")
+        st.markdown(
+            """
+            ```
+            📝 User Input (Course Requirements)
+               ↓
+            🔍 Domain + Difficulty Filter (Rule-based)
+               │  Filters 4,403 components by domain and difficulty
+               │  Ensures pedagogical appropriateness
+               ↓
+            🎯 Semantic Ranking (ML-based)
+               │  Ranks components by relevance using MPNet embeddings
+               │  Top K selection (modules: 20, activities: 15)
+               ↓
+            🤖 CodeT5 Generation (ML-based)
+               │  60M parameter model generates markdown syllabus
+               │  Quality reranking selects best of 3 candidates
+               ↓
+            📋 Markdown Parsing (Hybrid)
+               │  Converts model output to structured JSON
+               ↓
+            🎓 Bloom's Enhancement (Rule-based)
+               │  Improves learning objectives with pedagogical patterns
+               ↓
+            📚 Component Expansion
+               │  Adds full database details to selections
+               ↓
+            ✅ Final Syllabus Output
+            ```
+            """
+        )
+        st.info(
+            "**Hybrid Architecture**: Combines ML (CodeT5 + semantic ranking) with algorithmic rules "
+            "(difficulty filtering, Bloom's Taxonomy) for reliable, pedagogically sound generation."
+        )
 
 
 def main():
@@ -549,7 +526,6 @@ def main():
     )
 
     render_user_welcome(user)
-    render_evaluation_results_sidebar()
     render_example_presets()
 
     st.markdown("---")
