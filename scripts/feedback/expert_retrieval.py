@@ -162,7 +162,11 @@ class ExpertSyllabusRetriever:
         Returns:
             List of formatted expert recommendations
         """
-        similar_experts = self.find_similar_experts(course_requirements, top_k=top_k)
+        # Lower similarity threshold for UI display (0.15 = 15% similarity)
+        # Users expect to see examples even if not perfectly similar
+        similar_experts = self.find_similar_experts(
+            course_requirements, top_k=top_k, min_similarity=0.15
+        )
 
         if not similar_experts:
             return []
